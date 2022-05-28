@@ -1,7 +1,7 @@
 from kivymd.app import MDApp
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivy_garden.mapview import MapView
-from gpshelper import GpsHelper #for future using...
+#from gpshelper import GpsHelper #for future using...
 
 
 class MapViewExample(MDFloatLayout):
