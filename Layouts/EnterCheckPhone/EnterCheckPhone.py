@@ -4,23 +4,27 @@ from kivymd.theming import ThemeManager
 from kivy.properties import ObjectProperty
 
 #subimport
-from kivymd.uix.button import MDRaisedButton
-from kivymd.uix.textfield import MDTextField
+from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.label import MDLabel
+from kivymd.uix.button import MDRaisedButton
+from kivymd.uix.gridlayout import MDGridLayout
+from kivymd.uix.textfield import MDTextField
 
 class Container(MDBoxLayout):
-	input_phone = ObjectProperty()
+	label_phone = ObjectProperty()
+	input_code = ObjectProperty()
+	phoneNumber = ''
+	
+	def click_on_button_confirm(self):
+		print('Confirm entering')
 
-	def click_on_button_enter(self):
-		print('Вход')
-
-class EnterApp(MDApp):
+class EnterCheckPhoneApp(MDApp):
 	theme_cls = ThemeManager()
-	title = 'Вход'
+	title = 'Подтверждение телефона'
 
 	def build(self):
 		self.theme_cls.theme_style = 'Light'
 		return Container()
 
 if __name__ == '__main__':
-	EnterApp().run()
+	EnterCheckPhoneApp().run()

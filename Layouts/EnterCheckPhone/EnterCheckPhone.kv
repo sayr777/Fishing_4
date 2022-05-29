@@ -1,0 +1,48 @@
+#: import MDLabel kivymd.uix.label.MDLabel
+#: import MDFloatLayout kivymd.uix.floatlayout.MDFloatLayout
+#: import MDRaisedButton kivymd.uix.button.MDRaisedButton
+#: import MDGridLayout kivymd.uix.gridlayout.MDGridLayout
+
+<Container>:
+	orientation: "vertical"
+	padding: 50
+
+	label_phone: label_phone
+	input_code: input_code
+
+	MDLabel:
+		text: "Проверка номера"
+		font_size: '40sp'
+		bold: True
+
+	MDLabel:
+		font_size: '14sp'
+		text: 'Мы отправили код подтверждения на номер: '
+
+	MDLabel:
+		id: label_phone
+		font_size: '14sp'
+		text: ''
+		markup: True
+
+	MDLabel:
+		font_size: '14sp'
+		text: 'Введите полученный код'
+
+	MDTextField:
+		id: input_code
+		multiline: False
+		font_size: '30sp'
+		input_type: 'number'
+		input_filter: 'int'
+
+
+	MDFloatLayout:
+		MDRaisedButton:
+			size_hint: 0.5, 0.4
+			pos_hint: {'center_x' : 0.5, 'y' : 0.1}
+			text: "Подтвердить"
+			font_size: '30sp'
+
+			on_release:
+				root.click_on_button_confirm()
