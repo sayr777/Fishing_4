@@ -1,14 +1,26 @@
 from kivymd.app import MDApp
-from kivy.lang import Builder
 from kivymd.theming import ThemeManager
 from kivy.properties import ObjectProperty
 from kivy.uix.screenmanager import Screen, ScreenManager
+from kivy.lang import Builder
+
+#for debug... REMOVE THIS, IF THIS IS PRODUCTION
+from kivy.core.window import Window
+Window.size = (480, 853) 
+
+#subimport
+from kivymd.uix.boxlayout import MDBoxLayout
+from kivymd.uix.floatlayout import MDFloatLayout
+from kivymd.uix.gridlayout import MDGridLayout
+from kivymd.uix.textfield import MDTextField
+from kivymd.uix.label import MDLabel
+from kivymd.uix.button import MDRoundFlatButton
 
 #define different screens
-class Onboard(Screen):
+class Onboard(Screen, MDFloatLayout):
 	pass
 
-class RegistrationMain(Screen):
+class RegistrationMain(Screen, MDBoxLayout):
 	input_surname = ObjectProperty()
 	input_name = ObjectProperty()
 	input_lastname = ObjectProperty()
@@ -24,15 +36,13 @@ class RegistrationMain(Screen):
 class WindowManager(ScreenManager):
 	pass
 
-kv = Builder.load_file('main.kv')
-
 class MyApp(MDApp):
 	theme_cls = ThemeManager()
 	title = 'Умная рыбалка'
 
 	def build(self):
 		self.theme_cls.theme_style = "Light"
-		return kv
+		return Builder.load_file('my.kv')
 
 if __name__ == '__main__':
 	MyApp().run()

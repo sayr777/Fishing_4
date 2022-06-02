@@ -1,6 +1,8 @@
 #: import MDFloatLayout kivymd.uix.boxlayout.MDBoxLayout
 #: import MDLabel kivymd.uix.label.MDLabel
 #: import MDFloatLayout kivymd.uix.floatlayout.MDFloatLayout
+#: import MDGridLayout kivymd.uix.gridlayout.MDGridLayout
+#: import MDRoundFlatButton kivymd.uix.button.MDRoundFlatButton
 
 WindowManager:
 	Onboard:
@@ -9,36 +11,36 @@ WindowManager:
 <Onboard>:
 	name: 'Onboard'
 
+	FitImage:
+		source: "pictures/fish.png"
+		size_hint: 1, 1
+
+	MDLabel:
+		text: 'Ваш помощник и гид по лучшим местам для рыбалки.'
+		color: (170, 176, 190, 1)
+
+	MDLabel:
+		text: 'Ваш гид по лучшим местам для рыбалки.'
+		color: (1, 1, 1, 1)
+		pos_hint: {'y' : 0.2}
+		font_size: '35sp'
+
 	MDFloatLayout:
-		FitImage:
-			source: "pictures/fish.png"
-			size_hint: 1, 1
+		MDFillRoundFlatButton:
+			size_hint: 0.4, 0.1
+			height: 50
+			pos_hint: {'center_x' : 0.5, 'y' : 0.1}
+			text: "Регистрация"
+			font_size: '20sp'
 
-		MDLabel:
-			text: 'Ваш помощник и гид по лучшим местам для рыбалки.'
-			color: (1, 1, 1, 1)
-
-		MDLabel:
-			text: 'Ваш гид по лучшим местам для рыбалки.'
-			color: (170, 176, 190, 1)
-			pos_hint: {'y' : 0.2}
-			font_size: '35sp'
-
-		MDFloatLayout:
-			MDRaisedButton:
-				size_hint: 0.4, 0.1
-				height: 50
-				pos_hint: {'center_x' : 0.5, 'y' : 0.1}
-				text: "Регистрация"
-				font_size: '20sp'
-
-				on_release:
-					root.app.current = 'RegistrationMain'
+			on_release:
+				app.root.current = 'RegistrationMain'
 
 <RegistrationMain>:
 	name: 'RegistrationMain'
-
+	
 	MDBoxLayout:
+
 		orientation: "vertical"
 		padding: 50
 
@@ -137,12 +139,12 @@ WindowManager:
 			on_ref_press: root.click_on_button_privacy_policy()
 
 		MDFloatLayout:
-			MDRaisedButton:
+			MDFillRoundFlatButton:
 				size_hint: 0.5, 0.4
 				pos_hint: {'center_x' : 0.5, 'y' : 0.1}
 				text: "Регистрация"
 				font_size: '30sp'
 
 				on_release:
-					root.app.current = 'RegistartionDop'
+					app.root.current = 'RegistartionDop'
 
