@@ -151,6 +151,20 @@ WindowManager:
 				on_release:
 					app.root.current = 'RegistartionDop'
 
+		MDGridLayout:
+			cols: 2
+
+			MDLabel:
+				font_size: '14sp'
+				text: 'Уже есть аккаунт?'
+
+			MDLabel:
+				font_size: '14sp'
+				text: 'Войти'
+				markup: True
+				color: (44, 53, 171, 1)
+				on_ref_press: app.root.current = 'Enter'
+
 <RegistrationDop>:
 	name: 'RegistrationDop'
 	
@@ -203,7 +217,7 @@ WindowManager:
 				font_size: '30sp'
 
 				on_release:
-					root.click_on_button_continue()
+					app.root.current = 'EnterCheckPhone'
 
 <Enter>:
 	name: 'Enter'
@@ -227,7 +241,7 @@ WindowManager:
 			cols: 2
 
 			AsyncImage:
-				source: '../RegistrationMain/pictures/phone.png'
+				source: '/pictures/phone.png'
 				size_hint: 0.05, 0.2
 
 			MDTextField:
@@ -246,7 +260,7 @@ WindowManager:
 				font_size: '30sp'
 
 				on_release:
-					root.click_on_button_enter()
+					app.root.current = 'EnterCheckPhone'
 
 <EnterCheckPhone>:
 	name: 'EnterCheckPhone'
