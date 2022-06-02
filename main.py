@@ -33,6 +33,36 @@ class RegistrationMain(Screen, MDBoxLayout):
 	def click_on_button_terms_and_agreements(self):
 		pass
 
+class RegistrationDop(Screen, MDBoxLayout):
+	button_continue = ObjectProperty()
+	checkbox_agree = ObjectProperty()
+
+	def click_on_button_continue(self):
+		print('Продолжение регистрации')
+
+	def click_on_checkbox_agree(self):
+		if checkbox_agree.value:
+			button_continue.disabled = False
+		else:
+			button_continue.disabled = True
+
+	def click_on_back(self):
+		print('Возвращение назад')
+
+class Enter(Screen, MDBoxLayout):
+	input_phone = ObjectProperty()
+
+	def click_on_button_enter(self):
+		print('Вход')
+
+class EnterCheckPhone(Screen, MDBoxLayout):
+	label_phone = ObjectProperty()
+	input_code = ObjectProperty()
+	phoneNumber = ''
+	
+	def click_on_button_confirm(self):
+		print('Confirm entering')
+
 class WindowManager(ScreenManager):
 	pass
 

@@ -7,6 +7,9 @@
 WindowManager:
 	Onboard:
 	RegistrationMain:
+	RegistrationDop:
+	Enter:
+	EnterCheckPhone:
 
 <Onboard>:
 	name: 'Onboard'
@@ -148,3 +151,146 @@ WindowManager:
 				on_release:
 					app.root.current = 'RegistartionDop'
 
+<RegistrationDop>:
+	name: 'RegistrationDop'
+	
+	MDBoxLayout:
+		orientation: "vertical"
+		padding: 50
+
+		button_continue: button_continue
+		checkbox_agree: checkbox_agree
+
+		Image:
+			source: 'pictures/angel.png'
+			on_release:
+				app.root.current = 'RegistrationMain'
+
+		MDLabel:
+			text: "Условия и положения"
+			font_size: '40sp'
+			bold: True
+
+		MDLabel:
+			text: '1.1. Пользуясь Мобильным приложением, Вы соглашаетесь с тем, что:'
+			font_size: '32sp'
+			bold: True
+
+		MDLabel:
+			text: '''
+				1.1.1. Вы ознакомились с условиями настоящего Пользовательского соглашения в полном объёме до начала использования Мобильного приложения.
+
+				1.1.2. Начало использования Вами Мобильного приложения в любой форме означает, что Вы принимаете все условия настоящего Пользовательского соглашения в полном объёме без каких-либо изъятий и ограничений с Вашей стороны. Использование Мобильного приложения на иных условиях не допускается. 
+
+				1.1.3. Если Вы не согласны с условиями настоящего Пользовательского соглашения или не имеете права на его заключение, Вам следует незамедлительно прекратить любое использование Мобильного приложения.
+
+				1.1.4. Пользовательское соглашение в любой форме означает, что Вы принимаете все условия настоящего Пользовательского соглашения.
+			'''
+			font_size: '30sp'
+
+		CheckBox:
+			id: checkbox_agree
+			font_size: '30sp'
+			text: 'Я согласен с условиями'
+			active: root.click_on_checkbox_agree()
+
+		MDFloatLayout:
+			MDFillRoundFlatButton:
+				id: button_continue
+				size_hint: 0.5, 0.4
+				pos_hint: {'center_x' : 0.5, 'y' : 0.1}
+				text: "Продолжить"
+				font_size: '30sp'
+
+				on_release:
+					root.click_on_button_continue()
+
+<Enter>:
+	name: 'Enter'
+
+	MDBoxLayout:
+		orientation: "vertical"
+		padding: 50
+
+		input_phone: input_phone
+
+		MDLabel:
+			text: "Вход"
+			font_size: '40sp'
+			bold: True
+
+		MDLabel:
+			text: "Для авторизации введите Ваш номер телефона"
+			font_size: '30sp'
+
+		MDGridLayout:
+			cols: 2
+
+			AsyncImage:
+				source: '../RegistrationMain/pictures/phone.png'
+				size_hint: 0.05, 0.2
+
+			MDTextField:
+				id: input_phone
+				hint_text: "+7 (___)___-__-__"
+				multiline: False
+				font_size: '30sp'
+				input_type: 'number'
+				input_filter: 'int'
+
+		MDFloatLayout:
+			MDFillRoundFlatButton:
+				size_hint: 0.5, 0.4
+				pos_hint: {'center_x' : 0.5, 'y' : 0.1}
+				text: "Вход"
+				font_size: '30sp'
+
+				on_release:
+					root.click_on_button_enter()
+
+<EnterCheckPhone>:
+	name: 'EnterCheckPhone'
+
+	MDBoxLayout:
+		orientation: "vertical"
+		padding: 50
+
+		label_phone: label_phone
+		input_code: input_code
+
+		MDLabel:
+			text: "Проверка номера"
+			font_size: '40sp'
+			bold: True
+
+		MDLabel:
+			font_size: '14sp'
+			text: 'Мы отправили код подтверждения на номер: '
+
+		MDLabel:
+			id: label_phone
+			font_size: '14sp'
+			text: ''
+			markup: True
+
+		MDLabel:
+			font_size: '14sp'
+			text: 'Введите полученный код'
+
+		MDTextField:
+			id: input_code
+			multiline: False
+			font_size: '30sp'
+			input_type: 'number'
+			input_filter: 'int'
+
+
+		MDFloatLayout:
+			MDFillRoundFlatButton:
+				size_hint: 0.5, 0.4
+				pos_hint: {'center_x' : 0.5, 'y' : 0.1}
+				text: "Подтвердить"
+				font_size: '30sp'
+
+				on_release:
+					root.click_on_button_confirm()
