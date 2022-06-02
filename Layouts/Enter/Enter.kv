@@ -1,0 +1,44 @@
+#: import MDFloatLayout kivymd.uix.floatlayout.MDFloatLayout
+#: import MDRaisedButton kivymd.uix.button.MDRaisedButton
+#: import MDTextField kivymd.uix.textfield.MDTextField 
+#: import MDLabel kivymd.uix.label.MDLabel
+
+<Container>:
+	orientation: "vertical"
+	padding: 50
+
+	input_phone: input_phone
+
+	MDLabel:
+		text: "Вход"
+		font_size: '40sp'
+		bold: True
+
+	MDLabel:
+		text: "Для авторизации введите Ваш номер телефона"
+		font_size: '30sp'
+
+	MDGridLayout:
+		cols: 2
+
+		AsyncImage:
+			source: '../RegistrationMain/pictures/phone.png'
+			size_hint: 0.05, 0.2
+
+		MDTextField:
+			id: input_phone
+			hint_text: "+7 (___)___-__-__"
+			multiline: False
+			font_size: '30sp'
+			input_type: 'number'
+			input_filter: 'int'
+
+	MDFloatLayout:
+		MDRaisedButton:
+			size_hint: 0.5, 0.4
+			pos_hint: {'center_x' : 0.5, 'y' : 0.1}
+			text: "Вход"
+			font_size: '30sp'
+
+			on_release:
+				root.click_on_button_enter()
