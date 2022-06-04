@@ -175,7 +175,6 @@ WindowManager:
 	
 	MDBoxLayout:
 		orientation: "vertical"
-		padding: 50
 
 		MDFillRoundFlatButton:
 			background_normal: 'pictures/angel.png'
@@ -185,35 +184,40 @@ WindowManager:
 
 		MDLabel:
 			text: "Условия и положения"
-			font_size: '25sp'
+			font_size: '21sp'
 			bold: True
 
 		MDLabel:
 			text: '1.1. Пользуясь Мобильным приложением, Вы соглашаетесь с тем, что:'
-			font_size: '18sp'
+			font_size: '16sp'
 			bold: True
 
 		MDLabel:
 			text: '1.1.1. Вы ознакомились с условиями настоящего Пользовательского соглашения в полном объёме до начала использования Мобильного приложения.'
-			font_size: '16sp'
+			font_size: '13sp'
 
 		MDLabel:
-			font_size: '16sp'
+			font_size: '13sp'
 			text: '1.1.2. Начало использования Вами Мобильного приложения в любой форме означает, что Вы принимаете все условия настоящего Пользовательского соглашения в полном объёме без каких-либо изъятий и ограничений с Вашей стороны. Использование Мобильного приложения на иных условиях не допускается.'
 
 		MDLabel:
-			font_size: '16sp'
+			font_size: '13sp'
 			text: '1.1.3. Если Вы не согласны с условиями настоящего Пользовательского соглашения или не имеете права на его заключение, Вам следует незамедлительно прекратить любое использование Мобильного приложения.'
 
 		MDLabel:
-			font_size: '16sp'
+			font_size: '13sp'
 			text: '1.1.4. Пользовательское соглашение в любой форме означает, что Вы принимаете все условия настоящего Пользовательского соглашения.'
 
-		CheckBox:
-			id: checkbox_agree
-			font_size: '16sp'
-			text: 'Я согласен с условиями'
-			active: root.click_on_checkbox_agree(self, self.active)
+		MDGridLayout:
+			cols: 2
+
+			CheckBox:
+				id: checkbox_agree
+				on_active: root.click_on_checkbox_agree(self, self.active)
+
+			MDLabel:
+				font_size: '13sp'
+				text: 'Я согласен с условиями'
 
 		MDFloatLayout:
 			MDFillRoundFlatButton:
