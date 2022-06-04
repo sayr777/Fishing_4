@@ -21,8 +21,9 @@ from kivymd.uix.label import MDLabel
 from kivymd.uix.button import MDRoundFlatButton
 
 #define different screens
-class GPSHelper(Screen, MapView):
-	def __init__(self):
+class GPSHelper(Screen):
+	def __init__(self, **kwargs):
+		super(GPSHelper, self).__init__(**kwargs)
 		source_= 'array.geojson'
 
 		options = {}
@@ -36,19 +37,18 @@ class GPSHelper(Screen, MapView):
 		zoom = get_zoom_for_radius(radius, lat)
 		options["zoom"] = 14
 
-		view = MapView(**options)
-		view.add_layer(layer)
+		self.view = MapView(**options)
+		self.view.add_layer(layer)
 
 		self.marker_layer = ClusteredMarkerLayer(cluster_radius=200)
 
-		view.add_layer(marker_layer)
+		self.view.add_layer(self.marker_layer)
 
 		# create marker if they exists
 		self.count = 0
 
 		layer.traverse_feature(self.create_marker)
-
-		self.add_widget(view)
+		self.add_widget(self.view)
 
 	def create_marker(self, feature):
 	    geometry = feature["geometry"]
@@ -81,11 +81,11 @@ class RegistrationDop(Screen, MDBoxLayout):
 	def click_on_button_continue(self):
 		print('Продолжение регистрации')
 
-	def click_on_checkbox_agree(self):
-		if checkbox_agree.value:
-			button_continue.disabled = False
+	def click_on_checkbox_agree(self, instance, value):
+		if value:
+			self.button_continue.disabled = False
 		else:
-			button_continue.disabled = True
+			self.button_continue.disabled = True
 
 	def click_on_back(self):
 		print('Возвращение назад')

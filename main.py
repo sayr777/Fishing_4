@@ -76,13 +76,12 @@ class RegistrationMain(Screen, MDBoxLayout):
 
 class RegistrationDop(Screen, MDBoxLayout):
 	button_continue = ObjectProperty()
-	checkbox_agree = ObjectProperty()
 
 	def click_on_button_continue(self):
 		print('Продолжение регистрации')
 
-	def click_on_checkbox_agree(self):
-		if checkbox_agree.value:
+	def click_on_checkbox_agree():
+		if value:
 			button_continue.disabled = False
 		else:
 			button_continue.disabled = True

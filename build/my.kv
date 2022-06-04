@@ -170,16 +170,15 @@ WindowManager:
 
 <RegistrationDop>:
 	name: 'RegistrationDop'
+
+	button_continue: button_continue
 	
 	MDBoxLayout:
 		orientation: "vertical"
 		padding: 50
 
-		button_continue: button_continue
-		checkbox_agree: checkbox_agree
-
-		Image:
-			source: 'pictures/angel.png'
+		MDFillRoundFlatButton:
+			background_normal: 'pictures/angel.png'
 			on_release:
 				app.root.current = 'RegistrationMain'
 
@@ -194,22 +193,14 @@ WindowManager:
 			bold: True
 
 		MDLabel:
-			text: '''
-				1.1.1. Вы ознакомились с условиями настоящего Пользовательского соглашения в полном объёме до начала использования Мобильного приложения.
-
-				1.1.2. Начало использования Вами Мобильного приложения в любой форме означает, что Вы принимаете все условия настоящего Пользовательского соглашения в полном объёме без каких-либо изъятий и ограничений с Вашей стороны. Использование Мобильного приложения на иных условиях не допускается. 
-
-				1.1.3. Если Вы не согласны с условиями настоящего Пользовательского соглашения или не имеете права на его заключение, Вам следует незамедлительно прекратить любое использование Мобильного приложения.
-
-				1.1.4. Пользовательское соглашение в любой форме означает, что Вы принимаете все условия настоящего Пользовательского соглашения.
-			'''
+			text: '1.1.1. Вы ознакомились с условиями настоящего Пользовательского соглашения в полном объёме до начала использования Мобильного приложения.\n1.1.2. Начало использования Вами Мобильного приложения в любой форме означает, что Вы принимаете все условия настоящего Пользовательского соглашения в полном объёме без каких-либо изъятий и ограничений с Вашей стороны. Использование Мобильного приложения на иных условиях не допускается.\n1.1.3. Если Вы не согласны с условиями настоящего Пользовательского соглашения или не имеете права на его заключение, Вам следует незамедлительно прекратить любое использование Мобильного приложения.\n1.1.4. Пользовательское соглашение в любой форме означает, что Вы принимаете все условия настоящего Пользовательского соглашения.'
 			font_size: '30sp'
 
 		CheckBox:
 			id: checkbox_agree
 			font_size: '30sp'
 			text: 'Я согласен с условиями'
-			active: root.click_on_checkbox_agree()
+			active: root.click_on_checkbox_agree(self, self.active)
 
 		MDFloatLayout:
 			MDFillRoundFlatButton:
@@ -244,7 +235,7 @@ WindowManager:
 			cols: 2
 
 			AsyncImage:
-				source: '/pictures/phone.png'
+				source: 'pictures/phone.png'
 				size_hint: 0.05, 0.2
 
 			MDTextField:
@@ -318,21 +309,21 @@ WindowManager:
 	MapView:
 
 
-    lat: 47.99296606506406
-    lon: 45.895986557006836
-    zoom: 14
-    map_source: "osm"
+	    lat: 47.99296606506406
+	    lon: 45.895986557006836
+	    zoom: 14
+	    map_source: "osm"
 
-    # Fixed the maximum zoom out to 12
-    on_zoom:
-        self.zoom = 14 if self.zoom < 14 else self.zoom
-        # Attempt of fixing the MapMarker size when zooming
-        map_marker_id.size: [50, 50]
+	    # Fixed the maximum zoom out to 12
+	    on_zoom:
+	        self.zoom = 14 if self.zoom < 14 else self.zoom
+	        # Attempt of fixing the MapMarker size when zooming
+	        map_marker_id.size: [50, 50]
 
-    MapMarker:
-        id: map_marker_id
-        source: 'marker.png'
-        lat: 47.995390
-        lon: 45.853030
-        size_hint: (None, None)
-        size: [50, 50]
+	    MapMarker:
+	        id: map_marker_id
+	        source: 'marker.png'
+	        lat: 47.995390
+	        lon: 45.853030
+	        size_hint: (None, None)
+	        size: [50, 50]
