@@ -18,29 +18,30 @@ WindowManager:
 	name: 'Onboard'
 
 	FitImage:
-		source: "pictures/fish.png"
+		source: "resources/pictures/fish.png"
 		size_hint: 1, 1
 
 	MDLabel:
 		text: 'Ваш помощник и гид по лучшим местам для рыбалки.'
+		font_style: 'Proxima Nova'			
 		color: (170, 176, 190, 1)
+		font_size: '16sp'
 
 	MDLabel:
 		text: 'Ваш гид по лучшим местам для рыбалки.'
 		color: (1, 1, 1, 1)
 		pos_hint: {'y' : 0.2}
-		font_size: '35sp'
-
-	MDFloatLayout:
-		MDFillRoundFlatButton:
-			size_hint: 0.4, 0.1
-			height: 50
-			pos_hint: {'center_x' : 0.5, 'y' : 0.1}
-			text: "Регистрация"
-			font_size: '20sp'
-
-			on_release:
-				app.root.current = 'RegistrationMain'
+		font_style: 'Proxima Nova'
+		font_size: '40sp'
+			
+	MDFillRoundFlatButton:
+		size_hint: 0.93, 0.1
+		height: 50
+		pos_hint: {'center_x' : 0.5, 'y' : 0.1}
+		text: "Регистрация"
+		font_size: '20sp'
+		on_release:
+			app.root.current = 'RegistrationMain'
 
 <RegistrationMain>:
 	name: 'RegistrationMain'
@@ -59,6 +60,7 @@ WindowManager:
 
 		MDLabel:
 			text: "Регистрация"
+			font_style: 'Proxima Nova'
 			font_size: '40sp'
 			bold: True
 
@@ -66,10 +68,11 @@ WindowManager:
 			cols: 2
 
 			AsyncImage:
-				source: 'pictures/user.png'
+				source: 'resources/pictures/user.png'
 				size_hint: 0.05, 0.2
 
 			MDTextField:
+				font_style: 'Proxima Nova'
 				id: input_surname
 				hint_text: "Фамилия"
 				multiline: False
@@ -79,10 +82,11 @@ WindowManager:
 			cols: 2
 
 			AsyncImage:
-				source: 'pictures/user.png'
+				source: 'resources/pictures/user.png'
 				size_hint: 0.05, 0.2
 
 			MDTextField:
+				font_style: 'Proxima Nova'
 				id: input_name
 				hint_text: "Имя"
 				multiline: False
@@ -92,23 +96,24 @@ WindowManager:
 			cols: 2
 
 			AsyncImage:
-				source: 'pictures/user.png'
+				source: 'resources/pictures/user.png'
 				size_hint: 0.05, 0.2
 
 			MDTextField:
+				font_style: 'Proxima Nova'
 				id: input_lastname
 				hint_text: "Отчество"
 				multiline: False
 				font_size: '30sp'
-
 		MDGridLayout:
 			cols: 2
 
 			AsyncImage:
-				source: 'pictures/email.png'
+				source: 'resources/pictures/email.png'
 				size_hint: 0.05, 0.2
 
 			MDTextField:
+				font_style: 'Proxima Nova'
 				id: input_mail
 				hint_text: "Адрес эл.почты"
 				multiline: False
@@ -118,10 +123,11 @@ WindowManager:
 			cols: 2
 
 			AsyncImage:
-				source: 'pictures/phone.png'
+				source: 'resources/pictures/phone.png'
 				size_hint: 0.05, 0.2
 
 			MDTextField:
+				font_style: 'Proxima Nova'
 				id: input_phone
 				hint_text: "+7 (___)___-__-__"
 				multiline: False
@@ -132,27 +138,28 @@ WindowManager:
 		MDLabel:
 			font_size: '14sp'
 			text: 'Продолжая Вы соглашаетесь с нашеми:'
+			font_style: 'Proxima Nova'			
 
 		MDLabel:
 			font_size: '14sp'
 			text: 'Условиями и Положениями'
 			markup: True
+			font_style: 'Proxima Nova'			
 			on_ref_press: root.click_on_button_terms_and_agreements()
 
 		MDLabel:
 			font_size: '14sp'
 			text: 'Политикой конфидициальности'
 			markup: True
+			font_style: 'Proxima Nova'			
 			on_ref_press: root.click_on_button_privacy_policy()
 
-		MDFloatLayout:
-			MDFillRoundFlatButton:
-				size_hint: 0.5, 0.4
-				pos_hint: {'center_x' : 0.5, 'y' : 0.1}
-				text: "Регистрация"
-				font_size: '30sp'
-
-				on_release: root.click_on_button_register()
+		MDFillRoundFlatButton:
+			size_hint: 0.93, 0.4
+			pos_hint: {'center_x' : 0.5, 'y' : 0.1}
+			text: "Регистрация"
+			font_size: '30sp'
+			on_release: root.click_on_button_register()
 
 		MDGridLayout:
 			cols: 2
@@ -160,12 +167,12 @@ WindowManager:
 			MDLabel:
 				font_size: '14sp'
 				text: 'Уже есть аккаунт?'
+				font_style: 'Proxima Nova'			
 
 			MDFillRoundFlatButton:
 				id: button_enter
 				font_size: '14sp'
 				text: 'Войти'
-
 				on_release: root.click_on_button_enter()
 
 <RegistrationDop>:
@@ -177,34 +184,40 @@ WindowManager:
 		orientation: "vertical"
 
 		MDFillRoundFlatButton:
-			background_normal: 'pictures/angel.png'
-			background_down: 'pictures/angel.png'
+			background_normal: 'resources/pictures/angel.png'
+			background_down: 'resources/pictures/angel.png'
 			on_release:
 				app.root.current = 'RegistrationMain'
 
 		MDLabel:
+			font_style: 'Proxima Nova'			
 			text: "Условия и положения"
 			font_size: '21sp'
 			bold: True
 
 		MDLabel:
+			font_style: 'Proxima Nova'			
 			text: '1.1. Пользуясь Мобильным приложением, Вы соглашаетесь с тем, что:'
 			font_size: '16sp'
 			bold: True
 
 		MDLabel:
+			font_style: 'Proxima Nova'			
 			text: '1.1.1. Вы ознакомились с условиями настоящего Пользовательского соглашения в полном объёме до начала использования Мобильного приложения.'
 			font_size: '13sp'
 
 		MDLabel:
+			font_style: 'Proxima Nova'			
 			font_size: '13sp'
 			text: '1.1.2. Начало использования Вами Мобильного приложения в любой форме означает, что Вы принимаете все условия настоящего Пользовательского соглашения в полном объёме без каких-либо изъятий и ограничений с Вашей стороны. Использование Мобильного приложения на иных условиях не допускается.'
 
 		MDLabel:
+			font_style: 'Proxima Nova'			
 			font_size: '13sp'
 			text: '1.1.3. Если Вы не согласны с условиями настоящего Пользовательского соглашения или не имеете права на его заключение, Вам следует незамедлительно прекратить любое использование Мобильного приложения.'
 
 		MDLabel:
+			font_style: 'Proxima Nova'			
 			font_size: '13sp'
 			text: '1.1.4. Пользовательское соглашение в любой форме означает, что Вы принимаете все условия настоящего Пользовательского соглашения.'
 
@@ -216,19 +229,18 @@ WindowManager:
 				on_active: root.click_on_checkbox_agree(self, self.active)
 
 			MDLabel:
+				font_style: 'Proxima Nova'
 				font_size: '13sp'
 				text: 'Я согласен с условиями'
 
-		MDFloatLayout:
-			MDFillRoundFlatButton:
-				id: button_continue
-				size_hint: 0.5, 0.4
-				pos_hint: {'center_x' : 0.5, 'y' : 0.1}
-				text: "Продолжить"
-				font_size: '30sp'
+		MDFillRoundFlatButton:
+			id: button_continue
+			size_hint: 0.93, 0.4
+			pos_hint: {'center_x' : 0.5, 'y' : 0.1}
+			text: "Продолжить"
 
-				on_release:
-					app.root.current = 'EnterCheckPhone'
+			on_release:
+				app.root.current = 'EnterCheckPhone'
 
 <Enter>:
 	name: 'Enter'
@@ -240,11 +252,13 @@ WindowManager:
 		padding: 50
 
 		MDLabel:
+			font_style: 'Proxima Nova'			
 			text: "Вход"
 			font_size: '40sp'
 			bold: True
 
 		MDLabel:
+			font_style: 'Proxima Nova'			
 			text: "Для авторизации введите Ваш номер телефона"
 			font_size: '30sp'
 
@@ -252,25 +266,25 @@ WindowManager:
 			cols: 2
 
 			AsyncImage:
-				source: 'pictures/phone.png'
+				source: 'resources/pictures/phone.png'
 				size_hint: 0.05, 0.2
 
 			MDTextField:
 				id: input_phone
+				font_style: 'Proxima Nova'
 				hint_text: "+7 (___)___-__-__"
 				multiline: False
 				font_size: '30sp'
 				input_type: 'number'
 				input_filter: 'int'
 
-		MDFloatLayout:
-			MDFillRoundFlatButton:
-				size_hint: 0.5, 0.4
-				pos_hint: {'center_x' : 0.5, 'y' : 0.1}
-				text: "Вход"
-				font_size: '30sp'
+		MDFillRoundFlatButton:
+			size_hint: 0.93, 0.4
+			pos_hint: {'center_x' : 0.5, 'y' : 0.1}
+			text: "Вход"
+			font_size: '30sp'
 
-				on_release: root.click_on_button_enter()
+			on_release: root.click_on_button_enter()
 
 <EnterCheckPhone>:
 	name: 'EnterCheckPhone'
@@ -283,25 +297,30 @@ WindowManager:
 		padding: 50
 
 		MDLabel:
+			font_style: 'Proxima Nova'			
 			text: "Проверка номера"
 			font_size: '40sp'
 			bold: True
 
 		MDLabel:
 			font_size: '14sp'
+			font_style: 'Proxima Nova'			
 			text: 'Мы отправили код подтверждения на номер: '
 
 		MDLabel:
 			id: label_phone
+			font_style: 'Proxima Nova'			
 			font_size: '14sp'
 			text: ''
 			markup: True
 
 		MDLabel:
+			font_style: 'Proxima Nova'			
 			font_size: '14sp'
 			text: 'Введите полученный код'
-
+			
 		MDTextField:
+			font_style: 'Proxima Nova'			
 			id: input_code
 			multiline: False
 			font_size: '30sp'
@@ -309,36 +328,66 @@ WindowManager:
 			input_filter: 'int'
 
 
-		MDFloatLayout:
-			MDFillRoundFlatButton:
-				size_hint: 0.5, 0.4
-				pos_hint: {'center_x' : 0.5, 'y' : 0.1}
-				text: "Подтвердить"
-				font_size: '30sp'
+		MDFillRoundFlatButton:
+			size_hint: 0.93, 0.4
+			pos_hint: {'center_x' : 0.5, 'y' : 0.1}
+			text: "Подтвердить"
+			font_size: '30sp'
 
-				on_release: root.click_on_button_confirm()
+			on_release: root.click_on_button_confirm()
 
 <GPSHelper>:
 	name: 'GPSHelper'
 
-	MapView:
+	MDFloatLayout:
+		MDFillRoundFlatIconButton:
+			icon: 'resources/pictures/gps.png'
+			pos_hint: {'center_x' : 0.5, 'y' : 0.1}
+
+			on_release: root.click_on_button_gps()
+			
+		MDFillRoundFlatIconButton:
+			icon: 'resources/pictures/ticket.png'
+			pos_hint: {'center_x' : 0.5, 'y' : 0.1}
+
+			on_release: root.click_on_button_ticket()
+
+		MDFillRoundFlatIconButton:
+			icon: 'resources/pictures/plus.png'
+			pos_hint: {'center_x' : 0.5, 'y' : 0.1}
+
+			on_release: root.click_on_button_plus()
+
+		MDFillRoundFlatIconButton:
+			icon: 'resources/pictures/calendar.png'
+			pos_hint: {'center_x' : 0.5, 'y' : 0.1}
+
+			on_release: root.click_on_button_calendar()
+
+		MDFillRoundFlatIconButton:
+			icon: 'resources/pictures/user.png'
+			pos_hint: {'center_x' : 0.5, 'y' : 0.1}
+
+			on_release: root.click_on_button_user()		
+
+		MapView:
 
 
-	    lat: 47.99296606506406
-	    lon: 45.895986557006836
-	    zoom: 14
-	    map_source: "osm"
+	    		lat: 47.99296606506406
+	    		lon: 45.895986557006836
+	    		zoom: 14
+	    		map_source: "osm"
 
-	    # Fixed the maximum zoom out to 12
-	    on_zoom:
-	        self.zoom = 14 if self.zoom < 14 else self.zoom
-	        # Attempt of fixing the MapMarker size when zooming
-	        map_marker_id.size: [50, 50]
+	    		# Fixed the maximum zoom out to 12
+	    		on_zoom:
+	        		self.zoom = 14 if self.zoom < 14 else self.zoom
+	        	# Attempt of fixing the MapMarker size when zooming
+	        	map_marker_id.size: [50, 50]
 
-	    MapMarker:
-	        id: map_marker_id
-	        source: 'marker.png'
-	        lat: 47.995390
-	        lon: 45.853030
-	        size_hint: (None, None)
-	        size: [50, 50]
+	    		MapMarker:
+	        		id: map_marker_id
+	        		source: 'marker.png'
+	        		lat: 47.995390
+	        		lon: 45.853030
+	        		size_hint: (None, None)
+	        		size: [50, 50]

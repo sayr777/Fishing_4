@@ -10,6 +10,8 @@ from kivy_garden.mapview.utils import get_zoom_for_radius, haversine
 from kivymd.uix.dialog import MDDialog
 import re
 import random
+from kivy.core.text import LabelBase
+from kivymd.font_definitions import theme_font_styles
 
 #for debug... REMOVE THIS, IF THIS IS PRODUCTION
 #from kivy.core.window import Window
@@ -73,6 +75,15 @@ class GPSHelper(Screen):
         lon, lat = geometry["coordinates"]
         self.marker_layer.add_marker(lon, lat )
         self.count += 1
+
+    def click_on_button_gps(self):
+        pass
+    
+    def click_on_button_ticket(self):
+        pass
+
+    def click_on_button_plus(self):
+        pass
 
 class Onboard(Screen, MDFloatLayout):
     pass
@@ -173,6 +184,9 @@ class MyApp(MDApp):
 
     def build(self):
         self.theme_cls.theme_style = "Light"
+        LabelBase.register(name='Proxima Nova', fn_regular='resources/fonts/proximanova_regular.ttf')
+        theme_font_styles.append('Proxima Nova')
+        self.theme_cls.font_styles['Proxima Nova'] = ["Proxima Nova", 16, False, 0.15]
         from kivy.resources import resource_find
         filename = resource_find(KIVY_FILENAME) or KIVY_FILENAME
         if filename in Builder.files:
