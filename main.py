@@ -12,10 +12,12 @@ import re
 import random
 from kivy.core.text import LabelBase
 from kivymd.font_definitions import theme_font_styles
+from kivy.uix.image import Image
+from kivymd.uix.behaviors import ButtonBehavior
 
 #for debug... REMOVE THIS, IF THIS IS PRODUCTION
-#from kivy.core.window import Window
-#Window.size = (480, 853) 
+from kivy.core.window import Window
+Window.size = (480, 853) 
 
 #subimport
 from kivymd.uix.boxlayout import MDBoxLayout
@@ -24,12 +26,18 @@ from kivymd.uix.gridlayout import MDGridLayout
 from kivymd.uix.textfield import MDTextField
 from kivymd.uix.label import MDLabel
 from kivymd.uix.button import MDRoundFlatButton
+from kivymd.uix.button import MDFillRoundFlatIconButton
+from kivymd.uix.toolbar import MDToolbar
+from kivymd.uix.button import MDIconButton
 
 KIVY_FILENAME = 'main.kv'
 
 class Data():
     phone = 0
     code = 0
+
+class ImageButton(ButtonBehavior, Image):
+    pass
 
 class ErrorDialog(MDDialog):
     def __init__(self, text, **kwargs):
@@ -77,13 +85,28 @@ class GPSHelper(Screen):
         self.count += 1
 
     def click_on_button_gps(self):
-        pass
+        ErrorDialog('Функция gps в разработке')
     
-    def click_on_button_ticket(self):
-        pass
+    def click_on_button_note(self):
+        ErrorDialog('Функция заметок в разработке')
 
     def click_on_button_plus(self):
-        pass
+        ErrorDialog('Функция добавления в разработке')
+
+    def click_on_button_user(self):
+        ErrorDialog('Функция профиля в разработке')
+
+    def click_on_button_calendar(self):
+        ErrorDialog('Функция календаря в разработке')
+
+    def click_on_button_fish(self):
+        ErrorDialog('Функция рыбки в разработке')
+
+    def click_on_button_userGps(self):
+        ErrorDialog('Функция гео-локации в разработке')
+
+    def click_on_button_layers(self):
+        ErrorDialog('Функция отображения слоев в разработке')
 
 class Onboard(Screen, MDFloatLayout):
     pass

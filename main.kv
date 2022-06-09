@@ -5,6 +5,9 @@
 #: import MDRoundFlatButton kivymd.uix.button.MDRoundFlatButton
 #: import MapView kivy_garden.mapview.MapView
 #: import MapMarker kivy_garden.mapview.MapMarker
+#: import MDFillRoundFlatIconButton kivymd.uix.button.MDFillRoundFlatIconButton
+#: import MDToolbar kivymd.uix.toolbar.MDToolbar
+#: import MDIconButton kivymd.uix.button.MDIconButton
 
 WindowManager:
 	Onboard:
@@ -137,7 +140,7 @@ WindowManager:
 
 		MDLabel:
 			font_size: '14sp'
-			text: 'Продолжая Вы соглашаетесь с нашеми:'
+			text: 'Продолжая Вы соглашаетесь с нашими:'
 			font_style: 'Proxima Nova'			
 
 		MDLabel:
@@ -155,7 +158,7 @@ WindowManager:
 			on_ref_press: root.click_on_button_privacy_policy()
 
 		MDFillRoundFlatButton:
-			size_hint: 0.93, 0.4
+			size_hint: 0.93, None
 			pos_hint: {'center_x' : 0.5, 'y' : 0.1}
 			text: "Регистрация"
 			font_size: '30sp'
@@ -183,9 +186,8 @@ WindowManager:
 	MDBoxLayout:
 		orientation: "vertical"
 
-		MDFillRoundFlatButton:
-			background_normal: 'resources/pictures/angel.png'
-			background_down: 'resources/pictures/angel.png'
+		MDFillRoundFlatIconButton:
+			icon: 'arrow-left-bold-circle-outline'
 			on_release:
 				app.root.current = 'RegistrationMain'
 
@@ -262,21 +264,15 @@ WindowManager:
 			text: "Для авторизации введите Ваш номер телефона"
 			font_size: '30sp'
 
-		MDGridLayout:
-			cols: 2
-
-			AsyncImage:
-				source: 'resources/pictures/phone.png'
-				size_hint: 0.05, 0.2
-
-			MDTextField:
-				id: input_phone
-				font_style: 'Proxima Nova'
-				hint_text: "+7 (___)___-__-__"
-				multiline: False
-				font_size: '30sp'
-				input_type: 'number'
-				input_filter: 'int'
+		MDTextField:
+			id: input_phone
+			font_style: 'Proxima Nova'
+			hint_text: "+7 (___)___-__-__"
+			multiline: False
+			font_size: '30sp'
+			input_type: 'number'
+			input_filter: 'int'
+			icon_left: 'cellphone-iphone'
 
 		MDFillRoundFlatButton:
 			size_hint: 0.93, 0.4
@@ -339,55 +335,43 @@ WindowManager:
 <GPSHelper>:
 	name: 'GPSHelper'
 
-	MDFloatLayout:
-		MDFillRoundFlatIconButton:
-			icon: 'resources/pictures/gps.png'
-			pos_hint: {'center_x' : 0.5, 'y' : 0.1}
-
-			on_release: root.click_on_button_gps()
-			
-		MDFillRoundFlatIconButton:
-			icon: 'resources/pictures/ticket.png'
-			pos_hint: {'center_x' : 0.5, 'y' : 0.1}
-
-			on_release: root.click_on_button_ticket()
-
-		MDFillRoundFlatIconButton:
-			icon: 'resources/pictures/plus.png'
-			pos_hint: {'center_x' : 0.5, 'y' : 0.1}
-
-			on_release: root.click_on_button_plus()
-
-		MDFillRoundFlatIconButton:
-			icon: 'resources/pictures/calendar.png'
-			pos_hint: {'center_x' : 0.5, 'y' : 0.1}
-
-			on_release: root.click_on_button_calendar()
-
-		MDFillRoundFlatIconButton:
-			icon: 'resources/pictures/user.png'
-			pos_hint: {'center_x' : 0.5, 'y' : 0.1}
-
-			on_release: root.click_on_button_user()		
-
-		MapView:
+	MapView:
 
 
-	    		lat: 47.99296606506406
-	    		lon: 45.895986557006836
-	    		zoom: 14
-	    		map_source: "osm"
+		lat: 47.99296606506406
+		lon: 45.895986557006836
+		zoom: 14
+		map_source: "osm"
 
-	    		# Fixed the maximum zoom out to 12
-	    		on_zoom:
-	        		self.zoom = 14 if self.zoom < 14 else self.zoom
-	        	# Attempt of fixing the MapMarker size when zooming
-	        	map_marker_id.size: [50, 50]
+		# Fixed the maximum zoom out to 12
+		on_zoom: self.zoom = 14 if self.zoom < 14 else self.zoom
+    	# Attempt of fixing the MapMarker size when zooming
 
-	    		MapMarker:
-	        		id: map_marker_id
-	        		source: 'marker.png'
-	        		lat: 47.995390
-	        		lon: 45.853030
-	        		size_hint: (None, None)
-	        		size: [50, 50]
+		MapMarker:
+    		id: map_marker_id
+    		source: 'marker.png'
+    		lat: 47.995390
+    		lon: 45.853030
+    		size_hint: (None, None)
+    		size: [50, 50]	
+
+	MDBottomAppBar:
+
+		MDToolbar:
+			#size_hint: .93, None
+			#pos_hint: {'center_x' : 0.5, 'y' : 0.1}
+			left_action_items: [['map-marker-outline', lambda x: root.click_on_button_gps()], ['note-text-outline', lambda x: root.click_on_button_note()]]
+			right_action_items: [['calendar-month', lambda x: root.click_on_button_calendar()], ['account', lambda x: root.click_on_button_user()]]
+			icon: 'plus-circle'
+			on_action_button: root.click_on_button_plus()
+			type: 'bottom'
+			mode: 'center'
+
+	MDIconButton:
+		icon: 'fish'
+
+	MDIconButton:
+		icon: 'crosshairs-gps'
+
+	MDIconButton:
+		icon: 'layers-triple-outline'
