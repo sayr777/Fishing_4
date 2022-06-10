@@ -13,7 +13,6 @@ import random
 from kivy.core.text import LabelBase
 from kivymd.font_definitions import theme_font_styles
 from kivy.uix.image import Image
-from kivymd.uix.behaviors import ButtonBehavior
 
 #for debug... REMOVE THIS, IF THIS IS PRODUCTION
 from kivy.core.window import Window
@@ -35,9 +34,6 @@ KIVY_FILENAME = 'main.kv'
 class Data():
     phone = 0
     code = 0
-
-class ImageButton(ButtonBehavior, Image):
-    pass
 
 class ErrorDialog(MDDialog):
     def __init__(self, text, **kwargs):
