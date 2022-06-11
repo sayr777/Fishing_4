@@ -13,6 +13,7 @@ import random
 from kivy.core.text import LabelBase
 from kivymd.font_definitions import theme_font_styles
 from kivy.uix.image import Image
+from kivymd.uix.menu import MDDropdownMenu
 
 #for debug... REMOVE THIS, IF THIS IS PRODUCTION
 from kivy.core.window import Window
@@ -28,12 +29,47 @@ from kivymd.uix.button import MDRoundFlatButton
 from kivymd.uix.button import MDFillRoundFlatIconButton
 from kivymd.uix.toolbar import MDToolbar
 from kivymd.uix.button import MDIconButton
+from kivymd.uix.button import MDFlatButton
 
 KIVY_FILENAME = 'main.kv'
 
 class Data():
     phone = 0
     code = 0
+
+class News(Screen):
+    pass
+
+class Calendar(Screen):
+    pass
+
+class User(Screen):
+    pass
+
+class Menu(Screen):
+    def click_on_button_catalogFish(self):
+        ErrorDialog('Функция отображения каталога рыб в разработке')
+
+    def click_on_button_recipes(self):
+        ErrorDialog('Функция отображения рецептов приготовления в разработке')
+
+    def click_on_button_rules(self):
+        ErrorDialog('Функция отображения Правил рыбалки в разработке')
+
+    def click_on_button_penalties(self):
+        ErrorDialog('Функция отображения Штрафов в разработке')
+
+class Rules(Screen):
+    pass
+
+class Penalties(Screen):
+    pass
+
+class CatalogFish(Screen):
+    pass
+
+class Recipes(Screen):
+    pass
 
 class ErrorDialog(MDDialog):
     def __init__(self, text, **kwargs):
@@ -44,10 +80,22 @@ class ErrorDialog(MDDialog):
     def callback(self, widget):
         self.dialog.dismiss()
 
+class WarningDialog(MDDialog):
+    def __init__(self, text, **kwargs):
+        super(WarningDialog, self).__init__(**kwargs)
+        self.dialog = MDDialog(title='Уведомление', text=text, size_hint=[.25, .25], auto_dismiss=False, buttons=[MDRoundFlatButton(text='OK', on_release=self.callback)])
+        self.dialog.open()
+    
+    def callback(self, widget):
+        self.dialog.dismiss()
+
 #define different screens
 class GPSHelper(Screen):
+    input_search = ObjectProperty()
+
     def __init__(self, **kwargs):
         super(GPSHelper, self).__init__(**kwargs)
+
         source_= 'array.geojson'
 
         options = {}
@@ -66,7 +114,7 @@ class GPSHelper(Screen):
         self.marker_layer = ClusteredMarkerLayer(cluster_radius=200)
         self.view.add_layer(self.marker_layer)
 
-	# create marker if they exists
+	    # create marker if they exists
         self.count = 0
 
         layer.traverse_feature(self.create_marker)
@@ -81,19 +129,19 @@ class GPSHelper(Screen):
         self.count += 1
 
     def click_on_button_gps(self):
-        ErrorDialog('Функция gps в разработке')
+        WarningDialog('Вы уже на данной странице')
     
     def click_on_button_note(self):
-        ErrorDialog('Функция заметок в разработке')
+        self.parent.current = 'Menu'
 
     def click_on_button_plus(self):
-        ErrorDialog('Функция добавления в разработке')
+        self.parent.current = 'News'
 
     def click_on_button_user(self):
-        ErrorDialog('Функция профиля в разработке')
+        self.parent.current = 'User'
 
     def click_on_button_calendar(self):
-        ErrorDialog('Функция календаря в разработке')
+        self.parent.current = 'Calendar'
 
     def click_on_button_fish(self):
         ErrorDialog('Функция рыбки в разработке')

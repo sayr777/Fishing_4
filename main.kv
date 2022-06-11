@@ -8,6 +8,8 @@
 #: import MDFillRoundFlatIconButton kivymd.uix.button.MDFillRoundFlatIconButton
 #: import MDToolbar kivymd.uix.toolbar.MDToolbar
 #: import MDIconButton kivymd.uix.button.MDIconButton
+#: import MDFlatButton kivymd.uix.button.MDFlatButton
+#: import MDTextFieldRound kivymd.uix.textfield.MDTextFieldRound
 
 WindowManager:
 	Onboard:
@@ -16,6 +18,205 @@ WindowManager:
 	Enter:
 	EnterCheckPhone:
 	GPSHelper:
+	Menu:
+	Rules:
+	Penalties:
+	CatalogFish:
+	Recipes:
+	User:
+	Calendar:
+	News:
+
+<News>:
+	name: 'News'
+
+	MDBoxLayout:
+		orientation: 'vertical'
+
+		MDIconButton:
+			icon: 'close'
+			pos_hint: {'right': 1, 'center_y': 0.92}
+			on_release: app.root.current = 'GPSHelper'
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			text: "Лента новостей"
+			font_size: '30sp'
+			bold: True
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			text: "Приносим извинения, страница в разработке"
+			font_size: '14sp'
+
+<Calendar>:
+	name: 'Calendar'
+
+	MDBoxLayout:
+		orientation: 'vertical'
+
+		MDIconButton:
+			icon: 'close'
+			pos_hint: {'right': 1, 'center_y': 0.92}
+			on_release: app.root.current = 'GPSHelper'
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			text: "Календарь"
+			font_size: '30sp'
+			bold: True
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			text: "Приносим извинения, страница в разработке"
+			font_size: '14sp'
+
+<User>:
+	name: 'User'
+
+	MDBoxLayout:
+		orientation: 'vertical'
+
+		MDIconButton:
+			icon: 'close'
+			pos_hint: {'right': 1, 'center_y': 0.92}
+			on_release: app.root.current = 'GPSHelper'
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			text: "Профиль пользователя"
+			font_size: '30sp'
+			bold: True
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			text: "Приносим извинения, страница в разработке"
+			font_size: '14sp'
+
+<Menu>:
+	name: 'Menu'
+
+	MDBoxLayout:
+		orientation: 'vertical'
+		
+		MDIconButton:
+			icon: 'close'
+			pos_hint: {'right': 1, 'center_y': 0.92}
+			on_release: app.root.current = 'GPSHelper'
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			text: "Меню"
+			font_size: '30sp'
+			bold: True
+
+		MDFlatButton:
+			font_size: '14sp'
+			text: 'Каталог рыб'
+			on_release: root.click_on_button_catalogFish()
+
+		MDFlatButton:
+			font_size: '14sp'
+			text: 'Рецепты приготовления'
+			on_release: root.click_on_button_recipes()
+
+		MDFlatButton:
+			font_size: '14sp'
+			text: 'Правила рыбалки'
+			on_release: root.click_on_button_rules()
+
+		MDFlatButton:
+			font_size: '14sp'
+			text: 'Штрафы'
+			on_release: root.click_on_button_penalties()
+
+<Rules>:
+	name: 'Rules'
+
+	MDBoxLayout:
+		orientation: 'vertical'
+
+		MDIconButton:
+			icon: 'close'
+			pos_hint: {'right': 1, 'center_y': 0.92}
+			on_release: app.root.current = 'Menu'
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			text: "Правила рыбалки"
+			font_size: '30sp'
+			bold: True
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			text: "Приносим извинения, страница в разработке"
+			font_size: '14sp'
+
+<Penalties>:
+	name: 'Penalties'
+
+	MDBoxLayout:
+		orientation: 'vertical'
+		
+		MDIconButton:
+			icon: 'close'
+			pos_hint: {'right': 1, 'center_y': 0.92}
+			on_release: app.root.current = 'Menu'
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			text: "Штрафы"
+			font_size: '30sp'
+			bold: True
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			text: "Приносим извинения, страница в разработке"
+			font_size: '14sp'
+
+<CatalogFish>:
+	name: 'CatalogFish'
+
+	MDBoxLayout:
+		orientation: 'vertical'
+		
+		MDIconButton:
+			icon: 'close'
+			pos_hint: {'right': 1, 'center_y': 0.92}
+			on_release: app.root.current = 'Menu'
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			text: "Каталог рыб"
+			font_size: '30sp'
+			bold: True
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			text: "Приносим извинения, страница в разработке"
+			font_size: '14sp'
+
+<Recipes>:
+	name: 'Recipes'
+
+	MDBoxLayout:
+		orientation: 'vertical'
+		
+		MDIconButton:
+			icon: 'close'
+			pos_hint: {'right': 1, 'center_y': 0.92}
+			on_release: app.root.current = 'Menu'
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			text: "Рецепты приготовления"
+			font_size: '30sp'
+			bold: True
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			text: "Приносим извинения, страница в разработке"
+			font_size: '14sp'
 
 <Onboard>:
 	name: 'Onboard'
@@ -38,7 +239,7 @@ WindowManager:
 		font_size: '40sp'
 			
 	MDFillRoundFlatButton:
-		size_hint: 0.93, 0.1
+		size_hint_x: 0.93
 		height: 50
 		pos_hint: {'center_x' : 0.5, 'y' : 0.1}
 		text: "Регистрация"
@@ -143,19 +344,15 @@ WindowManager:
 			text: 'Продолжая Вы соглашаетесь с нашими:'
 			font_style: 'Proxima Nova'			
 
-		MDLabel:
+		MDFlatButton:
 			font_size: '14sp'
 			text: 'Условиями и Положениями'
-			markup: True
-			font_style: 'Proxima Nova'			
-			on_ref_press: root.click_on_button_terms_and_agreements()
+			on_release: root.click_on_button_terms_and_agreements()
 
-		MDLabel:
+		MDFlatButton:
 			font_size: '14sp'
-			text: 'Политикой конфидициальности'
-			markup: True
-			font_style: 'Proxima Nova'			
-			on_ref_press: root.click_on_button_privacy_policy()
+			text: 'Политикой конфидициальности'			
+			on_release: root.click_on_button_privacy_policy()
 
 		MDFillRoundFlatButton:
 			size_hint: 0.93, None
@@ -341,6 +538,8 @@ WindowManager:
 <GPSHelper>:
 	name: 'GPSHelper'
 
+	input_search: input_search
+
 	MapView:
 
 
@@ -355,7 +554,7 @@ WindowManager:
 
 		MapMarker:
     		id: map_marker_id
-    		source: 'marker.png'
+    		source: 'resources/pictures/marker.png'
     		lat: 47.995390
     		lon: 45.853030
     		size_hint: (None, None)
@@ -373,11 +572,34 @@ WindowManager:
 			type: 'bottom'
 			mode: 'center'
 
-	MDIconButton:
-		icon: 'fish'
+	MDFloatLayout:
 
-	MDIconButton:
-		icon: 'crosshairs-gps'
+		MDIconButton:
+			icon: 'fish'
+			pos_hint: {'right' : 1, 'center_y' : 0.45}
+			on_release: root.click_on_button_fish()
 
-	MDIconButton:
-		icon: 'layers-triple-outline'
+		MDIconButton:
+			icon: 'crosshairs-gps'
+			pos_hint: {'right' : 1, 'center_y' : 0.5}
+			on_release: root.click_on_button_userGps()
+
+		MDIconButton:
+			icon: 'layers-triple-outline'
+			pos_hint: {'right' : 1, 'center_y' : 0.92}
+			on_release: root.click_on_button_layers()
+
+		# Image:
+		# 	source: 'resources/pictures/search/png'
+		# 	size_hint: {.1, .1}
+		# 	allow_stretch: True
+
+		MDTextField:
+			hint_text: 'Найти место или адрес'
+			font_style: 'Proxima Nova'
+			size_hint_x: .7
+			pos_hint: {'right': 0.8, 'center_y' : 0.96}			
+			id: input_search
+			multiline: False
+			font_size: '30sp'
+			icon_right: 'magnify'
