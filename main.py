@@ -7,7 +7,7 @@ from kivy_garden.mapview import MapMarker, MapView
 from kivy_garden.mapview.clustered_marker_layer import ClusteredMarkerLayer
 from kivy_garden.mapview.geojson import GeoJsonMapLayer
 from kivy_garden.mapview.utils import get_zoom_for_radius, haversine
-from kivymd.uix.dialog import MDDialog
+from dialog import Dialog
 import re
 import random
 from kivy.core.text import LabelBase
@@ -71,24 +71,6 @@ class CatalogFish(Screen):
 class Recipes(Screen):
     pass
 
-class ErrorDialog(MDDialog):
-    def __init__(self, text, **kwargs):
-        super(ErrorDialog, self).__init__(**kwargs)
-        self.dialog = MDDialog(title='Ошибка', text=text, size_hint=[.25, .25], auto_dismiss=False, buttons=[MDRoundFlatButton(text='OK', on_release=self.callback)])
-        self.dialog.open()
-	
-    def callback(self, widget):
-        self.dialog.dismiss()
-
-class WarningDialog(MDDialog):
-    def __init__(self, text, **kwargs):
-        super(WarningDialog, self).__init__(**kwargs)
-        self.dialog = MDDialog(title='Уведомление', text=text, size_hint=[.25, .25], auto_dismiss=False, buttons=[MDRoundFlatButton(text='OK', on_release=self.callback)])
-        self.dialog.open()
-    
-    def callback(self, widget):
-        self.dialog.dismiss()
-
 #define different screens
 class GPSHelper(Screen):
     input_search = ObjectProperty()
@@ -129,7 +111,7 @@ class GPSHelper(Screen):
         self.count += 1
 
     def click_on_button_gps(self):
-        WarningDialog('Вы уже на данной странице')
+        Dialog('Вы уже на данной странице', 'Уведомление')
     
     def click_on_button_note(self):
         self.parent.current = 'Menu'
@@ -144,13 +126,13 @@ class GPSHelper(Screen):
         self.parent.current = 'Calendar'
 
     def click_on_button_fish(self):
-        ErrorDialog('Функция рыбки в разработке')
+        Dialog('Функция рыбки в разработке', 'Ошибка')
 
     def click_on_button_userGps(self):
-        ErrorDialog('Функция гео-локации в разработке')
+        Dialog('Функция гео-локации в разработке', 'Ошибка')
 
     def click_on_button_layers(self):
-        ErrorDialog('Функция отображения слоев в разработке')
+        Dialog('Функция отображения слоев в разработке', 'Ошибка')
 
 class Onboard(Screen, MDFloatLayout):
     pass
@@ -176,28 +158,28 @@ class RegistrationMain(Screen):
         
     def click_on_button_register(self):
         if self.input_surname.text == '':
-            ErrorDialog('Вы не ввели фамилию')
+            Dialog('Вы не ввели фамилию', 'Ошибка')
         else:
             if self.input_name.text == '':
-                ErrorDialog('Вы не ввели имя')
+                Dialog('Вы не ввели имя', 'Ошибка')
             else:
                 if self.input_lastname.text == '':
-                    ErrorDialog('Вы не ввели отчество')
+                    Dialog('Вы не ввели отчество', 'Ошибка')
                 else:
                     if self.input_mail.text == '':
-                        ErrorDialog('Вы не ввели почту')
+                        Dialog('Вы не ввели почту', 'Ошибка')
                     else:
                         if re.match('/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[-1-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/', self.input_mail.text):
-                            ErrorDialog('Неккоректный ввод почты')
+                            Dialog('Неккоректный ввод почты', 'Ошибка')
                         else:
                             if self.input_phone.text == '':
-                                ErrorDialog('Вы не ввели телефон')
+                                Dialog('Вы не ввели телефон', 'Ошибка')
                             else:
                                 if re.match('^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$', self.input_phone.text) == None:
-                                    ErrorDialog('Неккоректный ввод телефона')
+                                    Dialog('Неккоректный ввод телефона', 'Ошибка')
                                 else:
                                     #self.parent.current = 'RegistrationDop'
-                                    ErrorDialog('Данная функция находится в разработке')
+                                    Dialog('Данная функция находится в разработке', 'Ошибка')
 
 class RegistrationDop(Screen):
     button_continue = ObjectProperty()	
@@ -216,16 +198,16 @@ class Enter(Screen, MDBoxLayout):
 
     def click_on_button_enter(self):
         if self.input_phone.text == '':
-            ErrorDialog('Вы не ввели телефон')
+            Dialog('Вы не ввели телефон', 'Ошибка')
         else:
             if re.match('^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$', self.input_phone.text) == None:
-                ErrorDialog('Неккоректный ввод телефона')
+                Dialog('Неккоректный ввод телефона', 'Ошибка')
             else:
                 phone = self.input_phone.text
                 code = random.randint(100000, 999999)
                 Data.phone = phone
                 Data.code = code
-                ErrorDialog('Функция отправки кода подтверждения в разработке, ваш код: '+str(Data.code))
+                Dialog('Функция отправки кода подтверждения в разработке, ваш код: '+str(Data.code), 'Ошибка')
                 self.parent.get_screen('EnterCheckPhone').ids.label_phone.text = str(Data.phone)
                 self.parent.current = 'EnterCheckPhone'
 
@@ -235,10 +217,10 @@ class EnterCheckPhone(Screen):
 
     def click_on_button_confirm(self):
         if self.input_code.text == '':
-            ErrorDialog('Вы не ввели код')
+            Dialog('Вы не ввели код', 'Ошибка')
         else:
             if self.input_code.text != str(Data.code):
-                ErrorDialog('Неверный код')
+                Dialog('Неверный код', 'Ошибка')
             else:
                 self.parent.current = 'GPSHelper'
 
