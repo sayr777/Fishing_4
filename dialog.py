@@ -1,4 +1,5 @@
 from kivymd.uix.dialog import MDDialog
+from kivymd.uix.button import MDRoundFlatButton
 
 class DialogTemplate(MDDialog):
     def __init__(self, **kwargs):

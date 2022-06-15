@@ -17,7 +17,7 @@ from kivymd.uix.menu import MDDropdownMenu
 
 #for debug... REMOVE THIS, IF THIS IS PRODUCTION
 from kivy.core.window import Window
-Window.size = (480, 853) 
+Window.size = (375, 812) 
 
 #subimport
 from kivymd.uix.boxlayout import MDBoxLayout
@@ -30,12 +30,26 @@ from kivymd.uix.button import MDFillRoundFlatIconButton
 from kivymd.uix.toolbar import MDToolbar
 from kivymd.uix.button import MDIconButton
 from kivymd.uix.button import MDFlatButton
+from kivymd.uix.relativelayout import RelativeLayout
 
 KIVY_FILENAME = 'main.kv'
 
 class Data():
     phone = 0
     code = 0
+
+    input_surname = ''
+    input_name = ''
+    input_lastname = ''
+    input_mail = ''
+    input_phone = 0
+
+    def save_info(self, surname, name, lastname, mail, phone):
+        self.input_surname = surname
+        self.input_name = name
+        self.input_lastname = lastname
+        self.input_mail = mail
+        self.input_phone = phone
 
 class News(Screen):
     pass
@@ -134,7 +148,7 @@ class GPSHelper(Screen):
     def click_on_button_layers(self):
         Dialog('Функция отображения слоев в разработке', 'Ошибка')
 
-class Onboard(Screen, MDFloatLayout):
+class Onboard(Screen):
     pass
 
 class RegistrationMain(Screen):
@@ -151,7 +165,8 @@ class RegistrationMain(Screen):
         pass
 
     def click_on_button_terms_and_agreements(self):
-        pass
+        Data.save_info(self.input_surname.text, self.input_name.text, self.input_lastname.text, self.input_mail.text, int(self.input_phone.text))
+        self.parent.current = 'RegistrationDop'
 
     def click_on_button_enter(self):
         self.parent.current = 'Enter'
@@ -191,7 +206,15 @@ class RegistrationDop(Screen):
             self.button_continue.disabled = True
 
     def click_on_back(self):
-        print('Возвращение назад')
+        self.parent.current = 'Onboard'
+
+    def click_on_button_continue(self):
+        self.parent.get_screen('RegistrationMain').ids.input_surname.text = Data.input_surname
+        self.parent.get_screen('RegistrationMain').ids.input_name.text = Data.input_name
+        self.parent.get_screen('RegistrationMain').ids.input_lastname.text = Data.input_lastname
+        self.parent.get_screen('RegistrationMain').ids.input_mail.text = Data.input_mail
+        self.parent.get_screen('RegistrationMain').ids.input_phone.text = str(Data.input_phone)
+        self.parent.current = 'RegistrationMain'
 
 class Enter(Screen, MDBoxLayout):
     input_phone = ObjectProperty()
