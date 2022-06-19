@@ -231,23 +231,21 @@ WindowManager:
 	name: 'Onboard'
 	color: (152, 152, 152, 1)
 
-	MDFloatLayout:
+	MDRelativeLayout:
 		FitImage:
 			source: "resources/pictures/fish.png"
 
 		MDLabel:
 			text: 'Ваш гид по лучшим местам для рыбалки.'
 			color: (1, 1, 1, 1)
-			#pos_hint: {'center_x' : 0.5 , 'y' : 0.4}
-			pos: 16, 40
+			pos_hint: {'center_x' : 0.5 , 'center_y' : 0.30}
 			font_style: 'Proxima Nova'
 			font_size: '40sp'
 
 		MDLabel:
 			text: 'Ваш помощник и гид по лучшим местам для рыбалки.'
 			font_style: 'Proxima Nova'
-			pos: 16, 0
-			#pos_hint: {'center_x' : 0.5 , 'y' : 0.2}
+			pos_hint: {'center_x' : 0.5 , 'center_y' : 0.17}
 			color: (170, 176, 190, 1)
 			font_size: '16sp'
 				
@@ -457,13 +455,13 @@ WindowManager:
 
 <Enter>:
 	name: 'Enter'
-	background_color: (152, 152, 152, 1)
 
 	input_phone: input_phone
 
 	MDBoxLayout:
 		orientation: "vertical"
 		padding: 50
+		background_color: (152/255, 152/255, 152/255, 1/255)
 
 		MDLabel:
 			font_style: 'Proxima Nova'			
@@ -477,11 +475,12 @@ WindowManager:
 			font_size: '30sp'
 
 		MDGridLayout:
+			size_hint_y: None
 			cols: 2
 
 			AsyncImage:
 				source: 'resources/pictures/phone.png'
-				size_hint: 0.05, 0.2
+				size_hint: 0.05, 0.1
 
 			MDTextField:
 				id: input_phone
@@ -499,6 +498,22 @@ WindowManager:
 			font_size: '30sp'
 
 			on_release: root.click_on_button_enter()
+
+		MDGridLayout:
+			size_hint_y: None
+			cols: 2
+
+			MDLabel:
+				font_style: 'Proxima Nova'			
+				text: "Нет аккаунта?"
+				font_size: '14sp'
+
+			MDFlatButton:
+				font_size: '14sp'
+				text: 'Регистрация'
+				theme_text_color: 'Custom'
+				text_color: app.theme_cls.primary_color
+				on_release: root.click_on_button_register()
 
 <EnterCheckPhone>:
 	name: 'EnterCheckPhone'

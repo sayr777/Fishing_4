@@ -234,6 +234,9 @@ class Enter(Screen, MDBoxLayout):
                 self.parent.get_screen('EnterCheckPhone').ids.label_phone.text = str(Data.phone)
                 self.parent.current = 'EnterCheckPhone'
 
+    def click_on_button_register(self):
+        self.parent.current = 'RegistrationMain'
+
 class EnterCheckPhone(Screen):
     label_phone = ObjectProperty()
     input_code = ObjectProperty()
