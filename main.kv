@@ -185,24 +185,30 @@ WindowManager:
 	name: 'CatalogFish'
 	color: (152, 152, 152, 1)
 
-	MDBoxLayout:
-		orientation: 'vertical'
+	listFish: listFish
+
+	ScroollView:
+		MDBoxLayout:
 		
-		MDIconButton:
-			icon: 'close'
-			pos_hint: {'right': 1, 'center_y': 0.92}
-			on_release: app.root.current = 'Menu'
+			MDIconButton:
+				icon: 'close'
+				pos_hint: {'right': 1, 'center_y': 0.92}
+				on_release: app.root.current = 'Menu'
 
-		MDLabel:
-			font_style: 'Proxima Nova'			
-			text: "Каталог рыб"
-			font_size: '30sp'
-			bold: True
+			MDLabel:
+				font_style: 'Proxima Nova'			
+				text: "Каталог рыб"
+				font_size: '30sp'
+				bold: True
 
-		MDLabel:
-			font_style: 'Proxima Nova'			
-			text: "Приносим извинения, страница в разработке"
-			font_size: '14sp'
+			MDGridLayout:
+				id: listFish
+				cols: 2
+				size_hint_x: 0.5
+				size_hint_y: 0.3
+
+				MDGridLayout:
+					rows: 2
 
 <Recipes>:
 	name: 'Recipes'
@@ -359,11 +365,15 @@ WindowManager:
 			font_size: '14sp'
 			text: 'Условиями и Положениями'
 			on_release: root.click_on_button_terms_and_agreements()
+			theme_text_color: 'Custom'
+			text_color: app.theme_cls.primary_color
 
 		MDFlatButton:
 			font_size: '14sp'
 			text: 'Политикой конфидициальности'			
 			on_release: root.click_on_button_privacy_policy()
+			theme_text_color: 'Custom'
+			text_color: app.theme_cls.primary_color
 
 		MDFillRoundFlatButton:
 			size_hint: 0.93, None
@@ -460,8 +470,15 @@ WindowManager:
 
 	MDBoxLayout:
 		orientation: "vertical"
-		padding: 50
+		padding: 15
 		background_color: (152/255, 152/255, 152/255, 1/255)
+
+		canvas:
+			Color:
+				rgba: 152/255, 152/255, 152/255, 1/255
+			Rectangle:
+				size: self.size
+				pos: self.pos
 
 		MDLabel:
 			font_style: 'Proxima Nova'			
@@ -472,11 +489,15 @@ WindowManager:
 		MDLabel:
 			font_style: 'Proxima Nova'			
 			text: "Для авторизации введите Ваш номер телефона"
+			#pos_hint: {'center_y' : 0.3}
 			font_size: '30sp'
 
 		MDGridLayout:
-			size_hint_y: None
 			cols: 2
+			size_hint_y: .3
+			size_hint_x: .93
+			pos_hint: None
+			pos_hint: {'y': 0.5}
 
 			AsyncImage:
 				source: 'resources/pictures/phone.png'
@@ -492,15 +513,15 @@ WindowManager:
 				input_filter: 'int'
 
 		MDFillRoundFlatButton:
-			size_hint: 0.93, None
-			pos_hint: {'center_x' : 0.5, 'y' : 0.1}
+			size_hint_x: 0.93
+			pos_hint: {'center_x' : 0.5, 'y' : 0.025}
 			text: "Вход"
 			font_size: '30sp'
 
 			on_release: root.click_on_button_enter()
 
 		MDGridLayout:
-			size_hint_y: None
+			size_hint_y: .1
 			cols: 2
 
 			MDLabel:
@@ -517,14 +538,13 @@ WindowManager:
 
 <EnterCheckPhone>:
 	name: 'EnterCheckPhone'
-	color: (152, 152, 152, 1)
 
 	label_phone: label_phone
 	input_code: input_code
 
 	MDBoxLayout:
 		orientation: "vertical"
-		padding: 50
+		padding: 15
 
 		MDLabel:
 			font_style: 'Proxima Nova'			
@@ -542,6 +562,8 @@ WindowManager:
 			font_style: 'Proxima Nova'			
 			font_size: '14sp'
 			text: ''
+			theme_text_color: 'Custom'
+			text_color: app.theme_cls.primary_color
 			markup: True
 
 		MDLabel:
@@ -559,8 +581,8 @@ WindowManager:
 
 
 		MDFillRoundFlatButton:
-			size_hint: 0.93, 0.4
-			pos_hint: {'center_x' : 0.5, 'y' : 0.1}
+			size_hint_x: 0.93
+			pos_hint: {'center_x' : 0.5, 'y' : 0.025}
 			text: "Подтвердить"
 			font_size: '30sp'
 

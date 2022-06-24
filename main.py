@@ -3,7 +3,7 @@ from kivymd.theming import ThemeManager
 from kivy.properties import ObjectProperty
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.lang import Builder
-from kivy_garden.mapview import MapMarker, MapView
+from kivy_garden.mapview import MapMarker, MapView, MapSource
 from kivy_garden.mapview.clustered_marker_layer import ClusteredMarkerLayer
 from kivy_garden.mapview.geojson import GeoJsonMapLayer
 from kivy_garden.mapview.utils import get_zoom_for_radius, haversine
@@ -14,6 +14,8 @@ from kivy.core.text import LabelBase
 from kivymd.font_definitions import theme_font_styles
 from kivy.uix.image import Image
 from kivymd.uix.menu import MDDropdownMenu
+from kivy.clock import mainthread
+import sqlite3 as SQLCommander
 
 #for debug... REMOVE THIS, IF THIS IS PRODUCTION
 from kivy.core.window import Window
@@ -44,6 +46,8 @@ class Data():
     input_mail = ''
     input_phone = 0
 
+    db = []
+
     def save_info(self, surname, name, lastname, mail, phone):
         self.input_surname = surname
         self.input_name = name
@@ -62,16 +66,16 @@ class User(Screen):
 
 class Menu(Screen):
     def click_on_button_catalogFish(self):
-        ErrorDialog('Функция отображения каталога рыб в разработке')
+        self.parent.current = 'CatalogFish'
 
     def click_on_button_recipes(self):
-        ErrorDialog('Функция отображения рецептов приготовления в разработке')
+        self.parent.current = 'Recipes'
 
     def click_on_button_rules(self):
-        ErrorDialog('Функция отображения Правил рыбалки в разработке')
+        self.parent.current = 'Rules'
 
     def click_on_button_penalties(self):
-        ErrorDialog('Функция отображения Штрафов в разработке')
+        self.parent.current = 'Penalties'
 
 class Rules(Screen):
     pass
@@ -80,7 +84,13 @@ class Penalties(Screen):
     pass
 
 class CatalogFish(Screen):
-    pass
+    listFish = ObjectProperty()
+
+    def __init__(self, **kwargs):
+        super(CatalogFish, self).__init__(**kwargs)
+
+        for i in Data.db:
+            print(i)
 
 class Recipes(Screen):
     pass
@@ -92,29 +102,34 @@ class GPSHelper(Screen):
     def __init__(self, **kwargs):
         super(GPSHelper, self).__init__(**kwargs)
 
-        source_= 'array.geojson'
+        source =MapSource("https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}@2x.jpg90?access_token=pk.eyJ1IjoiYW50b24wNjEyIiwiYSI6ImNpbzl5dWQxYjAwN3h2eWx5Zmw1Y2lkdGkifQ.h1Rr222Sb_Ibl7OgrmwulQ","osm",0,19,256,"","","abc")
+        mapview = MapView(zoom=12, lat=46, lon=48)
+        mapview.map_source = source
 
-        options = {}
-        layer = GeoJsonMapLayer(source=source_)
+        self.add_widget(mapview)
+     #    source_= 'array.geojson'
+
+     #    options = {}
+     #    layer = GeoJsonMapLayer(source=source_)
 		
-        lon, lat = layer.center
-        options["lon"] = 45.895986557006836
-        options["lat"] = 47.99296606506406
-        min_lon, max_lon, min_lat, max_lat = layer.bounds
-        radius = haversine(min_lon, min_lat, max_lon, max_lat)
-        zoom = get_zoom_for_radius(radius, lat)
-        options["zoom"] = 14
+     #    lon, lat = layer.center
+     #    options["lon"] = 45.895986557006836
+     #    options["lat"] = 47.99296606506406
+     #    min_lon, max_lon, min_lat, max_lat = layer.bounds
+     #    radius = haversine(min_lon, min_lat, max_lon, max_lat)
+     #    zoom = get_zoom_for_radius(radius, lat)
+     #    options["zoom"] = 14
 
-        self.view = MapView(**options)
-        self.view.add_layer(layer)
-        self.marker_layer = ClusteredMarkerLayer(cluster_radius=200)
-        self.view.add_layer(self.marker_layer)
+     #    self.view = MapView(**options)
+     #    self.view.add_layer(layer)
+     #    self.marker_layer = ClusteredMarkerLayer(cluster_radius=200)
+     #    self.view.add_layer(self.marker_layer)
 
-	    # create marker if they exists
-        self.count = 0
+	    # # create marker if they exists
+     #    self.count = 0
 
-        layer.traverse_feature(self.create_marker)
-        self.add_widget(self.view)
+     #    layer.traverse_feature(self.create_marker)
+     #    self.add_widget(self.view)
 
     def create_marker(self, feature):
         geometry = feature["geometry"]
@@ -162,7 +177,8 @@ class RegistrationMain(Screen):
         super(RegistrationMain, self).__init__(**kwargs)
 
     def click_on_button_privacy_policy(self):
-        pass
+        Data.save_info(self.input_surname.text, self.input_name.text, self.input_lastname.text, self.input_mail.text, int(self.input_phone.text))
+        self.parent.current = 'RegistrationDop'
 
     def click_on_button_terms_and_agreements(self):
         Data.save_info(self.input_surname.text, self.input_name.text, self.input_lastname.text, self.input_mail.text, int(self.input_phone.text))
@@ -216,7 +232,7 @@ class RegistrationDop(Screen):
         self.parent.get_screen('RegistrationMain').ids.input_phone.text = str(Data.input_phone)
         self.parent.current = 'RegistrationMain'
 
-class Enter(Screen, MDBoxLayout):
+class Enter(Screen):
     input_phone = ObjectProperty()
 
     def click_on_button_enter(self):
@@ -256,6 +272,25 @@ class WindowManager(ScreenManager):
 class MyApp(MDApp):
     theme_cls = ThemeManager()
     title = 'Умная рыбалка'
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+        @mainthread
+        def delayed():
+            self.load_database()
+        delayed()
+
+    def load_database(self):
+        conn = SQLCommander.connect("resources/DB/db.db")
+        cur = conn.cursor()
+
+        cur.execute("SELECT * FROM catalog ORDER BY name")
+
+        allItems = cur.fetchall()
+        allItems = list(allItems)
+
+        Data.db = allItems
 
     def build(self):
         self.theme_cls.theme_style = "Light"
