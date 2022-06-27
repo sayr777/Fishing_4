@@ -10,16 +10,18 @@ from kivy_garden.mapview.utils import get_zoom_for_radius, haversine
 from dialog import Dialog
 import re
 import random
+import io
 from kivy.core.text import LabelBase
 from kivymd.font_definitions import theme_font_styles
 from kivy.uix.image import Image
+from kivy.core.image import Image as CoreImage
 from kivymd.uix.menu import MDDropdownMenu
 from kivy.clock import mainthread
 import sqlite3 as SQLCommander
 
 #for debug... REMOVE THIS, IF THIS IS PRODUCTION
 from kivy.core.window import Window
-Window.size = (375, 812) 
+Window.size = (375, 812)
 
 #subimport
 from kivymd.uix.boxlayout import MDBoxLayout
@@ -89,8 +91,20 @@ class CatalogFish(Screen):
     def __init__(self, **kwargs):
         super(CatalogFish, self).__init__(**kwargs)
 
-        for i in Data.db:
-            print(i)
+    def build(self):
+        i = 0
+        while i < len(Data.db):
+            newGrid = MDGridLayout(rows=2)
+            lab1 = MDLabel(font_style='Proxima Nova', text_size='16sp', bold=True, text=Data.db[i][1])
+            lab2 = MDLabel(font_style='Proxima Nova', text_size='16sp', text=Data.db[i][5])
+            newGrid.add_widget(lab1)
+            newGrid.add_widget(lab2)
+            listFish.add_widget(newGrid)
+            buf = io.BytesIO(Data.db[i][4])
+            cim = CoreImage(buf, ext='jpg')
+            img = Image(texture=cim.texture)
+            listFish.add_widget(img)
+            i += 1
 
 class Recipes(Screen):
     pass
@@ -102,34 +116,34 @@ class GPSHelper(Screen):
     def __init__(self, **kwargs):
         super(GPSHelper, self).__init__(**kwargs)
 
-        source =MapSource("https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}@2x.jpg90?access_token=pk.eyJ1IjoiYW50b24wNjEyIiwiYSI6ImNpbzl5dWQxYjAwN3h2eWx5Zmw1Y2lkdGkifQ.h1Rr222Sb_Ibl7OgrmwulQ","osm",0,19,256,"","","abc")
-        mapview = MapView(zoom=12, lat=46, lon=48)
-        mapview.map_source = source
+        # source =MapSource("https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}@2x.jpg90?access_token=pk.eyJ1IjoiYW50b24wNjEyIiwiYSI6ImNpbzl5dWQxYjAwN3h2eWx5Zmw1Y2lkdGkifQ.h1Rr222Sb_Ibl7OgrmwulQ","osm",0,19,256,"","","abc")
+        # mapview = MapView(zoom=12, lat=46, lon=48)
+        # mapview.map_source = source
 
-        self.add_widget(mapview)
-     #    source_= 'array.geojson'
+        # self.add_widget(mapview)
+        source_= 'array.geojson'
 
-     #    options = {}
-     #    layer = GeoJsonMapLayer(source=source_)
-		
-     #    lon, lat = layer.center
-     #    options["lon"] = 45.895986557006836
-     #    options["lat"] = 47.99296606506406
-     #    min_lon, max_lon, min_lat, max_lat = layer.bounds
-     #    radius = haversine(min_lon, min_lat, max_lon, max_lat)
-     #    zoom = get_zoom_for_radius(radius, lat)
-     #    options["zoom"] = 14
+        options = {}
+        layer = GeoJsonMapLayer(source=source_)
 
-     #    self.view = MapView(**options)
-     #    self.view.add_layer(layer)
-     #    self.marker_layer = ClusteredMarkerLayer(cluster_radius=200)
-     #    self.view.add_layer(self.marker_layer)
+        lon, lat = layer.center
+        options["lon"] = 45.895986557006836
+        options["lat"] = 47.99296606506406
+        min_lon, max_lon, min_lat, max_lat = layer.bounds
+        radius = haversine(min_lon, min_lat, max_lon, max_lat)
+        zoom = get_zoom_for_radius(radius, lat)
+        options["zoom"] = 14
 
-	    # # create marker if they exists
-     #    self.count = 0
+        self.view = MapView(**options)
+        self.view.add_layer(layer)
+        self.marker_layer = ClusteredMarkerLayer(cluster_radius=200)
+        self.view.add_layer(self.marker_layer)
 
-     #    layer.traverse_feature(self.create_marker)
-     #    self.add_widget(self.view)
+	    # create marker if they exists
+        self.count = 0
+
+        layer.traverse_feature(self.create_marker)
+        self.add_widget(self.view)
 
     def create_marker(self, feature):
         geometry = feature["geometry"]
@@ -141,7 +155,7 @@ class GPSHelper(Screen):
 
     def click_on_button_gps(self):
         Dialog('Вы уже на данной странице', 'Уведомление')
-    
+
     def click_on_button_note(self):
         self.parent.current = 'Menu'
 
@@ -186,7 +200,7 @@ class RegistrationMain(Screen):
 
     def click_on_button_enter(self):
         self.parent.current = 'Enter'
-        
+
     def click_on_button_register(self):
         if self.input_surname.text == '':
             Dialog('Вы не ввели фамилию', 'Ошибка')
@@ -213,7 +227,7 @@ class RegistrationMain(Screen):
                                     Dialog('Данная функция находится в разработке', 'Ошибка')
 
 class RegistrationDop(Screen):
-    button_continue = ObjectProperty()	
+    button_continue = ObjectProperty()
 
     def click_on_checkbox_agree(self, instance, value):
         if value:
@@ -291,6 +305,7 @@ class MyApp(MDApp):
         allItems = list(allItems)
 
         Data.db = allItems
+        #db[n][0] - id, db[n][1] - name, db[n][2] - none, db[n][3] - description, db[n][4] - pic, db[n][5] - latin, db[n][6] - gif
 
     def build(self):
         self.theme_cls.theme_style = "Light"
