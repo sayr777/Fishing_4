@@ -88,18 +88,19 @@ class Penalties(Screen):
 class CatalogFish(Screen):
     listFish = ObjectProperty()
 
-    def __init__(self, **kwargs):
+    def build(self, **kwargs):
         super(CatalogFish, self).__init__(**kwargs)
-
-    def build(self):
         i = 0
+        print('test')
+        print(Data.db)
         while i < len(Data.db):
+            print('1')
             newGrid = MDGridLayout(rows=2)
             lab1 = MDLabel(font_style='Proxima Nova', text_size='16sp', bold=True, text=Data.db[i][1])
             lab2 = MDLabel(font_style='Proxima Nova', text_size='16sp', text=Data.db[i][5])
+            listFish.add_widget(newGrid)
             newGrid.add_widget(lab1)
             newGrid.add_widget(lab2)
-            listFish.add_widget(newGrid)
             buf = io.BytesIO(Data.db[i][4])
             cim = CoreImage(buf, ext='jpg')
             img = Image(texture=cim.texture)
