@@ -55,24 +55,67 @@ WindowManager:
 	name: 'Calendar'
 	color: (152, 152, 152, 1)
 
-	MDBoxLayout:
-		orientation: 'vertical'
+	listFish: listFish
 
+	MDRelativeLayout:
+	
 		MDIconButton:
 			icon: 'close'
 			pos_hint: {'right': 1, 'center_y': 0.92}
-			on_release: app.root.current = 'GPSHelper'
+			on_release: app.root.current = 'Menu'
 
 		MDLabel:
+			pos_hint: {'x': 0.1, 'center_y': 0.92}
 			font_style: 'Proxima Nova'			
 			text: "Календарь"
 			font_size: '30sp'
 			bold: True
 
+	MDGridLayout:
+		id: listFish
+		cols: 7
+		size: (root.width, root.height)
+		size_hint_x: None
+		size_hint_y: None
+		height: self.minimum_height
+		row_default_height: 200
+		row_force_default: True
+		spacing: 10
+
 		MDLabel:
-			font_style: 'Proxima Nova'			
-			text: "Приносим извинения, страница в разработке"
-			font_size: '14sp'
+			font_style: 'Proxima Nova'
+			text: 'Пн'
+			font_size: '20sp'
+
+		MDLabel:
+			font_style: 'Proxima Nova'
+			text: 'Вт'
+			font_size: '20sp'
+
+		MDLabel:
+			font_style: 'Proxima Nova'
+			text: 'Ср'
+			font_size: '20sp'
+
+		MDLabel:
+			font_style: 'Proxima Nova'
+			text: 'Чт'
+			font_size: '20sp'
+
+		MDLabel:
+			font_style: 'Proxima Nova'
+			text: 'Пт'
+			font_size: '20sp'
+
+		MDLabel:
+			font_style: 'Proxima Nova'
+			text: 'Сб'
+			font_size: '20sp'
+
+		MDLabel:
+			font_style: 'Proxima Nova'
+			text: 'Вс'
+			font_size: '20sp'
 
 <User>:
 	name: 'User'
@@ -229,11 +272,11 @@ WindowManager:
 				spacing: 10
 
 				canvas.before:
-		        Color:
-		            rgba: 0, 0, 0, .2
-		        Rectangle:
-		            size: self.size
-		            pos: self.pos
+			        Color:
+			            rgba: 0, 0, 0, .2
+			        Rectangle:
+			            size: self.size
+			            pos: self.pos
 
 				MDFlatButton:
 					font_size: '20sp'
@@ -588,6 +631,7 @@ WindowManager:
 				hint_text: "Отчество"
 				multiline: False
 				font_size: '30sp'
+				
 		MDGridLayout:
 			cols: 2
 

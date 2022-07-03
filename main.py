@@ -61,7 +61,10 @@ class News(Screen):
     pass
 
 class Calendar(Screen):
-    pass
+    listFish = ObjectProperty()
+
+    def __init__(self, **kwargs):
+        super(Calendar, self).__init__(**kwargs)
 
 class User(Screen):
     pass
@@ -88,7 +91,7 @@ class Penalties(Screen):
 class CatalogFish(Screen):
     listFish = ObjectProperty()
 
-    def build(self, **kwargs):
+    def __init__(self, **kwargs):
         super(CatalogFish, self).__init__(**kwargs)
         i = 0
         while i < len(Data.db):
@@ -151,7 +154,7 @@ class CatalogFish(Screen):
     def click_on_button_tinca(self):
         Dialog('Страница подробного описания Обыкновенной щуки в разработке', 'Уведомление о разработке')
         #self.parent.current = ''
-        
+
 class Recipes(Screen):
     pass
 
@@ -233,7 +236,7 @@ class RegistrationMain(Screen):
     input_mail = ObjectProperty()
     input_phone = ObjectProperty()
 
-    def build(self, kwargs):
+    def __init__(self, **kwargs):
         super(RegistrationMain, self).__init__(**kwargs)
 
     def click_on_button_privacy_policy(self):
