@@ -186,26 +186,291 @@ WindowManager:
 	color: (152, 152, 152, 1)
 
 	listFish: listFish
+	MDRelativeLayout:
+	
+		MDIconButton:
+			icon: 'close'
+			pos_hint: {'right': 1, 'center_y': 0.92}
+			on_release: app.root.current = 'Menu'
+
+		MDLabel:
+			pos_hint: {'x': 0.1, 'center_y': 0.92}
+			font_style: 'Proxima Nova'			
+			text: "Каталог рыб"
+			font_size: '30sp'
+			bold: True
 
 	ScrollView:
-		MDBoxLayout:
-		
-			MDIconButton:
-				icon: 'close'
-				pos_hint: {'right': 1, 'center_y': 0.92}
-				on_release: app.root.current = 'Menu'
+		size_hint_y: .73
+		pos_hint: {'x': 0, 'y': .11}
+		do_scroll_x: False
+		do_scroll_y: True
 
-			MDLabel:
-				font_style: 'Proxima Nova'			
-				text: "Каталог рыб"
-				font_size: '30sp'
-				bold: True
+		MDGridLayout:
+			id: listFish
+			cols: 2
+			size: (root.width, root.height)
+			size_hint_x: None
+			size_hint_y: None
+			height: self.minimum_height
+			row_default_height: 200
+			row_force_default: True
+			spacing: 10
+
+			canvas.before:
+		        Color:
+		            rgba: 0, 0, 0, .1
+		        Rectangle:
+		            size: self.size
+		            pos: self.pos
 
 			MDGridLayout:
-				id: listFish
-				cols: 2
-				size_hint_x: 0.5
-				size_hint_y: 0.3
+				rows: 2
+				spacing: 10
+
+				canvas.before:
+		        Color:
+		            rgba: 0, 0, 0, .2
+		        Rectangle:
+		            size: self.size
+		            pos: self.pos
+
+				MDFlatButton:
+					font_size: '20sp'
+					text: 'ОБЫКНОВЕННАЯ ЩУКА'
+					on_release: root.click_on_button_esox()
+					bold: True
+					theme_text_color: 'Custom'
+					text_color: app.theme_cls.primary_color
+
+				MDLabel:
+					font_style: 'Proxima Nova'
+					text: 'ESOX LUCIUS (Linnaeus, 1758)'
+					font_size: '14sp'
+					italic: True
+
+			Image:
+				source: 'resources/pictures/esox.jpg'
+
+			MDGridLayout:
+				rows: 2
+
+				MDFlatButton:
+					font_size: '20sp'
+					text: 'СОМ ОБЫКНОВЕННЫЙ'
+					on_release: root.click_on_button_silurus()
+					bold: True
+					theme_text_color: 'Custom'
+					text_color: app.theme_cls.primary_color
+
+				MDLabel:
+					font_style: 'Proxima Nova'
+					text: 'SILURUS GLANIS  (Linnaens, 1758)'
+					font_size: '14sp'
+					italic: True
+
+			Image:
+				source: 'resources/pictures/silurus.jpg'
+
+			MDGridLayout:
+				rows: 2
+
+				MDFlatButton:
+					font_size: '20sp'
+					text: 'САЗАН'
+					on_release: root.click_on_button_cyprinus()
+					bold: True
+					theme_text_color: 'Custom'
+					text_color: app.theme_cls.primary_color
+
+				MDLabel:
+					font_style: 'Proxima Nova'
+					text: 'CYPRINUS CASPIO (Linnaeus, 1758)'
+					font_size: '14sp'
+					italic: True
+
+			Image:
+				source: 'resources/pictures/cyprinus.jpg'
+
+			MDGridLayout:
+				rows: 2
+
+				MDFlatButton:
+					font_size: '20sp'
+					text: 'ЛЕЩ'
+					on_release: root.click_on_button_abramis()
+					bold: True
+					theme_text_color: 'Custom'
+					text_color: app.theme_cls.primary_color
+
+				MDLabel:
+					font_style: 'Proxima Nova'
+					text: 'ABRAMIS BRAMA (Linnaeus, 1758)'
+					font_size: '14sp'
+					italic: True
+
+			Image:
+				source: 'resources/pictures/abramis.jpg'
+
+			MDGridLayout:
+				rows: 2
+
+				MDFlatButton:
+					font_size: '20sp'
+					text: 'ВОБЛА'
+					on_release: root.click_on_button_rutilus()
+					bold: True
+					theme_text_color: 'Custom'
+					text_color: app.theme_cls.primary_color
+
+				MDLabel:
+					font_style: 'Proxima Nova'
+					text: 'RUTILUS RUTILUS CASPICUS (Yakovlev, 1870)'
+					font_size: '14sp'
+					italic: True
+
+			Image:
+				source: 'resources/pictures/rutilus.jpg'				
+
+			MDGridLayout:
+				rows: 2
+
+				MDFlatButton:
+					font_size: '20sp'
+					text: 'ОБЫКНОВЕННЫЙ СУДАК'
+					on_release: root.click_on_button_sander()
+					bold: True
+					theme_text_color: 'Custom'
+					text_color: app.theme_cls.primary_color
+
+				MDLabel:
+					font_style: 'Proxima Nova'
+					text: 'SANDER LUCIOPERCA (Linnaeus, 1758)'
+					font_size: '14sp'
+					italic: True
+
+			Image:
+				source: 'resources/pictures/sander.jpg'
+
+			MDGridLayout:
+				rows: 2
+
+				MDFlatButton:
+					font_size: '20sp'
+					text: 'ЖЕРЕХ ОБЫКНОВЕННЫЙ'
+					on_release: root.click_on_button_aspius()
+					bold: True
+					theme_text_color: 'Custom'
+					text_color: app.theme_cls.primary_color
+
+				MDLabel:
+					font_style: 'Proxima Nova'
+					text: 'ASPIUS ASPIUS (Linnaeus, 1758)'
+					font_size: '14sp'
+					italic: True
+
+			Image:
+				source: 'resources/pictures/aspius.jpg'
+
+			MDGridLayout:
+				rows: 2
+
+				MDFlatButton:
+					font_size: '20sp'
+					text: 'ОКУНЬ РЕЧНОЙ'
+					on_release: root.click_on_button_perca()
+					bold: True
+					theme_text_color: 'Custom'
+					text_color: app.theme_cls.primary_color
+
+				MDLabel:
+					font_style: 'Proxima Nova'
+					text: 'PERCA FLUVIATILIS (Linnaeus, 1758)'
+					font_size: '14sp'
+					italic: True
+
+			Image:
+				source: 'resources/pictures/perka.jpg'
+
+			MDGridLayout:
+				rows: 2
+
+				MDFlatButton:
+					font_size: '20sp'
+					text: 'ГУСТЕРА'
+					on_release: root.click_on_button_blicca()
+					bold: True
+					theme_text_color: 'Custom'
+					text_color: app.theme_cls.primary_color
+
+				MDLabel:
+					font_style: 'Proxima Nova'
+					text: 'BLICCA BJOERKNA (Linnaeus, 1758)'
+					font_size: '14sp'
+					italic: True
+
+			Image:
+				source: 'resources/pictures/blicca.jpg'
+
+			MDGridLayout:
+				rows: 2
+
+				MDFlatButton:
+					font_size: '20sp'
+					text: 'КРАСНОПЕРКА'
+					on_release: root.click_on_button_scardinius()
+					bold: True
+					theme_text_color: 'Custom'
+					text_color: app.theme_cls.primary_color
+
+				MDLabel:
+					font_style: 'Proxima Nova'
+					text: 'SCARDINIUS ERYTHROPHTHALMUS (Linnaeus, 1758)'
+					font_size: '14sp'
+					italic: True
+
+			Image:
+				source: 'resources/pictures/scardinius.jpg'
+
+			MDGridLayout:
+				rows: 2
+
+				MDFlatButton:
+					font_size: '20sp'
+					text: 'КАРАСЬ'
+					on_release: root.click_on_button_carassius()
+					bold: True
+					theme_text_color: 'Custom'
+					text_color: app.theme_cls.primary_color
+
+				MDLabel:
+					font_style: 'Proxima Nova'
+					text: 'CARASSIUS AURATUS GIBELIO (Bloch, 1782)'
+					font_size: '14sp'
+					italic: True
+
+			Image:
+				source: 'resources/pictures/carassius.jpg'
+
+			MDGridLayout:
+				rows: 2
+
+				MDFlatButton:
+					font_size: '20sp'
+					text: 'ЛИНЬ'
+					on_release: root.click_on_button_tinca()
+					bold: True
+					theme_text_color: 'Custom'
+					text_color: app.theme_cls.primary_color
+
+				MDLabel:
+					font_style: 'Proxima Nova'
+					text: 'TINCA TINCA (Linnaeus, 1758)'
+					font_size: '14sp'
+					italic: True
+
+			Image:
+				source: 'resources/pictures/tinca.jpg'
 
 <Recipes>:
 	name: 'Recipes'

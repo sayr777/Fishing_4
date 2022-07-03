@@ -22,7 +22,7 @@ kivy-deps.sdl2==0.4.5
 Kivy-examples==2.1.0
 Kivy-Garden==0.1.5
 kivy-garden.mapview==1.0.6
-kivymd==0.104.2
+kivymd @ https://github.com/kivymd/KivyMD/archive/master.zip
 mapview==1.0.6
 mssql-django==1.1.2
 pexpect==4.8.0

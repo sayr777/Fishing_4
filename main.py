@@ -91,10 +91,7 @@ class CatalogFish(Screen):
     def build(self, **kwargs):
         super(CatalogFish, self).__init__(**kwargs)
         i = 0
-        print('test')
-        print(Data.db)
         while i < len(Data.db):
-            print('1')
             newGrid = MDGridLayout(rows=2)
             lab1 = MDLabel(font_style='Proxima Nova', text_size='16sp', bold=True, text=Data.db[i][1])
             lab2 = MDLabel(font_style='Proxima Nova', text_size='16sp', text=Data.db[i][5])
@@ -107,6 +104,54 @@ class CatalogFish(Screen):
             listFish.add_widget(img)
             i += 1
 
+    def click_on_button_esox(self):
+        Dialog('Страница подробного описания Обыкновенной щуки в разработке', 'Уведомление о разработке')
+        #self.parent.current = ''
+
+    def click_on_button_silurus(self):
+        Dialog('Страница подробного описания Обыкновенной щуки в разработке', 'Уведомление о разработке')
+        #self.parent.current = ''
+
+    def click_on_button_cyprinus(self):
+        Dialog('Страница подробного описания Обыкновенной щуки в разработке', 'Уведомление о разработке')
+        #self.parent.current = ''
+
+    def click_on_button_abramis(self):
+        Dialog('Страница подробного описания Обыкновенной щуки в разработке', 'Уведомление о разработке')
+        #self.parent.current = ''
+
+    def click_on_button_rutilus(self):
+        Dialog('Страница подробного описания Обыкновенной щуки в разработке', 'Уведомление о разработке')
+        #self.parent.current = ''
+
+    def click_on_button_sander(self):
+        Dialog('Страница подробного описания Обыкновенной щуки в разработке', 'Уведомление о разработке')
+        #self.parent.current = ''
+
+    def click_on_button_aspius(self):
+        Dialog('Страница подробного описания Обыкновенной щуки в разработке', 'Уведомление о разработке')
+        #self.parent.current = ''
+
+    def click_on_button_perka(self):
+        Dialog('Страница подробного описания Обыкновенной щуки в разработке', 'Уведомление о разработке')
+        #self.parent.current = ''
+
+    def click_on_button_blicca(self):
+        Dialog('Страница подробного описания Обыкновенной щуки в разработке', 'Уведомление о разработке')
+        #self.parent.current = ''
+
+    def click_on_button_scardinius(self):
+        Dialog('Страница подробного описания Обыкновенной щуки в разработке', 'Уведомление о разработке')
+        #self.parent.current = ''
+
+    def click_on_button_carassius(self):
+        Dialog('Страница подробного описания Обыкновенной щуки в разработке', 'Уведомление о разработке')
+        #self.parent.current = ''
+
+    def click_on_button_tinca(self):
+        Dialog('Страница подробного описания Обыкновенной щуки в разработке', 'Уведомление о разработке')
+        #self.parent.current = ''
+        
 class Recipes(Screen):
     pass
 
