@@ -18,6 +18,7 @@ from kivy.core.image import Image as CoreImage
 from kivymd.uix.menu import MDDropdownMenu
 from kivy.clock import mainthread
 import sqlite3 as SQLCommander
+from sms_base import rec_otp
 
 #for debug... REMOVE THIS, IF THIS IS PRODUCTION
 from kivy.core.window import Window
@@ -306,7 +307,7 @@ class Enter(Screen):
                 Dialog('Неккоректный ввод телефона', 'Ошибка')
             else:
                 phone = self.input_phone.text
-                code = random.randint(100000, 999999)
+                code = rec_otp(self.input_phone.text)
                 Data.phone = phone
                 Data.code = code
                 Dialog('Функция отправки кода подтверждения в разработке, ваш код: '+str(Data.code), 'Ошибка')
