@@ -11,6 +11,7 @@ from dialog import Dialog
 import re
 import random
 import io
+import datetime
 from kivy.core.text import LabelBase
 from kivymd.font_definitions import theme_font_styles
 from kivy.uix.image import Image
@@ -39,6 +40,36 @@ from kivymd.uix.relativelayout import RelativeLayout
 
 KIVY_FILENAME = 'main.kv'
 
+MONTH_LIST = {
+    '1' : 31,
+    '2' : 28,
+    '3' : 31,
+    '4' : 30,
+    '5' : 31,
+    '6' : 30,
+    '7' : 31,
+    '8' : 31,
+    '9' : 30,
+    '10' : 31,
+    '11' : 30,
+    '12' : 31
+}
+
+CALENDAR_CODE = [
+    [222222333321110001111111133333222222],
+    [000000001222220002223333211000000000],
+    [000000001222220002233333332211000000],
+    [222222111111330002222222222222222222],
+    [222222111133330001111111111122222222],
+    [111111222221110002222222333333333111],
+    [000000000000030003333221111122221000],
+    [111111222222220002222222222222222333],
+    [222222111123330002222222222222222333],
+    [111111222222330003333333333222211111],
+    [111111222222330003333333333222211111],
+    [000000000001220002233222222220000000],
+]
+
 class Data():
     phone = 0
     code = 0
@@ -64,8 +95,44 @@ class News(Screen):
 class Calendar(Screen):
     listFish = ObjectProperty()
 
+    one_label = ObjectProperty()
+    two_label = ObjectProperty()
+    three_label = ObjectProperty()
+    four_label = ObjectProperty()
+    fife_label = ObjectProperty()
+    six_label = ObjectProperty()
+    seven_label = ObjectProperty()
+    eight_label = ObjectProperty()
+    nine_label = ObjectProperty()
+    ten_label = ObjectProperty()
+    eleven_label = ObjectProperty()
+    twelve_label = ObjectProperty()
+    thirteen_label = ObjectProperty()
+    fourteen_label = ObjectProperty()
+    fifteen_label = ObjectProperty()
+    sixteen_label = ObjectProperty()
+    seventeen_label = ObjectProperty()
+    eightteen_label = ObjectProperty()
+    nineteen_label = ObjectProperty()
+    twenty_label = ObjectProperty()
+    twenty_one_label = ObjectProperty()
+    twenty_two_label = ObjectProperty()
+    twenty_three_label = ObjectProperty()
+    twenty_four_label = ObjectProperty()
+    twenty_five_label = ObjectProperty()
+    twenty_six_label = ObjectProperty()
+    twenty_seven_label = ObjectProperty()
+    twenty_eight_label = ObjectProperty()
+    twenty_nine_label = ObjectProperty()
+    thirty_label = ObjectProperty()
+    thirty_one_label = ObjectProperty()
+
     def __init__(self, **kwargs):
         super(Calendar, self).__init__(**kwargs)
+        mn_now = datetime.date.today().month
+        days_in_mon = MONTH_LIST[str(mn_now)]
+        if days_in_mon == 28:
+
 
 class User(Screen):
     pass
@@ -109,51 +176,51 @@ class CatalogFish(Screen):
             i += 1
 
     def click_on_button_esox(self):
-        Dialog('Страница подробного описания Обыкновенной щуки в разработке', 'Уведомление о разработке')
+        Dialog('Страница подробного описания обыкновенной щуки в разработке', 'Уведомление о разработке')
         #self.parent.current = ''
 
     def click_on_button_silurus(self):
-        Dialog('Страница подробного описания Обыкновенной щуки в разработке', 'Уведомление о разработке')
+        Dialog('Страница подробного описания обыкновенного сома в разработке', 'Уведомление о разработке')
         #self.parent.current = ''
 
     def click_on_button_cyprinus(self):
-        Dialog('Страница подробного описания Обыкновенной щуки в разработке', 'Уведомление о разработке')
+        Dialog('Страница подробного описания сазана в разработке', 'Уведомление о разработке')
         #self.parent.current = ''
 
     def click_on_button_abramis(self):
-        Dialog('Страница подробного описания Обыкновенной щуки в разработке', 'Уведомление о разработке')
+        Dialog('Страница подробного описания леща в разработке', 'Уведомление о разработке')
         #self.parent.current = ''
 
     def click_on_button_rutilus(self):
-        Dialog('Страница подробного описания Обыкновенной щуки в разработке', 'Уведомление о разработке')
+        Dialog('Страница подробного описания воблы в разработке', 'Уведомление о разработке')
         #self.parent.current = ''
 
     def click_on_button_sander(self):
-        Dialog('Страница подробного описания Обыкновенной щуки в разработке', 'Уведомление о разработке')
+        Dialog('Страница подробного описания обыкновенного судака в разработке', 'Уведомление о разработке')
         #self.parent.current = ''
 
     def click_on_button_aspius(self):
-        Dialog('Страница подробного описания Обыкновенной щуки в разработке', 'Уведомление о разработке')
+        Dialog('Страница подробного описания обыкновенного жереха в разработке', 'Уведомление о разработке')
         #self.parent.current = ''
 
     def click_on_button_perka(self):
-        Dialog('Страница подробного описания Обыкновенной щуки в разработке', 'Уведомление о разработке')
+        Dialog('Страница подробного описания речного окуня в разработке', 'Уведомление о разработке')
         #self.parent.current = ''
 
     def click_on_button_blicca(self):
-        Dialog('Страница подробного описания Обыкновенной щуки в разработке', 'Уведомление о разработке')
+        Dialog('Страница подробного описания густеры в разработке', 'Уведомление о разработке')
         #self.parent.current = ''
 
     def click_on_button_scardinius(self):
-        Dialog('Страница подробного описания Обыкновенной щуки в разработке', 'Уведомление о разработке')
+        Dialog('Страница подробного описания краснопёрки в разработке', 'Уведомление о разработке')
         #self.parent.current = ''
 
     def click_on_button_carassius(self):
-        Dialog('Страница подробного описания Обыкновенной щуки в разработке', 'Уведомление о разработке')
+        Dialog('Страница подробного описания карася в разработке', 'Уведомление о разработке')
         #self.parent.current = ''
 
     def click_on_button_tinca(self):
-        Dialog('Страница подробного описания Обыкновенной щуки в разработке', 'Уведомление о разработке')
+        Dialog('Страница подробного описания линя в разработке', 'Уведомление о разработке')
         #self.parent.current = ''
 
 class Recipes(Screen):
@@ -307,12 +374,12 @@ class Enter(Screen):
                 Dialog('Неккоректный ввод телефона', 'Ошибка')
             else:
                 phone = self.input_phone.text
-                code = rec_otp(self.input_phone.text)
+                #code = rec_otp(self.input_phone.text)
                 Data.phone = phone
-                Data.code = code
-                Dialog('Функция отправки кода подтверждения в разработке, ваш код: '+str(Data.code), 'Ошибка')
+                #Data.code = code
                 self.parent.get_screen('EnterCheckPhone').ids.label_phone.text = str(Data.phone)
-                self.parent.current = 'EnterCheckPhone'
+                #self.parent.current = 'EnterCheckPhone'
+                self.parent.current = 'GPSHelper'
 
     def click_on_button_register(self):
         self.parent.current = 'RegistrationMain'

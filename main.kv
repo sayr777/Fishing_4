@@ -57,6 +57,38 @@ WindowManager:
 
 	listFish: listFish
 
+	one_label: one_label
+	two_label: two_label
+	three_label: three_label
+	four_label: four_label
+	fife_label: fife_label
+	six_label: six_label
+	seven_label: seven_label
+	eight_label: eight_label
+	nine_label: nine_label
+	ten_label: ten_label
+	eleven_label: eleven_label
+	twelve_label: twelve_label
+	thirteen_label: thirteen_label
+	fourteen_label: fourteen_label
+	fifteen_label: fifteen_label
+	sixteen_label: sixteen_label
+	seventeen_label: seventeen_label
+	eightteen_label: eightteen_label
+	nineteen_label: nineteen_label
+	twenty_label: twenty_label
+	twenty_one_label: twenty_one_label
+	twenty_two_label: twenty_two_label
+	twenty_three_label: twenty_three_label
+	twenty_four_label: twenty_four_label
+	twenty_five_label: twenty_five_label
+	twenty_six_label: twenty_six_label
+	twenty_seven_label: twenty_seven_label
+	twenty_eight_label: twenty_eight_label
+	twenty_nine_label: twenty_nine_label
+	thirty_label: thirty_label
+	thirty_one_label: thirty_one_label
+
 	MDRelativeLayout:
 	
 		MDIconButton:
@@ -71,52 +103,242 @@ WindowManager:
 			font_size: '30sp'
 			bold: True
 
-	MDGridLayout:
-		id: listFish
-		cols: 7
-		size: (root.width, root.height)
-		size_hint_x: None
-		size_hint_y: None
-		height: self.minimum_height
-		row_default_height: 200
-		row_force_default: True
-		spacing: 10
+	ScrollView:
+		size_hint_y: .73
+		pos_hint: {'x': 0.05}
+		pos: (0, -30)
 
-		MDLabel:
-			font_style: 'Proxima Nova'
-			text: 'Пн'
-			font_size: '20sp'
+		MDGridLayout:
+			id: listFish
+			cols: 7
+			size: (root.width, root.height)
+			size_hint_x: None
+			size_hint_y: None
+			height: self.minimum_height
+			row_default_height: 20
+			row_force_default: True
+			spacing: 5
 
-		MDLabel:
-			font_style: 'Proxima Nova'
-			text: 'Вт'
-			font_size: '20sp'
+			MDLabel:
+				font_style: 'Proxima Nova'
+				text: 'Пн'
+				font_size: '16sp'
 
-		MDLabel:
-			font_style: 'Proxima Nova'
-			text: 'Ср'
-			font_size: '20sp'
+			MDLabel:
+				font_style: 'Proxima Nova'
+				text: 'Вт'
+				font_size: '16sp'
 
-		MDLabel:
-			font_style: 'Proxima Nova'
-			text: 'Чт'
-			font_size: '20sp'
+			MDLabel:
+				font_style: 'Proxima Nova'
+				text: 'Ср'
+				font_size: '16sp'
 
-		MDLabel:
-			font_style: 'Proxima Nova'
-			text: 'Пт'
-			font_size: '20sp'
+			MDLabel:
+				font_style: 'Proxima Nova'
+				text: 'Чт'
+				font_size: '16sp'
 
-		MDLabel:
-			font_style: 'Proxima Nova'
-			text: 'Сб'
-			font_size: '20sp'
+			MDLabel:
+				font_style: 'Proxima Nova'
+				text: 'Пт'
+				font_size: '16sp'
 
-		MDLabel:
-			font_style: 'Proxima Nova'
-			text: 'Вс'
-			font_size: '20sp'
+			MDLabel:
+				font_style: 'Proxima Nova'
+				text: 'Сб'
+				font_size: '16sp'
 
+			MDLabel:
+				font_style: 'Proxima Nova'
+				text: 'Вс'
+				font_size: '16sp'
+
+			MDLabel:
+				id: one_label
+				font_style: 'Proxima Nova'
+				text: '1'
+				font_size: '16sp'
+
+			MDLabel:
+				id: two_label
+				font_style: 'Proxima Nova'
+				text: '2'
+				font_size: '16sp'
+
+			MDLabel:
+				id: three_label
+				font_style: 'Proxima Nova'
+				text: '3'
+				font_size: '16sp'
+
+			MDLabel:
+				id: four_label
+				font_style: 'Proxima Nova'
+				text: '4'
+				font_size: '16sp'
+
+			MDLabel:
+				id: fife_label
+				font_style: 'Proxima Nova'
+				text: '5'
+				font_size: '16sp'
+
+			MDLabel:
+				id: six_label
+				font_style: 'Proxima Nova'
+				text: '6'
+				font_size: '16sp'
+
+			MDLabel:
+				id: seven_label
+				font_style: 'Proxima Nova'
+				text: '7'
+				font_size: '16sp'
+
+			MDLabel:
+				id: eight_label
+				font_style: 'Proxima Nova'
+				text: '8'
+				font_size: '16sp'
+
+			MDLabel:
+				id: nine_label
+				font_style: 'Proxima Nova'
+				text: '9'
+				font_size: '16sp'
+
+			MDLabel:
+				id: ten_label
+				font_style: 'Proxima Nova'
+				text: '10'
+				font_size: '16sp'
+
+			MDLabel:
+				id: eleven_label
+				font_style: 'Proxima Nova'
+				text: '11'
+				font_size: '16sp'
+
+			MDLabel:
+				id: twelve_label
+				font_style: 'Proxima Nova'
+				text: '12'
+				font_size: '16sp'
+
+			MDLabel:
+				id: thirteen_label
+				font_style: 'Proxima Nova'
+				text: '13'
+				font_size: '16sp'
+
+			MDLabel:
+				id: fourteen_label
+				font_style: 'Proxima Nova'
+				text: '14'
+				font_size: '16sp'
+
+			MDLabel:
+				id: fifteen_label
+				font_style: 'Proxima Nova'
+				text: '15'
+				font_size: '16sp'
+
+			MDLabel:
+				id: sixteen_label
+				font_style: 'Proxima Nova'
+				text: '16'
+				font_size: '16sp'
+
+			MDLabel:
+				id: seventeen_label
+				font_style: 'Proxima Nova'
+				text: '17'
+				font_size: '16sp'
+
+			MDLabel:
+				id: eightteen_label
+				font_style: 'Proxima Nova'
+				text: '18'
+				font_size: '16sp'
+
+			MDLabel:
+				id: nineteen_label
+				font_style: 'Proxima Nova'
+				text: '19'
+				font_size: '16sp'
+
+			MDLabel:
+				id: twenty_label
+				font_style: 'Proxima Nova'
+				text: '20'
+				font_size: '16sp'
+
+			MDLabel:
+				id: twenty_one_label
+				font_style: 'Proxima Nova'
+				text: '21'
+				font_size: '16sp'
+
+			MDLabel:
+				id: twenty_two_label
+				font_style: 'Proxima Nova'
+				text: '22'
+				font_size: '16sp'
+
+			MDLabel:
+				id: twenty_three_label
+				font_style: 'Proxima Nova'
+				text: '23'
+				font_size: '16sp'
+
+			MDLabel:
+				id: twenty_four_label
+				font_style: 'Proxima Nova'
+				text: '24'
+				font_size: '16sp'
+
+			MDLabel:
+				id: twenty_five_label
+				font_style: 'Proxima Nova'
+				text: '25'
+				font_size: '16sp'
+
+			MDLabel:
+				id: twenty_six_label
+				font_style: 'Proxima Nova'
+				text: '26'
+				font_size: '16sp'
+
+			MDLabel:
+				id: twenty_seven_label
+				font_style: 'Proxima Nova'
+				text: '27'
+				font_size: '16sp'
+
+			MDLabel:
+				id: twenty_eight_label
+				font_style: 'Proxima Nova'
+				text: '28'
+				font_size: '16sp'
+
+			MDLabel:
+				id: twenty_nine_label
+				font_style: 'Proxima Nova'
+				text: '29'
+				font_size: '16sp'
+
+			MDLabel:
+				id: thirty_label
+				font_style: 'Proxima Nova'
+				text: '30'
+				font_size: '16sp'
+
+			MDLabel:
+				id: thirty_one_label
+				font_style: 'Proxima Nova'
+				text: '31'
+				font_size: '16sp'
 <User>:
 	name: 'User'
 	color: (152, 152, 152, 1)
