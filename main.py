@@ -132,8 +132,195 @@ class Calendar(Screen):
         mn_now = datetime.date.today().month
         days_in_mon = MONTH_LIST[str(mn_now)]
         if days_in_mon == 28:
+            twenty_nine_label.disabled = True
+            thirty_label.disabled = True
+            thirty_one_label.disabled = True
+        elif days_in_mon == 30:
+            thirty_one_label.disabled = True
 
+        sequence = [0, 0, 0, 0]
+        for i in range(len(CALENDAR_CODE)):
+            if mn_now == 1:
+                if int(str(CALENDAR_CODE[i])[mn_now*3-3]) == 0:
+                    sequence[0] += 1
+                elif int(str(CALENDAR_CODE[i])[mn_now*3-3]) == 1:
+                    sequence[1] += 1
+                elif int(str(CALENDAR_CODE[i])[mn_now*3-3]) == 2:
+                    sequence[2] += 1
+                elif int(str(CALENDAR_CODE[i])[mn_now*3-3]) == 3:
+                    sequence[3] += 1
+            else:
+                if int(str(CALENDAR_CODE[i])[mn_now*3-2]) == 0:
+                    sequence[0] += 1
+                elif int(str(CALENDAR_CODE[i])[mn_now*3-2]) == 1:
+                    sequence[1] += 1
+                elif int(str(CALENDAR_CODE[i])[mn_now*3-2]) == 2:
+                    sequence[2] += 1
+                elif int(str(CALENDAR_CODE[i])[mn_now*3-2]) == 3:
+                    sequence[3] += 1
+        max_ten = 0
+        k = 0
+        for i in range(len(sequence)):
+            if sequence[i] > max_ten:
+                max_ten = sequence[i]
+                k = i
+        if k == 1:
+            self.one_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.two_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.three_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.four_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.fife_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.six_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.seven_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.eight_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.nine_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.ten_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        elif k == 2:
+            self.one_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.two_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.three_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.four_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.fife_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.six_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.seven_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.eight_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.nine_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.ten_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        elif k == 3:
+            self.one_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.two_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.three_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.four_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.fife_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.six_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.seven_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.eight_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.nine_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.ten_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
 
+        sequence = [0, 0, 0, 0]
+        for i in range(len(CALENDAR_CODE)):
+            if mn_now == 1:
+                if int(str(CALENDAR_CODE[i])[mn_now*3-2]) == 0:
+                    sequence[0] += 1
+                elif int(str(CALENDAR_CODE[i])[mn_now*3-2]) == 1:
+                    sequence[1] += 1
+                elif int(str(CALENDAR_CODE[i])[mn_now*3-2]) == 2:
+                    sequence[2] += 1
+                elif int(str(CALENDAR_CODE[i])[mn_now*3-2]) == 3:
+                    sequence[3] += 1
+            else:
+                if int(str(CALENDAR_CODE[i])[mn_now*3-1]) == 0:
+                    sequence[0] += 1
+                elif int(str(CALENDAR_CODE[i])[mn_now*3-1]) == 1:
+                    sequence[1] += 1
+                elif int(str(CALENDAR_CODE[i])[mn_now*3-1]) == 2:
+                    sequence[2] += 1
+                elif int(str(CALENDAR_CODE[i])[mn_now*3-1]) == 3:
+                    sequence[3] += 1
+        max_ten = 0
+        k = 0
+        for i in range(len(sequence)):
+            if sequence[i] > max_ten:
+                max_ten = sequence[i]
+                k = i
+
+        if k == 1:
+            self.eleven_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.twelve_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.thirteen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.fourteen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.fifteen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.sixteen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.seventeen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.eightteen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.nineteen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.twenty_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        elif k == 2:
+            self.eleven_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.twelve_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.thirteen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.fourteen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.fifteen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.sixteen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.seventeen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.eightteen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.nineteen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.twenty_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        elif k == 3:
+            self.eleven_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.twelve_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.thirteen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.fourteen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.fifteen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.sixteen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.seventeen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.eightteen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.nineteen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.twenty_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+
+        sequence = [0, 0, 0, 0]
+        for i in range(len(CALENDAR_CODE)):
+            if mn_now == 1:
+                if int(str(CALENDAR_CODE[i])[mn_now*3-1]) == 0:
+                    sequence[0] += 1
+                elif int(str(CALENDAR_CODE[i])[mn_now*3-1]) == 1:
+                    sequence[1] += 1
+                elif int(str(CALENDAR_CODE[i])[mn_now*3-1]) == 2:
+                    sequence[2] += 1
+                elif int(str(CALENDAR_CODE[i])[mn_now*3-1]) == 3:
+                    sequence[3] += 1
+            else:
+                if int(str(CALENDAR_CODE[i])[mn_now*3]) == 0:
+                    sequence[0] += 1
+                elif int(str(CALENDAR_CODE[i])[mn_now*3]) == 1:
+                    sequence[1] += 1
+                elif int(str(CALENDAR_CODE[i])[mn_now*3]) == 2:
+                    sequence[2] += 1
+                elif int(str(CALENDAR_CODE[i])[mn_now*3]) == 3:
+                    sequence[3] += 1
+        max_ten = 0
+        k = 0
+        for i in range(len(sequence)):
+            if sequence[i] > max_ten:
+                max_ten = sequence[i]
+                k = i
+        if k == 1:
+            self.twenty_one_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.twenty_two_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.twenty_three_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.twenty_four_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.twenty_five_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.twenty_six_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.twenty_seven_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.twenty_eight_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.twenty_nine_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.thirty_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+            self.thirty_one_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        elif k == 2:
+            self.twenty_one_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.twenty_two_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.twenty_three_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.twenty_four_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.twenty_five_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.twenty_six_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.twenty_seven_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.twenty_eight_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.twenty_nine_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.thirty_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.thirty_one_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        elif k == 3:
+            self.twenty_one_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.twenty_two_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.twenty_three_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.twenty_four_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.twenty_five_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.twenty_six_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+            self.twenty_seven_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.twenty_eight_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.twenty_nine_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.thirty_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+            self.thirty_one_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
 class User(Screen):
     pass
 
