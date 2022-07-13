@@ -38,7 +38,11 @@ from kivymd.uix.toolbar import MDToolbar
 from kivymd.uix.button import MDIconButton
 from kivymd.uix.button import MDFlatButton
 from kivymd.uix.relativelayout import RelativeLayout
-from kivymd.uix.selectioncontrol.selectioncontrol import MDCheckbox
+from kivy import platform
+
+if platform == 'android':
+    from android.permissions import Permission, request_permissions
+    request_permissions([Permission.INTERNET])
 
 KIVY_FILENAME = 'main.kv'
 

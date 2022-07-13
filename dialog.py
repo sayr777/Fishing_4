@@ -11,5 +11,5 @@ class DialogTemplate(MDDialog):
 class Dialog(DialogTemplate):
     def __init__(self, text, title, **kwargs):
         super(Dialog, self).__init__(**kwargs)
-        self.dialog = MDDialog(title=title, text=text, size_hint=[.25, .25], auto_dismiss=False, buttons=[MDRoundFlatButton(text='OK', on_release=self.callback)])
+        self.dialog = MDDialog(title=title, text=text, size_hint=[.75, .55], auto_dismiss=False, buttons=[MDRoundFlatButton(text='OK', on_release=self.callback)])
         self.dialog.open()
