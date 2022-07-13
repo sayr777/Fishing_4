@@ -479,10 +479,10 @@ class GPSHelpersp(Screen):
         self.parent.current = 'Calendar'
 
     def click_on_button_fish(self):
-        Dialog('Функция отображения зон лова рыбы в разработке', 'Ошибка')
+        Dialog('Функция отображения зон лова рыбы в разработке', 'Внимание')
 
     def click_on_button_userGps(self):
-        Dialog('Функция гео-локации в разработке', 'Ошибка')
+        Dialog('Функция гео-локации в разработке', 'Внимание')
 
     def callback(self, widget):
         self.dialog.dismiss()
@@ -746,10 +746,10 @@ class GPSHelper(Screen):
         self.parent.current = 'Calendar'
 
     def click_on_button_fish(self):
-        Dialog('Функция отображения зон лова рыбы в разработке', 'Ошибка')
+        Dialog('Функция отображения зон лова рыбы в разработке', 'Внимание')
 
     def click_on_button_userGps(self):
-        Dialog('Функция гео-локации в разработке', 'Ошибка')
+        Dialog('Функция гео-локации в разработке', 'Внимание')
 
     def open_map(self):
         self.dialog.dismiss()
