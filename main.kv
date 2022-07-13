@@ -1191,12 +1191,12 @@ WindowManager:
 	MapView:
 		id: main_map
 	    #map_source: MapSource(cache_key='satellite', url="https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}@2x.jpg90?access_token=pk.eyJ1IjoiYW50b24wNjEyIiwiYSI6ImNpbzl5dWQxYjAwN3h2eWx5Zmw1Y2lkdGkifQ.h1Rr222Sb_Ibl7OgrmwulQ", image_ext='jpeg', attribution='')
-	    map_source: MapSource(cache_key='esri-street', url='https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', image_ext='jpeg', attribution='')
+	    map_source: MapSource(url='https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}')
 	    lat: 46
 	    lon: 48
-	    zoom: 5
+	    zoom: 10
 	    on_zoom:
-	        self.zoom = 5 if self.zoom < 5 else self.zoom	
+	        self.zoom = 10 if self.zoom < 10 else self.zoom	
 
 	MDBottomAppBar:
 

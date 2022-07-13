@@ -23,8 +23,8 @@ import sqlite3 as SQLCommander
 from sms_base import rec_otp
 
 #for debug... REMOVE THIS, IF THIS IS PRODUCTION
-from kivy.core.window import Window
-Window.size = (375, 812)
+#from kivy.core.window import Window
+#Window.size = (375, 812)
 
 #subimport
 from kivymd.uix.boxlayout import MDBoxLayout
@@ -232,7 +232,7 @@ class Recipes(Screen):
 class GPSHelper(Screen):
     input_search = ObjectProperty()
     main_map = ObjectProperty()
-    state = 0
+    state = 1
 
     def __init__(self, **kwargs):
         super(GPSHelper, self).__init__(**kwargs)
