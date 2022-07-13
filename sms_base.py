@@ -19,7 +19,7 @@ def rec_otp (PHONE_NUM):
     otp_sms = generate_OTP()
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     # Подключаем сокет к порту, через который прослушивается сервер
-    server_address = ('51.250.76.244', 9091)
+    server_address = ('51.250.75.79', 9091)
     print('Подключено к {} порт {}'.format(*server_address))
     sock.connect(server_address)
     try:

@@ -23,8 +23,8 @@ import sqlite3 as SQLCommander
 from sms_base import rec_otp
 
 #for debug... REMOVE THIS, IF THIS IS PRODUCTION
-#from kivy.core.window import Window
-#Window.size = (375, 812)
+from kivy.core.window import Window
+Window.size = (375, 812)
 
 #subimport
 from kivymd.uix.boxlayout import MDBoxLayout
@@ -272,7 +272,7 @@ class GPSHelpersp(Screen):
     #     self.count += 1
 
     def click_on_button_gps(self):
-        Dialog('Вы уже на данной странице', 'Уведомление')
+        Dialog('Вы уже на данной странице', 'Внимание!')
 
     def click_on_button_note(self):
         self.parent.current = 'Menu'
@@ -484,15 +484,15 @@ class GPSHelpersp(Screen):
     def click_on_button_userGps(self):
         Dialog('Функция гео-локации в разработке', 'Внимание')
 
-    def callback(self, widget):
+    def open_map(self, widget):
         self.dialog.dismiss()
-        if Data.stateMap == 'Street':
-            self.parent.current = 'GPSHelper'
-        else:
-            self.parent.current = 'GPSHelpersp'
+        self.parent.current = 'GPSHelper'
+
+    def open_sputnik(self, widget):
+        self.dialog.dismiss()
 
     def click_on_button_layers(self):
-        self.dialog = MDDialog(title='Показывать на карте', type='custom', content_cls=MapChoose(), size_hint=[0.9, 0.9], auto_dismiss=False, buttons=[MDFlatButton(text='OK', on_release=self.callback)])
+        self.dialog = MDDialog(title='Показывать на карте', size_hint=[0.9, 0.9], auto_dismiss=False, buttons=[MDFlatButton(text='Карта', on_release=self.open_map), MDFlatButton(text='Спутник', on_release=self.open_sputnik)])
         self.dialog.open()
 
 class GPSHelper(Screen):
@@ -539,7 +539,7 @@ class GPSHelper(Screen):
     #     self.count += 1
 
     def click_on_button_gps(self):
-        Dialog('Вы уже на данной странице', 'Уведомление')
+        Dialog('Вы уже на данной странице', 'Внимание!')
 
     def click_on_button_note(self):
         self.parent.current = 'Menu'
@@ -751,11 +751,10 @@ class GPSHelper(Screen):
     def click_on_button_userGps(self):
         Dialog('Функция гео-локации в разработке', 'Внимание')
 
-    def open_map(self):
+    def open_map(self, widget):
         self.dialog.dismiss()
-        self.parent.current = 'GPSHelper'
 
-    def open_sputnik(self):
+    def open_sputnik(self, widget):
         self.dialog.dismiss()
         self.parent.current = 'GPSHelpersp'
 
@@ -789,28 +788,28 @@ class RegistrationMain(Screen):
 
     def click_on_button_register(self):
         if self.input_surname.text == '':
-            Dialog('Вы не ввели фамилию', 'Ошибка')
+            Dialog('Вы не ввели фамилию', 'Внимание!')
         else:
             if self.input_name.text == '':
-                Dialog('Вы не ввели имя', 'Ошибка')
+                Dialog('Вы не ввели имя', 'Внимание')
             else:
                 if self.input_lastname.text == '':
-                    Dialog('Вы не ввели отчество', 'Ошибка')
+                    Dialog('Вы не ввели отчество', 'Внимание')
                 else:
                     if self.input_mail.text == '':
-                        Dialog('Вы не ввели почту', 'Ошибка')
+                        Dialog('Вы не ввели почту', 'Внимание')
                     else:
                         if re.match('/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[-1-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/', self.input_mail.text):
-                            Dialog('Неккоректный ввод почты', 'Ошибка')
+                            Dialog('Неккоректный ввод почты', 'Внимание')
                         else:
                             if self.input_phone.text == '':
-                                Dialog('Вы не ввели телефон', 'Ошибка')
+                                Dialog('Вы не ввели телефон', 'Внимание')
                             else:
                                 if re.match('^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$', self.input_phone.text) == None:
-                                    Dialog('Неккоректный ввод телефона', 'Ошибка')
+                                    Dialog('Неккоректный ввод телефона', 'Внимание')
                                 else:
                                     #self.parent.current = 'RegistrationDop'
-                                    Dialog('Данная функция находится в разработке', 'Ошибка')
+                                    Dialog('Данная функция находится в разработке', 'Внимание')
 
 class RegistrationDop(Screen):
     button_continue = ObjectProperty()
@@ -837,13 +836,13 @@ class Enter(Screen):
 
     def click_on_button_enter(self):
         if self.input_phone.text == '':
-            Dialog('Вы не ввели телефон', 'Ошибка')
+            Dialog('Вы не ввели телефон', 'Внимание!')
         else:
             if re.match('^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$', self.input_phone.text) == None:
-                Dialog('Неккоректный ввод телефона', 'Ошибка')
+                Dialog('Неккоректный ввод телефона', 'Внимание!')
             else:
-                phone = self.input_phone.text
-                code = rec_otp(self.input_phone.text)
+                phone = '+7' + self.input_phone.text
+                code = rec_otp('7' + self.input_phone.text)
                 Data.phone = phone
                 Data.code = code
                 self.parent.get_screen('EnterCheckPhone').ids.label_phone.text = str(Data.phone)
@@ -859,10 +858,10 @@ class EnterCheckPhone(Screen):
 
     def click_on_button_confirm(self):
         if self.input_code.text == '':
-            Dialog('Вы не ввели код', 'Ошибка')
+            Dialog('Вы не ввели код', 'Внимание!')
         else:
             if self.input_code.text != str(Data.code):
-                Dialog('Неверный код', 'Ошибка')
+                Dialog('Неверный код', 'Внимание')
             else:
                 self.parent.current = 'GPSHelper'
 
