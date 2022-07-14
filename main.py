@@ -23,8 +23,8 @@ import sqlite3 as SQLCommander
 from sms_base import rec_otp
 
 #for debug... REMOVE THIS, IF THIS IS PRODUCTION
-#from kivy.core.window import Window
-#Window.size = (375, 812)
+from kivy.core.window import Window
+Window.size = (375, 812)
 
 #subimport
 from kivymd.uix.boxlayout import MDBoxLayout
@@ -159,72 +159,30 @@ class Rules(Screen):
 class Penalties(Screen):
     pass
 
-class CatalogFish(Screen):
-    listFish = ObjectProperty()
+class Esox(Screen):
+    pass
 
+class Silurus(Screen):
+    pass
+
+class Cyprinus(Screen):
+    pass
+
+class Weapon(Screen):
+    pass
+
+class CatalogFish(Screen):
     def __init__(self, **kwargs):
         super(CatalogFish, self).__init__(**kwargs)
-        i = 0
-        while i < len(Data.db):
-            newGrid = MDGridLayout(rows=2)
-            lab1 = MDLabel(font_style='Proxima Nova', text_size='16sp', bold=True, text=Data.db[i][1])
-            lab2 = MDLabel(font_style='Proxima Nova', text_size='16sp', text=Data.db[i][5])
-            listFish.add_widget(newGrid)
-            newGrid.add_widget(lab1)
-            newGrid.add_widget(lab2)
-            buf = io.BytesIO(Data.db[i][4])
-            cim = CoreImage(buf, ext='jpg')
-            img = Image(texture=cim.texture)
-            listFish.add_widget(img)
-            i += 1
 
     def click_on_button_esox(self):
-        Dialog('Страница подробного описания обыкновенной щуки в разработке', 'Уведомление о разработке')
-        #self.parent.current = ''
+        self.parent.current = 'Esox'
 
     def click_on_button_silurus(self):
-        Dialog('Страница подробного описания обыкновенного сома в разработке', 'Уведомление о разработке')
-        #self.parent.current = ''
+        self.parent.current = 'Silurus'
 
     def click_on_button_cyprinus(self):
-        Dialog('Страница подробного описания сазана в разработке', 'Уведомление о разработке')
-        #self.parent.current = ''
-
-    def click_on_button_abramis(self):
-        Dialog('Страница подробного описания леща в разработке', 'Уведомление о разработке')
-        #self.parent.current = ''
-
-    def click_on_button_rutilus(self):
-        Dialog('Страница подробного описания воблы в разработке', 'Уведомление о разработке')
-        #self.parent.current = ''
-
-    def click_on_button_sander(self):
-        Dialog('Страница подробного описания обыкновенного судака в разработке', 'Уведомление о разработке')
-        #self.parent.current = ''
-
-    def click_on_button_aspius(self):
-        Dialog('Страница подробного описания обыкновенного жереха в разработке', 'Уведомление о разработке')
-        #self.parent.current = ''
-
-    def click_on_button_perka(self):
-        Dialog('Страница подробного описания речного окуня в разработке', 'Уведомление о разработке')
-        #self.parent.current = ''
-
-    def click_on_button_blicca(self):
-        Dialog('Страница подробного описания густеры в разработке', 'Уведомление о разработке')
-        #self.parent.current = ''
-
-    def click_on_button_scardinius(self):
-        Dialog('Страница подробного описания краснопёрки в разработке', 'Уведомление о разработке')
-        #self.parent.current = ''
-
-    def click_on_button_carassius(self):
-        Dialog('Страница подробного описания карася в разработке', 'Уведомление о разработке')
-        #self.parent.current = ''
-
-    def click_on_button_tinca(self):
-        Dialog('Страница подробного описания линя в разработке', 'Уведомление о разработке')
-        #self.parent.current = ''
+        self.parent.current = 'Cyprinus'
 
 class Recipes(Screen):
     pass
@@ -628,7 +586,7 @@ class Enter(Screen):
 
     def click_on_button_enter(self):
         #for debug
-        #self.parent.current = 'GPSHelper'
+        self.parent.current = 'GPSHelper'
         if self.input_phone.text == '':
             Dialog('Вы не ввели телефон', 'Внимание!')
         else:

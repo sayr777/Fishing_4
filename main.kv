@@ -19,19 +19,56 @@ WindowManager:
 	id: window_manager
 
 	Onboard:
+
 	RegistrationMain:
 	RegistrationDop:
+
 	Enter:
 	EnterCheckPhone:
+
 	GPSHelper:
+
 	Menu:
+
 	Rules:
+
 	Penalties:
+
 	CatalogFish:
+	Esox:
+	Silurus:
+	Cyprinus:
+	Weapon:
+
 	Recipes:
+
 	User:
+
 	Calendar:
+
 	News:
+
+<Weapon>:
+	name: 'Weapon'
+	color: (152, 152, 152, 1)
+
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'CatalogFish'
+
+	MDLabel:
+		font_style: 'Proxima Nova'
+		pos_hint: {'x': 0.1, 'center_y': 0.97}
+		text: "Орудия лова"
+		font_size: '30sp'
+		bold: True
+
+	MDLabel:
+		font_style: 'Proxima Nova'
+		pos_hint: {'center_y': 0.5}			
+		text: "Приносим извинения, страница в разработке"
+		font_size: '20sp'
 
 <News>:
 	name: 'News'
@@ -472,361 +509,280 @@ WindowManager:
 	name: 'Rules'
 	color: (152, 152, 152, 1)
 
-	MDBoxLayout:
-		orientation: 'vertical'
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'Menu'
 
-		MDIconButton:
-			icon: 'close'
-			pos_hint: {'right': 1, 'center_y': 0.92}
-			on_release: app.root.current = 'Menu'
+	MDLabel:
+		font_style: 'Proxima Nova'			
+		text: "Правила рыбалки"
+		font_size: '30sp'
+		pos_hint: {'x': 0.05, 'center_y': 0.97}
+		bold: True
 
-		MDLabel:
-			font_style: 'Proxima Nova'			
-			text: "Правила рыбалки"
-			font_size: '30sp'
-			bold: True
+	MDLabel:
+		font_style: 'Proxima Nova'
+		pos_hint: {'center_y': 0.6}			
+		text: "Суточная норма вылова водных биоресурсов в Астраханской области\nЗапрещенные способы и орудия лова на территории Астраханской области\nНа каких территориях Астраханской области любительская рыбалка запрещена\nЗапретные периоды добычи (вылова) водных биоресурсов\nЗапретные для добычи виды водных биоресурсов"
+		font_size: '14sp'
 
-		MDLabel:
-			font_style: 'Proxima Nova'			
-			text: "Приносим извинения, страница в разработке"
-			font_size: '14sp'
+	MDLabel:
+		font_style: 'Proxima Nova'
+		pos_hint: {'center_y': 0.05}
+		text: 'На территории Астраханской области действуют Правила рыболовства для Волжско-Каспийского рыбохозяйственного бассейна, утвержденные приказом Минсельхоза России от 18.11.2014 N 453 (с изменениями, действующими в 2022 г. году) .'
+		font_size: '9sp'
 
 <Penalties>:
 	name: 'Penalties'
 	color: (152, 152, 152, 1)
 
-	MDBoxLayout:
-		orientation: 'vertical'
-		
-		MDIconButton:
-			icon: 'close'
-			pos_hint: {'right': 1, 'center_y': 0.92}
-			on_release: app.root.current = 'Menu'
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'Menu'
+
+	MDLabel:
+		font_style: 'Proxima Nova'			
+		text: "Штрафы"
+		font_size: '30sp'
+		pos_hint: {'x': 0.05, 'center_y': 0.97}
+		bold: True
+
+	ScrollView:
+		do_scroll_y: True
+		do_scroll_x: False
+		size_hint: (1, 0.7)
+		pos_hint: {'center_x': 0.5, 'center_y': 0.4}
 
 		MDLabel:
 			font_style: 'Proxima Nova'			
-			text: "Штрафы"
-			font_size: '30sp'
-			bold: True
-
-		MDLabel:
-			font_style: 'Proxima Nova'			
-			text: "Приносим извинения, страница в разработке"
+			text: "Статья 11.7. Нарушение правил плавания\nСтатья 11.7 дополнена частью 1.1 с 26 июля 2019 г. - Федеральный закон от 26 июля 2019 г. N 217-ФЗ\nСтатья 11.8. Нарушение правил эксплуатации судов, а также управление судном лицом, не имеющим права управления\nСтатья 11.8.1. Управление маломерным судном судоводителем, не имеющим при себе документов, необходимых для допуска к управлению маломерным судном\nСтатья 11.10. Нарушение правил обеспечения безопасности пассажиров на судах водного транспорта, а также на маломерных судах\nСтатья 8.33. Нарушение правил охраны среды обитания или путей миграции объектов животного мира и водных биологических ресурсов\nСтатья 8.35. Уничтожение редких и находящихся под угрозой исчезновения видов животных или растений\nСтатья 8.37. Нарушение правил охоты, правил, регламентирующих рыболовство и другие виды пользования объектами животного мира\nСтатья 20.25. Уклонение от исполнения административного наказания\nСтатья 18.2. Нарушение пограничного режима в пограничной зоне\nСтатья 18.3. Нарушение пограничного режима в территориальном море и во внутренних морских водах Российской Федерации\nСтатья 18.7. Неповиновение законному распоряжению или требованию военнослужащего в связи с исполнением им обязанностей по охране Государственной границы Российской Федерации\nСтатья 258. Незаконная охота\nСтатья 258.1. Незаконные добыча и оборот особо ценных диких животных и водных биологических ресурсов, принадлежащих к видам, занесенным в Красную книгу Российской Федерации и (или) охраняемым международными договорами Российской Федерации"
 			font_size: '14sp'
+			size_hint_y: None
+			height: 1000
+			text_size: (self.width, None)
 
 <CatalogFish>:
 	name: 'CatalogFish'
 	color: (152, 152, 152, 1)
-
-	listFish: listFish
-	MDRelativeLayout:
 	
-		MDIconButton:
-			icon: 'close'
-			pos_hint: {'right': 1, 'center_y': 0.92}
-			on_release: app.root.current = 'Menu'
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'Menu'
 
-		MDLabel:
-			pos_hint: {'x': 0.1, 'center_y': 0.92}
-			font_style: 'Proxima Nova'			
-			text: "Каталог рыб"
-			font_size: '30sp'
-			bold: True
+	MDLabel:
+		pos_hint: {'x': 0.1, 'center_y': 0.97}
+		font_style: 'Proxima Nova'			
+		text: "Каталог рыб"
+		font_size: '30sp'
+		bold: True
+
+	MDFlatButton:
+		font_size: '20sp'
+		pos_hint: {'center_y': 0.85}
+		text: 'ОБЫКНОВЕННАЯ ЩУКА'
+		on_release: root.click_on_button_esox()
+		bold: True
+
+	MDFlatButton:
+		font_size: '20sp'
+		pos_hint: {'center_y': 0.8}
+		text: 'СОМ ОБЫКНОВЕННЫЙ'
+		on_release: root.click_on_button_silurus()
+		bold: True
+
+	MDFlatButton:
+		font_size: '20sp'
+		pos_hint: {'center_y': 0.75}
+		text: 'САЗАН'
+		on_release: root.click_on_button_cyprinus()
+		bold: True
+
+<Esox>:
+	name: 'Esox'
+
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'CatalogFish'
+
+	Image:
+		source: 'resources/pictures/esox.jpg'
+		pos_hint: {'center_y': 0.85}
+
+	MDLabel:
+		pos_hint: {'center_y': 0.75}
+		font_style: 'Proxima Nova'			
+		text: "Обыкновенная щука"
+		font_size: '20sp'
+		bold: True
+
+	MDLabel:
+		pos_hint: {'center_y': 0.70}
+		font_style: 'Proxima Nova'			
+		text: "ESOX LUCIUS"
+		font_size: '18sp'
+		bold: True
+
+	MDLabel:
+		pos_hint: {'center_y': 0.60}
+		font_style: 'Proxima Nova'			
+		text: "Описание"
+		font_size: '18sp'
+		bold: True
 
 	ScrollView:
-		size_hint_y: .73
-		pos_hint: {'x': 0, 'y': .11}
-		do_scroll_x: False
 		do_scroll_y: True
+		do_scroll_x: False
+		size_hint: (1, 0.4)
+		pos_hint: {'center_y': 0.3}
 
-		MDGridLayout:
-			id: listFish
-			cols: 2
-			size: (root.width, root.height)
-			size_hint_x: None
+		MDLabel:
+			font_style: 'Proxima Nova'
+			text: 'Образ жизни: оседлый, не совершает больших перемещений по водоёму. Молодь предпочитает прибрежные участки, крупные особи держаться в глубоких закорёженных  местах. В тёплое время обычное место её обитания – ближе к отмели и травянистым местам. С осенним похолоданием уходит на глубину. Быстрого течения не любит, предпочитает затоны, заводи, омуты или прибрежные мелководья. Одиночная рыба. Хищник, поедающий преимущественно карповых рыб (вобла, плотва, краснопёрка, карась и др.). При недостатке пищи распространен каннибализм.\nОтличительные признаки: удлинённое, сжатое с боков тело с далеко отнесённым назад спинным и анальным плавниками напоминает стрелу с оперением. Клинообразная голова с вытянутым рылом имеет огромную пасть, усаженную острыми, огибающими назад зубами. Окраска чаще всего пятнистая или  полосатая, чрезвычайно изменчивая – от светлой до тёмной.'
+			font_size: '16sp'
 			size_hint_y: None
-			height: self.minimum_height
-			row_default_height: 200
-			row_force_default: True
-			spacing: 10
+			height: 500
+			text_size: (self.width, None)
 
-			canvas.before:
-		        Color:
-		            rgba: 0, 0, 0, .1
-		        Rectangle:
-		            size: self.size
-		            pos: self.pos
+	MDFlatButton:
+		font_size: '16sp'
+		pos_hint: {'center_y': 0.05}
+		text: 'Орудия лова'
+		on_release: app.root.current = 'Weapon'
+		bold: True
 
-			MDGridLayout:
-				rows: 2
-				spacing: 10
+<Silurus>:
+	name: 'Silurus'
 
-				canvas.before:
-			        Color:
-			            rgba: 0, 0, 0, .2
-			        Rectangle:
-			            size: self.size
-			            pos: self.pos
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'CatalogFish'
 
-				MDFlatButton:
-					font_size: '20sp'
-					text: 'ОБЫКНОВЕННАЯ ЩУКА'
-					on_release: root.click_on_button_esox()
-					bold: True
-					theme_text_color: 'Custom'
-					text_color: app.theme_cls.primary_color
+	Image:
+		source: 'resources/pictures/silurus.jpg'
+		pos_hint: {'center_y': 0.85}
 
-				MDLabel:
-					font_style: 'Proxima Nova'
-					text: 'ESOX LUCIUS (Linnaeus, 1758)'
-					font_size: '14sp'
-					italic: True
+	MDLabel:
+		pos_hint: {'center_y': 0.75}
+		font_style: 'Proxima Nova'			
+		text: "Сом обыкновенный"
+		font_size: '20sp'
+		bold: True
 
-			Image:
-				source: 'resources/pictures/esox.jpg'
+	MDLabel:
+		pos_hint: {'center_y': 0.70}
+		font_style: 'Proxima Nova'			
+		text: "SILURUS GLANIS"
+		font_size: '18sp'
+		bold: True
 
-			MDGridLayout:
-				rows: 2
+	MDLabel:
+		pos_hint: {'center_y': 0.60}
+		font_style: 'Proxima Nova'			
+		text: "Описание"
+		font_size: '18sp'
+		bold: True
 
-				MDFlatButton:
-					font_size: '20sp'
-					text: 'СОМ ОБЫКНОВЕННЫЙ'
-					on_release: root.click_on_button_silurus()
-					bold: True
-					theme_text_color: 'Custom'
-					text_color: app.theme_cls.primary_color
+	ScrollView:
+		do_scroll_y: True
+		do_scroll_x: False
+		size_hint: (1, 0.4)
+		pos_hint: {'center_y': 0.3}
 
-				MDLabel:
-					font_style: 'Proxima Nova'
-					text: 'SILURUS GLANIS  (Linnaens, 1758)'
-					font_size: '14sp'
-					italic: True
+		MDLabel:
+			font_style: 'Proxima Nova'
+			text: 'Образ жизни: оседлый, не совершает больших перемещений по водоёму. Молодь предпочитает прибрежные участки, крупные особи держаться в глубоких закорёженных  местах. В тёплое время обычное место её обитания – ближе к отмели и травянистым местам. С осенним похолоданием уходит на глубину. Быстрого течения не любит, предпочитает затоны, заводи, омуты или прибрежные мелководья. Одиночная рыба. Хищник, поедающий преимущественно карповых рыб (вобла, плотва, краснопёрка, карась и др.). При недостатке пищи распространен каннибализм.\nОтличительные признаки: голова большая, сильно сплющенная, незаметно переходит в короткое туловище. Хвост сильно сужен с боков, значительно длиннее туловища. Рот широкий, с мясистыми губами. Нижняя челюсть несколько выдвинута вперед. Глаза сравнительно небольшие, расположены несколько выше и сзади от углов рта. Тело сома желтовато-зеленого цвета, спина темная, по бокам имеются пятна неправильной формы. Нижняя часть тела белая или серая.'
+			font_size: '16sp'
+			size_hint_y: None
+			height: 500
+			text_size: (self.width, None)
 
-			Image:
-				source: 'resources/pictures/silurus.jpg'
+	MDFlatButton:
+		font_size: '16sp'
+		pos_hint: {'center_y': 0.05}
+		text: 'Орудия лова'
+		on_release: app.root.current = 'Weapon'
+		bold: True
 
-			MDGridLayout:
-				rows: 2
+<Cyprinus>:
+	name: 'Cyprinus'
 
-				MDFlatButton:
-					font_size: '20sp'
-					text: 'САЗАН'
-					on_release: root.click_on_button_cyprinus()
-					bold: True
-					theme_text_color: 'Custom'
-					text_color: app.theme_cls.primary_color
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'CatalogFish'
 
-				MDLabel:
-					font_style: 'Proxima Nova'
-					text: 'CYPRINUS CASPIO (Linnaeus, 1758)'
-					font_size: '14sp'
-					italic: True
+	Image:
+		source: 'resources/pictures/cyprinus.jpg'
+		pos_hint: {'center_y': 0.85}
 
-			Image:
-				source: 'resources/pictures/cyprinus.jpg'
+	MDLabel:
+		pos_hint: {'center_y': 0.75}
+		font_style: 'Proxima Nova'			
+		text: "Сазан"
+		font_size: '20sp'
+		bold: True
 
-			MDGridLayout:
-				rows: 2
+	MDLabel:
+		pos_hint: {'center_y': 0.70}
+		font_style: 'Proxima Nova'			
+		text: "CYPRINUS CASPIO"
+		font_size: '18sp'
+		bold: True
 
-				MDFlatButton:
-					font_size: '20sp'
-					text: 'ЛЕЩ'
-					on_release: root.click_on_button_abramis()
-					bold: True
-					theme_text_color: 'Custom'
-					text_color: app.theme_cls.primary_color
+	MDLabel:
+		pos_hint: {'center_y': 0.60}
+		font_style: 'Proxima Nova'			
+		text: "Описание"
+		font_size: '18sp'
+		bold: True
 
-				MDLabel:
-					font_style: 'Proxima Nova'
-					text: 'ABRAMIS BRAMA (Linnaeus, 1758)'
-					font_size: '14sp'
-					italic: True
+	ScrollView:
+		do_scroll_y: True
+		do_scroll_x: False
+		size_hint: (1, 0.4)
+		pos_hint: {'center_y': 0.3}
 
-			Image:
-				source: 'resources/pictures/abramis.jpg'
+		MDLabel:
+			font_style: 'Proxima Nova'
+			text: 'Образ жизни: в реке – типично жилая рыба, не совершает больших миграций. Летом выбирает ямы с несильным, чаще обратным течением и глинистым коряжным дном, иногда останавливается и на участках с илистым грунтом. Любит места с резкой разницей глубин. В водоёмах предпочитает заросли камыша и кувшинок. Держится небольшими стаями, причём чем мельче сазан, тем больше стая. В летнее время он играет, выбрасываясь из воды с сильным характерным всплеском. Это чаще наблюдается в местах постоянного его обитания.\nОтличительные признаки: тело толстое и широкое, а у крупных экземпляров почти цилиндрической формы. Из-за крупной чешуи  жёлто-золотистого цвета с чёрным окаймлением сазан кажется как бы закованным в золотые латы. Рот у него нижний. На верхней губе две пары усиков, служащих органом осязания. Спинной плавник тёмно-серый и занимает почти всю заднюю часть тела, анальный – красно-бурый. В спинном и анальном плавниках есть по одному костистому лучу с зазубринами, которые часто перерезают леску.'
+			font_size: '16sp'
+			size_hint_y: None
+			height: 500
+			text_size: (self.width, None)
 
-			MDGridLayout:
-				rows: 2
-
-				MDFlatButton:
-					font_size: '20sp'
-					text: 'ВОБЛА'
-					on_release: root.click_on_button_rutilus()
-					bold: True
-					theme_text_color: 'Custom'
-					text_color: app.theme_cls.primary_color
-
-				MDLabel:
-					font_style: 'Proxima Nova'
-					text: 'RUTILUS RUTILUS CASPICUS (Yakovlev, 1870)'
-					font_size: '14sp'
-					italic: True
-
-			Image:
-				source: 'resources/pictures/rutilus.jpg'				
-
-			MDGridLayout:
-				rows: 2
-
-				MDFlatButton:
-					font_size: '20sp'
-					text: 'ОБЫКНОВЕННЫЙ СУДАК'
-					on_release: root.click_on_button_sander()
-					bold: True
-					theme_text_color: 'Custom'
-					text_color: app.theme_cls.primary_color
-
-				MDLabel:
-					font_style: 'Proxima Nova'
-					text: 'SANDER LUCIOPERCA (Linnaeus, 1758)'
-					font_size: '14sp'
-					italic: True
-
-			Image:
-				source: 'resources/pictures/sander.jpg'
-
-			MDGridLayout:
-				rows: 2
-
-				MDFlatButton:
-					font_size: '20sp'
-					text: 'ЖЕРЕХ ОБЫКНОВЕННЫЙ'
-					on_release: root.click_on_button_aspius()
-					bold: True
-					theme_text_color: 'Custom'
-					text_color: app.theme_cls.primary_color
-
-				MDLabel:
-					font_style: 'Proxima Nova'
-					text: 'ASPIUS ASPIUS (Linnaeus, 1758)'
-					font_size: '14sp'
-					italic: True
-
-			Image:
-				source: 'resources/pictures/aspius.jpg'
-
-			MDGridLayout:
-				rows: 2
-
-				MDFlatButton:
-					font_size: '20sp'
-					text: 'ОКУНЬ РЕЧНОЙ'
-					on_release: root.click_on_button_perca()
-					bold: True
-					theme_text_color: 'Custom'
-					text_color: app.theme_cls.primary_color
-
-				MDLabel:
-					font_style: 'Proxima Nova'
-					text: 'PERCA FLUVIATILIS (Linnaeus, 1758)'
-					font_size: '14sp'
-					italic: True
-
-			Image:
-				source: 'resources/pictures/perka.jpg'
-
-			MDGridLayout:
-				rows: 2
-
-				MDFlatButton:
-					font_size: '20sp'
-					text: 'ГУСТЕРА'
-					on_release: root.click_on_button_blicca()
-					bold: True
-					theme_text_color: 'Custom'
-					text_color: app.theme_cls.primary_color
-
-				MDLabel:
-					font_style: 'Proxima Nova'
-					text: 'BLICCA BJOERKNA (Linnaeus, 1758)'
-					font_size: '14sp'
-					italic: True
-
-			Image:
-				source: 'resources/pictures/blicca.jpg'
-
-			MDGridLayout:
-				rows: 2
-
-				MDFlatButton:
-					font_size: '20sp'
-					text: 'КРАСНОПЕРКА'
-					on_release: root.click_on_button_scardinius()
-					bold: True
-					theme_text_color: 'Custom'
-					text_color: app.theme_cls.primary_color
-
-				MDLabel:
-					font_style: 'Proxima Nova'
-					text: 'SCARDINIUS ERYTHROPHTHALMUS (Linnaeus, 1758)'
-					font_size: '14sp'
-					italic: True
-
-			Image:
-				source: 'resources/pictures/scardinius.jpg'
-
-			MDGridLayout:
-				rows: 2
-
-				MDFlatButton:
-					font_size: '20sp'
-					text: 'КАРАСЬ'
-					on_release: root.click_on_button_carassius()
-					bold: True
-					theme_text_color: 'Custom'
-					text_color: app.theme_cls.primary_color
-
-				MDLabel:
-					font_style: 'Proxima Nova'
-					text: 'CARASSIUS AURATUS GIBELIO (Bloch, 1782)'
-					font_size: '14sp'
-					italic: True
-
-			Image:
-				source: 'resources/pictures/carassius.jpg'
-
-			MDGridLayout:
-				rows: 2
-
-				MDFlatButton:
-					font_size: '20sp'
-					text: 'ЛИНЬ'
-					on_release: root.click_on_button_tinca()
-					bold: True
-					theme_text_color: 'Custom'
-					text_color: app.theme_cls.primary_color
-
-				MDLabel:
-					font_style: 'Proxima Nova'
-					text: 'TINCA TINCA (Linnaeus, 1758)'
-					font_size: '14sp'
-					italic: True
-
-			Image:
-				source: 'resources/pictures/tinca.jpg'
+	MDFlatButton:
+		font_size: '16sp'
+		pos_hint: {'center_y': 0.05}
+		text: 'Орудия лова'
+		on_release: app.root.current = 'Weapon'
+		bold: True
 
 <Recipes>:
 	name: 'Recipes'
 	color: (152, 152, 152, 1)
-
-	MDBoxLayout:
-		orientation: 'vertical'
 		
-		MDIconButton:
-			icon: 'close'
-			pos_hint: {'right': 1, 'center_y': 0.92}
-			on_release: app.root.current = 'Menu'
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'Menu'
 
-		MDLabel:
-			font_style: 'Proxima Nova'			
-			text: "Рецепты приготовления"
-			font_size: '30sp'
-			bold: True
+	MDLabel:
+		font_style: 'Proxima Nova'
+		pos_hint: {'x': 0.1, 'center_y': 0.97}			
+		text: "Рецепты приготовления"
+		font_size: '30sp'
+		bold: True
 
-		MDLabel:
-			font_style: 'Proxima Nova'			
-			text: "Приносим извинения, страница в разработке"
-			font_size: '14sp'
+	MDLabel:
+		font_style: 'Proxima Nova'
+		pos_hint: {'center_y': 0.5}			
+		text: "Приносим извинения, страница в разработке"
+		font_size: '20sp'
 
 <Onboard>:
 	name: 'Onboard'
