@@ -16,6 +16,8 @@
 
 
 WindowManager:
+	id: window_manager
+
 	Onboard:
 	RegistrationMain:
 	RegistrationDop:
@@ -1182,6 +1184,80 @@ WindowManager:
 
 			on_release: root.click_on_button_confirm()
 
+<CustomBottomSheet>:
+	name: 'CustomBottomSheet'
+
+	orientation: 'vertical'
+	size_hint_y: None
+	height: '600dp'
+
+	MDLabel:
+		font_style: 'Proxima Nova'
+		font_size: '30sp'
+		bold: True
+		text: 'Показать на карте'
+		pos_hint: {'None': None}
+		pos: (self.x, 180)
+
+	MDGridLayout:
+		cols: 3
+		adaptive_height: True
+		pos_hint: {'None': None}
+		pos: (self.x, 170)
+
+		MDFlatButton:
+			text: 'Карта'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
+			on_release: app.get_running_app().root.get_screen('GPSHelper').main_map.map_source = app.get_running_app().root.get_screen('GPSHelper').source_street
+
+		MDFlatButton:
+			text: 'Спутник'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
+			on_release: app.get_running_app().root.get_screen('GPSHelper').main_map.map_source = app.get_running_app().root.get_screen('GPSHelper').source_satellite
+
+		MDFlatButton:
+			text: 'Гибрид'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
+			on_release: app.get_running_app().root.get_screen('GPSHelper').main_map.map_source = app.get_running_app().root.get_screen('GPSHelper').source_hybrid
+
+	MDGridLayout:
+		cols: 2
+		size_hint_y: 0.5
+		adaptive_height: True
+
+		Image:
+			id: image_allowed
+			source: 'resources/map_sign/fishing_allowed_off.png'
+
+		MDFlatButton:
+			font_size: '20sp'
+			text: 'Зона "Рыбалка разрешена"'
+			on_release: app.get_running_app().root.get_screen('GPSHelper').click_fishing_allowed(self)
+
+		Image:
+			id: image_disallowed
+			source: 'resources/map_sign/fishing_disallowed_off.png'
+
+		MDFlatButton:
+			font_size: '20sp'
+			text: 'Зона "Рыбалка запрещена"'
+			on_release: app.get_running_app().root.get_screen('GPSHelper').click_fishing_disallowed(self)
+
+		Image:
+			id: image_shops
+			source: 'resources/map_sign/fishing_shop_off.png'
+
+		MDFlatButton:
+			font_size: '20sp'
+			text: 'Рыболовные магазины'
+			on_release: app.get_running_app().root.get_screen('GPSHelper').click_fishing_shops(self)
+
 <GPSHelper>:
 	name: 'GPSHelper'
 
@@ -1192,11 +1268,11 @@ WindowManager:
 		id: main_map
 	    #map_source: MapSource(cache_key='satellite', url="https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}@2x.jpg90?access_token=pk.eyJ1IjoiYW50b24wNjEyIiwiYSI6ImNpbzl5dWQxYjAwN3h2eWx5Zmw1Y2lkdGkifQ.h1Rr222Sb_Ibl7OgrmwulQ", image_ext='jpeg', attribution='')
 	    map_source: MapSource(url='https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}')
-	    lat: 46
-	    lon: 48
-	    zoom: 10
+	    lat: 46.5124
+	    lon: 47.9812
+	    zoom: 13
 	    on_zoom:
-	        self.zoom = 10 if self.zoom < 10 else self.zoom	
+	        self.zoom = 13 if self.zoom < 13 else self.zoom	
 
 	MDBottomAppBar:
 

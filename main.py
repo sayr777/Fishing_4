@@ -23,8 +23,8 @@ import sqlite3 as SQLCommander
 from sms_base import rec_otp
 
 #for debug... REMOVE THIS, IF THIS IS PRODUCTION
-#from kivy.core.window import Window
-#Window.size = (375, 812)
+from kivy.core.window import Window
+Window.size = (375, 812)
 
 #subimport
 from kivymd.uix.boxlayout import MDBoxLayout
@@ -38,7 +38,9 @@ from kivymd.uix.toolbar import MDToolbar
 from kivymd.uix.button import MDIconButton
 from kivymd.uix.button import MDFlatButton
 from kivymd.uix.relativelayout import RelativeLayout
+from kivymd.uix.bottomsheet import MDCustomBottomSheet
 from kivy import platform
+from kivy.factory import Factory
 
 if platform == 'android':
     from android.permissions import Permission, request_permissions
@@ -227,33 +229,84 @@ class CatalogFish(Screen):
 class Recipes(Screen):
     pass
 
-#define different screens
+class CustomBottomSheet(Screen, MDBoxLayout):
+    image_allowed = ObjectProperty()
+    image_disallowed = ObjectProperty()
+    image_shops = ObjectProperty()
 
+#define different screens
 class GPSHelper(Screen):
     input_search = ObjectProperty()
     main_map = ObjectProperty()
-    state = 1
+    
+    fishing_allowed = False
+    fishing_disallowed = False
+    fishing_shops = False
 
     def __init__(self, **kwargs):
         super(GPSHelper, self).__init__(**kwargs)
 
         self.source_street = MapSource(url='https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}')
-
         self.source_satellite = MapSource(url='https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}')
-
         self.source_hybrid = MapSource(url='https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}')
 
+        source_fishing_allowed = 'resources/layers/fishing_allowed.geojson'
+        source_fishing_disallowed = 'resources/layers/fishing_disallowed.geojson'
+        source_fishing_shops = 'resources/layers/fishing_shops.geojson'
+        source_polygon_allowed = 'resources/layers/allowed_polygon.geojson'
+        source_polygon_disallowed = 'resources/layers/disallowed_polygon.geojson'
+        
+        self.layer_polygon_allowed = GeoJsonMapLayer(source=source_polygon_allowed)
+        self.layer_polygon_disallowed = GeoJsonMapLayer(source=source_polygon_disallowed)
+        self.layer_fishing_allowed = GeoJsonMapLayer(source=source_fishing_allowed)
+        self.layer_fishing_disallowed = GeoJsonMapLayer(source=source_fishing_disallowed)
+        self.layer_fishing_shops = GeoJsonMapLayer(source=source_fishing_shops)
+
+    def centering(self, layer):
+        lon, lat = layer.center
+        min_lon, max_lon, min_lat, max_lat = layer.bounds
+        radius = haversine(min_lon, min_lat, max_lon, max_lat)
+        self.main_map.zoom = get_zoom_for_radius(radius, lat)
+
+    def click_fishing_allowed(self, widget):
+        if self.fishing_allowed:
+            self.fishing_allowed = False
+            self.main_map.remove_layer(self.layer_polygon_allowed)
+            self.main_map.remove_layer(self.layer_fishing_allowed)
+            widget.parent.children[5].source = 'resources/map_sign/fishing_allowed_off.png'
+        else:
+            self.fishing_allowed = True
+            self.centering(self.layer_polygon_allowed)
+            self.main_map.add_layer(self.layer_polygon_allowed)
+            self.main_map.add_layer(self.layer_fishing_allowed)
+            widget.parent.children[5].source = 'resources/map_sign/fishing_allowed_on.png'
+
+    def click_fishing_disallowed(self, widget):
+        widget.parent.children[3]
+        if self.fishing_disallowed:
+            self.fishing_disallowed = False
+            self.main_map.remove_layer(self.layer_polygon_disallowed)
+            self.main_map.remove_layer(self.layer_fishing_disallowed)
+            widget.parent.children[3].source = 'resources/map_sign/fishing_disallowed_off.png'
+        else:
+            self.fishing_disallowed = True
+            self.centering(self.layer_polygon_disallowed)
+            self.main_map.add_layer(self.layer_polygon_disallowed)
+            self.main_map.add_layer(self.layer_fishing_disallowed)
+            widget.parent.children[3].source = 'resources/map_sign/fishing_disallowed_on.png'
+
+    def click_fishing_shops(self, widget):
+        if self.fishing_shops:
+            self.fishing_shops = False
+            self.main_map.remove_layer(self.layer_fishing_shops)
+            widget.parent.children[1].source = 'resources/map_sign/fishing_shop_off.png'
+        else:
+            self.fishing_shops = True
+            self.main_map.add_layer(self.layer_fishing_shops)
+            widget.parent.children[1].source = 'resources/map_sign/fishing_shop_on.png'
+
     def click_on_button_gps(self):
-        #Dialog('Вы уже на данной странице', 'Внимание!')
-        if self.state == 0:
-            self.main_map.map_source = self.source_street
-            self.state = 1
-        elif self.state == 1:
-            self.main_map.map_source = self.source_satellite
-            self.state = 2
-        elif self.state == 2:
-            self.main_map.map_source = self.source_hybrid
-            self.state = 0
+        Dialog('Вы уже на данной странице', 'Внимание!')
 
     def click_on_button_note(self):
         self.parent.current = 'Menu'
@@ -466,8 +519,8 @@ class GPSHelper(Screen):
         Dialog('Функция гео-локации в разработке', 'Внимание')
 
     def click_on_button_layers(self):
-        self.dialog = MDDialog(title='Показывать на карте', text='Приносим извинения, остальные слои в разработке', size_hint=[0.9, 0.9], auto_dismiss=False, buttons=[MDFlatButton(text='Карта', on_release=self.open_map), MDFlatButton(text='Спутник', on_release=self.open_sputnik)])
-        self.dialog.open()
+        self.obj = MDCustomBottomSheet(screen = Factory.CustomBottomSheet())
+        self.obj.open()
 
 class Onboard(Screen):
     pass
@@ -543,7 +596,7 @@ class Enter(Screen):
 
     def click_on_button_enter(self):
         #for debug
-        self.parent.current = 'GPSHelper'
+        #self.parent.current = 'GPSHelper'
         if self.input_phone.text == '':
             Dialog('Вы не ввели телефон', 'Внимание!')
         else:
