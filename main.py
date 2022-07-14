@@ -3,7 +3,7 @@ from kivymd.theming import ThemeManager
 from kivy.properties import ObjectProperty
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.lang import Builder
-from kivy_garden.mapview import MapMarker, MapView, MapSource
+from kivy_garden.mapview import MapMarker, MapView, MapSource, MarkerMapLayer
 from kivy_garden.mapview.clustered_marker_layer import ClusteredMarkerLayer
 from kivy_garden.mapview.geojson import GeoJsonMapLayer
 from kivy_garden.mapview.utils import get_zoom_for_radius, haversine
@@ -23,8 +23,8 @@ import sqlite3 as SQLCommander
 from sms_base import rec_otp
 
 #for debug... REMOVE THIS, IF THIS IS PRODUCTION
-from kivy.core.window import Window
-Window.size = (375, 812)
+#from kivy.core.window import Window
+#Window.size = (375, 812)
 
 #subimport
 from kivymd.uix.boxlayout import MDBoxLayout
@@ -258,9 +258,32 @@ class GPSHelper(Screen):
         
         self.layer_polygon_allowed = GeoJsonMapLayer(source=source_polygon_allowed)
         self.layer_polygon_disallowed = GeoJsonMapLayer(source=source_polygon_disallowed)
-        self.layer_fishing_allowed = GeoJsonMapLayer(source=source_fishing_allowed)
-        self.layer_fishing_disallowed = GeoJsonMapLayer(source=source_fishing_disallowed)
-        self.layer_fishing_shops = GeoJsonMapLayer(source=source_fishing_shops)
+        self.layer_fishing_allowed = MarkerMapLayer()
+        self.layer_fishing_disallowed = MarkerMapLayer()
+        self.layer_fishing_shops = MarkerMapLayer()
+
+        self.layer_fishing_allowed.add_widget(MapMarker(lon=47.948970794677734, lat=46.56228323662375, source='resources/map_sign/fishing_allowed_on.png'))
+        self.layer_fishing_allowed.add_widget(MapMarker(lon=48.008880615234375, lat=46.53253190986272, source='resources/map_sign/fishing_allowed_on.png'))
+        self.layer_fishing_allowed.add_widget(MapMarker(lon=48.03926467895508, lat=46.52745366594394, source='resources/map_sign/fishing_allowed_on.png'))
+        self.layer_fishing_allowed.add_widget(MapMarker(lon=47.99600601196288, lat=46.55874226707572, source='resources/map_sign/fishing_allowed_on.png'))
+        self.layer_fishing_allowed.add_widget(MapMarker(lon=48.013343811035156, lat=46.481373492133784, source='resources/map_sign/fishing_allowed_on.png'))
+        self.layer_fishing_allowed.add_widget(MapMarker(lon=48.02999496459961, lat=46.50193716468582, source='resources/map_sign/fishing_allowed_on.png'))
+        self.layer_fishing_allowed.add_widget(MapMarker(lon=47.97025680541992, lat=46.46257575132626, source='resources/map_sign/fishing_allowed_on.png'))
+        self.layer_fishing_allowed.add_widget(MapMarker(lon=47.9611587524414, lat=46.49141993572272, source='resources/map_sign/fishing_allowed_on.png'))
+        self.layer_fishing_allowed.add_widget(MapMarker(lon=48.005104064941406, lat=46.409931207495845, source='resources/map_sign/fishing_allowed_on.png'))
+
+        self.layer_fishing_disallowed.add_widget(MapMarker(lon=47.95463562011719, lat=46.528162286622035, source='resources/map_sign/fishing_disallowed_on.png'))
+        self.layer_fishing_disallowed.add_widget(MapMarker(lon=48.01574707031249, lat=46.527689873863785, source='resources/map_sign/fishing_disallowed_on.png'))
+        self.layer_fishing_disallowed.add_widget(MapMarker(lon=48.01300048828125, lat=46.50264611816897, source='resources/map_sign/fishing_disallowed_on.png'))
+        self.layer_fishing_disallowed.add_widget(MapMarker(lon=47.99171447753906, lat=46.49177448218621, source='resources/map_sign/fishing_disallowed_on.png'))
+        self.layer_fishing_disallowed.add_widget(MapMarker(lon=47.97557830810547, lat=46.500519229985045, source='resources/map_sign/fishing_disallowed_on.png'))
+        self.layer_fishing_disallowed.add_widget(MapMarker(lon=47.96424865722656, lat=46.50099187899411, source='resources/map_sign/fishing_disallowed_on.png'))
+        self.layer_fishing_disallowed.add_widget(MapMarker(lon=47.976951599121094, lat=46.53359473803679, source='resources/map_sign/fishing_disallowed_on.png'))
+
+        self.layer_fishing_shops.add_widget(MapMarker(lon=47.99520134925842, lat=46.46676590440685, source='resources/map_sign/fishing_shop_on.png'))
+        self.layer_fishing_shops.add_widget(MapMarker(lon=48.03745687007904, lat=46.4956595690788, source='resources/map_sign/fishing_shop_on.png'))
+        self.layer_fishing_shops.add_widget(MapMarker(lon=48.069820404052734, lat=46.36908189730966, source='resources/map_sign/fishing_shop_on.png'))
+        self.layer_fishing_shops.add_widget(MapMarker(lon=48.03526818752289, lat=46.32747782427445, source='resources/map_sign/fishing_shop_on.png'))
 
     def centering(self, layer):
         lon, lat = layer.center
@@ -276,9 +299,10 @@ class GPSHelper(Screen):
             widget.parent.children[5].source = 'resources/map_sign/fishing_allowed_off.png'
         else:
             self.fishing_allowed = True
-            self.centering(self.layer_polygon_allowed)
+            self.centering(self.layer_fishing_allowed)
             self.main_map.add_layer(self.layer_polygon_allowed)
             self.main_map.add_layer(self.layer_fishing_allowed)
+            self.layer_fishing_allowed.reposition()
             widget.parent.children[5].source = 'resources/map_sign/fishing_allowed_on.png'
 
     def click_fishing_disallowed(self, widget):
@@ -290,9 +314,10 @@ class GPSHelper(Screen):
             widget.parent.children[3].source = 'resources/map_sign/fishing_disallowed_off.png'
         else:
             self.fishing_disallowed = True
-            self.centering(self.layer_polygon_disallowed)
+            self.centering(self.layer_fishing_disallowed)
             self.main_map.add_layer(self.layer_polygon_disallowed)
             self.main_map.add_layer(self.layer_fishing_disallowed)
+            self.layer_fishing_disallowed.reposition()
             widget.parent.children[3].source = 'resources/map_sign/fishing_disallowed_on.png'
 
     def click_fishing_shops(self, widget):
@@ -303,6 +328,7 @@ class GPSHelper(Screen):
         else:
             self.fishing_shops = True
             self.main_map.add_layer(self.layer_fishing_shops)
+            self.layer_fishing_shops.reposition()
             widget.parent.children[1].source = 'resources/map_sign/fishing_shop_on.png'
 
     def click_on_button_gps(self):
@@ -520,6 +546,12 @@ class GPSHelper(Screen):
 
     def click_on_button_layers(self):
         self.obj = MDCustomBottomSheet(screen = Factory.CustomBottomSheet())
+        if self.fishing_allowed:
+            self.obj.children[0].children[0].children[0].ids.image_allowed.source = 'resources/map_sign/fishing_allowed_on.png'
+        if self.fishing_disallowed:
+            self.obj.children[0].children[0].children[0].ids.image_disallowed.source = 'resources/map_sign/fishing_disallowed_on.png'
+        if self.fishing_shops:
+            self.obj.children[0].children[0].children[0].ids.image_shops.source = 'resources/map_sign/fishing_shops_on.png'
         self.obj.open()
 
 class Onboard(Screen):
