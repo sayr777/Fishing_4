@@ -49,33 +49,24 @@ if platform == 'android':
 KIVY_FILENAME = 'main.kv'
 
 MONTH_LIST = {
-    '1' : 31,
-    '2' : 28,
-    '3' : 31,
-    '4' : 30,
-    '5' : 31,
-    '6' : 30,
-    '7' : 31,
-    '8' : 31,
-    '9' : 30,
-    '10' : 31,
-    '11' : 30,
-    '12' : 31
+    '1' : 'Январь',
+    '2' : 'Февраль',
+    '3' : 'Март',
+    '4' : 'Апрель',
+    '5' : 'Май',
+    '6' : 'Июнь',
+    '7' : 'Июль',
+    '8' : 'Август',
+    '9' : 'Сентябрь',
+    '10' : 'Октябрь',
+    '11' : 'Ноябрь',
+    '12' : 'Декабрь'
 }
 
 CALENDAR_CODE = [
     [2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 2, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2],
     [0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 0, 0, 0, 2, 2, 2, 3, 3, 3, 3, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 0, 0, 0, 2, 2, 3, 3, 3, 3, 3, 3, 3, 2, 2, 1, 1, 0, 0, 0, 0, 0, 0],
-    [2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 3, 3, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-    [2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 3, 3, 3, 3, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2],
-    [1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 3, 3, 3, 3, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 2, 1, 0, 0, 0],
-    [1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3],
-    [2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 2, 3, 3, 3, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3],
-    [1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 0, 0, 0, 2, 2, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0]
+    [0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 0, 0, 0, 2, 2, 3, 3, 3, 3, 3, 3, 3, 2, 2, 1, 1, 0, 0, 0, 0, 0, 0]
 ]
 
 class Data():
@@ -103,8 +94,6 @@ class News(Screen):
     pass
 
 class Calendar(Screen):
-    listFish = ObjectProperty()
-
     one_label = ObjectProperty()
     two_label = ObjectProperty()
     three_label = ObjectProperty()
@@ -136,6 +125,42 @@ class Calendar(Screen):
     twenty_nine_label = ObjectProperty()
     thirty_label = ObjectProperty()
     thirty_one_label = ObjectProperty()
+
+    def costFish(self, index):
+        if index == 0:
+            return '0%. Клёва нет'
+        elif index == 1:
+            return '<50%. Слабый клёв'
+        elif index == 2:
+            return '>50%. Средний клёв'
+        elif index == 3:
+            return '>80%. Высокий клёв'
+
+    def click_on_cell(self, widget):
+        #18-20
+        day = int(widget.text)
+        if widget.text_color == [1.0, 0.0, 0.0, 1.0]:
+            Dialog('Вылов рыбы в этот день запрещен!', 'Внимание!!!')
+        else:
+            index = 0
+            if day < 11:
+                index = 18
+            elif day < 21 and day > 10:
+                index = 19
+            else:
+                index = 20
+            esox = self.costFish(CALENDAR_CODE[0][index])
+            silurus = self.costFish(CALENDAR_CODE[1][index])
+            cyprinus = self.costFish(CALENDAR_CODE[2][index])
+            self.parent.get_screen('Itog').ids.label_chance_esox.text = 'Шанс поймать: '+esox
+            self.parent.get_screen('Itog').ids.label_chance_silurus.text = 'Шанс поймать: '+silurus
+            self.parent.get_screen('Itog').ids.label_chance_cyprinus.text = 'Шанс поймать: '+cyprinus
+            self.parent.current = 'Itog'
+
+class Itog(Screen):
+    label_chance_esox = ObjectProperty()
+    label_chance_silurus = ObjectProperty()
+    label_chance_cyprinus = ObjectProperty()
 
 class User(Screen):
     pass
@@ -257,14 +282,13 @@ class GPSHelper(Screen):
             widget.parent.children[5].source = 'resources/map_sign/fishing_allowed_off.png'
         else:
             self.fishing_allowed = True
-            self.centering(self.layer_fishing_allowed)
+            self.centering(self.layer_polygon_allowed)
             self.main_map.add_layer(self.layer_polygon_allowed)
             self.main_map.add_layer(self.layer_fishing_allowed)
             self.layer_fishing_allowed.reposition()
             widget.parent.children[5].source = 'resources/map_sign/fishing_allowed_on.png'
 
     def click_fishing_disallowed(self, widget):
-        widget.parent.children[3]
         if self.fishing_disallowed:
             self.fishing_disallowed = False
             self.main_map.remove_layer(self.layer_polygon_disallowed)
@@ -272,7 +296,7 @@ class GPSHelper(Screen):
             widget.parent.children[3].source = 'resources/map_sign/fishing_disallowed_off.png'
         else:
             self.fishing_disallowed = True
-            self.centering(self.layer_fishing_disallowed)
+            self.centering(self.layer_polygon_disallowed)
             self.main_map.add_layer(self.layer_polygon_disallowed)
             self.main_map.add_layer(self.layer_fishing_disallowed)
             self.layer_fishing_disallowed.reposition()
@@ -311,189 +335,189 @@ class GPSHelper(Screen):
         elif days_in_mon == 30:
             thirty_one_label.disabled = True
 
-        sequence = [0, 0, 0, 0]
-        for i in range(len(CALENDAR_CODE)):
-            if mn_now == 1:
-                if CALENDAR_CODE[i][mn_now*3-3] == 0:
-                    sequence[0] += 1
-                elif CALENDAR_CODE[i][mn_now*3-3] == 1:
-                    sequence[1] += 1
-                elif CALENDAR_CODE[i][mn_now*3-3] == 2:
-                    sequence[2] += 1
-                elif CALENDAR_CODE[i][mn_now*3-3] == 3:
-                    sequence[3] += 1
-            else:
-                if CALENDAR_CODE[i][mn_now*3-2] == 0:
-                    sequence[0] += 1
-                elif CALENDAR_CODE[i][mn_now*3-2] == 1:
-                    sequence[1] += 1
-                elif CALENDAR_CODE[i][mn_now*3-2] == 2:
-                    sequence[2] += 1
-                elif CALENDAR_CODE[i][mn_now*3-2] == 3:
-                    sequence[3] += 1
-        max_ten = 0
-        k = 0
-        for i in range(len(sequence)):
-            if sequence[i] > max_ten:
-                max_ten = sequence[i]
-                k = i
-        if k == 1:
-            self.parent.get_screen('Calendar').ids.one_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.two_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.three_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.four_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.fife_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.six_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.seven_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.eight_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.nine_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.ten_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        elif k == 2:
-            self.parent.get_screen('Calendar').ids.one_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.two_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.three_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.four_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.fife_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.six_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.seven_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.eight_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.nine_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.ten_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        elif k == 3:
-            self.parent.get_screen('Calendar').ids.one_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.two_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.three_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.four_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.fife_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.six_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.seven_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.eight_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.nine_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.ten_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        # sequence = [0, 0, 0, 0]
+        # for i in range(len(CALENDAR_CODE)):
+        #     if mn_now == 1:
+        #         if CALENDAR_CODE[i][mn_now*3-3] == 0:
+        #             sequence[0] += 1
+        #         elif CALENDAR_CODE[i][mn_now*3-3] == 1:
+        #             sequence[1] += 1
+        #         elif CALENDAR_CODE[i][mn_now*3-3] == 2:
+        #             sequence[2] += 1
+        #         elif CALENDAR_CODE[i][mn_now*3-3] == 3:
+        #             sequence[3] += 1
+        #     else:
+        #         if CALENDAR_CODE[i][mn_now*3-2] == 0:
+        #             sequence[0] += 1
+        #         elif CALENDAR_CODE[i][mn_now*3-2] == 1:
+        #             sequence[1] += 1
+        #         elif CALENDAR_CODE[i][mn_now*3-2] == 2:
+        #             sequence[2] += 1
+        #         elif CALENDAR_CODE[i][mn_now*3-2] == 3:
+        #             sequence[3] += 1
+        # max_ten = 0
+        # k = 0
+        # for i in range(len(sequence)):
+        #     if sequence[i] > max_ten:
+        #         max_ten = sequence[i]
+        #         k = i
+        # if k == 1:
+        #     self.parent.get_screen('Calendar').ids.one_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.two_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.three_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.four_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.fife_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.six_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.seven_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.eight_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.nine_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.ten_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        # elif k == 2:
+        #     self.parent.get_screen('Calendar').ids.one_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.two_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.three_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.four_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.fife_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.six_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.seven_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.eight_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.nine_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.ten_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        # elif k == 3:
+        #     self.parent.get_screen('Calendar').ids.one_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.two_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.three_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.four_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.fife_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.six_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.seven_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.eight_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.nine_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.ten_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
 
-        sequence = [0, 0, 0, 0]
-        for i in range(len(CALENDAR_CODE)):
-            if mn_now == 1:
-                if CALENDAR_CODE[i][mn_now*3-2] == 0:
-                    sequence[0] += 1
-                elif CALENDAR_CODE[i][mn_now*3-2] == 1:
-                    sequence[1] += 1
-                elif CALENDAR_CODE[i][mn_now*3-2] == 2:
-                    sequence[2] += 1
-                elif CALENDAR_CODE[i][mn_now*3-2] == 3:
-                    sequence[3] += 1
-            else:
-                if CALENDAR_CODE[i][mn_now*3-1] == 0:
-                    sequence[0] += 1
-                elif CALENDAR_CODE[i][mn_now*3-1] == 1:
-                    sequence[1] += 1
-                elif CALENDAR_CODE[i][mn_now*3-1] == 2:
-                    sequence[2] += 1
-                elif CALENDAR_CODE[i][mn_now*3-1] == 3:
-                    sequence[3] += 1
-        max_ten = 0
-        k = 0
-        for i in range(len(sequence)):
-            if sequence[i] > max_ten:
-                max_ten = sequence[i]
-                k = i
+        # sequence = [0, 0, 0, 0]
+        # for i in range(len(CALENDAR_CODE)):
+        #     if mn_now == 1:
+        #         if CALENDAR_CODE[i][mn_now*3-2] == 0:
+        #             sequence[0] += 1
+        #         elif CALENDAR_CODE[i][mn_now*3-2] == 1:
+        #             sequence[1] += 1
+        #         elif CALENDAR_CODE[i][mn_now*3-2] == 2:
+        #             sequence[2] += 1
+        #         elif CALENDAR_CODE[i][mn_now*3-2] == 3:
+        #             sequence[3] += 1
+        #     else:
+        #         if CALENDAR_CODE[i][mn_now*3-1] == 0:
+        #             sequence[0] += 1
+        #         elif CALENDAR_CODE[i][mn_now*3-1] == 1:
+        #             sequence[1] += 1
+        #         elif CALENDAR_CODE[i][mn_now*3-1] == 2:
+        #             sequence[2] += 1
+        #         elif CALENDAR_CODE[i][mn_now*3-1] == 3:
+        #             sequence[3] += 1
+        # max_ten = 0
+        # k = 0
+        # for i in range(len(sequence)):
+        #     if sequence[i] > max_ten:
+        #         max_ten = sequence[i]
+        #         k = i
 
-        if k == 1:
-            self.parent.get_screen('Calendar').ids.eleven_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twelve_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.thirteen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.fourteen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.fifteen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.sixteen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.seventeen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.eightteen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.nineteen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        elif k == 2:
-            self.parent.get_screen('Calendar').ids.eleven_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twelve_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.thirteen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.fourteen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.fifteen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.sixteen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.seventeen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.eightteen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.nineteen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        elif k == 3:
-            self.parent.get_screen('Calendar').ids.eleven_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twelve_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.thirteen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.fourteen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.fifteen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.sixteen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.seventeen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.eightteen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.nineteen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        # if k == 1:
+        #     self.parent.get_screen('Calendar').ids.eleven_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twelve_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.thirteen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.fourteen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.fifteen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.sixteen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.seventeen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.eightteen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.nineteen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        # elif k == 2:
+        #     self.parent.get_screen('Calendar').ids.eleven_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twelve_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.thirteen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.fourteen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.fifteen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.sixteen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.seventeen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.eightteen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.nineteen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        # elif k == 3:
+        #     self.parent.get_screen('Calendar').ids.eleven_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twelve_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.thirteen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.fourteen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.fifteen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.sixteen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.seventeen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.eightteen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.nineteen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
 
-        sequence = [0, 0, 0, 0]
-        for i in range(len(CALENDAR_CODE)):
-            if mn_now == 1:
-                if CALENDAR_CODE[i][mn_now*3-1] == 0:
-                    sequence[0] += 1
-                elif CALENDAR_CODE[i][mn_now*3-1] == 1:
-                    sequence[1] += 1
-                elif CALENDAR_CODE[i][mn_now*3-1] == 2:
-                    sequence[2] += 1
-                elif CALENDAR_CODE[i][mn_now*3-1] == 3:
-                    sequence[3] += 1
-            else:
-                if CALENDAR_CODE[i][mn_now*3] == 0:
-                    sequence[0] += 1
-                elif CALENDAR_CODE[i][mn_now*3] == 1:
-                    sequence[1] += 1
-                elif CALENDAR_CODE[i][mn_now*3] == 2:
-                    sequence[2] += 1
-                elif CALENDAR_CODE[i][mn_now*3] == 3:
-                    sequence[3] += 1
-        max_ten = 0
-        k = 0
-        for i in range(len(sequence)):
-            if sequence[i] > max_ten:
-                max_ten = sequence[i]
-                k = i
-        if k == 1:
-            self.parent.get_screen('Calendar').ids.twenty_one_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_two_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_three_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_four_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_five_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_six_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_seven_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_eight_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_nine_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.thirty_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-            self.parent.get_screen('Calendar').ids.thirty_one_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        elif k == 2:
-            self.parent.get_screen('Calendar').ids.twenty_one_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_two_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_three_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_four_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_five_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_six_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_seven_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_eight_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_nine_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.thirty_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.thirty_one_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        elif k == 3:
-            self.parent.get_screen('Calendar').ids.twenty_one_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_two_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_three_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_four_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_five_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_six_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_seven_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_eight_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.twenty_nine_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.thirty_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-            self.parent.get_screen('Calendar').ids.thirty_one_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        # sequence = [0, 0, 0, 0]
+        # for i in range(len(CALENDAR_CODE)):
+        #     if mn_now == 1:
+        #         if CALENDAR_CODE[i][mn_now*3-1] == 0:
+        #             sequence[0] += 1
+        #         elif CALENDAR_CODE[i][mn_now*3-1] == 1:
+        #             sequence[1] += 1
+        #         elif CALENDAR_CODE[i][mn_now*3-1] == 2:
+        #             sequence[2] += 1
+        #         elif CALENDAR_CODE[i][mn_now*3-1] == 3:
+        #             sequence[3] += 1
+        #     else:
+        #         if CALENDAR_CODE[i][mn_now*3] == 0:
+        #             sequence[0] += 1
+        #         elif CALENDAR_CODE[i][mn_now*3] == 1:
+        #             sequence[1] += 1
+        #         elif CALENDAR_CODE[i][mn_now*3] == 2:
+        #             sequence[2] += 1
+        #         elif CALENDAR_CODE[i][mn_now*3] == 3:
+        #             sequence[3] += 1
+        # max_ten = 0
+        # k = 0
+        # for i in range(len(sequence)):
+        #     if sequence[i] > max_ten:
+        #         max_ten = sequence[i]
+        #         k = i
+        # if k == 1:
+        #     self.parent.get_screen('Calendar').ids.twenty_one_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_two_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_three_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_four_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_five_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_six_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_seven_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_eight_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_nine_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.thirty_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.thirty_one_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
+        # elif k == 2:
+        #     self.parent.get_screen('Calendar').ids.twenty_one_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_two_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_three_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_four_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_five_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_six_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_seven_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_eight_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_nine_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.thirty_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.thirty_one_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        # elif k == 3:
+        #     self.parent.get_screen('Calendar').ids.twenty_one_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_two_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_three_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_four_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_five_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_six_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_seven_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_eight_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.twenty_nine_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.thirty_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
+        #     self.parent.get_screen('Calendar').ids.thirty_one_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
         self.parent.current = 'Calendar'
 
     def click_on_button_fish(self):
@@ -509,7 +533,7 @@ class GPSHelper(Screen):
         if self.fishing_disallowed:
             self.obj.children[0].children[0].children[0].ids.image_disallowed.source = 'resources/map_sign/fishing_disallowed_on.png'
         if self.fishing_shops:
-            self.obj.children[0].children[0].children[0].ids.image_shops.source = 'resources/map_sign/fishing_shops_on.png'
+            self.obj.children[0].children[0].children[0].ids.image_shops.source = 'resources/map_sign/fishing_shop_on.png'
         self.obj.open()
 
 class Onboard(Screen):

@@ -48,6 +48,8 @@ WindowManager:
 
 	News:
 
+	Itog:
+
 <Weapon>:
 	name: 'Weapon'
 	color: (152, 152, 152, 1)
@@ -93,11 +95,73 @@ WindowManager:
 			text: "Приносим извинения, страница в разработке"
 			font_size: '14sp'
 
+<Itog>:
+	name: 'Itog'
+
+	label_chance_esox: label_chance_esox
+	label_chance_silurus: label_chance_silurus
+	label_chance_cyprinus: label_chance_cyprinus
+
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'Calendar'
+
+	MDLabel:
+		font_style: 'Proxima Nova'
+		pos_hint: {'x': 0.1, 'center_y': 0.97}
+		text: "Вероятности улова"
+		font_size: '30sp'
+		bold: True
+
+	MDFlatButton:
+		pos_hint: {'center_y': 0.85}
+		font_size: '16sp'
+		text: 'ОБЫКНОВЕННАЯ ЩУКА'
+		on_release: app.root.current = 'Esox'
+		bold: True
+
+	MDLabel:
+		pos_hint: {'right': 1, 'center_y': 0.82}
+		id: label_chance_esox
+		font_style: 'Proxima Nova'
+		text: "Шанс поймать: "
+		font_size: '16sp'
+		bold: True
+
+	MDFlatButton:
+		font_size: '16sp'
+		text: 'СОМ ОБЫКНОВЕННЫЙ'
+		pos_hint: {'center_y': 0.75}
+		on_release: app.root.current = 'Silurus'
+		bold: True
+
+	MDLabel:
+		id: label_chance_silurus
+		font_style: 'Proxima Nova'
+		pos_hint: {'right': 1, 'center_y': 0.72}
+		text: "Шанс поймать: "
+		font_size: '16sp'
+		bold: True
+
+	MDFlatButton:
+		font_size: '16sp'
+		text: 'САЗАН'
+		pos_hint: {'center_y': 0.65}
+		on_release: app.root.current = 'Cyprinus'
+		bold: True
+
+	MDLabel:
+		id: label_chance_cyprinus
+		font_style: 'Proxima Nova'
+		pos_hint: {'right': 1, 'center_y': 0.62}
+		text: "Шанс поймать: "
+		font_size: '16sp'
+		bold: True
+
 <Calendar>:
 	name: 'Calendar'
 	color: (152, 152, 152, 1)
-
-	listFish: listFish
 
 	one_label: one_label
 	two_label: two_label
@@ -130,319 +194,315 @@ WindowManager:
 	twenty_nine_label: twenty_nine_label
 	thirty_label: thirty_label
 	thirty_one_label: thirty_one_label
-
-	MDRelativeLayout:
 	
-		MDIconButton:
-			icon: 'close'
-			pos_hint: {'right': 1, 'center_y': 0.92}
-			on_release: app.root.current = 'Menu'
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'Menu'
+
+	MDLabel:
+		pos_hint: {'x': 0.1, 'center_y': 0.97}
+		font_style: 'Proxima Nova'			
+		text: "Календарь"
+		font_size: '30sp'
+		bold: True
+
+	MDGridLayout:
+		pos_hint: {'center_y': 0.8}
+		cols: 2
 
 		MDLabel:
-			pos_hint: {'x': 0.1, 'center_y': 0.92}
 			font_style: 'Proxima Nova'			
-			text: "Календарь"
-			font_size: '30sp'
+			text: "Июль"
+			font_size: '24sp'
 			bold: True
 
-	ScrollView:
-		size_hint_y: .73
-		pos_hint: {'x': 0.05}
-		pos: (0, -30)
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			text: "2022 год"
+			font_size: '24sp'
+			bold: True
 
-		MDGridLayout:
-			id: listFish
-			cols: 7
-			size: (root.width, root.height)
-			size_hint_x: None
-			size_hint_y: None
-			height: self.minimum_height
-			row_default_height: 20
-			row_force_default: True
-			spacing: 5
+	MDGridLayout:
+		pos_hint: {'center_y': 0.45}
+		size_hint: (1, 0.6)
+		cols: 5
 
-			MDLabel:
-				font_style: 'Proxima Nova'
-				text: 'Пн'
-				font_size: '16sp'
+		# MDFlatButton:
+		# 	text: 'Пн'
+		# 	font_size: '16sp'
 
-			MDLabel:
-				font_style: 'Proxima Nova'
-				text: 'Вт'
-				font_size: '16sp'
+		# MDFlatButton:
+		# 	text: 'Вт'
+		# 	font_size: '16sp'
 
-			MDLabel:
-				font_style: 'Proxima Nova'
-				text: 'Ср'
-				font_size: '16sp'
+		# MDFlatButton:
+		# 	text: 'Ср'
+		# 	font_size: '16sp'
 
-			MDLabel:
-				font_style: 'Proxima Nova'
-				text: 'Чт'
-				font_size: '16sp'
+		# MDFlatButton:
+		# 	text: 'Чт'
+		# 	font_size: '16sp'
 
-			MDLabel:
-				font_style: 'Proxima Nova'
-				text: 'Пт'
-				font_size: '16sp'
+		# MDFlatButton:
+		# 	text: 'Пт'
+		# 	font_size: '16sp'
 
-			MDLabel:
-				font_style: 'Proxima Nova'
-				text: 'Сб'
-				font_size: '16sp'
+		# MDFlatButton:
+		# 	text: 'Сб'
+		# 	font_size: '16sp'
 
-			MDLabel:
-				font_style: 'Proxima Nova'
-				text: 'Вс'
-				font_size: '16sp'
+		# MDFlatButton:
+		# 	text: 'Вс'
+		# 	font_size: '16sp'
 
-			MDLabel:
-				id: one_label
-				font_style: 'Proxima Nova'
-				text: '1'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: one_label
+			text: '1'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 1.0, 1.0, 0.0, 1.0
 
-			MDLabel:
-				id: two_label
-				font_style: 'Proxima Nova'
-				text: '2'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: two_label
+			text: '2'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 1.0, 1.0, 0.0, 1.0
 
-			MDLabel:
-				id: three_label
-				font_style: 'Proxima Nova'
-				text: '3'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: three_label
+			text: '3'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 1.0, 1.0, 0.0, 1.0
 
-			MDLabel:
-				id: four_label
-				font_style: 'Proxima Nova'
-				text: '4'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: four_label
+			text: '4'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 1.0, 0.0, 0.0, 1.0
 
-			MDLabel:
-				id: fife_label
-				font_style: 'Proxima Nova'
-				text: '5'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: fife_label
+			text: '5'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 1.0, 0.0, 0.0, 1.0
 
-			MDLabel:
-				id: six_label
-				font_style: 'Proxima Nova'
-				text: '6'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: six_label
+			text: '6'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 1.0, 1.0, 0.0, 1.0
 
-			MDLabel:
-				id: seven_label
-				font_style: 'Proxima Nova'
-				text: '7'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: seven_label
+			text: '7'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 1.0, 1.0, 0.0, 1.0
 
-			MDLabel:
-				id: eight_label
-				font_style: 'Proxima Nova'
-				text: '8'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: eight_label
+			text: '8'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 1.0, 1.0, 0.0, 1.0
 
-			MDLabel:
-				id: nine_label
-				font_style: 'Proxima Nova'
-				text: '9'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: nine_label
+			text: '9'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 1.0, 1.0, 0.0, 1.0
 
-			MDLabel:
-				id: ten_label
-				font_style: 'Proxima Nova'
-				text: '10'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: ten_label
+			text: '10'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 1.0, 1.0, 0.0, 1.0
 
-			MDLabel:
-				id: eleven_label
-				font_style: 'Proxima Nova'
-				text: '11'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: eleven_label
+			text: '11'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 1.0, 0.0, 1.0
 
-			MDLabel:
-				id: twelve_label
-				font_style: 'Proxima Nova'
-				text: '12'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: twelve_label
+			text: '12'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 1.0, 0.0, 1.0
 
-			MDLabel:
-				id: thirteen_label
-				font_style: 'Proxima Nova'
-				text: '13'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: thirteen_label
+			text: '13'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 1.0, 0.0, 1.0
 
-			MDLabel:
-				id: fourteen_label
-				font_style: 'Proxima Nova'
-				text: '14'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: fourteen_label
+			text: '14'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 1.0, 0.0, 1.0
 
-			MDLabel:
-				id: fifteen_label
-				font_style: 'Proxima Nova'
-				text: '15'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: fifteen_label
+			text: '15'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 1.0, 0.0, 1.0
 
-			MDLabel:
-				id: sixteen_label
-				font_style: 'Proxima Nova'
-				text: '16'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: sixteen_label
+			text: '16'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 1.0, 0.0, 1.0
 
-			MDLabel:
-				id: seventeen_label
-				font_style: 'Proxima Nova'
-				text: '17'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: seventeen_label
+			text: '17'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 1.0, 0.0, 1.0
 
-			MDLabel:
-				id: eightteen_label
-				font_style: 'Proxima Nova'
-				text: '18'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: eightteen_label
+			text: '18'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 1.0, 0.0, 1.0
 
-			MDLabel:
-				id: nineteen_label
-				font_style: 'Proxima Nova'
-				text: '19'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: nineteen_label
+			text: '19'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 1.0, 0.0, 1.0
 
-			MDLabel:
-				id: twenty_label
-				font_style: 'Proxima Nova'
-				text: '20'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: twenty_label
+			text: '20'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 1.0, 0.0, 1.0
 
-			MDLabel:
-				id: twenty_one_label
-				font_style: 'Proxima Nova'
-				text: '21'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: twenty_one_label
+			text: '21'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 1.0, 0.0, 0.0, 1.0
 
-			MDLabel:
-				id: twenty_two_label
-				font_style: 'Proxima Nova'
-				text: '22'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: twenty_two_label
+			text: '22'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
 
-			MDLabel:
-				id: twenty_three_label
-				font_style: 'Proxima Nova'
-				text: '23'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: twenty_three_label
+			text: '23'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
 
-			MDLabel:
-				id: twenty_four_label
-				font_style: 'Proxima Nova'
-				text: '24'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: twenty_four_label
+			text: '24'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
 
-			MDLabel:
-				id: twenty_five_label
-				font_style: 'Proxima Nova'
-				text: '25'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: twenty_five_label
+			text: '25'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
 
-			MDLabel:
-				id: twenty_six_label
-				font_style: 'Proxima Nova'
-				text: '26'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: twenty_six_label
+			text: '26'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
 
-			MDLabel:
-				id: twenty_seven_label
-				font_style: 'Proxima Nova'
-				text: '27'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: twenty_seven_label
+			text: '27'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
 
-			MDLabel:
-				id: twenty_eight_label
-				font_style: 'Proxima Nova'
-				text: '28'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: twenty_eight_label
+			text: '28'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
 
-			MDLabel:
-				id: twenty_nine_label
-				font_style: 'Proxima Nova'
-				text: '29'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: twenty_nine_label
+			text: '29'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
 
-			MDLabel:
-				id: thirty_label
-				font_style: 'Proxima Nova'
-				text: '30'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: thirty_label
+			text: '30'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
 
-			MDLabel:
-				id: thirty_one_label
-				font_style: 'Proxima Nova'
-				text: '31'
-				font_size: '16sp'
-				theme_text_color: 'Custom'
-				text_color: 0.0, 0.0, 0.0, 1.0
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: thirty_one_label
+			text: '31'
+			font_size: '16sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
 
 <User>:
 	name: 'User'
@@ -518,18 +578,18 @@ WindowManager:
 		font_style: 'Proxima Nova'			
 		text: "Правила рыбалки"
 		font_size: '30sp'
-		pos_hint: {'x': 0.05, 'center_y': 0.97}
+		pos_hint: {'x': 0.1, 'center_y': 0.97}
 		bold: True
 
 	MDLabel:
 		font_style: 'Proxima Nova'
-		pos_hint: {'center_y': 0.6}			
+		pos_hint: {'x': 0.05, 'center_y': 0.6}			
 		text: "Суточная норма вылова водных биоресурсов в Астраханской области\nЗапрещенные способы и орудия лова на территории Астраханской области\nНа каких территориях Астраханской области любительская рыбалка запрещена\nЗапретные периоды добычи (вылова) водных биоресурсов\nЗапретные для добычи виды водных биоресурсов"
 		font_size: '14sp'
 
 	MDLabel:
 		font_style: 'Proxima Nova'
-		pos_hint: {'center_y': 0.05}
+		pos_hint: {'x': 0.05, 'center_y': 0.05}
 		text: 'На территории Астраханской области действуют Правила рыболовства для Волжско-Каспийского рыбохозяйственного бассейна, утвержденные приказом Минсельхоза России от 18.11.2014 N 453 (с изменениями, действующими в 2022 г. году) .'
 		font_size: '9sp'
 
@@ -552,7 +612,7 @@ WindowManager:
 	ScrollView:
 		do_scroll_y: True
 		do_scroll_x: False
-		size_hint: (1, 0.7)
+		size_hint: (0.95, 0.7)
 		pos_hint: {'center_x': 0.5, 'center_y': 0.4}
 
 		MDLabel:
@@ -1152,14 +1212,12 @@ WindowManager:
 		font_size: '30sp'
 		bold: True
 		text: 'Показать на карте'
-		pos_hint: {'None': None}
-		pos: (self.x, 180)
+		pos_hint: {'center_y': 0.97}
 
 	MDGridLayout:
 		cols: 3
 		adaptive_height: True
-		pos_hint: {'None': None}
-		pos: (self.x, 170)
+		pos_hint: {'center_x': 0.5, 'center_y': 0.75}
 
 		MDFlatButton:
 			text: 'Карта'
@@ -1185,6 +1243,7 @@ WindowManager:
 	MDGridLayout:
 		cols: 2
 		size_hint_y: 0.5
+		pos_hint: {'center_y': 0.3}
 		adaptive_height: True
 
 		Image:
@@ -1226,95 +1285,13 @@ WindowManager:
 	    map_source: MapSource(url='https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}')
 	    lat: 46.5124
 	    lon: 47.9812
-	    zoom: 13
+	    zoom: 12
 	    on_zoom:
-	        self.zoom = 13 if self.zoom < 13 else self.zoom	
+	        self.zoom = 12 if self.zoom < 12 else self.zoom	
 
 	MDBottomAppBar:
 
 		MDToolbar:
-			left_action_items: [['map-marker-outline', lambda x: root.click_on_button_gps()], ['note-text-outline', lambda x: root.click_on_button_note()]]
-			right_action_items: [['calendar-month', lambda x: root.click_on_button_calendar()], ['account', lambda x: root.click_on_button_user()]]
-			icon: 'plus-circle'
-			on_action_button: root.click_on_button_plus()
-			type: 'bottom'
-			mode: 'center'
-
-	MDFloatLayout:
-
-		MDIconButton:
-			icon: 'fish'
-			pos_hint: {'right' : 1, 'center_y' : 0.45}
-			on_release: root.click_on_button_fish()
-
-		MDIconButton:
-			icon: 'crosshairs-gps'
-			pos_hint: {'right' : 1, 'center_y' : 0.5}
-			on_release: root.click_on_button_userGps()
-
-		MDIconButton:
-			icon: 'layers-triple-outline'
-			pos_hint: {'right' : 1, 'center_y' : 0.92}
-			on_release: root.click_on_button_layers()
-
-		# Image:
-		# 	source: 'resources/pictures/search/png'
-		# 	size_hint: {.1, .1}
-		# 	allow_stretch: True
-
-		MDTextField:
-			hint_text: 'Найти место или адрес'
-			font_style: 'Proxima Nova'
-			size_hint_x: .7
-			pos_hint: {'right': 0.8, 'center_y' : 0.96}			
-			id: input_search
-			multiline: False
-			font_size: '30sp'
-			icon_right: 'magnify'
-
-<GPSHelpersp>:
-	name: 'GPSHelpersp'
-
-	input_search: input_search
-
-	MapView:
-		id: sputnik_map
-		disabled: True
-	    map_source: MapSource(cache_key='satellite', url="https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}@2x.jpg90?access_token=pk.eyJ1IjoiYW50b24wNjEyIiwiYSI6ImNpbzl5dWQxYjAwN3h2eWx5Zmw1Y2lkdGkifQ.h1Rr222Sb_Ibl7OgrmwulQ", image_ext='jpeg', attribution='')
-	    #map_source: MapSource(cache_key='esri-street', url='https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', image_ext='jpeg', attribution='')
-	    lat: 46
-	    lon: 48
-	    zoom: 10
-	    on_zoom:
-	        self.zoom = 10 if self.zoom < 10 else self.zoom
-
-	
-
-	# MapView:
-
-
-	# 	lat: 47.99296606506406
-	# 	lon: 45.895986557006836
-	# 	zoom: 14
-	# 	map_source: "osm"
-
-	# 	# Fixed the maximum zoom out to 12
-	# 	on_zoom: self.zoom = 14 if self.zoom < 14 else self.zoom
- #    	# Attempt of fixing the MapMarker size when zooming
-
-	# 	MapMarker:
- #    		id: map_marker_id
- #    		source: 'resources/pictures/marker.png'
- #    		lat: 47.995390
- #    		lon: 45.853030
- #    		size_hint: (None, None)
- #    		size: [50, 50]	
-
-	MDBottomAppBar:
-
-		MDToolbar:
-			#size_hint: .93, None
-			#pos_hint: {'center_x' : 0.5, 'y' : 0.1}
 			left_action_items: [['map-marker-outline', lambda x: root.click_on_button_gps()], ['note-text-outline', lambda x: root.click_on_button_note()]]
 			right_action_items: [['calendar-month', lambda x: root.click_on_button_calendar()], ['account', lambda x: root.click_on_button_user()]]
 			icon: 'plus-circle'
