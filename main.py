@@ -79,6 +79,8 @@ class Data():
     input_mail = ''
     input_phone = 0
 
+    number_rule = 0
+
     stateMap = 'Street'
 
     db = []
@@ -179,7 +181,127 @@ class Menu(Screen):
         self.parent.current = 'Penalties'
 
 class Rules(Screen):
-    pass
+    def click_on_rule_fishing(self):
+        Data.number_rule = 0
+        self.parent.get_screen('RuleFishing').ids.zag.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][0]
+        self.parent.get_screen('RuleFishing').ids.main_text.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][1]
+        self.parent.get_screen('RuleFishing').ids.main_text.height = 1200
+        self.parent.current = 'RuleFishing'
+
+    def click_on_deadlines_spawning_off(self):
+        Data.number_rule = 1
+        self.parent.get_screen('RuleFishing').ids.zag.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][0]
+        self.parent.get_screen('RuleFishing').ids.main_text.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][1]
+        self.parent.get_screen('RuleFishing').ids.main_text.height = 1800
+        self.parent.current = 'RuleFishing'
+
+    def click_on_spawning_areas(self):
+        Data.number_rule = 2
+        self.parent.get_screen('RuleFishing').ids.zag.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][0]
+        self.parent.get_screen('RuleFishing').ids.main_text.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][1]
+        self.parent.get_screen('RuleFishing').ids.main_text.height = 1150
+        self.parent.current = 'RuleFishing'
+
+    def click_on_weapons_fishing(self):
+        Data.number_rule = 3
+        self.parent.get_screen('RuleFishing').ids.zag.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][0]
+        self.parent.get_screen('RuleFishing').ids.main_text.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][1]
+        self.parent.get_screen('RuleFishing').ids.main_text.height = 1800
+        self.parent.current = 'RuleFishing'
+
+    def click_on_daily_rate_of_fish_catch(self):
+        Data.number_rule = 4
+        self.parent.get_screen('RuleFishing').ids.zag.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][0]
+        self.parent.get_screen('RuleFishing').ids.main_text.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][1]
+        self.parent.get_screen('RuleFishing').ids.main_text.height = 800
+        self.parent.current = 'RuleFishing'
+
+    def click_on_what_fish_off_fishing(self):
+        Data.number_rule = 5
+        self.parent.get_screen('RuleFishing').ids.zag.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][0]
+        self.parent.get_screen('RuleFishing').ids.main_text.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][1]
+        self.parent.get_screen('RuleFishing').ids.main_text.height = 1250
+        self.parent.current = 'RuleFishing'
+
+    def click_on_size_penalti_fishing(self):
+        Data.number_rule = 6
+        self.parent.get_screen('RuleFishing').ids.zag.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][0]
+        self.parent.get_screen('RuleFishing').ids.main_text.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][1]
+        self.parent.get_screen('RuleFishing').ids.main_text.height = 1150
+        self.parent.current = 'RuleFishing'
+
+    def click_on_what_can_pay_penalti_and_where(self):
+        Data.number_rule = 7
+        self.parent.get_screen('RuleFishing').ids.zag.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][0]
+        self.parent.get_screen('RuleFishing').ids.main_text.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][1]
+        self.parent.get_screen('RuleFishing').ids.main_text.height = 500
+        self.parent.current = 'RuleFishing'
+
+class RuleFishing(Screen):
+    zag = ObjectProperty()
+    main_text = ObjectProperty()
+
+    data = [
+        ['Правила рыболовства', '    Граждане вправе осуществлять любительское и спортивное рыболовство на водных объектах общего пользования свободно и бесплатно.\n\n    Однако, рыболов должен помнить, что во время лова он находится в границах водоохранных зон рек, озер, ручьев, каналов (50-200 м. от береговой линии в зависимости от протяженности водотока), где действует специальный режим осуществления хозяйственной и иной деятельности в целях предотвращения загрязнения, засорения, заиления указанных водных объектов и истощения их вод, а также сохранения среды обитания водных биологических ресурсов и других объектов животного и растительного мира.\n\n    В границах водоохранных зон запрещаются движение и стоянка транспортных средств (кроме специальных транспортных средств), за исключением их движения по дорогам и стоянки на дорогах и в специально оборудованных местах, имеющих твердое покрытие.\n\n    Нарушение данного запрета влечет за собой административную ответственность в виде штрафа для граждан в размере от трех тысяч до четырех тысяч пятисот рублей (статья 8.42 КоАП РФ).\n\n    В определенные месяцы, в области запрещено ловить рыбу. Ограничения вводятся в связи с периодом активного нереста. Ловить разрешается только на удочку. Количество крючков, используемых 1 человеком, должно быть не более 5.\n\n    Объем пойманной рыбы на одного человека не должен превышать 10 кг.'],
+        ['Сроки нерестового запрета', '    Нерестовый период в Астраханской области в 2022 году устанавливается с 16 мая по 20 июня.\n\n    Запрещается любая рыбалка с 20 апреля по 20 июня — повсеместно, за исключением водных объектов рыбохозяйственного значения в пределах административных границ населенных пунктов, а также на рыбопромысловых участках, предоставленных для организации любительского и спортивного рыболовства в этот период. В эти месяцы запрещен отлов любого вида рыбы. Рыбалка разрешена, но только в специализированных водоемах и хранилищах.\n\n    В сроки, С 1 апреля по 30 июня запрещен вылов раков в любом количестве.\n\n    Запрещается:\n\n       •   любительская и спортивная охота на каспийского тюленя.\n\n       •   в запретных районах: волжское запретное предустьевое пространство, за исключением рыбопромысловых участков, предоставленных для организации любительского и спортивного рыболовства, нерестилища, зимовальные ямы.\n\n       •   применение колющих орудий лова, сетей всех типов, ловушек всех типов и конструкций (кроме раколовок), огнестрельного и пневматического оружия, арбалетов и луков, сомовников, капканов, крючковых самоловных снастей, сетных отцеживающих и объячеивающих орудий добычи (вылова) и приспособлений (бредней, неводов, волокуш, наметок, подъемников, кругов, «телевизоров», «экранов» и т.п.);\n\n       •   рыбалка кружками с общим количеством крючков более 10 штук на орудиях добычи (вылова) у одного гражданина;\n\n       •   рыбалка при помощи устройства заездок, загородок, заколок, запруд и других видов заграждений, частично или полностью перекрывающих русло водоемов и водотоков и препятствующих свободному перемещению рыбы;\n\n       •   рыбалка способом багрения, глушения, гона (в том числе с помощью бряцал и ботания), переметами с общим количеством крючков более 10 штук на орудиях добычи (вылова) у одного гражданина, «на подсветку»;\n\n       •   рыбалка жаберным способом (при использовании «жмыхоловок», «комбайнов») с количеством крючков более 2-х штук;\n\n       •   рыбалка раков руками вброд или путем ныряния.'],
+        ['Нерестовые участки', '    Река Волга славится огромными территориями нерестилищ осетровой рыбы. Отправляясь на ловлю, стоит прочитать список (или лучше иметь его под рукой), чтобы выбрать правильное и не запрещенное место. Верхняя, средняя и нижняя зоны, следующие\n\n   •   Остров Спорный, Тракторный, Зеленый, Ельшанская, Рудневская. Протяженность нереста 1 км.\n\n   •   Остров Баррикадский, Татьянский – 2 км.\n\n   •   Гряд у Центрального стадиона. Протяженность нерестилища – 5 км.\n\n   •   Райгородская, Солодниковская гряда. Протяженность составляет 1 км.\n\n   •   Светлоярская и Дубовская зона. Территория занимает 2,5 км.\n\n   •   Каменноярская гряда – 6 км.\n\n   •   Соленозаймищенская, Пришибинская, Косикинская, Восточная. Протяженность гряды составляет 1 км.\n\n   •   Ветлянская, Верхнекопановская зона распространяется на 1,5 км.\n\n   •   Копановская, Сероглазовская имеет протяженность 2 км.\n\n   •   Цаган-Аманская – крупная гряда, которая протянулась на 8 км.\n\n    В период, когда начинается нерест, разрешена рыбалка, но только в специализированных местах с применением не более 2 крючков на одного человека.'],
+        ['Орудия рыболовства', '    Для рыбалки в Астраханской области разрешается использовать следующие орудия и способы добычи (вылова):\n\n   •   поплавочная удочка, состоящая из удилища (в том числе с пропускными кольцами и со съемной катушкой с леской), лески, поплавка, грузил, поводков и крючков;\n\n   •   донная удочка (донка), состоящая из удилища (в том числе с пропускными кольцами и съемной катушкой с леской или шнуром) или хлыстика, лески или шнура, грузила, поводков и крючков;\n\n   •   донная удочка, состоящая из удилища (в том числе с пропускными кольцами и съемной катушкой с леской и шнуром) или хлыстика, лески, грузила, кормушки или жмыхоловки с количеством крючков не более 2-х штук;\n\n   •   донная удочка с амортизаторов (применяются только одинарные крючки);\n\n   •   блесны, воблеры, мушки и другие приманки, разные по форме и цвету с крючками (одинарными, двойниками или тройниками);\n\n   •   раколовки, в количестве не более трех штук у одного гражданина, каждый из параметров разрешаемых раколовок (длина, ширина, высота -для многоугольных, высота, диаметр - для конических и цилиндрических) не должны превышать 80 см:\n\n   •   добыча (вылов) на дорожку с применением гребного судна или плавучего средства с использованием не более двух приманок на одно судно или плавучее средство;\n\n   •   добыча (вылов) на троллинг - с применением паруса и/или мотора с использованием не более двух приманок на одно судно или плавучее средство;\n\n   •   добыча (вылов) рыбы «на квок»;\n\n   •   кораблики;\n\n   •   жерлицы;\n\n   •   специальные ружья и пистолеты для подводной охоты;\n\n   •   спиннинговая снасть (спиннинг), состоящую из удилища с пропускными кольцами и рукояткой, на которой крепится съемная катушка с леской или шнуром и оснащается одной приманкой с крючками (одинарными, двойниками или тройниками). Дополнительно перед приманкой может ставиться грузило без крючков.\n\n    Крючки - двойники или крючки - тройники применяются только при добыче (вылове) на спиннинг и жерлицу.'],
+        ['Суточная норма вылова рыбы', '    Не только местные любят рыбачить на «своей» территории. Активность проявляют и любители попытать удачу в улове крупной рыбы с других регионов. Многие удильщики как можно раньше начинают готовиться к поездке. Необходимо закупить крючки, удочки и узнать период, когда стоит посещать водоем. Но после вступления закона в силу, рыбакам ограничили масштабы отлова. Введена суточная норма, чтобы не нарушать баланс и предотвратить исчезновение некоторых видов:\n\n   •   Суточная норма выловленной добычи не должна превышать 10 кг.\n\n   •   Кроме сома, можно ловить не более 1 экземпляра в одни руки.\n\n   •   Раков нельзя вылавливать больше 50 шт. При этом запрещено брать всех подряд. Особей меньше 10 см следует отпускать обратно.\n\n    Таким образом, рыбак может поймать каждого экземпляра рыбы не более 10 кг. В эту категорию, не попадает сом, так как его размеры могут быть весьма внушительные и не войти в обозначенные килограммы.'],
+        ['Какую рыбу запрещено ловить', '    Под запретом в Астраханской области находятся следующие виды рыб:\n\n       •   осетровые;\n\n       •   Сельдь;\n\n       •   Рыбец;\n\n       •   Налим;\n\n       •   Усач.\n\n    Если рыбака поймают с таким уловом, то неприятностей ему не избежать.\n\n    Также действует запрет на перевозку и вывоз из региона рыбы определенных размеров:\n\n       •   Вобла, плотва. Рыба в длину не должна превышать 17 см.\n\n       •   Линь, чехонь – отлов рыбы производится при размере от 22 см.\n\n       •   Сом должен достигнуть в длину 60 см, иначе отлов запрещен.\n\n       •   Лещ. Рыба должна достигать 24 см.\n\n       •   Щука. Эту благородную рыбу можно ловить размером не более 32 см.\n\n       •   Сазан. Отлов рыбы можно производить, когда особь достигнет длины, как минимум, 40 см.\n\n       •   Рак. Нельзя ловить особей меньше 10 см.\n\n    За нарушение предусмотрена и административная, и уголовная ответственность. Нарушителям придется не только оплатить крупный штраф за запрещенные экземпляры, но и можно получить наказание, которое придется отбывать в местах лишения свободы.'],
+        ['Размер штрафа за ловлю рыбы', '    При выборе дислокации для рыбалки, в каком бы районе она не находилась, необходимо предварительно уточнять информацию, где и когда возможно закинуть удочку. Незнание закона не поможет избежать наказания. А за некоторые нарушения можно получить довольно внушительный штраф. Не забывают и об уголовной ответственности. За нарушение правил вылова рыбы, размеры и суммы зависят от вида и редкости улова:\n\n       •   При нарушении запрета на вылов, штраф до 5 тыс. руб. При этом конфискуют удочки и другие средства лова.\n\n       •   При обнаружении в улове рыбака редкого или исчезающего вида рыб, ему грозит штраф до 1500 руб. и изъятие всех снастей.\n\n       •   При осуществлении лова рыбы в период нереста, это будет стоить рыболову от 100 до 300 тыс. руб.\n\n    Применение запрещенного вида орудия во время рыбалки в нерест и причинение крупного вреда заставит браконьера заплатить штраф в размере 300 тыс. руб.\n\n    Уголовная ответственность идет за браконьерские действия в крупных водоемах в период нереста с применением моторной лодки или яхты. Также, подобное поведение грозит рыбакам штрафом в размере 500 тыс. руб. или сроком до 2 лет лишения свободы. Отлов рыбы, занесенной в Красную книгу, запрещен. Это грозит браконьеру штрафом в районе 1 млн руб. или 3 годами тюрьмы.'],
+        ['Когда можно оплатить штраф и где', '    В случае нарушения закона заполняют протокол и обозначают сумму штрафа, в зависимости от нарушения нарушителю предоставляют 10 суток для оплаты или, в случае несогласия, можно обратиться в суд, обжаловать решение. Но необходимо иметь существенные доказательства невиновности. Если в течение 5 месяцев не производится оплата штрафа, дело передается судебным приставам. В этом случае с гражданина взимается назначенная сумма в принудительном порядке.']
+    ]
+
+    def click_on_pre(self):
+        Data.number_rule = Data.number_rule - 1
+        if Data.number_rule < 0:
+            Data.number_rule = 7
+        if Data.number_rule == 0:
+            self.parent.get_screen('RuleFishing').ids.main_text.height = 1200
+        elif Data.number_rule == 1:
+            self.parent.get_screen('RuleFishing').ids.main_text.height = 1800
+        elif Data.number_rule == 2:
+            self.parent.get_screen('RuleFishing').ids.main_text.height = 1150
+        elif Data.number_rule == 3:
+            self.parent.get_screen('RuleFishing').ids.main_text.height = 1800
+        elif Data.number_rule == 4:
+            self.parent.get_screen('RuleFishing').ids.main_text.height = 800
+        elif Data.number_rule == 5:
+            self.parent.get_screen('RuleFishing').ids.main_text.height = 1250
+        elif Data.number_rule == 6:
+            self.parent.get_screen('RuleFishing').ids.main_text.height = 1150
+        elif Data.number_rule == 7:
+            self.parent.get_screen('RuleFishing').ids.main_text.height = 500
+        self.parent.get_screen('RuleFishing').ids.zag.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][0]
+        self.parent.get_screen('RuleFishing').ids.main_text.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][1]
+        self.parent.current = 'RuleFishing'
+
+    def click_on_menu(self):
+        self.parent.current = 'Rules'
+
+    def click_on_next(self):
+        Data.number_rule = Data.number_rule + 1
+        if Data.number_rule > 7:
+            Data.number_rule = 0
+        if Data.number_rule == 0:
+            self.parent.get_screen('RuleFishing').ids.main_text.height = 1200
+        elif Data.number_rule == 1:
+            self.parent.get_screen('RuleFishing').ids.main_text.height = 1800
+        elif Data.number_rule == 2:
+            self.parent.get_screen('RuleFishing').ids.main_text.height = 1150
+        elif Data.number_rule == 3:
+            self.parent.get_screen('RuleFishing').ids.main_text.height = 1800
+        elif Data.number_rule == 4:
+            self.parent.get_screen('RuleFishing').ids.main_text.height = 800
+        elif Data.number_rule == 5:
+            self.parent.get_screen('RuleFishing').ids.main_text.height = 1250
+        elif Data.number_rule == 6:
+            self.parent.get_screen('RuleFishing').ids.main_text.height = 1150
+        elif Data.number_rule == 7:
+            self.parent.get_screen('RuleFishing').ids.main_text.height = 500
+        self.parent.get_screen('RuleFishing').ids.zag.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][0]
+        self.parent.get_screen('RuleFishing').ids.main_text.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][1]
+        self.parent.current = 'RuleFishing'
 
 class Penalties(Screen):
     pass
@@ -608,9 +730,12 @@ class RegistrationDop(Screen):
 class Enter(Screen):
     input_phone = ObjectProperty()
 
+    def click_on_button_res(self):
+        self.parent.current = 'GPSHelper'
+
     def click_on_button_enter(self):
         #for debug
-        self.parent.current = 'GPSHelper'
+        #self.parent.current = 'GPSHelper'
         if self.input_phone.text == '':
             Dialog('Вы не ввели телефон', 'Внимание!')
         else:

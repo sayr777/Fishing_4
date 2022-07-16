@@ -50,6 +50,8 @@ WindowManager:
 
 	Itog:
 
+	RuleFishing:
+
 <Weapon>:
 	name: 'Weapon'
 	color: (152, 152, 152, 1)
@@ -224,43 +226,43 @@ WindowManager:
 			bold: True
 
 	MDGridLayout:
-		pos_hint: {'center_y': 0.45}
+		pos_hint: {'center_x': 0.5, 'center_y': 0.4}
 		size_hint: (1, 0.6)
-		cols: 5
+		cols: 7
 
-		# MDFlatButton:
-		# 	text: 'Пн'
-		# 	font_size: '16sp'
+		MDFlatButton:
+			text: 'Пн'
+			font_size: '16sp'
 
-		# MDFlatButton:
-		# 	text: 'Вт'
-		# 	font_size: '16sp'
+		MDFlatButton:
+			text: 'Вт'
+			font_size: '16sp'
 
-		# MDFlatButton:
-		# 	text: 'Ср'
-		# 	font_size: '16sp'
+		MDFlatButton:
+			text: 'Ср'
+			font_size: '16sp'
 
-		# MDFlatButton:
-		# 	text: 'Чт'
-		# 	font_size: '16sp'
+		MDFlatButton:
+			text: 'Чт'
+			font_size: '16sp'
 
-		# MDFlatButton:
-		# 	text: 'Пт'
-		# 	font_size: '16sp'
+		MDFlatButton:
+			text: 'Пт'
+			font_size: '16sp'
 
-		# MDFlatButton:
-		# 	text: 'Сб'
-		# 	font_size: '16sp'
+		MDFlatButton:
+			text: 'Сб'
+			font_size: '16sp'
 
-		# MDFlatButton:
-		# 	text: 'Вс'
-		# 	font_size: '16sp'
+		MDFlatButton:
+			text: 'Вс'
+			font_size: '16sp'
 
 		MDFlatButton:
 			on_release: root.click_on_cell(self)
 			id: one_label
 			text: '1'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 1.0, 1.0, 0.0, 1.0
 
@@ -268,7 +270,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: two_label
 			text: '2'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 1.0, 1.0, 0.0, 1.0
 
@@ -276,7 +278,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: three_label
 			text: '3'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 1.0, 1.0, 0.0, 1.0
 
@@ -284,7 +286,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: four_label
 			text: '4'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 1.0, 0.0, 0.0, 1.0
 
@@ -292,7 +294,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: fife_label
 			text: '5'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 1.0, 0.0, 0.0, 1.0
 
@@ -300,7 +302,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: six_label
 			text: '6'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 1.0, 1.0, 0.0, 1.0
 
@@ -308,7 +310,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: seven_label
 			text: '7'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 1.0, 1.0, 0.0, 1.0
 
@@ -316,7 +318,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: eight_label
 			text: '8'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 1.0, 1.0, 0.0, 1.0
 
@@ -324,7 +326,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: nine_label
 			text: '9'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 1.0, 1.0, 0.0, 1.0
 
@@ -332,7 +334,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: ten_label
 			text: '10'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 1.0, 1.0, 0.0, 1.0
 
@@ -340,7 +342,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: eleven_label
 			text: '11'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 0.0, 1.0, 0.0, 1.0
 
@@ -348,7 +350,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: twelve_label
 			text: '12'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 0.0, 1.0, 0.0, 1.0
 
@@ -356,7 +358,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: thirteen_label
 			text: '13'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 0.0, 1.0, 0.0, 1.0
 
@@ -364,7 +366,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: fourteen_label
 			text: '14'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 0.0, 1.0, 0.0, 1.0
 
@@ -372,7 +374,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: fifteen_label
 			text: '15'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 0.0, 1.0, 0.0, 1.0
 
@@ -380,7 +382,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: sixteen_label
 			text: '16'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 0.0, 1.0, 0.0, 1.0
 
@@ -388,7 +390,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: seventeen_label
 			text: '17'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 0.0, 1.0, 0.0, 1.0
 
@@ -396,7 +398,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: eightteen_label
 			text: '18'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 0.0, 1.0, 0.0, 1.0
 
@@ -404,7 +406,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: nineteen_label
 			text: '19'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 0.0, 1.0, 0.0, 1.0
 
@@ -412,7 +414,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: twenty_label
 			text: '20'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 0.0, 1.0, 0.0, 1.0
 
@@ -420,7 +422,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: twenty_one_label
 			text: '21'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 1.0, 0.0, 0.0, 1.0
 
@@ -428,7 +430,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: twenty_two_label
 			text: '22'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 0.0, 0.0, 0.0, 1.0
 
@@ -436,7 +438,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: twenty_three_label
 			text: '23'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 0.0, 0.0, 0.0, 1.0
 
@@ -444,7 +446,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: twenty_four_label
 			text: '24'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 0.0, 0.0, 0.0, 1.0
 
@@ -452,7 +454,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: twenty_five_label
 			text: '25'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 0.0, 0.0, 0.0, 1.0
 
@@ -460,7 +462,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: twenty_six_label
 			text: '26'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 0.0, 0.0, 0.0, 1.0
 
@@ -468,7 +470,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: twenty_seven_label
 			text: '27'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 0.0, 0.0, 0.0, 1.0
 
@@ -476,7 +478,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: twenty_eight_label
 			text: '28'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 0.0, 0.0, 0.0, 1.0
 
@@ -484,7 +486,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: twenty_nine_label
 			text: '29'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 0.0, 0.0, 0.0, 1.0
 
@@ -492,7 +494,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: thirty_label
 			text: '30'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 0.0, 0.0, 0.0, 1.0
 
@@ -500,7 +502,7 @@ WindowManager:
 			on_release: root.click_on_cell(self)
 			id: thirty_one_label
 			text: '31'
-			font_size: '16sp'
+			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 0.0, 0.0, 0.0, 1.0
 
@@ -565,9 +567,76 @@ WindowManager:
 			text: 'Штрафы'
 			on_release: root.click_on_button_penalties()
 
+<RuleFishing>:
+	name: 'RuleFishing'
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
+
+	zag: zag
+	main_text: main_text
+
+	MDLabel:
+		id: zag
+		font_style: 'Proxima Nova'
+		font_size: '20sp'
+		pos_hint: {'x': 0.1, 'center_y': 0.90}
+		bold: True
+
+	ScrollView:
+		theme_text_color: 'Custom'
+		text_color: 0, 0, 0, 1.0
+		md_bg_color: 1.0, 1.0, 1.0, 1.0
+		do_scroll_y: True
+		do_scroll_x: False
+		pos_hint: {'x': 0.1, 'center_y': 0.5}
+		size_hint_x: 0.85
+		size_hint_y: 0.75
+
+		MDLabel:
+			id: main_text
+			font_style: 'Proxima Nova'
+			font_size: '18sp'
+			bold: True
+			size_hint_y: None
+			height: 1000
+			text_size: (self.width, None)
+
+	MDRoundFlatButton:
+		elevation: 10
+		font_name: 'Proxima Nova'
+		font_size: '18sp'
+		text: 'Пред'
+		pos_hint: {'x': 0.01, 'center_y': 0.05}
+		on_release: root.click_on_pre()
+
+	MDRoundFlatButton:
+		elevation: 10
+		font_name: 'Proxima Nova'
+		font_size: '18sp'
+		text: 'Оглавление'
+		pos_hint: {'x': 0.35, 'center_y': 0.05}
+		on_release: root.click_on_menu()
+
+	MDRoundFlatButton:
+		elevation: 10
+		font_name: 'Proxima Nova'
+		font_size: '18sp'
+		text: 'След'
+		pos_hint: {'x': 0.8, 'center_y': 0.05}
+		on_release: root.click_on_next()
+
 <Rules>:
 	name: 'Rules'
-	color: (152, 152, 152, 1)
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
 
 	MDIconButton:
 		icon: 'close'
@@ -578,18 +647,112 @@ WindowManager:
 		font_style: 'Proxima Nova'			
 		text: "Правила рыбалки"
 		font_size: '30sp'
-		pos_hint: {'x': 0.1, 'center_y': 0.97}
+		pos_hint: {'x': 0.1, 'center_y': 0.90}
 		bold: True
 
-	MDLabel:
-		font_style: 'Proxima Nova'
-		pos_hint: {'x': 0.05, 'center_y': 0.6}			
-		text: "Суточная норма вылова водных биоресурсов в Астраханской области\nЗапрещенные способы и орудия лова на территории Астраханской области\nНа каких территориях Астраханской области любительская рыбалка запрещена\nЗапретные периоды добычи (вылова) водных биоресурсов\nЗапретные для добычи виды водных биоресурсов"
-		font_size: '14sp'
+	MDGridLayout:
+		cols: 1
+		rows: 8
+		adaptive_height: True
+		pos_hint: {'x': 0.05,'center_y': 0.5}
+		spacing: 25
+		size_hint_x: 0.9
+
+		MDRaisedButton:
+			elevation: 8
+			text: 'Правила рыболовства'
+			font_size: '14sp'
+			size_hint_x: 0.8
+			theme_text_color: 'Custom'
+			text_color: 0, 0, 0, 1.0
+			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			border_radius: 50
+			radius: [50]
+			font_name: 'Proxima Nova'
+			#on_release: print(self.border_radius)
+			on_release: root.click_on_rule_fishing()
+
+		MDRaisedButton:
+			text: 'Сроки нерестового запрета'
+			font_size: '14sp'
+			size_hint_x: 0.8
+			theme_text_color: 'Custom'
+			text_color: 0, 0, 0, 1.0
+			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			font_name: 'Proxima Nova'
+			on_release: root.click_on_deadlines_spawning_off()
+
+		MDRaisedButton:
+			#pos_hint: {'x': 0.1, 'center_y': 0.60}
+			text: 'Нерестовые участки'
+			font_size: '14sp'
+			size_hint_x: 0.8
+			theme_text_color: 'Custom'
+			text_color: 0, 0, 0, 1.0
+			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			font_name: 'Proxima Nova'
+			on_release: root.click_on_spawning_areas()
+
+		MDRaisedButton:
+			#pos_hint: {'x': 0.1, 'center_y': 0.50}
+			text: 'Орудия рыболовства'
+			font_size: '14sp'
+			size_hint_x: 0.8
+			theme_text_color: 'Custom'
+			text_color: 0, 0, 0, 1.0
+			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			font_name: 'Proxima Nova'
+			on_release: root.click_on_weapons_fishing()
+
+		MDRaisedButton:
+			#pos_hint: {'x': 0.1, 'center_y': 0.40}
+			text: 'Суточная норма вылова рыбы'
+			font_size: '14sp'
+			size_hint_x: 0.8
+			theme_text_color: 'Custom'
+			text_color: 0, 0, 0, 1.0
+			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			font_name: 'Proxima Nova'
+			on_release: root.click_on_daily_rate_of_fish_catch()
+
+		MDRaisedButton:
+			#pos_hint: {'x': 0.1, 'center_y': 0.30}
+			text: 'Какую рыбу запрещено ловить'
+			font_size: '14sp'
+			size_hint_x: 0.8
+			theme_text_color: 'Custom'
+			text_color: 0, 0, 0, 1.0
+			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			font_name: 'Proxima Nova'
+			on_release: root.click_on_what_fish_off_fishing()
+
+		MDRaisedButton:
+			#pos_hint: {'x': 0.1, 'center_y': 0.20}
+			text: 'Размер штрафа за ловлю рыбы'
+			font_size: '14sp'
+			size_hint_x: 0.8
+			theme_text_color: 'Custom'
+			text_color: 0, 0, 0, 1.0
+			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			font_name: 'Proxima Nova'
+			on_release: root.click_on_size_penalti_fishing()
+
+		MDRaisedButton:
+			#pos_hint: {'x': 0.1, 'center_y': 0.10}
+			text: 'Когда можно оплатить штраф и где'
+			font_size: '14sp'
+			size_hint_x: 0.8
+			theme_text_color: 'Custom'
+			text_color: 0, 0, 0, 1.0
+			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			#set_radius: [16]
+			font_name: 'Proxima Nova'
+			on_release: root.click_on_what_can_pay_penalti_and_where()
 
 	MDLabel:
 		font_style: 'Proxima Nova'
-		pos_hint: {'x': 0.05, 'center_y': 0.05}
+		pos_hint: {'x': 0.1, 'center_y': 0.05}
+		size_hint_x: 0.8
 		text: 'На территории Астраханской области действуют Правила рыболовства для Волжско-Каспийского рыбохозяйственного бассейна, утвержденные приказом Минсельхоза России от 18.11.2014 N 453 (с изменениями, действующими в 2022 г. году) .'
 		font_size: '9sp'
 
@@ -1147,6 +1310,14 @@ WindowManager:
 				theme_text_color: 'Custom'
 				text_color: app.theme_cls.primary_color
 				on_release: root.click_on_button_register()
+		
+		MDFlatButton:
+			font_size: '8sp'
+			text: 'Резерв'
+			theme_text_color: 'Custom'
+			text_color: app.theme_cls.primary_color
+			on_release: root.click_on_button_res()
+	
 
 <EnterCheckPhone>:
 	name: 'EnterCheckPhone'
