@@ -13,6 +13,7 @@
 #: import MDRelativeLayout kivymd.uix.relativelayout.RelativeLayout
 #: import MapView kivy_garden.mapview.MapView
 #: import MapSource kivy_garden.mapview.MapSource
+#: import MDCard kivymd.uix.card.MDCard
 
 
 WindowManager:
@@ -31,8 +32,10 @@ WindowManager:
 	Menu:
 
 	Rules:
+	RuleFishing:
 
 	Penalties:
+	PenaltieList:
 
 	CatalogFish:
 	Esox:
@@ -49,8 +52,6 @@ WindowManager:
 	News:
 
 	Itog:
-
-	RuleFishing:
 
 <Weapon>:
 	name: 'Weapon'
@@ -629,6 +630,69 @@ WindowManager:
 		pos_hint: {'x': 0.8, 'center_y': 0.05}
 		on_release: root.click_on_next()
 
+<PenaltieList>:
+	name: 'PenaltieList'
+
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
+
+	zag: zag
+	main_text: main_text
+
+	MDLabel:
+		id: zag
+		font_style: 'Proxima Nova'
+		font_size: '16sp'
+		pos_hint: {'x': 0.05, 'center_y': 0.94}
+		bold: True
+
+	ScrollView:
+		theme_text_color: 'Custom'
+		text_color: 0, 0, 0, 1.0
+		md_bg_color: 1.0, 1.0, 1.0, 1.0
+		do_scroll_y: True
+		do_scroll_x: False
+		pos_hint: {'x': 0.1, 'center_y': 0.5}
+		size_hint_x: 0.85
+		size_hint_y: 0.75
+
+		MDLabel:
+			id: main_text
+			font_style: 'Proxima Nova'
+			font_size: '14sp'
+			bold: True
+			size_hint_y: None
+			height: 1000
+			text_size: (self.width, None)
+
+	MDRoundFlatButton:
+		elevation: 10
+		font_name: 'Proxima Nova'
+		font_size: '18sp'
+		text: 'Пред'
+		pos_hint: {'x': 0.01, 'center_y': 0.05}
+		on_release: root.click_on_pre()
+
+	MDRoundFlatButton:
+		elevation: 10
+		font_name: 'Proxima Nova'
+		font_size: '18sp'
+		text: 'Оглавление'
+		pos_hint: {'x': 0.35, 'center_y': 0.05}
+		on_release: root.click_on_menu()
+
+	MDRoundFlatButton:
+		elevation: 10
+		font_name: 'Proxima Nova'
+		font_size: '18sp'
+		text: 'След'
+		pos_hint: {'x': 0.8, 'center_y': 0.05}
+		on_release: root.click_on_next()
+
 <Rules>:
 	name: 'Rules'
 	canvas:
@@ -647,7 +711,7 @@ WindowManager:
 		font_style: 'Proxima Nova'			
 		text: "Правила рыбалки"
 		font_size: '30sp'
-		pos_hint: {'x': 0.1, 'center_y': 0.90}
+		pos_hint: {'x': 0.1, 'center_y': 0.92}
 		bold: True
 
 	MDGridLayout:
@@ -655,96 +719,116 @@ WindowManager:
 		rows: 8
 		adaptive_height: True
 		pos_hint: {'x': 0.05,'center_y': 0.5}
-		spacing: 25
+		spacing: 30
 		size_hint_x: 0.9
 
-		MDRaisedButton:
+		MDRoundFlatButton:
 			elevation: 8
+			line_color: 1.0, 1.0, 1.0, 1.0
 			text: 'Правила рыболовства'
-			font_size: '14sp'
-			size_hint_x: 0.8
+			font_size: '18sp'
+			size_hint_x: 0.85
 			theme_text_color: 'Custom'
 			text_color: 0, 0, 0, 1.0
 			md_bg_color: 1.0, 1.0, 1.0, 1.0
-			border_radius: 50
+			line_color: 1.0, 1.0, 1.0, 1.0
 			radius: [50]
+			border_radius: 50
+			halign: 'left'
 			font_name: 'Proxima Nova'
 			#on_release: print(self.border_radius)
 			on_release: root.click_on_rule_fishing()
 
-		MDRaisedButton:
+		MDRoundFlatButton:
+			elevation: 8
+			line_color: 1.0, 1.0, 1.0, 1.0
 			text: 'Сроки нерестового запрета'
-			font_size: '14sp'
-			size_hint_x: 0.8
+			font_size: '18sp'
+			size_hint_x: 0.85
 			theme_text_color: 'Custom'
 			text_color: 0, 0, 0, 1.0
 			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			halign: 'left'
 			font_name: 'Proxima Nova'
 			on_release: root.click_on_deadlines_spawning_off()
 
-		MDRaisedButton:
+		MDRoundFlatButton:
+			elevation: 8
+			line_color: 1.0, 1.0, 1.0, 1.0
 			#pos_hint: {'x': 0.1, 'center_y': 0.60}
 			text: 'Нерестовые участки'
-			font_size: '14sp'
-			size_hint_x: 0.8
+			font_size: '18sp'
+			size_hint_x: 0.85
 			theme_text_color: 'Custom'
 			text_color: 0, 0, 0, 1.0
 			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			halign: 'left'
 			font_name: 'Proxima Nova'
 			on_release: root.click_on_spawning_areas()
 
-		MDRaisedButton:
+		MDRoundFlatButton:
+			elevation: 8
+			line_color: 1.0, 1.0, 1.0, 1.0
 			#pos_hint: {'x': 0.1, 'center_y': 0.50}
 			text: 'Орудия рыболовства'
-			font_size: '14sp'
-			size_hint_x: 0.8
+			font_size: '18sp'
+			size_hint_x: 0.85
 			theme_text_color: 'Custom'
 			text_color: 0, 0, 0, 1.0
 			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			halign: 'left'
 			font_name: 'Proxima Nova'
 			on_release: root.click_on_weapons_fishing()
 
-		MDRaisedButton:
-			#pos_hint: {'x': 0.1, 'center_y': 0.40}
+		MDRoundFlatButton:
+			elevation: 8
+			line_color: 1.0, 1.0, 1.0, 1.0
 			text: 'Суточная норма вылова рыбы'
-			font_size: '14sp'
-			size_hint_x: 0.8
+			font_size: '18sp'
+			size_hint_x: 0.85
 			theme_text_color: 'Custom'
 			text_color: 0, 0, 0, 1.0
 			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			halign: 'left'
 			font_name: 'Proxima Nova'
 			on_release: root.click_on_daily_rate_of_fish_catch()
 
-		MDRaisedButton:
-			#pos_hint: {'x': 0.1, 'center_y': 0.30}
+		MDRoundFlatButton:
+			elevation: 8
+			line_color: 1.0, 1.0, 1.0, 1.0
 			text: 'Какую рыбу запрещено ловить'
-			font_size: '14sp'
-			size_hint_x: 0.8
+			font_size: '18sp'
+			size_hint_x: 0.85
 			theme_text_color: 'Custom'
 			text_color: 0, 0, 0, 1.0
 			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			halign: 'left'
 			font_name: 'Proxima Nova'
 			on_release: root.click_on_what_fish_off_fishing()
 
-		MDRaisedButton:
-			#pos_hint: {'x': 0.1, 'center_y': 0.20}
+		MDRoundFlatButton:
+			elevation: 8
+			line_color: 1.0, 1.0, 1.0, 1.0
 			text: 'Размер штрафа за ловлю рыбы'
-			font_size: '14sp'
-			size_hint_x: 0.8
+			font_size: '18sp'
+			size_hint_x: 0.85
 			theme_text_color: 'Custom'
 			text_color: 0, 0, 0, 1.0
 			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			halign: 'left'
 			font_name: 'Proxima Nova'
 			on_release: root.click_on_size_penalti_fishing()
 
-		MDRaisedButton:
-			#pos_hint: {'x': 0.1, 'center_y': 0.10}
+		MDRoundFlatButton:
+			elevation: 8
+			line_color: 1.0, 1.0, 1.0, 1.0
 			text: 'Когда можно оплатить штраф и где'
-			font_size: '14sp'
-			size_hint_x: 0.8
+			font_size: '18sp'
+			size_hint_x: 0.85
 			theme_text_color: 'Custom'
 			text_color: 0, 0, 0, 1.0
 			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			halign: 'left'
 			#set_radius: [16]
 			font_name: 'Proxima Nova'
 			on_release: root.click_on_what_can_pay_penalti_and_where()
@@ -758,7 +842,12 @@ WindowManager:
 
 <Penalties>:
 	name: 'Penalties'
-	color: (152, 152, 152, 1)
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
 
 	MDIconButton:
 		icon: 'close'
@@ -769,22 +858,196 @@ WindowManager:
 		font_style: 'Proxima Nova'			
 		text: "Штрафы"
 		font_size: '30sp'
-		pos_hint: {'x': 0.05, 'center_y': 0.97}
+		pos_hint: {'x': 0.1, 'center_y': 0.90}
 		bold: True
 
 	ScrollView:
+		text_size: (self.width, None)
+		text_color: 0, 0, 0, 1.0
+		md_bg_color: 1.0, 1.0, 1.0, 1.0
 		do_scroll_y: True
 		do_scroll_x: False
-		size_hint: (0.95, 0.7)
-		pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+		pos_hint: {'x': 0.025, 'center_y': 0.5}
+		size_hint_x: 1
+		size_hint_y: 0.75
 
-		MDLabel:
-			font_style: 'Proxima Nova'			
-			text: "Статья 11.7. Нарушение правил плавания\nСтатья 11.7 дополнена частью 1.1 с 26 июля 2019 г. - Федеральный закон от 26 июля 2019 г. N 217-ФЗ\nСтатья 11.8. Нарушение правил эксплуатации судов, а также управление судном лицом, не имеющим права управления\nСтатья 11.8.1. Управление маломерным судном судоводителем, не имеющим при себе документов, необходимых для допуска к управлению маломерным судном\nСтатья 11.10. Нарушение правил обеспечения безопасности пассажиров на судах водного транспорта, а также на маломерных судах\nСтатья 8.33. Нарушение правил охраны среды обитания или путей миграции объектов животного мира и водных биологических ресурсов\nСтатья 8.35. Уничтожение редких и находящихся под угрозой исчезновения видов животных или растений\nСтатья 8.37. Нарушение правил охоты, правил, регламентирующих рыболовство и другие виды пользования объектами животного мира\nСтатья 20.25. Уклонение от исполнения административного наказания\nСтатья 18.2. Нарушение пограничного режима в пограничной зоне\nСтатья 18.3. Нарушение пограничного режима в территориальном море и во внутренних морских водах Российской Федерации\nСтатья 18.7. Неповиновение законному распоряжению или требованию военнослужащего в связи с исполнением им обязанностей по охране Государственной границы Российской Федерации\nСтатья 258. Незаконная охота\nСтатья 258.1. Незаконные добыча и оборот особо ценных диких животных и водных биологических ресурсов, принадлежащих к видам, занесенным в Красную книгу Российской Федерации и (или) охраняемым международными договорами Российской Федерации"
-			font_size: '14sp'
+		MDGridLayout:
+			cols: 1
+			rows: 14
+			adaptive_height: True
+			theme_text_color: 'Custom'
+			pos_hint: {'x': 0.025,'center_y': 0.5}
+			spacing: 25
 			size_hint_y: None
-			height: 1000
-			text_size: (self.width, None)
+			size_hint_x: 0.75
+
+			MDRoundFlatButton:
+				size_hint_x: 0.85
+				font_size: '18sp'
+				text: 'Незаконный улов'
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state256()
+
+			MDRoundFlatButton:
+				text: 'Незаконная охота'
+				font_size: '18sp'
+				size_hint_x: 0.85
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state258()
+
+			MDRoundFlatButton:
+				text: 'Исчезающие виды'
+				font_size: '18sp'
+				size_hint_x: 0.85
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state258_1()
+
+			MDRoundFlatButton:
+				text: 'Нарушение правил плавания'
+				font_size: '18sp'
+				size_hint_x: 0.85
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state11_7()
+
+			MDRoundFlatButton:
+				text: 'Нарушение эксплуатации судов'
+				font_size: '18sp'
+				size_hint_x: 0.85
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state11_8()
+
+			MDRoundFlatButton:
+				text: 'Отсутствие документов на вождение'
+				font_size: '18sp'
+				size_hint_x: 0.85
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state11_8_1()
+
+			MDRoundFlatButton:
+				text: 'Нарушение безопасности на судне'
+				font_size: '18sp'
+				size_hint_x: 0.85
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state11_10()
+
+			MDRoundFlatButton:
+				text: 'Нарушение природоохранных правил'
+				font_size: '18sp'
+				size_hint_x: 0.85
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state8_33()
+
+			MDRoundFlatButton:
+				text: 'Уничтожение редких видов'
+				font_size: '18sp'
+				size_hint_x: 0.85
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state8_35()
+
+			MDRoundFlatButton:
+				text: 'Нарушение правил рыболовства'
+				font_size: '18sp'
+				size_hint_x: 0.85
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state8_37()
+
+			MDRoundFlatButton:
+				text: 'Уклонение от штрафов'
+				font_size: '18sp'
+				size_hint_x: 0.85
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state20_25()
+
+			MDRoundFlatButton:
+				text: 'Пограничный режим'
+				font_size: '18sp'
+				size_hint_x: 0.85
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state18_2()
+
+			MDRoundFlatButton:
+				text: 'Пограничный режим региональных вод'
+				font_size: '18sp'
+				size_hint_x: 0.85
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state18_3()
+
+			MDRoundFlatButton:
+				text: 'Неповиновение пограничной службе'
+				font_size: '18sp'
+				size_hint_x: 0.85
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state18_7()
 
 <CatalogFish>:
 	name: 'CatalogFish'
