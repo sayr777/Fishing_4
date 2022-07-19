@@ -23,7 +23,7 @@ import sqlite3 as SQLCommander
 from sms_base import rec_otp
 
 #for debug... REMOVE THIS, IF THIS IS PRODUCTION
-#from kivy.core.window import Window
+from kivy.core.window import Window
 #Window.size = (375, 812)
 
 #subimport
@@ -42,6 +42,8 @@ from kivymd.uix.bottomsheet import MDCustomBottomSheet
 from kivy import platform
 from kivy.factory import Factory
 from kivymd.uix.card import MDCard
+#import screens
+#from menu import MenuWidget
 
 if platform == 'android':
     from android.permissions import Permission, request_permissions
@@ -185,58 +187,48 @@ class Menu(Screen):
 class Rules(Screen):
     def click_on_rule_fishing(self):
         Data.number_rule = 0
-        self.parent.get_screen('RuleFishing').ids.zag.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][0]
-        self.parent.get_screen('RuleFishing').ids.main_text.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][1]
-        self.parent.get_screen('RuleFishing').ids.main_text.height = 1200
         self.parent.current = 'RuleFishing'
 
     def click_on_deadlines_spawning_off(self):
         Data.number_rule = 1
         self.parent.get_screen('RuleFishing').ids.zag.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][0]
         self.parent.get_screen('RuleFishing').ids.main_text.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][1]
-        self.parent.get_screen('RuleFishing').ids.main_text.height = 1800
         self.parent.current = 'RuleFishing'
 
     def click_on_spawning_areas(self):
         Data.number_rule = 2
         self.parent.get_screen('RuleFishing').ids.zag.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][0]
         self.parent.get_screen('RuleFishing').ids.main_text.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][1]
-        self.parent.get_screen('RuleFishing').ids.main_text.height = 1150
         self.parent.current = 'RuleFishing'
 
     def click_on_weapons_fishing(self):
         Data.number_rule = 3
         self.parent.get_screen('RuleFishing').ids.zag.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][0]
         self.parent.get_screen('RuleFishing').ids.main_text.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][1]
-        self.parent.get_screen('RuleFishing').ids.main_text.height = 1800
         self.parent.current = 'RuleFishing'
 
     def click_on_daily_rate_of_fish_catch(self):
         Data.number_rule = 4
         self.parent.get_screen('RuleFishing').ids.zag.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][0]
         self.parent.get_screen('RuleFishing').ids.main_text.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][1]
-        self.parent.get_screen('RuleFishing').ids.main_text.height = 800
         self.parent.current = 'RuleFishing'
 
     def click_on_what_fish_off_fishing(self):
         Data.number_rule = 5
         self.parent.get_screen('RuleFishing').ids.zag.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][0]
         self.parent.get_screen('RuleFishing').ids.main_text.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][1]
-        self.parent.get_screen('RuleFishing').ids.main_text.height = 1250
         self.parent.current = 'RuleFishing'
 
     def click_on_size_penalti_fishing(self):
         Data.number_rule = 6
         self.parent.get_screen('RuleFishing').ids.zag.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][0]
         self.parent.get_screen('RuleFishing').ids.main_text.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][1]
-        self.parent.get_screen('RuleFishing').ids.main_text.height = 1150
         self.parent.current = 'RuleFishing'
 
     def click_on_what_can_pay_penalti_and_where(self):
         Data.number_rule = 7
         self.parent.get_screen('RuleFishing').ids.zag.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][0]
         self.parent.get_screen('RuleFishing').ids.main_text.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][1]
-        self.parent.get_screen('RuleFishing').ids.main_text.height = 500
         self.parent.current = 'RuleFishing'
 
 class RuleFishing(Screen):
@@ -258,22 +250,6 @@ class RuleFishing(Screen):
         Data.number_rule = Data.number_rule - 1
         if Data.number_rule < 0:
             Data.number_rule = 7
-        if Data.number_rule == 0:
-            self.parent.get_screen('RuleFishing').ids.main_text.height = 1200
-        elif Data.number_rule == 1:
-            self.parent.get_screen('RuleFishing').ids.main_text.height = 1800
-        elif Data.number_rule == 2:
-            self.parent.get_screen('RuleFishing').ids.main_text.height = 1150
-        elif Data.number_rule == 3:
-            self.parent.get_screen('RuleFishing').ids.main_text.height = 1800
-        elif Data.number_rule == 4:
-            self.parent.get_screen('RuleFishing').ids.main_text.height = 800
-        elif Data.number_rule == 5:
-            self.parent.get_screen('RuleFishing').ids.main_text.height = 1250
-        elif Data.number_rule == 6:
-            self.parent.get_screen('RuleFishing').ids.main_text.height = 1150
-        elif Data.number_rule == 7:
-            self.parent.get_screen('RuleFishing').ids.main_text.height = 500
         self.parent.get_screen('RuleFishing').ids.zag.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][0]
         self.parent.get_screen('RuleFishing').ids.main_text.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][1]
         self.parent.current = 'RuleFishing'
@@ -285,22 +261,6 @@ class RuleFishing(Screen):
         Data.number_rule = Data.number_rule + 1
         if Data.number_rule > 7:
             Data.number_rule = 0
-        if Data.number_rule == 0:
-            self.parent.get_screen('RuleFishing').ids.main_text.height = 1200
-        elif Data.number_rule == 1:
-            self.parent.get_screen('RuleFishing').ids.main_text.height = 1800
-        elif Data.number_rule == 2:
-            self.parent.get_screen('RuleFishing').ids.main_text.height = 1150
-        elif Data.number_rule == 3:
-            self.parent.get_screen('RuleFishing').ids.main_text.height = 1800
-        elif Data.number_rule == 4:
-            self.parent.get_screen('RuleFishing').ids.main_text.height = 800
-        elif Data.number_rule == 5:
-            self.parent.get_screen('RuleFishing').ids.main_text.height = 1250
-        elif Data.number_rule == 6:
-            self.parent.get_screen('RuleFishing').ids.main_text.height = 1150
-        elif Data.number_rule == 7:
-            self.parent.get_screen('RuleFishing').ids.main_text.height = 500
         self.parent.get_screen('RuleFishing').ids.zag.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][0]
         self.parent.get_screen('RuleFishing').ids.main_text.text = self.parent.get_screen('RuleFishing').data[Data.number_rule][1]
         self.parent.current = 'RuleFishing'
@@ -310,98 +270,84 @@ class Penalties(Screen):
         Data.number_penalties = 0
         self.parent.get_screen('PenaltieList').ids.zag.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][0]
         self.parent.get_screen('PenaltieList').ids.main_text.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][1]
-        self.parent.get_screen('PenaltieList').ids.main_text.height = 1350
         self.parent.current = 'PenaltieList'
 
     def click_on_state258(self):
         Data.number_penalties = 1
         self.parent.get_screen('PenaltieList').ids.zag.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][0]
         self.parent.get_screen('PenaltieList').ids.main_text.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][1]
-        self.parent.get_screen('PenaltieList').ids.main_text.height = 960
         self.parent.current = 'PenaltieList'
 
     def click_on_state258_1(self):
         Data.number_penalties = 2
         self.parent.get_screen('PenaltieList').ids.zag.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][0]
         self.parent.get_screen('PenaltieList').ids.main_text.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][1]
-        self.parent.get_screen('PenaltieList').ids.main_text.height = 2300
         self.parent.current = 'PenaltieList'
 
     def click_on_state11_7(self):
         Data.number_penalties = 3
         self.parent.get_screen('PenaltieList').ids.zag.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][0]
         self.parent.get_screen('PenaltieList').ids.main_text.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][1]
-        self.parent.get_screen('PenaltieList').ids.main_text.height = 1400
         self.parent.current = 'PenaltieList'
 
     def click_on_state11_8(self):
         Data.number_penalties = 4
         self.parent.get_screen('PenaltieList').ids.zag.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][0]
         self.parent.get_screen('PenaltieList').ids.main_text.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][1]
-        self.parent.get_screen('PenaltieList').ids.main_text.height = 700
         self.parent.current = 'PenaltieList'
 
     def click_on_state11_8_1(self):
         Data.number_penalties = 5
         self.parent.get_screen('PenaltieList').ids.zag.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][0]
         self.parent.get_screen('PenaltieList').ids.main_text.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][1]
-        self.parent.get_screen('PenaltieList').ids.main_text.height = 550
         self.parent.current = 'PenaltieList'
 
     def click_on_state11_10(self):
         Data.number_penalties = 6
         self.parent.get_screen('PenaltieList').ids.zag.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][0]
         self.parent.get_screen('PenaltieList').ids.main_text.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][1]
-        self.parent.get_screen('PenaltieList').ids.main_text.height = 500
         self.parent.current = 'PenaltieList'
 
     def click_on_state8_33(self):
         Data.number_penalties = 7
         self.parent.get_screen('PenaltieList').ids.zag.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][0]
         self.parent.get_screen('PenaltieList').ids.main_text.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][1]
-        self.parent.get_screen('PenaltieList').ids.main_text.height = 500
         self.parent.current = 'PenaltieList'
 
     def click_on_state8_35(self):
         Data.number_penalties = 8
         self.parent.get_screen('PenaltieList').ids.zag.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][0]
         self.parent.get_screen('PenaltieList').ids.main_text.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][1]
-        self.parent.get_screen('PenaltieList').ids.main_text.height = 750
         self.parent.current = 'PenaltieList'
 
     def click_on_state8_37(self):
         Data.number_penalties = 9
         self.parent.get_screen('PenaltieList').ids.zag.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][0]
         self.parent.get_screen('PenaltieList').ids.main_text.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][1]
-        self.parent.get_screen('PenaltieList').ids.main_text.height = 2050
         self.parent.current = 'PenaltieList'
 
     def click_on_state20_25(self):
         Data.number_penalties = 10
         self.parent.get_screen('PenaltieList').ids.zag.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][0]
         self.parent.get_screen('PenaltieList').ids.main_text.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][1]
-        self.parent.get_screen('PenaltieList').ids.main_text.height = 1600
         self.parent.current = 'PenaltieList'
 
     def click_on_state18_2(self):
         Data.number_penalties = 11
         self.parent.get_screen('PenaltieList').ids.zag.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][0]
         self.parent.get_screen('PenaltieList').ids.main_text.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][1]
-        self.parent.get_screen('PenaltieList').ids.main_text.height = 750
         self.parent.current = 'PenaltieList'
 
     def click_on_state18_3(self):
         Data.number_penalties = 12
         self.parent.get_screen('PenaltieList').ids.zag.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][0]
         self.parent.get_screen('PenaltieList').ids.main_text.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][1]
-        self.parent.get_screen('PenaltieList').ids.main_text.height = 900
         self.parent.current = 'PenaltieList'
 
     def click_on_state18_7(self):
         Data.number_penalties = 13
         self.parent.get_screen('PenaltieList').ids.zag.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][0]
         self.parent.get_screen('PenaltieList').ids.main_text.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][1]
-        self.parent.get_screen('PenaltieList').ids.main_text.height = 500
         self.parent.current = 'PenaltieList'
 
 class PenaltieList(Screen):
@@ -429,34 +375,6 @@ class PenaltieList(Screen):
         Data.number_penalties = Data.number_penalties - 1
         if Data.number_penalties < 0:
             Data.number_penalties = 13
-        if Data.number_penalties == 0:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 1350
-        elif Data.number_penalties == 1:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 960
-        elif Data.number_penalties == 2:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 2300
-        elif Data.number_penalties == 3:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 1400
-        elif Data.number_penalties == 4:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 700
-        elif Data.number_penalties == 5:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 550
-        elif Data.number_penalties == 6:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 500
-        elif Data.number_penalties == 7:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 500
-        elif Data.number_penalties == 8:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 750
-        elif Data.number_penalties == 9:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 2050
-        elif Data.number_penalties == 10:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 1600
-        elif Data.number_penalties == 11:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 750
-        elif Data.number_penalties == 12:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 900
-        elif Data.number_penalties == 13:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 500
         self.parent.get_screen('PenaltieList').ids.zag.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][0]
         self.parent.get_screen('PenaltieList').ids.main_text.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][1]
         self.parent.current = 'PenaltieList'
@@ -468,34 +386,6 @@ class PenaltieList(Screen):
         Data.number_penalties = Data.number_penalties + 1
         if Data.number_penalties > 13:
             Data.number_penalties = 0
-        if Data.number_penalties == 0:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 1350
-        elif Data.number_penalties == 1:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 960
-        elif Data.number_penalties == 2:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 2300
-        elif Data.number_penalties == 3:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 1400
-        elif Data.number_penalties == 4:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 700
-        elif Data.number_penalties == 5:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 550
-        elif Data.number_penalties == 6:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 500
-        elif Data.number_penalties == 7:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 500
-        elif Data.number_penalties == 8:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 750
-        elif Data.number_penalties == 9:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 2050
-        elif Data.number_penalties == 10:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 1600
-        elif Data.number_penalties == 11:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 750
-        elif Data.number_penalties == 12:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 900
-        elif Data.number_penalties == 13:
-            self.parent.get_screen('PenaltieList').ids.main_text.height = 500
         self.parent.get_screen('PenaltieList').ids.zag.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][0]
         self.parent.get_screen('PenaltieList').ids.main_text.text = self.parent.get_screen('PenaltieList').data[Data.number_penalties][1]
         self.parent.current = 'PenaltieList'
@@ -526,6 +416,9 @@ class CatalogFish(Screen):
         self.parent.current = 'Cyprinus'
 
 class Recipes(Screen):
+    pass
+
+class CustomMenuBlock(Screen):
     pass
 
 class CustomBottomSheet(Screen, MDBoxLayout):
@@ -633,7 +526,11 @@ class GPSHelper(Screen):
         Dialog('Вы уже на данной странице', 'Внимание!')
 
     def click_on_button_note(self):
-        self.parent.current = 'Menu'
+        self.menu_block = MDCustomBottomSheet(screen = Factory.CustomMenuBlock())
+        self.menu_block.open()
+
+    def close_menu(self):
+        self.menu_block.dismiss()
 
     def click_on_button_plus(self):
         self.parent.current = 'News'
@@ -651,189 +548,6 @@ class GPSHelper(Screen):
         elif days_in_mon == 30:
             thirty_one_label.disabled = True
 
-        # sequence = [0, 0, 0, 0]
-        # for i in range(len(CALENDAR_CODE)):
-        #     if mn_now == 1:
-        #         if CALENDAR_CODE[i][mn_now*3-3] == 0:
-        #             sequence[0] += 1
-        #         elif CALENDAR_CODE[i][mn_now*3-3] == 1:
-        #             sequence[1] += 1
-        #         elif CALENDAR_CODE[i][mn_now*3-3] == 2:
-        #             sequence[2] += 1
-        #         elif CALENDAR_CODE[i][mn_now*3-3] == 3:
-        #             sequence[3] += 1
-        #     else:
-        #         if CALENDAR_CODE[i][mn_now*3-2] == 0:
-        #             sequence[0] += 1
-        #         elif CALENDAR_CODE[i][mn_now*3-2] == 1:
-        #             sequence[1] += 1
-        #         elif CALENDAR_CODE[i][mn_now*3-2] == 2:
-        #             sequence[2] += 1
-        #         elif CALENDAR_CODE[i][mn_now*3-2] == 3:
-        #             sequence[3] += 1
-        # max_ten = 0
-        # k = 0
-        # for i in range(len(sequence)):
-        #     if sequence[i] > max_ten:
-        #         max_ten = sequence[i]
-        #         k = i
-        # if k == 1:
-        #     self.parent.get_screen('Calendar').ids.one_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.two_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.three_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.four_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.fife_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.six_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.seven_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.eight_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.nine_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.ten_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        # elif k == 2:
-        #     self.parent.get_screen('Calendar').ids.one_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.two_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.three_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.four_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.fife_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.six_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.seven_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.eight_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.nine_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.ten_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        # elif k == 3:
-        #     self.parent.get_screen('Calendar').ids.one_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.two_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.three_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.four_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.fife_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.six_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.seven_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.eight_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.nine_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.ten_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-
-        # sequence = [0, 0, 0, 0]
-        # for i in range(len(CALENDAR_CODE)):
-        #     if mn_now == 1:
-        #         if CALENDAR_CODE[i][mn_now*3-2] == 0:
-        #             sequence[0] += 1
-        #         elif CALENDAR_CODE[i][mn_now*3-2] == 1:
-        #             sequence[1] += 1
-        #         elif CALENDAR_CODE[i][mn_now*3-2] == 2:
-        #             sequence[2] += 1
-        #         elif CALENDAR_CODE[i][mn_now*3-2] == 3:
-        #             sequence[3] += 1
-        #     else:
-        #         if CALENDAR_CODE[i][mn_now*3-1] == 0:
-        #             sequence[0] += 1
-        #         elif CALENDAR_CODE[i][mn_now*3-1] == 1:
-        #             sequence[1] += 1
-        #         elif CALENDAR_CODE[i][mn_now*3-1] == 2:
-        #             sequence[2] += 1
-        #         elif CALENDAR_CODE[i][mn_now*3-1] == 3:
-        #             sequence[3] += 1
-        # max_ten = 0
-        # k = 0
-        # for i in range(len(sequence)):
-        #     if sequence[i] > max_ten:
-        #         max_ten = sequence[i]
-        #         k = i
-
-        # if k == 1:
-        #     self.parent.get_screen('Calendar').ids.eleven_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twelve_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.thirteen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.fourteen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.fifteen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.sixteen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.seventeen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.eightteen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.nineteen_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        # elif k == 2:
-        #     self.parent.get_screen('Calendar').ids.eleven_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twelve_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.thirteen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.fourteen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.fifteen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.sixteen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.seventeen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.eightteen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.nineteen_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        # elif k == 3:
-        #     self.parent.get_screen('Calendar').ids.eleven_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twelve_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.thirteen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.fourteen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.fifteen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.sixteen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.seventeen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.eightteen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.nineteen_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-
-        # sequence = [0, 0, 0, 0]
-        # for i in range(len(CALENDAR_CODE)):
-        #     if mn_now == 1:
-        #         if CALENDAR_CODE[i][mn_now*3-1] == 0:
-        #             sequence[0] += 1
-        #         elif CALENDAR_CODE[i][mn_now*3-1] == 1:
-        #             sequence[1] += 1
-        #         elif CALENDAR_CODE[i][mn_now*3-1] == 2:
-        #             sequence[2] += 1
-        #         elif CALENDAR_CODE[i][mn_now*3-1] == 3:
-        #             sequence[3] += 1
-        #     else:
-        #         if CALENDAR_CODE[i][mn_now*3] == 0:
-        #             sequence[0] += 1
-        #         elif CALENDAR_CODE[i][mn_now*3] == 1:
-        #             sequence[1] += 1
-        #         elif CALENDAR_CODE[i][mn_now*3] == 2:
-        #             sequence[2] += 1
-        #         elif CALENDAR_CODE[i][mn_now*3] == 3:
-        #             sequence[3] += 1
-        # max_ten = 0
-        # k = 0
-        # for i in range(len(sequence)):
-        #     if sequence[i] > max_ten:
-        #         max_ten = sequence[i]
-        #         k = i
-        # if k == 1:
-        #     self.parent.get_screen('Calendar').ids.twenty_one_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_two_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_three_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_four_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_five_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_six_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_seven_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_eight_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_nine_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.thirty_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.thirty_one_label.md_bg_color = [53/255, 158/255, 24/255, 1.0]
-        # elif k == 2:
-        #     self.parent.get_screen('Calendar').ids.twenty_one_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_two_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_three_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_four_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_five_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_six_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_seven_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_eight_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_nine_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.thirty_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.thirty_one_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        # elif k == 3:
-        #     self.parent.get_screen('Calendar').ids.twenty_one_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_two_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_three_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_four_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_five_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_six_label.md_bg_color = [194/255, 191/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_seven_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_eight_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.twenty_nine_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.thirty_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
-        #     self.parent.get_screen('Calendar').ids.thirty_one_label.md_bg_color = [194/255, 43/255, 43/255, 1.0]
         self.parent.current = 'Calendar'
 
     def click_on_button_fish(self):
@@ -843,14 +557,14 @@ class GPSHelper(Screen):
         Dialog('Функция гео-локации в разработке', 'Внимание')
 
     def click_on_button_layers(self):
-        self.obj = MDCustomBottomSheet(screen = Factory.CustomBottomSheet())
+        self.layers = MDCustomBottomSheet(screen = Factory.CustomBottomSheet())
         if self.fishing_allowed:
-            self.obj.children[0].children[0].children[0].ids.image_allowed.source = 'resources/map_sign/fishing_allowed_on.png'
+            self.layers.children[0].children[0].children[0].ids.image_allowed.source = 'resources/map_sign/fishing_allowed_on.png'
         if self.fishing_disallowed:
-            self.obj.children[0].children[0].children[0].ids.image_disallowed.source = 'resources/map_sign/fishing_disallowed_on.png'
+            self.layers.children[0].children[0].children[0].ids.image_disallowed.source = 'resources/map_sign/fishing_disallowed_on.png'
         if self.fishing_shops:
-            self.obj.children[0].children[0].children[0].ids.image_shops.source = 'resources/map_sign/fishing_shop_on.png'
-        self.obj.open()
+            self.layers.children[0].children[0].children[0].ids.image_shops.source = 'resources/map_sign/fishing_shop_on.png'
+        self.layers.open()
 
 class Onboard(Screen):
     pass
@@ -928,8 +642,6 @@ class Enter(Screen):
         self.parent.current = 'GPSHelper'
 
     def click_on_button_enter(self):
-        #for debug
-        #self.parent.current = 'GPSHelper'
         if self.input_phone.text == '':
             Dialog('Вы не ввели телефон', 'Внимание!')
         else:
@@ -942,7 +654,6 @@ class Enter(Screen):
                 Data.code = code
                 self.parent.get_screen('EnterCheckPhone').ids.label_phone.text = str(Data.phone)
                 self.parent.current = 'EnterCheckPhone'
-                #self.parent.current = 'GPSHelper'
 
     def click_on_button_register(self):
         self.parent.current = 'RegistrationMain'

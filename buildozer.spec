@@ -29,7 +29,7 @@ source.include_exts = py,png,jpg,kv,atlas, geojson, ico, env, ttf, db
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 0.2.2
+version = 0.2.6
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
@@ -37,7 +37,7 @@ version = 0.2.2
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy, kivy_garden.mapview,kivymd,requests,urllib3,charset-normalizer,chardet,idna, Pillow, pyotp, python-dotenv
+requirements = python3,kivy, kivy_garden.mapview,https://github.com/kivymd/KivyMD/archive/master.zip,requests,urllib3,charset-normalizer,chardet,idna, Pillow, pyotp, python-dotenv
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes

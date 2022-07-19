@@ -29,8 +29,6 @@ WindowManager:
 
 	GPSHelper:
 
-	Menu:
-
 	Rules:
 	RuleFishing:
 
@@ -52,6 +50,8 @@ WindowManager:
 	News:
 
 	Itog:
+	
+	CustomMenuBlock:
 
 <Weapon>:
 	name: 'Weapon'
@@ -201,7 +201,7 @@ WindowManager:
 	MDIconButton:
 		icon: 'close'
 		pos_hint: {'right': 1, 'center_y': 0.97}
-		on_release: app.root.current = 'Menu'
+		on_release: app.root.current = 'GPSHelper'
 
 	MDLabel:
 		pos_hint: {'x': 0.1, 'center_y': 0.97}
@@ -530,44 +530,6 @@ WindowManager:
 			text: "Приносим извинения, страница в разработке"
 			font_size: '14sp'
 
-<Menu>:
-	name: 'Menu'
-	color: (152, 152, 152, 1)
-
-	MDBoxLayout:
-		orientation: 'vertical'
-		
-		MDIconButton:
-			icon: 'close'
-			pos_hint: {'right': 1, 'center_y': 0.92}
-			on_release: app.root.current = 'GPSHelper'
-
-		MDLabel:
-			font_style: 'Proxima Nova'			
-			text: "Меню"
-			font_size: '30sp'
-			bold: True
-
-		MDFlatButton:
-			font_size: '14sp'
-			text: 'Каталог рыб'
-			on_release: root.click_on_button_catalogFish()
-
-		MDFlatButton:
-			font_size: '14sp'
-			text: 'Рецепты приготовления'
-			on_release: root.click_on_button_recipes()
-
-		MDFlatButton:
-			font_size: '14sp'
-			text: 'Правила рыбалки'
-			on_release: root.click_on_button_rules()
-
-		MDFlatButton:
-			font_size: '14sp'
-			text: 'Штрафы'
-			on_release: root.click_on_button_penalties()
-
 <RuleFishing>:
 	name: 'RuleFishing'
 	canvas:
@@ -584,7 +546,7 @@ WindowManager:
 		id: zag
 		font_style: 'Proxima Nova'
 		font_size: '20sp'
-		pos_hint: {'x': 0.1, 'center_y': 0.90}
+		pos_hint: {'x': 0.05, 'center_y': 0.95}
 		bold: True
 
 	ScrollView:
@@ -603,8 +565,8 @@ WindowManager:
 			font_size: '18sp'
 			bold: True
 			size_hint_y: None
-			height: 1000
 			text_size: (self.width, None)
+			height: self.texture_size[1]
 
 	MDRoundFlatButton:
 		elevation: 10
@@ -647,7 +609,7 @@ WindowManager:
 		id: zag
 		font_style: 'Proxima Nova'
 		font_size: '16sp'
-		pos_hint: {'x': 0.05, 'center_y': 0.94}
+		pos_hint: {'x': 0.025, 'center_y': 0.93}
 		bold: True
 
 	ScrollView:
@@ -656,7 +618,7 @@ WindowManager:
 		md_bg_color: 1.0, 1.0, 1.0, 1.0
 		do_scroll_y: True
 		do_scroll_x: False
-		pos_hint: {'x': 0.1, 'center_y': 0.5}
+		pos_hint: {'x': 0.1, 'center_y': 0.45}
 		size_hint_x: 0.85
 		size_hint_y: 0.75
 
@@ -666,8 +628,8 @@ WindowManager:
 			font_size: '14sp'
 			bold: True
 			size_hint_y: None
-			height: 1000
 			text_size: (self.width, None)
+			height: self.texture_size[1]
 
 	MDRoundFlatButton:
 		elevation: 10
@@ -705,7 +667,7 @@ WindowManager:
 	MDIconButton:
 		icon: 'close'
 		pos_hint: {'right': 1, 'center_y': 0.97}
-		on_release: app.root.current = 'Menu'
+		on_release: app.root.current = 'GPSHelper'
 
 	MDLabel:
 		font_style: 'Proxima Nova'			
@@ -736,7 +698,6 @@ WindowManager:
 			border_radius: 50
 			halign: 'left'
 			font_name: 'Proxima Nova'
-			#on_release: print(self.border_radius)
 			on_release: root.click_on_rule_fishing()
 
 		MDRoundFlatButton:
@@ -852,7 +813,7 @@ WindowManager:
 	MDIconButton:
 		icon: 'close'
 		pos_hint: {'right': 1, 'center_y': 0.97}
-		on_release: app.root.current = 'Menu'
+		on_release: app.root.current = 'GPSHelper'
 
 	MDLabel:
 		font_style: 'Proxima Nova'			
@@ -867,7 +828,7 @@ WindowManager:
 		md_bg_color: 1.0, 1.0, 1.0, 1.0
 		do_scroll_y: True
 		do_scroll_x: False
-		pos_hint: {'x': 0.025, 'center_y': 0.5}
+		pos_hint: {'center_y': 0.4}
 		size_hint_x: 1
 		size_hint_y: 0.75
 
@@ -876,10 +837,11 @@ WindowManager:
 			rows: 14
 			adaptive_height: True
 			theme_text_color: 'Custom'
-			pos_hint: {'x': 0.025,'center_y': 0.5}
-			spacing: 25
+			pos_hint: {'center_y': 0.4}
+			spacing: 35
+			padding: 26
 			size_hint_y: None
-			size_hint_x: 0.75
+			size_hint_x: 0.9
 
 			MDRoundFlatButton:
 				size_hint_x: 0.85
@@ -894,9 +856,9 @@ WindowManager:
 				on_release: root.click_on_state256()
 
 			MDRoundFlatButton:
+				size_hint_x: 0.85
 				text: 'Незаконная охота'
 				font_size: '18sp'
-				size_hint_x: 0.85
 				theme_text_color: 'Custom'
 				text_color: 0, 0, 0, 1.0
 				md_bg_color: 1.0, 1.0, 1.0, 1.0
@@ -906,9 +868,9 @@ WindowManager:
 				on_release: root.click_on_state258()
 
 			MDRoundFlatButton:
+				size_hint_x: 0.85
 				text: 'Исчезающие виды'
 				font_size: '18sp'
-				size_hint_x: 0.85
 				theme_text_color: 'Custom'
 				text_color: 0, 0, 0, 1.0
 				md_bg_color: 1.0, 1.0, 1.0, 1.0
@@ -918,9 +880,9 @@ WindowManager:
 				on_release: root.click_on_state258_1()
 
 			MDRoundFlatButton:
+				size_hint_x: 0.85
 				text: 'Нарушение правил плавания'
 				font_size: '18sp'
-				size_hint_x: 0.85
 				theme_text_color: 'Custom'
 				text_color: 0, 0, 0, 1.0
 				md_bg_color: 1.0, 1.0, 1.0, 1.0
@@ -930,9 +892,9 @@ WindowManager:
 				on_release: root.click_on_state11_7()
 
 			MDRoundFlatButton:
+				size_hint_x: 0.85
 				text: 'Нарушение эксплуатации судов'
 				font_size: '18sp'
-				size_hint_x: 0.85
 				theme_text_color: 'Custom'
 				text_color: 0, 0, 0, 1.0
 				md_bg_color: 1.0, 1.0, 1.0, 1.0
@@ -942,9 +904,9 @@ WindowManager:
 				on_release: root.click_on_state11_8()
 
 			MDRoundFlatButton:
+				size_hint_x: 0.85
 				text: 'Отсутствие документов на вождение'
 				font_size: '18sp'
-				size_hint_x: 0.85
 				theme_text_color: 'Custom'
 				text_color: 0, 0, 0, 1.0
 				md_bg_color: 1.0, 1.0, 1.0, 1.0
@@ -954,9 +916,9 @@ WindowManager:
 				on_release: root.click_on_state11_8_1()
 
 			MDRoundFlatButton:
+				size_hint_x: 0.85
 				text: 'Нарушение безопасности на судне'
 				font_size: '18sp'
-				size_hint_x: 0.85
 				theme_text_color: 'Custom'
 				text_color: 0, 0, 0, 1.0
 				md_bg_color: 1.0, 1.0, 1.0, 1.0
@@ -966,9 +928,9 @@ WindowManager:
 				on_release: root.click_on_state11_10()
 
 			MDRoundFlatButton:
+				size_hint_x: 0.85
 				text: 'Нарушение природоохранных правил'
 				font_size: '18sp'
-				size_hint_x: 0.85
 				theme_text_color: 'Custom'
 				text_color: 0, 0, 0, 1.0
 				md_bg_color: 1.0, 1.0, 1.0, 1.0
@@ -978,9 +940,9 @@ WindowManager:
 				on_release: root.click_on_state8_33()
 
 			MDRoundFlatButton:
+				size_hint_x: 0.85
 				text: 'Уничтожение редких видов'
 				font_size: '18sp'
-				size_hint_x: 0.85
 				theme_text_color: 'Custom'
 				text_color: 0, 0, 0, 1.0
 				md_bg_color: 1.0, 1.0, 1.0, 1.0
@@ -990,9 +952,9 @@ WindowManager:
 				on_release: root.click_on_state8_35()
 
 			MDRoundFlatButton:
+				size_hint_x: 0.85
 				text: 'Нарушение правил рыболовства'
 				font_size: '18sp'
-				size_hint_x: 0.85
 				theme_text_color: 'Custom'
 				text_color: 0, 0, 0, 1.0
 				md_bg_color: 1.0, 1.0, 1.0, 1.0
@@ -1002,9 +964,9 @@ WindowManager:
 				on_release: root.click_on_state8_37()
 
 			MDRoundFlatButton:
+				size_hint_x: 0.85
 				text: 'Уклонение от штрафов'
 				font_size: '18sp'
-				size_hint_x: 0.85
 				theme_text_color: 'Custom'
 				text_color: 0, 0, 0, 1.0
 				md_bg_color: 1.0, 1.0, 1.0, 1.0
@@ -1014,9 +976,9 @@ WindowManager:
 				on_release: root.click_on_state20_25()
 
 			MDRoundFlatButton:
+				size_hint_x: 0.85
 				text: 'Пограничный режим'
 				font_size: '18sp'
-				size_hint_x: 0.85
 				theme_text_color: 'Custom'
 				text_color: 0, 0, 0, 1.0
 				md_bg_color: 1.0, 1.0, 1.0, 1.0
@@ -1026,9 +988,9 @@ WindowManager:
 				on_release: root.click_on_state18_2()
 
 			MDRoundFlatButton:
-				text: 'Пограничный режим региональных вод'
-				font_size: '18sp'
 				size_hint_x: 0.85
+				text: 'Нарушение. Внутренние воды РФ'
+				font_size: '18sp'
 				theme_text_color: 'Custom'
 				text_color: 0, 0, 0, 1.0
 				md_bg_color: 1.0, 1.0, 1.0, 1.0
@@ -1038,9 +1000,9 @@ WindowManager:
 				on_release: root.click_on_state18_3()
 
 			MDRoundFlatButton:
+				size_hint_x: 0.85
 				text: 'Неповиновение пограничной службе'
 				font_size: '18sp'
-				size_hint_x: 0.85
 				theme_text_color: 'Custom'
 				text_color: 0, 0, 0, 1.0
 				md_bg_color: 1.0, 1.0, 1.0, 1.0
@@ -1056,7 +1018,7 @@ WindowManager:
 	MDIconButton:
 		icon: 'close'
 		pos_hint: {'right': 1, 'center_y': 0.97}
-		on_release: app.root.current = 'Menu'
+		on_release: app.root.current = 'GPSHelper'
 
 	MDLabel:
 		pos_hint: {'x': 0.1, 'center_y': 0.97}
@@ -1127,11 +1089,11 @@ WindowManager:
 
 		MDLabel:
 			font_style: 'Proxima Nova'
-			text: 'Образ жизни: оседлый, не совершает больших перемещений по водоёму. Молодь предпочитает прибрежные участки, крупные особи держаться в глубоких закорёженных  местах. В тёплое время обычное место её обитания – ближе к отмели и травянистым местам. С осенним похолоданием уходит на глубину. Быстрого течения не любит, предпочитает затоны, заводи, омуты или прибрежные мелководья. Одиночная рыба. Хищник, поедающий преимущественно карповых рыб (вобла, плотва, краснопёрка, карась и др.). При недостатке пищи распространен каннибализм.\nОтличительные признаки: удлинённое, сжатое с боков тело с далеко отнесённым назад спинным и анальным плавниками напоминает стрелу с оперением. Клинообразная голова с вытянутым рылом имеет огромную пасть, усаженную острыми, огибающими назад зубами. Окраска чаще всего пятнистая или  полосатая, чрезвычайно изменчивая – от светлой до тёмной.'
+			text: '    Образ жизни: оседлый, не совершает больших перемещений по водоёму. Молодь предпочитает прибрежные участки, крупные особи держаться в глубоких закорёженных  местах. В тёплое время обычное место её обитания – ближе к отмели и травянистым местам. С осенним похолоданием уходит на глубину. Быстрого течения не любит, предпочитает затоны, заводи, омуты или прибрежные мелководья. \n\n    Одиночная рыба. Хищник, поедающий преимущественно карповых рыб (вобла, плотва, краснопёрка, карась и др.). При недостатке пищи распространен каннибализм.\n\n    Отличительные признаки: удлинённое, сжатое с боков тело с далеко отнесённым назад спинным и анальным плавниками напоминает стрелу с оперением. Клинообразная голова с вытянутым рылом имеет огромную пасть, усаженную острыми, огибающими назад зубами. Окраска чаще всего пятнистая или  полосатая, чрезвычайно изменчивая – от светлой до тёмной.'
 			font_size: '16sp'
 			size_hint_y: None
-			height: 500
 			text_size: (self.width, None)
+			height: self.texture_size[1]
 
 	MDFlatButton:
 		font_size: '16sp'
@@ -1181,11 +1143,11 @@ WindowManager:
 
 		MDLabel:
 			font_style: 'Proxima Nova'
-			text: 'Образ жизни: оседлый, не совершает больших перемещений по водоёму. Молодь предпочитает прибрежные участки, крупные особи держаться в глубоких закорёженных  местах. В тёплое время обычное место её обитания – ближе к отмели и травянистым местам. С осенним похолоданием уходит на глубину. Быстрого течения не любит, предпочитает затоны, заводи, омуты или прибрежные мелководья. Одиночная рыба. Хищник, поедающий преимущественно карповых рыб (вобла, плотва, краснопёрка, карась и др.). При недостатке пищи распространен каннибализм.\nОтличительные признаки: голова большая, сильно сплющенная, незаметно переходит в короткое туловище. Хвост сильно сужен с боков, значительно длиннее туловища. Рот широкий, с мясистыми губами. Нижняя челюсть несколько выдвинута вперед. Глаза сравнительно небольшие, расположены несколько выше и сзади от углов рта. Тело сома желтовато-зеленого цвета, спина темная, по бокам имеются пятна неправильной формы. Нижняя часть тела белая или серая.'
+			text: '    Образ жизни: оседлый, не совершает больших перемещений по водоёму. Молодь предпочитает прибрежные участки, крупные особи держаться в глубоких закорёженных  местах. В тёплое время обычное место её обитания – ближе к отмели и травянистым местам. С осенним похолоданием уходит на глубину. Быстрого течения не любит, предпочитает затоны, заводи, омуты или прибрежные мелководья. Одиночная рыба. Хищник, поедающий преимущественно карповых рыб (вобла, плотва, краснопёрка, карась и др.). При недостатке пищи распространен каннибализм.\n\n    Отличительные признаки: голова большая, сильно сплющенная, незаметно переходит в короткое туловище. Хвост сильно сужен с боков, значительно длиннее туловища. Рот широкий, с мясистыми губами. Нижняя челюсть несколько выдвинута вперед. Глаза сравнительно небольшие, расположены несколько выше и сзади от углов рта. Тело сома желтовато-зеленого цвета, спина темная, по бокам имеются пятна неправильной формы. Нижняя часть тела белая или серая.'
 			font_size: '16sp'
 			size_hint_y: None
-			height: 500
 			text_size: (self.width, None)
+			height: self.texture_size[1]
 
 	MDFlatButton:
 		font_size: '16sp'
@@ -1235,11 +1197,11 @@ WindowManager:
 
 		MDLabel:
 			font_style: 'Proxima Nova'
-			text: 'Образ жизни: в реке – типично жилая рыба, не совершает больших миграций. Летом выбирает ямы с несильным, чаще обратным течением и глинистым коряжным дном, иногда останавливается и на участках с илистым грунтом. Любит места с резкой разницей глубин. В водоёмах предпочитает заросли камыша и кувшинок. Держится небольшими стаями, причём чем мельче сазан, тем больше стая. В летнее время он играет, выбрасываясь из воды с сильным характерным всплеском. Это чаще наблюдается в местах постоянного его обитания.\nОтличительные признаки: тело толстое и широкое, а у крупных экземпляров почти цилиндрической формы. Из-за крупной чешуи  жёлто-золотистого цвета с чёрным окаймлением сазан кажется как бы закованным в золотые латы. Рот у него нижний. На верхней губе две пары усиков, служащих органом осязания. Спинной плавник тёмно-серый и занимает почти всю заднюю часть тела, анальный – красно-бурый. В спинном и анальном плавниках есть по одному костистому лучу с зазубринами, которые часто перерезают леску.'
+			text: '    Образ жизни: в реке – типично жилая рыба, не совершает больших миграций. Летом выбирает ямы с несильным, чаще обратным течением и глинистым коряжным дном, иногда останавливается и на участках с илистым грунтом. Любит места с резкой разницей глубин. В водоёмах предпочитает заросли камыша и кувшинок. Держится небольшими стаями, причём чем мельче сазан, тем больше стая. В летнее время он играет, выбрасываясь из воды с сильным характерным всплеском. Это чаще наблюдается в местах постоянного его обитания.\n\n    Отличительные признаки: тело толстое и широкое, а у крупных экземпляров почти цилиндрической формы. Из-за крупной чешуи  жёлто-золотистого цвета с чёрным окаймлением сазан кажется как бы закованным в золотые латы. Рот у него нижний. На верхней губе две пары усиков, служащих органом осязания. Спинной плавник тёмно-серый и занимает почти всю заднюю часть тела, анальный – красно-бурый. В спинном и анальном плавниках есть по одному костистому лучу с зазубринами, которые часто перерезают леску.'
 			font_size: '16sp'
 			size_hint_y: None
-			height: 500
 			text_size: (self.width, None)
+			height: self.texture_size[1]
 
 	MDFlatButton:
 		font_size: '16sp'
@@ -1255,7 +1217,7 @@ WindowManager:
 	MDIconButton:
 		icon: 'close'
 		pos_hint: {'right': 1, 'center_y': 0.97}
-		on_release: app.root.current = 'Menu'
+		on_release: app.root.current = 'GPSHelper'
 
 	MDLabel:
 		font_style: 'Proxima Nova'
@@ -1633,6 +1595,72 @@ WindowManager:
 			font_size: '30sp'
 
 			on_release: root.click_on_button_confirm()
+
+<CustomMenuBlock>:
+	name: 'CustomMenuBlock'
+	
+	radius: [20,]
+	border_radius: 20, 20, 0, 0
+	size_hint_y: None
+	height: '290dp'
+
+	MDLabel:
+		font_size: '18sp'
+		text: 'Еще'
+		bold: True
+		pos_hint: {'x': 0.05, 'center_y': 0.9}
+	
+	MDGridLayout:
+		cols: 1
+		rows: 4
+		pos_hint: {'center_y': 0.35}
+
+		OneLineAvatarListItem:
+			font_style: 'Proxima Nova'
+			font_size: '18sp'
+			text: 'Каталог рыб'
+			on_press: 
+				app.get_running_app().root.current = 'CatalogFish'
+				app.get_running_app().root.get_screen('GPSHelper').close_menu()
+			
+			ImageLeftWidget:
+				source: 'resources/pictures/catalog_fish_menu.jpg'
+				allow_stretch: True
+				keep_ratio: True
+				pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+		OneLineAvatarListItem:
+			font_style: 'Proxima Nova'
+			font_size: '18sp'
+			text: 'Рецепты приготовления'
+			on_press: 
+				app.get_running_app().root.current = 'Recipes'
+				app.get_running_app().root.get_screen('GPSHelper').close_menu()
+			
+			ImageLeftWidget:
+				source: 'resources/pictures/recipes_menu.png'
+
+		OneLineAvatarListItem:
+			font_style: 'Proxima Nova'
+			font_size: '18sp'
+			text: 'Правила рыбалки'
+			on_press: 
+				app.get_running_app().root.current = 'Rules'
+				app.get_running_app().root.get_screen('GPSHelper').close_menu()
+			
+			ImageLeftWidget:
+				source: 'resources/pictures/rules_menu.png'
+
+		OneLineAvatarListItem:
+			font_style: 'Proxima Nova'
+			font_size: '18sp'
+			text: 'Штрафы'
+			on_press: 
+				app.get_running_app().root.current = 'Penalties'
+				app.get_running_app().root.get_screen('GPSHelper').close_menu()
+			
+			ImageLeftWidget:
+				source: 'resources/pictures/penalties_menu.png'
 
 <CustomBottomSheet>:
 	name: 'CustomBottomSheet'
