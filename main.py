@@ -612,8 +612,37 @@ class RegistrationMain(Screen):
                                 if re.match('^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$', self.input_phone.text) == None:
                                     Dialog('Неккоректный ввод телефона', 'Внимание')
                                 else:
-                                    #self.parent.current = 'RegistrationDop'
-                                    Dialog('Данная функция находится в разработке', 'Внимание')
+                                    conn = SQLCommander.connect('resources/DB/user_db.db')
+                                    curr = conn.cursor()
+                                    curr.execute("SELECT * from Users WHERE phone="+self.input_phone.text)
+
+                                    allItems = list(curr.fetchall())
+
+                                    flag = True
+                                    for i in range(len(allItems)):
+                                        if allItems[i][5] == self.input_phone.text:
+                                            flag = False
+                                    if flag:
+                                        conn = None
+                                        flag = True
+                                        try:
+                                            conn = SQLCommander.connect('resources/DB/user_db.db')
+                                            curr = conn.cursor()
+                                            curr.execute("INSERT INTO Users VALUES (NULL, '"+self.input_surname.text+"', '"+self.input_name.text+"', '"+self.input_lastname.text+"', '"+self.input_mail.text+"', '"+self.input_phone.text+"')")
+                                            conn.commit()
+                                        except SQLCommander.Error as e:
+                                            if conn: conn.rollback()
+                                            flag = False
+                                        finally:
+                                            if conn:
+                                                conn.close()
+                                        if flag:
+                                            Dialog('Регистрация успешно завершена!', 'Поздравляем!')
+                                            self.parent.current = 'RegistrationDop'
+                                        else:
+                                            Dialog('Введены неверные данные', 'Отказ в регистрации')
+                                    else:
+                                        Dialog('Такой пользователь уже зарегестрирован', 'Внимание!')
 
 class RegistrationDop(Screen):
     button_continue = ObjectProperty()
@@ -648,12 +677,25 @@ class Enter(Screen):
             if re.match('^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$', self.input_phone.text) == None:
                 Dialog('Неккоректный ввод телефона', 'Внимание!')
             else:
-                phone = '+7' + self.input_phone.text
-                code = rec_otp('7' + self.input_phone.text)
-                Data.phone = phone
-                Data.code = code
-                self.parent.get_screen('EnterCheckPhone').ids.label_phone.text = str(Data.phone)
-                self.parent.current = 'EnterCheckPhone'
+                conn = SQLCommander.connect('resources/DB/user_db.db')
+                curr = conn.cursor()
+                curr.execute("SELECT * from Users WHERE phone="+self.input_phone.text)
+
+                allItems = list(curr.fetchall())
+
+                flag = False
+                for i in range(len(allItems)):
+                    if allItems[i][5] == self.input_phone.text:
+                        flag = True
+                if flag:
+                    phone = '+7' + self.input_phone.text
+                    code = rec_otp('7' + self.input_phone.text)
+                    Data.phone = phone
+                    Data.code = code
+                    self.parent.get_screen('EnterCheckPhone').ids.label_phone.text = str(Data.phone)
+                    self.parent.current = 'EnterCheckPhone'
+                else:
+                    Dialog('Профиль с таким номером телефона не найден', 'Внимание')
 
     def click_on_button_register(self):
         self.parent.current = 'RegistrationMain'
