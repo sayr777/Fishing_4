@@ -8,6 +8,8 @@ from kivy_garden.mapview.clustered_marker_layer import ClusteredMarkerLayer
 from kivy_garden.mapview.geojson import GeoJsonMapLayer
 from kivy_garden.mapview.utils import get_zoom_for_radius, haversine
 from dialog import Dialog
+from data import Data
+from news import News
 import re
 import random
 import io
@@ -71,33 +73,6 @@ CALENDAR_CODE = [
     [0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 0, 0, 0, 2, 2, 2, 3, 3, 3, 3, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 0, 0, 0, 2, 2, 3, 3, 3, 3, 3, 3, 3, 2, 2, 1, 1, 0, 0, 0, 0, 0, 0]
 ]
-
-class Data():
-    phone = 0
-    code = 0
-
-    input_surname = ''
-    input_name = ''
-    input_lastname = ''
-    input_mail = ''
-    input_phone = 0
-
-    number_rule = 0
-    number_penalties = 0
-
-    stateMap = 'Street'
-
-    db = []
-
-    def save_info(self, surname, name, lastname, mail, phone):
-        self.input_surname = surname
-        self.input_name = name
-        self.input_lastname = lastname
-        self.input_mail = mail
-        self.input_phone = phone
-
-class News(Screen):
-    pass
 
 class Calendar(Screen):
     one_label = ObjectProperty()
@@ -170,19 +145,6 @@ class Itog(Screen):
 
 class User(Screen):
     pass
-
-class Menu(Screen):
-    def click_on_button_catalogFish(self):
-        self.parent.current = 'CatalogFish'
-
-    def click_on_button_recipes(self):
-        self.parent.current = 'Recipes'
-
-    def click_on_button_rules(self):
-        self.parent.current = 'Rules'
-
-    def click_on_button_penalties(self):
-        self.parent.current = 'Penalties'
 
 class Rules(Screen):
     def click_on_rule_fishing(self):
@@ -488,39 +450,39 @@ class GPSHelper(Screen):
             self.fishing_allowed = False
             self.main_map.remove_layer(self.layer_polygon_allowed)
             self.main_map.remove_layer(self.layer_fishing_allowed)
-            widget.parent.children[5].source = 'resources/map_sign/fishing_allowed_off.png'
+            widget.children[0].children[0].source = 'resources/map_sign/fishing_allowed_off.png'
         else:
             self.fishing_allowed = True
             self.centering(self.layer_polygon_allowed)
             self.main_map.add_layer(self.layer_polygon_allowed)
             self.main_map.add_layer(self.layer_fishing_allowed)
             self.layer_fishing_allowed.reposition()
-            widget.parent.children[5].source = 'resources/map_sign/fishing_allowed_on.png'
+            widget.children[0].children[0].source = 'resources/map_sign/fishing_allowed_on.png'
 
     def click_fishing_disallowed(self, widget):
         if self.fishing_disallowed:
             self.fishing_disallowed = False
             self.main_map.remove_layer(self.layer_polygon_disallowed)
             self.main_map.remove_layer(self.layer_fishing_disallowed)
-            widget.parent.children[3].source = 'resources/map_sign/fishing_disallowed_off.png'
+            widget.children[0].children[0].source = 'resources/map_sign/fishing_disallowed_off.png'
         else:
             self.fishing_disallowed = True
             self.centering(self.layer_polygon_disallowed)
             self.main_map.add_layer(self.layer_polygon_disallowed)
             self.main_map.add_layer(self.layer_fishing_disallowed)
             self.layer_fishing_disallowed.reposition()
-            widget.parent.children[3].source = 'resources/map_sign/fishing_disallowed_on.png'
+            widget.children[0].children[0].source = 'resources/map_sign/fishing_disallowed_on.png'
 
     def click_fishing_shops(self, widget):
         if self.fishing_shops:
             self.fishing_shops = False
             self.main_map.remove_layer(self.layer_fishing_shops)
-            widget.parent.children[1].source = 'resources/map_sign/fishing_shop_off.png'
+            widget.children[0].children[0].source = 'resources/map_sign/fishing_shop_off.png'
         else:
             self.fishing_shops = True
             self.main_map.add_layer(self.layer_fishing_shops)
             self.layer_fishing_shops.reposition()
-            widget.parent.children[1].source = 'resources/map_sign/fishing_shop_on.png'
+            widget.children[0].children[0].source = 'resources/map_sign/fishing_shop_on.png'
 
     def click_on_button_gps(self):
         Dialog('Вы уже на данной странице', 'Внимание!')
@@ -580,11 +542,11 @@ class RegistrationMain(Screen):
         super(RegistrationMain, self).__init__(**kwargs)
 
     def click_on_button_privacy_policy(self):
-        Data.save_info(self.input_surname.text, self.input_name.text, self.input_lastname.text, self.input_mail.text, int(self.input_phone.text))
+        #Data.save_info(surname=self.input_surname.text, name=self.input_name.text, lastname=self.input_lastname.text, mail=self.input_mail.text, phone=self.input_phone.text)
         self.parent.current = 'RegistrationDop'
 
     def click_on_button_terms_and_agreements(self):
-        Data.save_info(self.input_surname.text, self.input_name.text, self.input_lastname.text, self.input_mail.text, int(self.input_phone.text))
+        #Data.save_info(surname=self.input_surname.text, name=self.input_name.text, lastname=self.input_lastname.text, mail=self.input_mail.text, phone=self.input_phone.text)
         self.parent.current = 'RegistrationDop'
 
     def click_on_button_enter(self):

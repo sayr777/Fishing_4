@@ -1,0 +1,22 @@
+<News>:
+	name: 'News'
+	color: (152, 152, 152, 1)
+
+	MDBoxLayout:
+		orientation: 'vertical'
+
+		MDIconButton:
+			icon: 'close'
+			pos_hint: {'right': 1, 'center_y': 0.92}
+			on_release: app.root.current = 'GPSHelper'
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			text: "Лента новостей"
+			font_size: '30sp'
+			bold: True
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			text: "Приносим извинения, страница в разработке"
+			font_size: '14sp'

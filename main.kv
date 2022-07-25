@@ -9,11 +9,12 @@
 #: import MDToolbar kivymd.uix.toolbar.MDToolbar
 #: import MDIconButton kivymd.uix.button.MDIconButton
 #: import MDFlatButton kivymd.uix.button.MDFlatButton
-#: import MDTextFieldRound kivymd.uix.textfield.MDTextFieldRound
 #: import MDRelativeLayout kivymd.uix.relativelayout.RelativeLayout
 #: import MapView kivy_garden.mapview.MapView
 #: import MapSource kivy_garden.mapview.MapSource
 #: import MDCard kivymd.uix.card.MDCard
+#: import MDTextField kivymd.uix.textfield.MDTextField
+#: include news.kv
 
 
 WindowManager:
@@ -51,8 +52,6 @@ WindowManager:
 
 	Itog:
 	
-	CustomMenuBlock:
-
 <Weapon>:
 	name: 'Weapon'
 	color: (152, 152, 152, 1)
@@ -74,29 +73,6 @@ WindowManager:
 		pos_hint: {'center_y': 0.5}			
 		text: "Приносим извинения, страница в разработке"
 		font_size: '20sp'
-
-<News>:
-	name: 'News'
-	color: (152, 152, 152, 1)
-
-	MDBoxLayout:
-		orientation: 'vertical'
-
-		MDIconButton:
-			icon: 'close'
-			pos_hint: {'right': 1, 'center_y': 0.92}
-			on_release: app.root.current = 'GPSHelper'
-
-		MDLabel:
-			font_style: 'Proxima Nova'			
-			text: "Лента новостей"
-			font_size: '30sp'
-			bold: True
-
-		MDLabel:
-			font_style: 'Proxima Nova'			
-			text: "Приносим извинения, страница в разработке"
-			font_size: '14sp'
 
 <Itog>:
 	name: 'Itog'
@@ -164,7 +140,6 @@ WindowManager:
 
 <Calendar>:
 	name: 'Calendar'
-	color: (152, 152, 152, 1)
 
 	one_label: one_label
 	two_label: two_label
@@ -509,7 +484,6 @@ WindowManager:
 
 <User>:
 	name: 'User'
-	color: (152, 152, 152, 1)
 
 	MDBoxLayout:
 		orientation: 'vertical'
@@ -1013,40 +987,185 @@ WindowManager:
 
 <CatalogFish>:
 	name: 'CatalogFish'
-	color: (152, 152, 152, 1)
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
 	
 	MDIconButton:
 		icon: 'close'
 		pos_hint: {'right': 1, 'center_y': 0.97}
 		on_release: app.root.current = 'GPSHelper'
 
-	MDLabel:
-		pos_hint: {'x': 0.1, 'center_y': 0.97}
-		font_style: 'Proxima Nova'			
-		text: "Каталог рыб"
-		font_size: '30sp'
-		bold: True
+	MDTextField:
+		pos_hint: {'center_x' : 0.5, 'center_y' : 0.9}
+		size_hint_x: 0.93
+		hint_text: "Поиск по справочнику"
+		multiline: False
+		font_size: '18sp'
+		icon_left: 'magnify'
+		icon: 'microphone'
 
-	MDFlatButton:
-		font_size: '20sp'
-		pos_hint: {'center_y': 0.85}
-		text: 'ОБЫКНОВЕННАЯ ЩУКА'
-		on_release: root.click_on_button_esox()
-		bold: True
+	MDGridLayout:
+		cols: 1
+		rows: 3
+		spacing: 20
+		size_hint_x: 0.93
+		pos_hint: {'center_x' : 0.5, 'center_y' : 0.35}
+		height: self.minimum_height
 
-	MDFlatButton:
-		font_size: '20sp'
-		pos_hint: {'center_y': 0.8}
-		text: 'СОМ ОБЫКНОВЕННЫЙ'
-		on_release: root.click_on_button_silurus()
-		bold: True
+		MDCard:
+			radius: [16,]
+			border_radius: 16
+			pos_hint: {'center_x' : 0.5}
+			size_hint_x: 0.8
+			size_hint_y: None
+			text_color: 1,0,0,1
+			padding: '16dp'
+			spacing: '16dp'
+			height: 300
+			on_release: app.root.current = 'Esox'
+		
+			MDGridLayout:
+				cols: 2
+				rows: 1
+			
+				MDGridLayout:
+					cols: 1
+					rows: 4
+				
+					MDLabel:
+						font_size: '20sp'
+						text: '  Щука'
+				
+					MDLabel:
+						font_size: '12sp'
+						text: '    Esox lucios'
 
-	MDFlatButton:
-		font_size: '20sp'
-		pos_hint: {'center_y': 0.75}
-		text: 'САЗАН'
-		on_release: root.click_on_button_cyprinus()
-		bold: True
+					MDGridLayout:
+						cols: 2
+						MDIconButton:
+							icon: 'calendar'
+					
+						MDLabel:
+							font_size: '12sp'
+							text: 'Май - Июнь'
+
+					MDLabel:
+						font_size: '12sp'
+						font_style: 'Proxima Nova'
+						text: ' '
+				
+				FitImage:
+					source: 'resources/pictures/esox.jpg'
+					pos: self.parent.parent.pos
+					pos_hint: {'center_x': 0.5, 'center_y': 1}
+					size_hint_y: None
+					width: 200
+					allow_stretch: True
+
+				
+		MDCard:
+			radius: [16,]
+			border_radius: 16
+			pos_hint: {'center_x' : 0.5}
+			size_hint_x: 0.93
+			size_hint_y: None
+			text_color: 1,0,0,1
+			padding: '16dp'
+			spacing: '16dp'
+			height: 300
+			on_release: app.root.current = 'Silurus'
+		
+			MDGridLayout:
+				cols: 2
+				rows: 1
+			
+				MDGridLayout:
+					cols: 1
+					rows: 4
+				
+					MDLabel:
+						font_size: '20sp'
+						text: '  Сом'
+				
+					MDLabel:
+						font_size: '12sp'
+						text: '    Silurus glanis'
+
+					MDGridLayout:
+						cols: 2
+						MDIconButton:
+							icon: 'calendar'
+
+						MDLabel:
+							font_size: '12sp'
+							text: 'Май - Июль'
+
+					MDLabel:
+						font_size: '12sp'
+						font_style: 'Proxima Nova'
+						text: ' '
+				
+				FitImage:
+					source: 'resources/pictures/silurus.jpg'
+					pos: self.parent.parent.pos
+					pos_hint: {'center_x': 0.5, 'center_y': 1}
+					size_hint_y: None
+					width: 200
+					allow_stretch: True
+				
+		MDCard:
+			radius: [16,]
+			border_radius: 16
+			pos_hint: {'center_x' : 0.5}
+			size_hint_x: 0.93
+			size_hint_y: None
+			text_color: 1,0,0,1
+			padding: '16dp'
+			spacing: '16dp'
+			height: 300
+			on_release: app.root.current = 'Cyprinus'
+		
+			MDGridLayout:
+				cols: 2
+				rows: 1
+			
+				MDGridLayout:
+					cols: 1
+					rows: 4
+				
+					MDLabel:
+						font_size: '20sp'
+						text: '  Сазан'
+				
+					MDLabel:
+						font_size: '12sp'
+						text: '    Cyprinus caspio'
+
+					MDGridLayout:
+						cols: 2
+						MDIconButton:
+							icon: 'calendar'
+
+						MDLabel:
+							font_size: '12sp'
+							text: 'Май - Июнь'
+
+					MDLabel:
+						font_size: '12sp'
+						font_style: 'Proxima Nova'
+						text: ' '
+				
+				FitImage:
+					source: 'resources/pictures/cyprinus.jpg'
+					pos: self.parent.parent.pos
+					pos_hint: {'center_x': 0.5, 'center_y': 1}
+					size_hint_y: None
+					width: 200
+					allow_stretch: True
 
 <Esox>:
 	name: 'Esox'
@@ -1056,9 +1175,13 @@ WindowManager:
 		pos_hint: {'right': 1, 'center_y': 0.97}
 		on_release: app.root.current = 'CatalogFish'
 
-	Image:
-		source: 'resources/pictures/esox.jpg'
+	FitImage:
+		source: 'resources/pictures/esox2.jpg'
 		pos_hint: {'center_y': 0.85}
+		allow_stretch: True
+		size_hint_y: None
+		width: 200
+		height: 300
 
 	MDLabel:
 		pos_hint: {'center_y': 0.75}
@@ -1084,7 +1207,7 @@ WindowManager:
 	ScrollView:
 		do_scroll_y: True
 		do_scroll_x: False
-		size_hint: (1, 0.4)
+		size_hint: (0.93, 0.4)
 		pos_hint: {'center_y': 0.3}
 
 		MDLabel:
@@ -1099,6 +1222,8 @@ WindowManager:
 		font_size: '16sp'
 		pos_hint: {'center_y': 0.05}
 		text: 'Орудия лова'
+		theme_text_color: 'Custom'
+		text_color: app.theme_cls.primary_color
 		on_release: app.root.current = 'Weapon'
 		bold: True
 
@@ -1111,7 +1236,7 @@ WindowManager:
 		on_release: app.root.current = 'CatalogFish'
 
 	Image:
-		source: 'resources/pictures/silurus.jpg'
+		source: 'resources/pictures/silurus2.jpg'
 		pos_hint: {'center_y': 0.85}
 
 	MDLabel:
@@ -1138,7 +1263,7 @@ WindowManager:
 	ScrollView:
 		do_scroll_y: True
 		do_scroll_x: False
-		size_hint: (1, 0.4)
+		size_hint: (0.93, 0.4)
 		pos_hint: {'center_y': 0.3}
 
 		MDLabel:
@@ -1153,6 +1278,8 @@ WindowManager:
 		font_size: '16sp'
 		pos_hint: {'center_y': 0.05}
 		text: 'Орудия лова'
+		theme_text_color: 'Custom'
+		text_color: app.theme_cls.primary_color
 		on_release: app.root.current = 'Weapon'
 		bold: True
 
@@ -1165,7 +1292,7 @@ WindowManager:
 		on_release: app.root.current = 'CatalogFish'
 
 	Image:
-		source: 'resources/pictures/cyprinus.jpg'
+		source: 'resources/pictures/cyprinus2.jpg'
 		pos_hint: {'center_y': 0.85}
 
 	MDLabel:
@@ -1192,7 +1319,7 @@ WindowManager:
 	ScrollView:
 		do_scroll_y: True
 		do_scroll_x: False
-		size_hint: (1, 0.4)
+		size_hint: (0.93, 0.4)
 		pos_hint: {'center_y': 0.3}
 
 		MDLabel:
@@ -1206,13 +1333,20 @@ WindowManager:
 	MDFlatButton:
 		font_size: '16sp'
 		pos_hint: {'center_y': 0.05}
+		theme_text_color: 'Custom'
+		text_color: app.theme_cls.primary_color
 		text: 'Орудия лова'
 		on_release: app.root.current = 'Weapon'
 		bold: True
 
 <Recipes>:
 	name: 'Recipes'
-	color: (152, 152, 152, 1)
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
 		
 	MDIconButton:
 		icon: 'close'
@@ -1221,7 +1355,7 @@ WindowManager:
 
 	MDLabel:
 		font_style: 'Proxima Nova'
-		pos_hint: {'x': 0.1, 'center_y': 0.97}			
+		pos_hint: {'x': 0.1, 'center_y': 0.92}			
 		text: "Рецепты приготовления"
 		font_size: '30sp'
 		bold: True
@@ -1229,16 +1363,16 @@ WindowManager:
 	MDLabel:
 		font_style: 'Proxima Nova'
 		pos_hint: {'center_y': 0.5}			
-		text: "Приносим извинения, страница в разработке"
+		text: "Страница в разработке"
 		font_size: '20sp'
 
 <Onboard>:
 	name: 'Onboard'
-	color: (152, 152, 152, 1)
 
 	MDRelativeLayout:
 		FitImage:
 			source: "resources/pictures/fish.png"
+			allow_stretch: True
 
 		MDLabel:
 			text: 'Ваш гид по лучшим местам для рыбалки'
@@ -1264,7 +1398,12 @@ WindowManager:
 
 <RegistrationMain>:
 	name: 'RegistrationMain'
-	color: (152, 152, 152, 1)
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
 
 	button_enter: button_enter	
 	input_surname: input_surname
@@ -1273,132 +1412,122 @@ WindowManager:
 	input_mail: input_mail
 	input_phone: input_phone
 	
-	MDBoxLayout:
+	MDLabel:
+		text: "Регистрация"
+		font_style: 'Proxima Nova'
+		font_size: '32sp'
+		pos_hint: {'x' : 0.05, 'center_y' : 0.93}
+		bold: True
 
-		orientation: "vertical"
-		padding: 50
+	MDTextField:
+		font_style: 'Proxima Nova'
+		size_hint_x: 0.93
+		id: input_surname
+		hint_text: "Фамилия"
+		multiline: False
+		font_size: '18sp'
+		pos_hint: {'center_x' : 0.5, 'center_y' : 0.85}
+		icon_left: 'account-outline'
 
-		MDLabel:
-			text: "Регистрация"
-			font_style: 'Proxima Nova'
-			font_size: '40sp'
-			bold: True
+	MDTextField:
+		font_style: 'Proxima Nova'
+		size_hint_x: 0.93
+		id: input_name
+		hint_text: "Имя"
+		multiline: False
+		font_size: '18sp'
+		pos_hint: {'center_x' : 0.5, 'center_y' : 0.78}
+		icon_left: 'account-outline'
 
-		MDGridLayout:
-			cols: 2
-
-			AsyncImage:
-				source: 'resources/pictures/user.png'
-				size_hint: 0.05, 0.2
-
-			MDTextField:
-				font_style: 'Proxima Nova'
-				id: input_surname
-				hint_text: "Фамилия"
-				multiline: False
-				font_size: '30sp'
-
-		MDGridLayout:
-			cols: 2
-
-			AsyncImage:
-				source: 'resources/pictures/user.png'
-				size_hint: 0.05, 0.2
-
-			MDTextField:
-				font_style: 'Proxima Nova'
-				id: input_name
-				hint_text: "Имя"
-				multiline: False
-				font_size: '30sp'
-
-		MDGridLayout:
-			cols: 2
-
-			AsyncImage:
-				source: 'resources/pictures/user.png'
-				size_hint: 0.05, 0.2
-
-			MDTextField:
-				font_style: 'Proxima Nova'
-				id: input_lastname
-				hint_text: "Отчество"
-				multiline: False
-				font_size: '30sp'
+	MDTextField:
+		font_style: 'Proxima Nova'
+		size_hint_x: 0.93
+		id: input_lastname
+		hint_text: "Отчество"
+		multiline: False
+		font_size: '18sp'
+		pos_hint: {'center_x' : 0.5, 'center_y' : 0.71}
+		icon_left: 'account-outline'
 				
-		MDGridLayout:
-			cols: 2
+	MDTextField:
+		font_style: 'Proxima Nova'
+		size_hint_x: 0.93
+		id: input_mail
+		hint_text: "Адрес эл.почты"
+		multiline: False
+		font_size: '18sp'
+		pos_hint: {'center_x' : 0.5, 'center_y' : 0.64}
+		icon_left: 'email'
 
-			AsyncImage:
-				source: 'resources/pictures/email.png'
-				size_hint: 0.05, 0.2
+	MDTextField:
+		font_style: 'Proxima Nova'
+		size_hint_x: 0.93
+		id: input_phone
+		hint_text: "+7 (___)___-__-__"
+		multiline: False
+		font_size: '18sp'
+		input_type: 'number'
+		input_filter: 'int'
+		pos_hint: {'center_x' : 0.5, 'center_y' : 0.57}
+		icon_left: 'cellphone'
 
-			MDTextField:
-				font_style: 'Proxima Nova'
-				id: input_mail
-				hint_text: "Адрес эл.почты"
-				multiline: False
-				font_size: '30sp'
+	MDLabel:
+		font_size: '14sp'
+		text: 'Продолжая Вы соглашаетесь с нашими:'
+		pos_hint: {'x' : 0.05, 'center_y' : 0.50}
+		font_style: 'Proxima Nova'			
 
-		MDGridLayout:
-			cols: 2
+	MDFlatButton:
+		font_size: '14sp'
+		text: 'Условиями и Положениями'
+		pos_hint: {'x' : 0.05, 'center_y' : 0.46}
+		on_release: root.click_on_button_terms_and_agreements()
+		theme_text_color: 'Custom'
+		text_color: app.theme_cls.primary_color
 
-			AsyncImage:
-				source: 'resources/pictures/phone.png'
-				size_hint: 0.05, 0.2
+	MDFlatButton:
+		font_size: '14sp'
+		text: 'Политикой конфидициальности'			
+		pos_hint: {'x' : 0.05, 'center_y' : 0.42}
+		on_release: root.click_on_button_privacy_policy()
+		theme_text_color: 'Custom'
+		text_color: app.theme_cls.primary_color
 
-			MDTextField:
-				font_style: 'Proxima Nova'
-				id: input_phone
-				hint_text: "+7 (___)___-__-__"
-				multiline: False
-				font_size: '30sp'
-				input_type: 'number'
-				input_filter: 'int'
-
-		MDLabel:
-			font_size: '14sp'
-			text: 'Продолжая Вы соглашаетесь с нашими:'
-			font_style: 'Proxima Nova'			
-
-		MDFlatButton:
-			font_size: '14sp'
-			text: 'Условиями и Положениями'
-			on_release: root.click_on_button_terms_and_agreements()
-			theme_text_color: 'Custom'
-			text_color: app.theme_cls.primary_color
-
-		MDFlatButton:
-			font_size: '14sp'
-			text: 'Политикой конфидициальности'			
-			on_release: root.click_on_button_privacy_policy()
-			theme_text_color: 'Custom'
-			text_color: app.theme_cls.primary_color
+	MDGridLayout:
+		cols: 1
+		rows: 1
+		size_hint_x: 0.93
+		pos_hint: {'center_x' : 0.5, 'y' : -0.88}
 
 		MDFillRoundFlatButton:
-			size_hint: 0.93, None
-			pos_hint: {'center_x' : 0.5, 'y' : 0.1}
 			text: "Регистрация"
-			font_size: '30sp'
+			width: self.parent.width
+			font_size: '18sp'
 			on_release: root.click_on_button_register()
 
-		MDGridLayout:
-			cols: 2
+	MDLabel:
+		font_size: '14sp'
+		text: 'Уже есть аккаунт?'
+		font_style: 'Proxima Nova'			
+		pos_hint: {'x' : 0.3, 'center_y' : 0.025}
 
-			MDLabel:
-				font_size: '14sp'
-				text: 'Уже есть аккаунт?'
-				font_style: 'Proxima Nova'			
-
-			MDFillRoundFlatButton:
-				id: button_enter
-				font_size: '14sp'
-				text: 'Войти'
-				on_release: root.click_on_button_enter()
+	MDFlatButton:
+		id: button_enter
+		font_size: '14sp'
+		text: 'Войти'
+		theme_text_color: 'Custom'
+		text_color: app.theme_cls.primary_color
+		on_release: root.click_on_button_enter()
+		pos_hint: {'x' : 0.7, 'center_y' : 0.025}
 
 <RegistrationDop>:
 	name: 'RegistrationDop'
-	color: (152, 152, 152, 1)
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
 
 	button_continue: button_continue
 	
@@ -1465,87 +1594,83 @@ WindowManager:
 
 <Enter>:
 	name: 'Enter'
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
 
 	input_phone: input_phone
 
-	MDBoxLayout:
-		orientation: "vertical"
-		padding: 15
-		background_color: (152/255, 152/255, 152/255, 1/255)
+	MDLabel:
+		font_style: 'Proxima Nova'
+		pos_hint: {'x' : 0.05, 'center_y' : 0.92}			
+		text: "Войти"
+		font_size: '32sp'
+		bold: True
 
-		canvas:
-			Color:
-				rgba: 152/255, 152/255, 152/255, 1/255
-			Rectangle:
-				size: self.size
-				pos: self.pos
+	MDLabel:
+		font_style: 'Proxima Nova'			
+		text: "Для авторизации введите Ваш номер телефона"
+		pos_hint: {'x' : 0.05, 'center_y' : 0.86}
+		size_hint_x: 0.93			
+		font_size: '16sp'
 
-		MDLabel:
-			font_style: 'Proxima Nova'			
-			text: "Войти"
-			font_size: '40sp'
-			bold: True
+	MDTextFieldRound:
+		id: input_phone
+		font_style: 'Proxima Nova'
+		hint_text: "+7 (___)___-__-__"
+		multiline: False
+		font_size: '18sp'
+		input_type: 'number'
+		input_filter: 'int'
+		icon_left: 'cellphone'
+		size_hint_x: 0.93
+		pos_hint: {'x' : 0.05, 'center_y' : 0.75}
 
-		MDLabel:
-			font_style: 'Proxima Nova'			
-			text: "Для авторизации введите Ваш номер телефона"
-			#pos_hint: {'center_y' : 0.3}
-			font_size: '30sp'
-
-		MDGridLayout:
-			cols: 2
-			size_hint_y: .3
-			size_hint_x: .93
-			pos_hint: None
-			pos_hint: {'y': 0.5}
-
-			AsyncImage:
-				source: 'resources/pictures/phone.png'
-				size_hint: 0.05, 0.1
-
-			MDTextField:
-				id: input_phone
-				font_style: 'Proxima Nova'
-				hint_text: "+7 (___)___-__-__"
-				multiline: False
-				font_size: '38sp'
-				input_type: 'number'
-				input_filter: 'int'
+	MDGridLayout:
+		rows: 1
+		cols: 1
+		size_hint_x: 0.93
+		pos_hint: {'center_x' : 0.5, 'y' : -0.88}
 
 		MDFillRoundFlatButton:
-			size_hint_x: 0.93
-			pos_hint: {'center_x' : 0.5, 'y' : 0.025}
+			width: self.parent.width
 			text: "Вход"
-			font_size: '30sp'
-
+			font_size: '18sp'
 			on_release: root.click_on_button_enter()
 
-		MDGridLayout:
-			size_hint_y: .1
-			cols: 2
+	MDLabel:
+		pos_hint: {'center_x' : 0.6, 'center_y' : 0.05}
+		font_style: 'Proxima Nova'			
+		text: "Нет аккаунта?"
+		font_size: '14sp'
 
-			MDLabel:
-				font_style: 'Proxima Nova'			
-				text: "Нет аккаунта?"
-				font_size: '14sp'
-
-			MDFlatButton:
-				font_size: '14sp'
-				text: 'Регистрация'
-				theme_text_color: 'Custom'
-				text_color: app.theme_cls.primary_color
-				on_release: root.click_on_button_register()
+	MDFlatButton:
+		font_size: '14sp'
+		pos_hint: {'center_x' : 0.82, 'center_y' : 0.05}
+		text: 'Регистрация'
+		theme_text_color: 'Custom'
+		text_color: app.theme_cls.primary_color
+		on_release: root.click_on_button_register()
 		
-		MDFlatButton:
-			font_size: '8sp'
-			text: 'Резерв'
-			theme_text_color: 'Custom'
-			text_color: app.theme_cls.primary_color
-			on_release: root.click_on_button_res()
+	MDFlatButton:
+		font_size: '8sp'
+		text: 'Резерв'
+		theme_text_color: 'Custom'
+		text_color: app.theme_cls.primary_color
+		on_release: root.click_on_button_res()
 	
 
 <EnterCheckPhone>:
 	name: 'EnterCheckPhone'
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
 
 	label_phone: label_phone
 	input_code: input_code
@@ -1597,10 +1722,8 @@ WindowManager:
 			on_release: root.click_on_button_confirm()
 
 <CustomMenuBlock>:
-	name: 'CustomMenuBlock'
-	
-	radius: [20,]
-	border_radius: 20, 20, 0, 0
+	radius_from: 'top'
+	radius: [16,]
 	size_hint_y: None
 	height: '290dp'
 
@@ -1668,72 +1791,101 @@ WindowManager:
 	orientation: 'vertical'
 	size_hint_y: None
 	height: '600dp'
+	
+	but_map: but_map
+	but_satellite: but_satellite
+	but_hybrid: but_hybrid
 
 	MDLabel:
 		font_style: 'Proxima Nova'
 		font_size: '30sp'
 		bold: True
 		text: 'Показать на карте'
-		pos_hint: {'center_y': 0.97}
+		pos_hint: {'x': 0.05, 'center_y': 0.95}
 
 	MDGridLayout:
 		cols: 3
 		adaptive_height: True
 		pos_hint: {'center_x': 0.5, 'center_y': 0.75}
 
-		MDFlatButton:
+		MDFillRoundFlatButton:
+			id: but_map
 			text: 'Карта'
 			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 0.0, 0.0, 0.0, 1.0
-			on_release: app.get_running_app().root.get_screen('GPSHelper').main_map.map_source = app.get_running_app().root.get_screen('GPSHelper').source_street
+			md_bg_color: app.theme_cls.primary_color
+			on_release:
+				self.md_bg_color = app.theme_cls.primary_color
+				self.parent.parent.ids.but_satellite.md_bg_color = (241/255, 244/255, 250/255, 1.0)
+				self.parent.parent.ids.but_hybrid.md_bg_color = (241/255, 244/255, 250/255, 1.0) 
+				app.get_running_app().root.get_screen('GPSHelper').main_map.map_source = app.get_running_app().root.get_screen('GPSHelper').source_street
 
-		MDFlatButton:
+		MDFillRoundFlatButton:
+			id: but_satellite
 			text: 'Спутник'
 			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 0.0, 0.0, 0.0, 1.0
-			on_release: app.get_running_app().root.get_screen('GPSHelper').main_map.map_source = app.get_running_app().root.get_screen('GPSHelper').source_satellite
+			md_bg_color: (241/255, 244/255, 250/255, 1.0)
+			on_release:
+				self.md_bg_color = app.theme_cls.primary_color
+				self.parent.parent.ids.but_map.md_bg_color = (241/255, 244/255, 250/255, 1.0)
+				self.parent.parent.ids.but_hybrid.md_bg_color = (241/255, 244/255, 250/255, 1.0) 
+				app.get_running_app().root.get_screen('GPSHelper').main_map.map_source = app.get_running_app().root.get_screen('GPSHelper').source_satellite
 
-		MDFlatButton:
+		MDFillRoundFlatButton:
+			id: but_hybrid
 			text: 'Гибрид'
 			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 0.0, 0.0, 0.0, 1.0
-			on_release: app.get_running_app().root.get_screen('GPSHelper').main_map.map_source = app.get_running_app().root.get_screen('GPSHelper').source_hybrid
+			md_bg_color: (241/255, 244/255, 250/255, 1.0)
+			on_release:
+				self.md_bg_color = app.theme_cls.primary_color
+				self.parent.parent.ids.but_satellite.md_bg_color = (241/255, 244/255, 250/255, 1.0)
+				self.parent.parent.ids.but_map.md_bg_color = (241/255, 244/255, 250/255, 1.0) 
+				app.get_running_app().root.get_screen('GPSHelper').main_map.map_source = app.get_running_app().root.get_screen('GPSHelper').source_hybrid
 
 	MDGridLayout:
-		cols: 2
 		size_hint_y: 0.5
 		pos_hint: {'center_y': 0.3}
 		adaptive_height: True
+		cols: 1
+		rows: 3
+		image_allowed: image_allowed
+		image_disallowed: image_disallowed
+		image_shops: image_shops
 
-		Image:
-			id: image_allowed
-			source: 'resources/map_sign/fishing_allowed_off.png'
-
-		MDFlatButton:
+		OneLineAvatarListItem:
+			font_style: 'Proxima Nova'
 			font_size: '20sp'
 			text: 'Зона "Рыбалка разрешена"'
 			on_release: app.get_running_app().root.get_screen('GPSHelper').click_fishing_allowed(self)
 
-		Image:
-			id: image_disallowed
-			source: 'resources/map_sign/fishing_disallowed_off.png'
+			ImageLeftWidget:
+				id: image_allowed
+				source: 'resources/map_sign/fishing_allowed_off.png'
 
-		MDFlatButton:
+		OneLineAvatarListItem:
+			font_style: 'Proxima Nova'
 			font_size: '20sp'
 			text: 'Зона "Рыбалка запрещена"'
 			on_release: app.get_running_app().root.get_screen('GPSHelper').click_fishing_disallowed(self)
 
-		Image:
-			id: image_shops
-			source: 'resources/map_sign/fishing_shop_off.png'
+			ImageLeftWidget:
+				id: image_disallowed
+				source: 'resources/map_sign/fishing_disallowed_off.png'
 
-		MDFlatButton:
+		OneLineAvatarListItem:
+			font_style: 'Proxima Nova'
 			font_size: '20sp'
 			text: 'Рыболовные магазины'
 			on_release: app.get_running_app().root.get_screen('GPSHelper').click_fishing_shops(self)
+
+			ImageLeftWidget:
+				id: image_shops
+				source: 'resources/map_sign/fishing_shop_off.png'
 
 <GPSHelper>:
 	name: 'GPSHelper'
