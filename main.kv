@@ -1252,9 +1252,13 @@ WindowManager:
 		pos_hint: {'right': 1, 'center_y': 0.97}
 		on_release: app.root.current = 'CatalogFish'
 
-	Image:
+	FitImage:
 		source: 'resources/pictures/silurus2.jpg'
 		pos_hint: {'center_y': 0.85}
+		allow_stretch: True
+		size_hint_y: None
+		width: 200
+		height: 300
 
 	MDLabel:
 		pos_hint: {'center_y': 0.75}
@@ -1308,9 +1312,13 @@ WindowManager:
 		pos_hint: {'right': 1, 'center_y': 0.97}
 		on_release: app.root.current = 'CatalogFish'
 
-	Image:
+	FitImage:
 		source: 'resources/pictures/cyprinus2.jpg'
 		pos_hint: {'center_y': 0.85}
+		allow_stretch: True
+		size_hint_y: None
+		width: 200
+		height: 300
 
 	MDLabel:
 		pos_hint: {'center_y': 0.75}

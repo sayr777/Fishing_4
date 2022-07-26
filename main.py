@@ -28,7 +28,7 @@ from kivy.uix.popup import Popup
 
 #for debug... REMOVE THIS, IF THIS IS PRODUCTION
 from kivy.core.window import Window
-Window.size = (375, 812)
+#Window.size = (375, 812)
 
 #subimport
 from kivymd.uix.boxlayout import MDBoxLayout
