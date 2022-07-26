@@ -10,6 +10,7 @@ from kivy_garden.mapview.utils import get_zoom_for_radius, haversine
 from dialog import Dialog
 from data import Data
 from news import News
+from gps import Gps
 import re
 import random
 import io
