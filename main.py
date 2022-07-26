@@ -23,10 +23,11 @@ from kivymd.uix.dialog import MDDialog
 from kivy.clock import mainthread
 import sqlite3 as SQLCommander
 from sms_base import rec_otp
+from kivy.uix.popup import Popup
 
 #for debug... REMOVE THIS, IF THIS IS PRODUCTION
 from kivy.core.window import Window
-#Window.size = (375, 812)
+Window.size = (375, 812)
 
 #subimport
 from kivymd.uix.boxlayout import MDBoxLayout
@@ -388,6 +389,15 @@ class CustomBottomSheet(Screen, MDBoxLayout):
     image_disallowed = ObjectProperty()
     image_shops = ObjectProperty()
 
+class ContentMarkerAllowed(MDBoxLayout):
+    pass
+
+class ContentMarkerDisAllowed(MDBoxLayout):
+    pass
+
+class ContentMarkerShops(MDBoxLayout):
+    pass
+
 #define different screens
 class GPSHelper(Screen):
     input_search = ObjectProperty()
@@ -416,28 +426,49 @@ class GPSHelper(Screen):
         self.layer_fishing_disallowed = MarkerMapLayer()
         self.layer_fishing_shops = MarkerMapLayer()
 
-        self.layer_fishing_allowed.add_widget(MapMarker(lon=47.948970794677734, lat=46.56228323662375, source='resources/map_sign/fishing_allowed_on.png'))
-        self.layer_fishing_allowed.add_widget(MapMarker(lon=48.008880615234375, lat=46.53253190986272, source='resources/map_sign/fishing_allowed_on.png'))
-        self.layer_fishing_allowed.add_widget(MapMarker(lon=48.03926467895508, lat=46.52745366594394, source='resources/map_sign/fishing_allowed_on.png'))
-        self.layer_fishing_allowed.add_widget(MapMarker(lon=47.99600601196288, lat=46.55874226707572, source='resources/map_sign/fishing_allowed_on.png'))
-        self.layer_fishing_allowed.add_widget(MapMarker(lon=48.013343811035156, lat=46.481373492133784, source='resources/map_sign/fishing_allowed_on.png'))
-        self.layer_fishing_allowed.add_widget(MapMarker(lon=48.02999496459961, lat=46.50193716468582, source='resources/map_sign/fishing_allowed_on.png'))
-        self.layer_fishing_allowed.add_widget(MapMarker(lon=47.97025680541992, lat=46.46257575132626, source='resources/map_sign/fishing_allowed_on.png'))
-        self.layer_fishing_allowed.add_widget(MapMarker(lon=47.9611587524414, lat=46.49141993572272, source='resources/map_sign/fishing_allowed_on.png'))
-        self.layer_fishing_allowed.add_widget(MapMarker(lon=48.005104064941406, lat=46.409931207495845, source='resources/map_sign/fishing_allowed_on.png'))
+        self.layer_fishing_allowed.add_widget(MapMarker(lon=47.948970794677734, lat=46.56228323662375, source='resources/map_sign/fishing_allowed_on.png', on_release=self.markerAllowedPressed))
+        self.layer_fishing_allowed.add_widget(MapMarker(lon=48.008880615234375, lat=46.53253190986272, source='resources/map_sign/fishing_allowed_on.png', on_release=self.markerAllowedPressed))
+        self.layer_fishing_allowed.add_widget(MapMarker(lon=48.03926467895508, lat=46.52745366594394, source='resources/map_sign/fishing_allowed_on.png', on_release=self.markerAllowedPressed))
+        self.layer_fishing_allowed.add_widget(MapMarker(lon=47.99600601196288, lat=46.55874226707572, source='resources/map_sign/fishing_allowed_on.png', on_release=self.markerAllowedPressed))
+        self.layer_fishing_allowed.add_widget(MapMarker(lon=48.013343811035156, lat=46.481373492133784, source='resources/map_sign/fishing_allowed_on.png', on_release=self.markerAllowedPressed))
+        self.layer_fishing_allowed.add_widget(MapMarker(lon=48.02999496459961, lat=46.50193716468582, source='resources/map_sign/fishing_allowed_on.png', on_release=self.markerAllowedPressed))
+        self.layer_fishing_allowed.add_widget(MapMarker(lon=47.97025680541992, lat=46.46257575132626, source='resources/map_sign/fishing_allowed_on.png', on_release=self.markerAllowedPressed))
+        self.layer_fishing_allowed.add_widget(MapMarker(lon=47.9611587524414, lat=46.49141993572272, source='resources/map_sign/fishing_allowed_on.png', on_release=self.markerAllowedPressed))
+        self.layer_fishing_allowed.add_widget(MapMarker(lon=48.005104064941406, lat=46.409931207495845, source='resources/map_sign/fishing_allowed_on.png', on_release=self.markerAllowedPressed))
 
-        self.layer_fishing_disallowed.add_widget(MapMarker(lon=47.95463562011719, lat=46.528162286622035, source='resources/map_sign/fishing_disallowed_on.png'))
-        self.layer_fishing_disallowed.add_widget(MapMarker(lon=48.01574707031249, lat=46.527689873863785, source='resources/map_sign/fishing_disallowed_on.png'))
-        self.layer_fishing_disallowed.add_widget(MapMarker(lon=48.01300048828125, lat=46.50264611816897, source='resources/map_sign/fishing_disallowed_on.png'))
-        self.layer_fishing_disallowed.add_widget(MapMarker(lon=47.99171447753906, lat=46.49177448218621, source='resources/map_sign/fishing_disallowed_on.png'))
-        self.layer_fishing_disallowed.add_widget(MapMarker(lon=47.97557830810547, lat=46.500519229985045, source='resources/map_sign/fishing_disallowed_on.png'))
-        self.layer_fishing_disallowed.add_widget(MapMarker(lon=47.96424865722656, lat=46.50099187899411, source='resources/map_sign/fishing_disallowed_on.png'))
-        self.layer_fishing_disallowed.add_widget(MapMarker(lon=47.976951599121094, lat=46.53359473803679, source='resources/map_sign/fishing_disallowed_on.png'))
+        self.layer_fishing_disallowed.add_widget(MapMarker(lon=47.95463562011719, lat=46.528162286622035, source='resources/map_sign/fishing_disallowed_on.png', on_release=self.markerDisAllowedPressed))
+        self.layer_fishing_disallowed.add_widget(MapMarker(lon=48.01574707031249, lat=46.527689873863785, source='resources/map_sign/fishing_disallowed_on.png', on_release=self.markerDisAllowedPressed))
+        self.layer_fishing_disallowed.add_widget(MapMarker(lon=48.01300048828125, lat=46.50264611816897, source='resources/map_sign/fishing_disallowed_on.png', on_release=self.markerDisAllowedPressed))
+        self.layer_fishing_disallowed.add_widget(MapMarker(lon=47.99171447753906, lat=46.49177448218621, source='resources/map_sign/fishing_disallowed_on.png', on_release=self.markerDisAllowedPressed))
+        self.layer_fishing_disallowed.add_widget(MapMarker(lon=47.97557830810547, lat=46.500519229985045, source='resources/map_sign/fishing_disallowed_on.png', on_release=self.markerDisAllowedPressed))
+        self.layer_fishing_disallowed.add_widget(MapMarker(lon=47.96424865722656, lat=46.50099187899411, source='resources/map_sign/fishing_disallowed_on.png', on_release=self.markerDisAllowedPressed))
+        self.layer_fishing_disallowed.add_widget(MapMarker(lon=47.976951599121094, lat=46.53359473803679, source='resources/map_sign/fishing_disallowed_on.png', on_release=self.markerDisAllowedPressed))
 
-        self.layer_fishing_shops.add_widget(MapMarker(lon=47.99520134925842, lat=46.46676590440685, source='resources/map_sign/fishing_shop_on.png'))
-        self.layer_fishing_shops.add_widget(MapMarker(lon=48.03745687007904, lat=46.4956595690788, source='resources/map_sign/fishing_shop_on.png'))
-        self.layer_fishing_shops.add_widget(MapMarker(lon=48.069820404052734, lat=46.36908189730966, source='resources/map_sign/fishing_shop_on.png'))
-        self.layer_fishing_shops.add_widget(MapMarker(lon=48.03526818752289, lat=46.32747782427445, source='resources/map_sign/fishing_shop_on.png'))
+        self.layer_fishing_shops.add_widget(MapMarker(lon=47.99520134925842, lat=46.46676590440685, source='resources/map_sign/fishing_shop_on.png', on_release=self.markerShopsPressed))
+        self.layer_fishing_shops.add_widget(MapMarker(lon=48.03745687007904, lat=46.4956595690788, source='resources/map_sign/fishing_shop_on.png', on_release=self.markerShopsPressed))
+        self.layer_fishing_shops.add_widget(MapMarker(lon=48.069820404052734, lat=46.36908189730966, source='resources/map_sign/fishing_shop_on.png', on_release=self.markerShopsPressed))
+        self.layer_fishing_shops.add_widget(MapMarker(lon=48.03526818752289, lat=46.32747782427445, source='resources/map_sign/fishing_shop_on.png', on_release=self.markerShopsPressed))
+
+    def markerAllowedPressed(self, widget):
+        self.dialog_marker_allowed = MDDialog(
+            title="Метка 'Рыбалка разрешена!'",
+            size_hint=(.7, .6),
+            content_cls=ContentMarkerAllowed())
+        self.dialog_marker_allowed.open()
+
+    def markerDisAllowedPressed(self, widget):
+        self.dialog_marker_disallowed = MDDialog(
+            title="Метка 'Рыбалка запрещена!'",
+            size_hint=(.7, .6),
+            content_cls=ContentMarkerDisAllowed())
+        self.dialog_marker_disallowed.open()
+
+    def markerShopsPressed(self, widget):
+        self.dialog_marker_shops = MDDialog(
+            title="Метка 'Магазин'",
+            size_hint=(.7, .6),
+            content_cls=ContentMarkerShops())
+        self.dialog_marker_shops.open()
 
     def centering(self, layer):
         lon, lat = layer.center
