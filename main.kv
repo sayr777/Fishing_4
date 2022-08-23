@@ -1,0 +1,2931 @@
+#: import MDFloatLayout kivymd.uix.boxlayout.MDBoxLayout
+#: import MDLabel kivymd.uix.label.MDLabel
+#: import MDFloatLayout kivymd.uix.floatlayout.MDFloatLayout
+#: import MDGridLayout kivymd.uix.gridlayout.MDGridLayout
+#: import MDRoundFlatButton kivymd.uix.button.MDRoundFlatButton
+#: import MapView kivy_garden.mapview.MapView
+#: import MapMarker kivy_garden.mapview.MapMarker
+#: import MDFillRoundFlatIconButton kivymd.uix.button.MDFillRoundFlatIconButton
+#: import MDBottomAppBar kivymd.uix.toolbar.MDBottomAppBar
+#: import MDIconButton kivymd.uix.button.MDIconButton
+#: import MDFlatButton kivymd.uix.button.MDFlatButton
+#: import MDRelativeLayout kivymd.uix.relativelayout.RelativeLayout
+#: import MapView kivy_garden.mapview.MapView
+#: import MapSource kivy_garden.mapview.MapSource
+#: import MDCard kivymd.uix.card.MDCard
+#: import MDTextField kivymd.uix.textfield.MDTextField
+#: include news.kv
+#: import GpsBlinker gpsblinker.GpsBlinker
+#: include gpsblinker.kv
+#: include user.kv
+#: include profiledetails.kv
+#: include notes.kv
+#: include addnote.kv
+
+WindowManager:
+	id: window_manager
+
+	Onboard:
+
+	RegistrationMain:
+	RegistrationDop:
+
+	Enter:
+	EnterCheckPhone:
+
+	GPSHelper:
+
+	Rules:
+	RuleFishing:
+
+	Penalties:
+	PenaltieList:
+
+	CatalogFish:
+	Esox:
+	Silurus:
+	Cyprinus:
+	Weapon:
+
+	Recipes:
+
+	User:
+	ProfileDetails:
+	Notes:
+	AddNote:
+
+	Calendar:
+
+	News:
+
+	Itog:
+	
+	PlaceChill:
+	
+	Equipment:
+	
+	Bait:
+	
+	BuyFish:
+	
+	HeFromEsox:
+
+	SilurusHotted:
+	
+	DumplingFromCyprinus:
+	
+	FishResort:
+	
+	Fishka:
+	
+	CaspiyUnic:
+	
+	FishPortal:
+	
+<FishResort>:
+	name: 'FishResort'
+	
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'PlaceChill'
+
+	MDLabel:
+		pos_hint: {'x': 0.05, 'center_y': 0.9}
+		font_style: 'Proxima Nova'			
+		text: "Рыболовная база отдыха «Верхнелебяжье FISH RESORT»"
+		font_size: '20sp'
+		bold: True
+
+	MDLabel:
+		pos_hint: {'center_x': 0.5, 'center_y': 0.68}
+		size_hint_x: 0.93
+		font_style: 'Proxima Nova'			
+		text: "На правом берегу реки Волга\nПрекрасное расположение базы отдыха на основном русле Волге и в километре от ответвления реки Бузан дает огромные возможности для интересной, разнообразной и результативной рыбалки. Соседство с рекой Бузан даёт возможность рыбалки не только на большой воде, но и в многочисленных заводях, протоках и ериках."
+		font_size: '18sp'
+		bold: True
+		
+	MDLabel:
+		pos_hint: {'x': 0.05, 'center_y': 0.45}
+		font_style: 'Proxima Nova'			
+		text: "Инфраструктура и дополнительные услуги"
+		font_size: '20sp'
+		bold: True
+
+	ScrollView:
+		do_scroll_y: True
+		do_scroll_x: False
+		size_hint: (0.93, 0.2)
+		pos_hint: {'center_y': 0.3}
+
+		MDLabel:
+			font_style: 'Proxima Nova'
+			text: '    • Охраняемая автомобильная стоянка\n    • Охраняемый и оборудованный причал для лодок и катеров\n    • Wi-Fi(Интернет на всей территории бесплатно)\n    • Ресторан\n    • Баня\n    • Детская площадка\n    • Батут\n    • Пирс оборудованный лесницой для купания\n    • Песчаный пляж\n    • Спортивное снаряжение (мячи, бадминтон и пр.)\n    • Открытый бассейн с подогревом\n    • Зона для барбекю\n    • Беседки с антимоскитными сетками\n    • Террасы и навесы с видом на Волгу\n    • Шезлонги с зонтами с видом на Волгу\n    • Шезлонги с зонтами у бассейна\n    • Прокат рыболовного снаряжения\n    • Магазин с товарами для рыбалки, где также можно купить сухие пайки, чтобы взять с собой на рыбалку'
+			font_size: '16sp'
+			size_hint_y: None
+			text_size: (self.width, None)
+			height: self.texture_size[1]
+			
+	MDLabel:
+		pos_hint: {'x': 0.05, 'center_y': 0.15}
+		font_style: 'Proxima Nova'			
+		text: "Телефон: +7 (988) 067 78 28"
+		font_size: '20sp'
+		bold: True
+
+	MDFlatButton:
+		font_size: '16sp'
+		pos_hint: {'center_y': 0.05}
+		text: 'Показать на карте'
+		theme_text_color: 'Custom'
+		text_color: app.theme_cls.primary_color
+		on_release: root.click_on_show_map()
+		bold: True
+	
+<PlaceChill>:
+	name: 'PlaceChill'
+	
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
+
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'GPSHelper'
+
+	MDLabel:
+		font_style: 'Proxima Nova'			
+		text: "Базы отдыха"
+		font_size: '30sp'
+		pos_hint: {'x': 0.1, 'center_y': 0.90}
+		bold: True
+	
+	MDGridLayout:
+		cols: 1
+		rows: 1
+		adaptive_height: True
+		theme_text_color: 'Custom'
+		pos_hint: {'center_y': 0.8}
+		spacing: 35
+		padding: 26
+		size_hint_y: None
+		size_hint_x: 0.9
+
+		MDRoundFlatButton:
+			size_hint_x: 0.85
+			font_size: '18sp'
+			text: '«Верхнелебяжье FISH RESORT»'
+			theme_text_color: 'Custom'
+			text_color: 0, 0, 0, 1.0
+			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			line_color: 1.0, 1.0, 1.0, 1.0
+			halign: 'left'
+			font_name: 'Proxima Nova'
+			on_release: root.click_on_fish_resort()
+			
+<FishPortal>:
+	name: 'FishPortal'
+	
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'Equipment'
+
+	MDLabel:
+		pos_hint: {'x': 0.05, 'center_y': 0.9}
+		font_style: 'Proxima Nova'			
+		text: "Рыбацкий портал"
+		font_size: '20sp'
+		bold: True
+
+	MDLabel:
+		pos_hint: {'center_x': 0.5, 'center_y': 0.68}
+		size_hint_x: 0.93
+		font_style: 'Proxima Nova'			
+		text: "    Время работы с 9:00 по 20:00, Адрес: Россия, Астрахань, Мира, 2б"
+		font_size: '18sp'
+		bold: True
+		
+	MDLabel:
+		pos_hint: {'x': 0.05, 'center_y': 0.45}
+		font_style: 'Proxima Nova'			
+		text: "Товары"
+		font_size: '20sp'
+		bold: True
+
+	ScrollView:
+		do_scroll_y: True
+		do_scroll_x: False
+		size_hint: (0.93, 0.2)
+		pos_hint: {'center_y': 0.3}
+
+		MDLabel:
+			font_style: 'Proxima Nova'
+			text: '    • Удилища\n    • Катушки\n    • Приманки\n    • Леска, шнуры\n    • Оснастка, фурнитура\n    • Карповые снасти\n    • Прикормка, насадки\n    • Садки, подсачеки\n    • Коробки и тубусы'
+			font_size: '16sp'
+			size_hint_y: None
+			text_size: (self.width, None)
+			height: self.texture_size[1]
+			
+	MDLabel:
+		pos_hint: {'x': 0.05, 'center_y': 0.15}
+		font_style: 'Proxima Nova'			
+		text: "Телефон: +7 (961) 815-44-80"
+		font_size: '20sp'
+		bold: True
+
+	MDFlatButton:
+		font_size: '16sp'
+		pos_hint: {'center_y': 0.05}
+		text: 'Показать на карте'
+		theme_text_color: 'Custom'
+		text_color: app.theme_cls.primary_color
+		on_release: root.click_on_show_map()
+		bold: True
+
+<Equipment>:
+	name: 'Equipment'
+	
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
+
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'GPSHelper'
+
+	MDLabel:
+		font_style: 'Proxima Nova'			
+		text: "Снаряжение"
+		font_size: '30sp'
+		pos_hint: {'x': 0.1, 'center_y': 0.90}
+		bold: True
+	
+	MDGridLayout:
+		cols: 1
+		rows: 1
+		adaptive_height: True
+		theme_text_color: 'Custom'
+		pos_hint: {'center_y': 0.8}
+		spacing: 35
+		padding: 26
+		size_hint_y: None
+		size_hint_x: 0.9
+
+		MDRoundFlatButton:
+			size_hint_x: 0.85
+			font_size: '18sp'
+			text: '«Рыбацкий портал»'
+			theme_text_color: 'Custom'
+			text_color: 0, 0, 0, 1.0
+			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			line_color: 1.0, 1.0, 1.0, 1.0
+			halign: 'left'
+			font_name: 'Proxima Nova'
+			on_release: root.click_on_fish_portal()
+			
+<Fishka>:
+	name: 'Fishka'
+	
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'Bait'
+
+	MDLabel:
+		pos_hint: {'x': 0.05, 'center_y': 0.9}
+		font_style: 'Proxima Nova'			
+		text: "Магазин Fishka"
+		font_size: '20sp'
+		bold: True
+
+	MDLabel:
+		pos_hint: {'center_x': 0.5, 'center_y': 0.68}
+		size_hint_x: 0.93
+		font_style: 'Proxima Nova'			
+		text: "    Адрес: Астраханская ул., 5, Ахтубинск    Время работы c 8:00 до 18:00"
+		font_size: '18sp'
+		bold: True
+		
+	MDLabel:
+		pos_hint: {'x': 0.05, 'center_y': 0.45}
+		font_style: 'Proxima Nova'			
+		text: "Товары"
+		font_size: '20sp'
+		bold: True
+
+	ScrollView:
+		do_scroll_y: True
+		do_scroll_x: False
+		size_hint: (0.93, 0.2)
+		pos_hint: {'center_y': 0.3}
+
+		MDLabel:
+			font_style: 'Proxima Nova'
+			text: '    • Червь навозный - 70 ₽\n    • Опарыш XL - 45 ₽\n    • Дендробена № 4 - 140 ₽'
+			font_size: '16sp'
+			size_hint_y: None
+			text_size: (self.width, None)
+			height: self.texture_size[1]
+			
+	MDLabel:
+		pos_hint: {'x': 0.05, 'center_y': 0.15}
+		font_style: 'Proxima Nova'			
+		text: "Телефон: +7 (929) 740-27-80"
+		font_size: '20sp'
+		bold: True
+
+	MDFlatButton:
+		font_size: '16sp'
+		pos_hint: {'center_y': 0.05}
+		text: 'Показать на карте'
+		theme_text_color: 'Custom'
+		text_color: app.theme_cls.primary_color
+		on_release: root.click_on_show_map()
+		bold: True
+
+<Bait>:
+	name: 'Bait'
+	
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
+
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'GPSHelper'
+
+	MDLabel:
+		font_style: 'Proxima Nova'			
+		text: "Магазины приманки"
+		font_size: '30sp'
+		pos_hint: {'x': 0.1, 'center_y': 0.90}
+		bold: True
+	
+	MDGridLayout:
+		cols: 1
+		rows: 1
+		adaptive_height: True
+		theme_text_color: 'Custom'
+		pos_hint: {'center_y': 0.8}
+		spacing: 35
+		padding: 26
+		size_hint_y: None
+		size_hint_x: 0.9
+
+		MDRoundFlatButton:
+			size_hint_x: 0.85
+			font_size: '18sp'
+			text: 'Магазин Fishka'
+			theme_text_color: 'Custom'
+			text_color: 0, 0, 0, 1.0
+			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			line_color: 1.0, 1.0, 1.0, 1.0
+			halign: 'left'
+			font_name: 'Proxima Nova'
+			on_release: root.click_on_fishka()
+			
+<CaspiyUnic>:
+	name: 'CaspiyUnic'
+	
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'BuyFish'
+
+	MDLabel:
+		pos_hint: {'x': 0.05, 'center_y': 0.9}
+		font_style: 'Proxima Nova'			
+		text: "Каспийские деликатесы"
+		font_size: '20sp'
+		bold: True
+
+	MDLabel:
+		pos_hint: {'center_x': 0.5, 'center_y': 0.68}
+		size_hint_x: 0.93
+		font_style: 'Proxima Nova'			
+		text: "    Магазин рыбы и морепродуктов, Работает с 09:00 до 20:00, Адрес: Советская ул., 2, Астрахань"
+		font_size: '18sp'
+		bold: True
+			
+	MDLabel:
+		pos_hint: {'x': 0.05, 'center_y': 0.15}
+		font_style: 'Proxima Nova'			
+		text: "Телефон: 8 (800) 201-27-06"
+		font_size: '20sp'
+		bold: True
+
+	MDFlatButton:
+		font_size: '16sp'
+		pos_hint: {'center_y': 0.05}
+		text: 'Показать на карте'
+		theme_text_color: 'Custom'
+		text_color: app.theme_cls.primary_color
+		on_release: root.click_on_show_map()
+		bold: True
+
+<BuyFish>:
+	name: 'BuyFish'
+	
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
+
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'GPSHelper'
+
+	MDLabel:
+		font_style: 'Proxima Nova'			
+		text: "Купить рыбу"
+		font_size: '30sp'
+		pos_hint: {'x': 0.1, 'center_y': 0.90}
+		bold: True
+	
+	MDGridLayout:
+		cols: 1
+		rows: 1
+		adaptive_height: True
+		theme_text_color: 'Custom'
+		pos_hint: {'center_y': 0.8}
+		spacing: 35
+		padding: 26
+		size_hint_y: None
+		size_hint_x: 0.9
+
+		MDRoundFlatButton:
+			size_hint_x: 0.85
+			font_size: '18sp'
+			text: '«Каспийские деликатесы»'
+			theme_text_color: 'Custom'
+			text_color: 0, 0, 0, 1.0
+			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			line_color: 1.0, 1.0, 1.0, 1.0
+			halign: 'left'
+			font_name: 'Proxima Nova'
+			on_release: root.click_on_caspiy_unic()
+	
+<Weapon>:
+	name: 'Weapon'
+	
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
+			
+	main_text: main_text
+
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'CatalogFish'
+
+	MDLabel:
+		font_style: 'Proxima Nova'
+		pos_hint: {'x': 0.1, 'center_y': 0.97}
+		text: "Орудия лова"
+		font_size: '30sp'
+		bold: True
+
+	ScrollView:
+		theme_text_color: 'Custom'
+		text_color: 0, 0, 0, 1.0
+		md_bg_color: 1.0, 1.0, 1.0, 1.0
+		do_scroll_y: True
+		do_scroll_x: False
+		pos_hint: {'x': 0.1, 'center_y': 0.5}
+		size_hint_x: 0.85
+		size_hint_y: 0.75
+
+		MDLabel:
+			id: main_text
+			font_style: 'Proxima Nova'
+			font_size: '18sp'
+			bold: True
+			size_hint_y: None
+			text_size: (self.width, None)
+			height: self.texture_size[1]
+
+<Itog>:
+	name: 'Itog'
+
+	label_chance_esox: label_chance_esox
+	label_chance_silurus: label_chance_silurus
+	label_chance_cyprinus: label_chance_cyprinus
+
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'Calendar'
+
+	MDLabel:
+		font_style: 'Proxima Nova'
+		pos_hint: {'x': 0.1, 'center_y': 0.97}
+		text: "Вероятности улова"
+		font_size: '30sp'
+		bold: True
+
+	MDFlatButton:
+		pos_hint: {'center_y': 0.85}
+		font_size: '16sp'
+		text: 'ОБЫКНОВЕННАЯ ЩУКА'
+		on_release: app.root.current = 'Esox'
+		bold: True
+
+	MDLabel:
+		pos_hint: {'right': 1, 'center_y': 0.82}
+		id: label_chance_esox
+		font_style: 'Proxima Nova'
+		text: "Шанс поймать: "
+		font_size: '16sp'
+		bold: True
+
+	MDFlatButton:
+		font_size: '16sp'
+		text: 'СОМ ОБЫКНОВЕННЫЙ'
+		pos_hint: {'center_y': 0.75}
+		on_release: app.root.current = 'Silurus'
+		bold: True
+
+	MDLabel:
+		id: label_chance_silurus
+		font_style: 'Proxima Nova'
+		pos_hint: {'right': 1, 'center_y': 0.72}
+		text: "Шанс поймать: "
+		font_size: '16sp'
+		bold: True
+
+	MDFlatButton:
+		font_size: '16sp'
+		text: 'САЗАН'
+		pos_hint: {'center_y': 0.65}
+		on_release: app.root.current = 'Cyprinus'
+		bold: True
+
+	MDLabel:
+		id: label_chance_cyprinus
+		font_style: 'Proxima Nova'
+		pos_hint: {'right': 1, 'center_y': 0.62}
+		text: "Шанс поймать: "
+		font_size: '16sp'
+		bold: True
+
+<Calendar>:
+	name: 'Calendar'
+
+	one_label: one_label
+	two_label: two_label
+	three_label: three_label
+	four_label: four_label
+	fife_label: fife_label
+	six_label: six_label
+	seven_label: seven_label
+	eight_label: eight_label
+	nine_label: nine_label
+	ten_label: ten_label
+	eleven_label: eleven_label
+	twelve_label: twelve_label
+	thirteen_label: thirteen_label
+	fourteen_label: fourteen_label
+	fifteen_label: fifteen_label
+	sixteen_label: sixteen_label
+	seventeen_label: seventeen_label
+	eightteen_label: eightteen_label
+	nineteen_label: nineteen_label
+	twenty_label: twenty_label
+	twenty_one_label: twenty_one_label
+	twenty_two_label: twenty_two_label
+	twenty_three_label: twenty_three_label
+	twenty_four_label: twenty_four_label
+	twenty_five_label: twenty_five_label
+	twenty_six_label: twenty_six_label
+	twenty_seven_label: twenty_seven_label
+	twenty_eight_label: twenty_eight_label
+	twenty_nine_label: twenty_nine_label
+	thirty_label: thirty_label
+	thirty_one_label: thirty_one_label
+	
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'GPSHelper'
+
+	MDLabel:
+		pos_hint: {'x': 0.1, 'center_y': 0.97}
+		font_style: 'Proxima Nova'			
+		text: "Календарь"
+		font_size: '30sp'
+		bold: True
+
+	MDGridLayout:
+		pos_hint: {'center_x': 0.5, 'center_y': 0.8}
+		padding: 16
+		cols: 2
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			text: "Июль"
+			font_size: '24sp'
+			bold: True
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			text: "2022 год"
+			font_size: '24sp'
+			bold: True
+
+	MDGridLayout:
+		pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+		padding: 16
+		cols: 7
+
+		MDFlatButton:
+			text: 'Пн'
+			font_size: '16sp'
+
+		MDFlatButton:
+			text: 'Вт'
+			font_size: '16sp'
+
+		MDFlatButton:
+			text: 'Ср'
+			font_size: '16sp'
+
+		MDFlatButton:
+			text: 'Чт'
+			font_size: '16sp'
+
+		MDFlatButton:
+			text: 'Пт'
+			font_size: '16sp'
+
+		MDFlatButton:
+			text: 'Сб'
+			font_size: '16sp'
+
+		MDFlatButton:
+			text: 'Вс'
+			font_size: '16sp'
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: one_label
+			text: '1'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 1.0, 1.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: two_label
+			text: '2'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 1.0, 1.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: three_label
+			text: '3'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 1.0, 1.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: four_label
+			text: '4'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 1.0, 0.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: fife_label
+			text: '5'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 1.0, 0.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: six_label
+			text: '6'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 1.0, 1.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: seven_label
+			text: '7'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 1.0, 1.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: eight_label
+			text: '8'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 1.0, 1.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: nine_label
+			text: '9'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 1.0, 1.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: ten_label
+			text: '10'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 1.0, 1.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: eleven_label
+			text: '11'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 1.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: twelve_label
+			text: '12'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 1.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: thirteen_label
+			text: '13'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 1.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: fourteen_label
+			text: '14'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 1.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: fifteen_label
+			text: '15'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 1.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: sixteen_label
+			text: '16'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 1.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: seventeen_label
+			text: '17'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 1.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: eightteen_label
+			text: '18'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 1.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: nineteen_label
+			text: '19'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 1.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: twenty_label
+			text: '20'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 1.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: twenty_one_label
+			text: '21'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 1.0, 0.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: twenty_two_label
+			text: '22'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: twenty_three_label
+			text: '23'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: twenty_four_label
+			text: '24'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: twenty_five_label
+			text: '25'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: twenty_six_label
+			text: '26'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: twenty_seven_label
+			text: '27'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: twenty_eight_label
+			text: '28'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: twenty_nine_label
+			text: '29'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: thirty_label
+			text: '30'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
+
+		MDFlatButton:
+			on_release: root.click_on_cell(self)
+			id: thirty_one_label
+			text: '31'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
+
+<RuleFishing>:
+	name: 'RuleFishing'
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
+
+	zag: zag
+	main_text: main_text
+
+	MDLabel:
+		id: zag
+		font_style: 'Proxima Nova'
+		font_size: '20sp'
+		pos_hint: {'x': 0.05, 'center_y': 0.95}
+		bold: True
+
+	ScrollView:
+		theme_text_color: 'Custom'
+		text_color: 0, 0, 0, 1.0
+		md_bg_color: 1.0, 1.0, 1.0, 1.0
+		do_scroll_y: True
+		do_scroll_x: False
+		pos_hint: {'x': 0.1, 'center_y': 0.5}
+		size_hint_x: 0.85
+		size_hint_y: 0.75
+
+		MDLabel:
+			id: main_text
+			font_style: 'Proxima Nova'
+			font_size: '18sp'
+			bold: True
+			size_hint_y: None
+			text_size: (self.width, None)
+			height: self.texture_size[1]
+
+	MDRoundFlatButton:
+		elevation: 10
+		font_name: 'Proxima Nova'
+		font_size: '18sp'
+		text: 'Пред'
+		pos_hint: {'x': 0.01, 'center_y': 0.05}
+		on_release: root.click_on_pre()
+
+	MDRoundFlatButton:
+		elevation: 10
+		font_name: 'Proxima Nova'
+		font_size: '18sp'
+		text: 'Оглавление'
+		pos_hint: {'x': 0.35, 'center_y': 0.05}
+		on_release: root.click_on_menu()
+
+	MDRoundFlatButton:
+		elevation: 10
+		font_name: 'Proxima Nova'
+		font_size: '18sp'
+		text: 'След'
+		pos_hint: {'x': 0.8, 'center_y': 0.05}
+		on_release: root.click_on_next()
+
+<PenaltieList>:
+	name: 'PenaltieList'
+
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
+
+	zag: zag
+	main_text: main_text
+
+	MDLabel:
+		id: zag
+		font_style: 'Proxima Nova'
+		font_size: '16sp'
+		pos_hint: {'x': 0.025, 'center_y': 0.93}
+		bold: True
+
+	ScrollView:
+		theme_text_color: 'Custom'
+		text_color: 0, 0, 0, 1.0
+		md_bg_color: 1.0, 1.0, 1.0, 1.0
+		do_scroll_y: True
+		do_scroll_x: False
+		pos_hint: {'x': 0.1, 'center_y': 0.45}
+		size_hint_x: 0.85
+		size_hint_y: 0.75
+
+		MDLabel:
+			id: main_text
+			font_style: 'Proxima Nova'
+			font_size: '14sp'
+			bold: True
+			size_hint_y: None
+			text_size: (self.width, None)
+			height: self.texture_size[1]
+
+	MDRoundFlatButton:
+		elevation: 10
+		font_name: 'Proxima Nova'
+		font_size: '18sp'
+		text: 'Пред'
+		pos_hint: {'x': 0.01, 'center_y': 0.05}
+		on_release: root.click_on_pre()
+
+	MDRoundFlatButton:
+		elevation: 10
+		font_name: 'Proxima Nova'
+		font_size: '18sp'
+		text: 'Оглавление'
+		pos_hint: {'x': 0.35, 'center_y': 0.05}
+		on_release: root.click_on_menu()
+
+	MDRoundFlatButton:
+		elevation: 10
+		font_name: 'Proxima Nova'
+		font_size: '18sp'
+		text: 'След'
+		pos_hint: {'x': 0.8, 'center_y': 0.05}
+		on_release: root.click_on_next()
+
+<Rules>:
+	name: 'Rules'
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
+
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'GPSHelper'
+
+	MDLabel:
+		font_style: 'Proxima Nova'			
+		text: "Правила рыбалки"
+		font_size: '30sp'
+		pos_hint: {'x': 0.1, 'center_y': 0.92}
+		bold: True
+
+	MDGridLayout:
+		cols: 1
+		rows: 8
+		adaptive_height: True
+		pos_hint: {'x': 0.05,'center_y': 0.5}
+		spacing: 30
+		size_hint_x: 0.9
+
+		MDRoundFlatButton:
+			elevation: 8
+			line_color: 1.0, 1.0, 1.0, 1.0
+			text: 'Правила рыболовства'
+			font_size: '18sp'
+			size_hint_x: 0.85
+			theme_text_color: 'Custom'
+			text_color: 0, 0, 0, 1.0
+			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			line_color: 1.0, 1.0, 1.0, 1.0
+			radius: [50]
+			border_radius: 50
+			halign: 'left'
+			font_name: 'Proxima Nova'
+			on_release: root.click_on_rule_fishing()
+
+		MDRoundFlatButton:
+			elevation: 8
+			line_color: 1.0, 1.0, 1.0, 1.0
+			text: 'Сроки нерестового запрета'
+			font_size: '18sp'
+			size_hint_x: 0.85
+			theme_text_color: 'Custom'
+			text_color: 0, 0, 0, 1.0
+			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			halign: 'left'
+			font_name: 'Proxima Nova'
+			on_release: root.click_on_deadlines_spawning_off()
+
+		MDRoundFlatButton:
+			elevation: 8
+			line_color: 1.0, 1.0, 1.0, 1.0
+			#pos_hint: {'x': 0.1, 'center_y': 0.60}
+			text: 'Нерестовые участки'
+			font_size: '18sp'
+			size_hint_x: 0.85
+			theme_text_color: 'Custom'
+			text_color: 0, 0, 0, 1.0
+			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			halign: 'left'
+			font_name: 'Proxima Nova'
+			on_release: root.click_on_spawning_areas()
+
+		MDRoundFlatButton:
+			elevation: 8
+			line_color: 1.0, 1.0, 1.0, 1.0
+			#pos_hint: {'x': 0.1, 'center_y': 0.50}
+			text: 'Орудия рыболовства'
+			font_size: '18sp'
+			size_hint_x: 0.85
+			theme_text_color: 'Custom'
+			text_color: 0, 0, 0, 1.0
+			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			halign: 'left'
+			font_name: 'Proxima Nova'
+			on_release: root.click_on_weapons_fishing()
+
+		MDRoundFlatButton:
+			elevation: 8
+			line_color: 1.0, 1.0, 1.0, 1.0
+			text: 'Суточная норма вылова рыбы'
+			font_size: '18sp'
+			size_hint_x: 0.85
+			theme_text_color: 'Custom'
+			text_color: 0, 0, 0, 1.0
+			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			halign: 'left'
+			font_name: 'Proxima Nova'
+			on_release: root.click_on_daily_rate_of_fish_catch()
+
+		MDRoundFlatButton:
+			elevation: 8
+			line_color: 1.0, 1.0, 1.0, 1.0
+			text: 'Какую рыбу запрещено ловить'
+			font_size: '18sp'
+			size_hint_x: 0.85
+			theme_text_color: 'Custom'
+			text_color: 0, 0, 0, 1.0
+			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			halign: 'left'
+			font_name: 'Proxima Nova'
+			on_release: root.click_on_what_fish_off_fishing()
+
+		MDRoundFlatButton:
+			elevation: 8
+			line_color: 1.0, 1.0, 1.0, 1.0
+			text: 'Размер штрафа за ловлю рыбы'
+			font_size: '18sp'
+			size_hint_x: 0.85
+			theme_text_color: 'Custom'
+			text_color: 0, 0, 0, 1.0
+			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			halign: 'left'
+			font_name: 'Proxima Nova'
+			on_release: root.click_on_size_penalti_fishing()
+
+		MDRoundFlatButton:
+			elevation: 8
+			line_color: 1.0, 1.0, 1.0, 1.0
+			text: 'Когда можно оплатить штраф и где'
+			font_size: '18sp'
+			size_hint_x: 0.85
+			theme_text_color: 'Custom'
+			text_color: 0, 0, 0, 1.0
+			md_bg_color: 1.0, 1.0, 1.0, 1.0
+			halign: 'left'
+			#set_radius: [16]
+			font_name: 'Proxima Nova'
+			on_release: root.click_on_what_can_pay_penalti_and_where()
+
+	MDLabel:
+		font_style: 'Proxima Nova'
+		pos_hint: {'x': 0.1, 'center_y': 0.05}
+		size_hint_x: 0.8
+		text: 'На территории Астраханской области действуют Правила рыболовства для Волжско-Каспийского рыбохозяйственного бассейна, утвержденные приказом Минсельхоза России от 18.11.2014 N 453 (с изменениями, действующими в 2022 г. году) .'
+		font_size: '9sp'
+
+<Penalties>:
+	name: 'Penalties'
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
+
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'GPSHelper'
+
+	MDLabel:
+		font_style: 'Proxima Nova'			
+		text: "Штрафы"
+		font_size: '30sp'
+		pos_hint: {'x': 0.1, 'center_y': 0.90}
+		bold: True
+
+	ScrollView:
+		text_size: (self.width, None)
+		text_color: 0, 0, 0, 1.0
+		md_bg_color: 1.0, 1.0, 1.0, 1.0
+		do_scroll_y: True
+		do_scroll_x: False
+		pos_hint: {'center_y': 0.4}
+		size_hint_x: 1
+		size_hint_y: 0.75
+
+		MDGridLayout:
+			cols: 1
+			rows: 14
+			adaptive_height: True
+			theme_text_color: 'Custom'
+			pos_hint: {'center_y': 0.4}
+			spacing: 35
+			padding: 26
+			size_hint_y: None
+			size_hint_x: 0.9
+
+			MDRoundFlatButton:
+				size_hint_x: 0.85
+				font_size: '18sp'
+				text: 'Незаконный улов'
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state256()
+
+			MDRoundFlatButton:
+				size_hint_x: 0.85
+				text: 'Незаконная охота'
+				font_size: '18sp'
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state258()
+
+			MDRoundFlatButton:
+				size_hint_x: 0.85
+				text: 'Исчезающие виды'
+				font_size: '18sp'
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state258_1()
+
+			MDRoundFlatButton:
+				size_hint_x: 0.85
+				text: 'Нарушение правил плавания'
+				font_size: '18sp'
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state11_7()
+
+			MDRoundFlatButton:
+				size_hint_x: 0.85
+				text: 'Нарушение эксплуатации судов'
+				font_size: '18sp'
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state11_8()
+
+			MDRoundFlatButton:
+				size_hint_x: 0.85
+				text: 'Отсутствие документов на вождение'
+				font_size: '18sp'
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state11_8_1()
+
+			MDRoundFlatButton:
+				size_hint_x: 0.85
+				text: 'Нарушение безопасности на судне'
+				font_size: '18sp'
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state11_10()
+
+			MDRoundFlatButton:
+				size_hint_x: 0.85
+				text: 'Нарушение природоохранных правил'
+				font_size: '18sp'
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state8_33()
+
+			MDRoundFlatButton:
+				size_hint_x: 0.85
+				text: 'Уничтожение редких видов'
+				font_size: '18sp'
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state8_35()
+
+			MDRoundFlatButton:
+				size_hint_x: 0.85
+				text: 'Нарушение правил рыболовства'
+				font_size: '18sp'
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state8_37()
+
+			MDRoundFlatButton:
+				size_hint_x: 0.85
+				text: 'Уклонение от штрафов'
+				font_size: '18sp'
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state20_25()
+
+			MDRoundFlatButton:
+				size_hint_x: 0.85
+				text: 'Пограничный режим'
+				font_size: '18sp'
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state18_2()
+
+			MDRoundFlatButton:
+				size_hint_x: 0.85
+				text: 'Нарушение. Внутренние воды РФ'
+				font_size: '18sp'
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state18_3()
+
+			MDRoundFlatButton:
+				size_hint_x: 0.85
+				text: 'Неповиновение пограничной службе'
+				font_size: '18sp'
+				theme_text_color: 'Custom'
+				text_color: 0, 0, 0, 1.0
+				md_bg_color: 1.0, 1.0, 1.0, 1.0
+				line_color: 1.0, 1.0, 1.0, 1.0
+				halign: 'left'
+				font_name: 'Proxima Nova'
+				on_release: root.click_on_state18_7()
+
+<CatalogFish>:
+	name: 'CatalogFish'
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
+	
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'GPSHelper'
+
+	MDTextField:
+		pos_hint: {'center_x' : 0.5, 'center_y' : 0.9}
+		size_hint_x: 0.93
+		hint_text: "Поиск по справочнику"
+		multiline: False
+		font_size: '18sp'
+		icon_left: 'magnify'
+		icon: 'microphone'
+
+	MDGridLayout:
+		cols: 1
+		rows: 3
+		spacing: 20
+		size_hint_x: 0.93
+		pos_hint: {'center_x' : 0.5, 'center_y' : 0.35}
+		height: self.minimum_height
+
+		MDCard:
+			radius: [16,]
+			border_radius: 16
+			pos_hint: {'center_x' : 0.5}
+			size_hint_x: 0.8
+			size_hint_y: None
+			text_color: 1,0,0,1
+			padding: '16dp'
+			spacing: '16dp'
+			height: 300
+			on_release: app.root.current = 'Esox'
+		
+			MDGridLayout:
+				cols: 2
+				rows: 1
+			
+				MDGridLayout:
+					cols: 1
+					rows: 4
+				
+					MDLabel:
+						font_size: '20sp'
+						text: '  Щука'
+				
+					MDLabel:
+						font_size: '12sp'
+						text: '    Esox lucios'
+
+					MDGridLayout:
+						cols: 2
+						MDIconButton:
+							icon: 'calendar'
+					
+						MDLabel:
+							font_size: '12sp'
+							text: 'Май - Июнь'
+
+					MDLabel:
+						font_size: '12sp'
+						font_style: 'Proxima Nova'
+						text: ' '
+				
+				FitImage:
+					source: 'resources/pictures/esox.jpg'
+					pos: self.parent.parent.pos
+					pos_hint: {'center_x': 0.5, 'center_y': 1}
+					size_hint_y: None
+					width: 200
+					allow_stretch: True
+
+				
+		MDCard:
+			radius: [16,]
+			border_radius: 16
+			pos_hint: {'center_x' : 0.5}
+			size_hint_x: 0.93
+			size_hint_y: None
+			text_color: 1,0,0,1
+			padding: '16dp'
+			spacing: '16dp'
+			height: 300
+			on_release: app.root.current = 'Silurus'
+		
+			MDGridLayout:
+				cols: 2
+				rows: 1
+			
+				MDGridLayout:
+					cols: 1
+					rows: 4
+				
+					MDLabel:
+						font_size: '20sp'
+						text: '  Сом'
+				
+					MDLabel:
+						font_size: '12sp'
+						text: '    Silurus glanis'
+
+					MDGridLayout:
+						cols: 2
+						MDIconButton:
+							icon: 'calendar'
+
+						MDLabel:
+							font_size: '12sp'
+							text: 'Май - Июль'
+
+					MDLabel:
+						font_size: '12sp'
+						font_style: 'Proxima Nova'
+						text: ' '
+				
+				FitImage:
+					source: 'resources/pictures/silurus.jpg'
+					pos: self.parent.parent.pos
+					pos_hint: {'center_x': 0.5, 'center_y': 1}
+					size_hint_y: None
+					width: 200
+					allow_stretch: True
+				
+		MDCard:
+			radius: [16,]
+			border_radius: 16
+			pos_hint: {'center_x' : 0.5}
+			size_hint_x: 0.93
+			size_hint_y: None
+			text_color: 1,0,0,1
+			padding: '16dp'
+			spacing: '16dp'
+			height: 300
+			on_release: app.root.current = 'Cyprinus'
+		
+			MDGridLayout:
+				cols: 2
+				rows: 1
+			
+				MDGridLayout:
+					cols: 1
+					rows: 4
+				
+					MDLabel:
+						font_size: '20sp'
+						text: '  Сазан'
+				
+					MDLabel:
+						font_size: '12sp'
+						text: '    Cyprinus caspio'
+
+					MDGridLayout:
+						cols: 2
+						MDIconButton:
+							icon: 'calendar'
+
+						MDLabel:
+							font_size: '12sp'
+							text: 'Май - Июнь'
+
+					MDLabel:
+						font_size: '12sp'
+						font_style: 'Proxima Nova'
+						text: ' '
+				
+				FitImage:
+					source: 'resources/pictures/cyprinus.jpg'
+					pos: self.parent.parent.pos
+					pos_hint: {'center_x': 0.5, 'center_y': 1}
+					size_hint_y: None
+					width: 200
+					allow_stretch: True
+
+<Esox>:
+	name: 'Esox'
+
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'CatalogFish'
+
+	FitImage:
+		source: 'resources/pictures/esox2.jpg'
+		pos_hint: {'center_y': 0.85}
+		allow_stretch: True
+		size_hint_y: None
+		width: 200
+		height: 270
+
+	MDLabel:
+		pos_hint: {'center_y': 0.75}
+		font_style: 'Proxima Nova'			
+		text: "Обыкновенная щука"
+		font_size: '20sp'
+		bold: True
+
+	MDLabel:
+		pos_hint: {'center_y': 0.70}
+		font_style: 'Proxima Nova'			
+		text: "ESOX LUCIUS"
+		font_size: '18sp'
+		bold: True
+
+	MDLabel:
+		pos_hint: {'center_y': 0.60}
+		font_style: 'Proxima Nova'			
+		text: "Описание"
+		font_size: '18sp'
+		bold: True
+
+	ScrollView:
+		do_scroll_y: True
+		do_scroll_x: False
+		size_hint: (0.93, 0.4)
+		pos_hint: {'center_y': 0.3}
+
+		MDLabel:
+			font_style: 'Proxima Nova'
+			text: '    Образ жизни: оседлый, не совершает больших перемещений по водоёму. Молодь предпочитает прибрежные участки, крупные особи держаться в глубоких закорёженных  местах. В тёплое время обычное место её обитания – ближе к отмели и травянистым местам. С осенним похолоданием уходит на глубину. Быстрого течения не любит, предпочитает затоны, заводи, омуты или прибрежные мелководья. \n\n    Одиночная рыба. Хищник, поедающий преимущественно карповых рыб (вобла, плотва, краснопёрка, карась и др.). При недостатке пищи распространен каннибализм.\n\n    Отличительные признаки: удлинённое, сжатое с боков тело с далеко отнесённым назад спинным и анальным плавниками напоминает стрелу с оперением. Клинообразная голова с вытянутым рылом имеет огромную пасть, усаженную острыми, огибающими назад зубами. Окраска чаще всего пятнистая или  полосатая, чрезвычайно изменчивая – от светлой до тёмной.'
+			font_size: '16sp'
+			size_hint_y: None
+			text_size: (self.width, None)
+			height: self.texture_size[1]
+
+	MDFlatButton:
+		font_size: '16sp'
+		fish_name: 'Обыкновенная щука'
+		pos_hint: {'center_y': 0.05}
+		text: 'Орудия лова'
+		theme_text_color: 'Custom'
+		text_color: app.theme_cls.primary_color
+		on_release: root.click_weapon(self.fish_name)
+		bold: True
+
+<Silurus>:
+	name: 'Silurus'
+
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'CatalogFish'
+
+	FitImage:
+		source: 'resources/pictures/silurus2.jpg'
+		pos_hint: {'center_y': 0.85}
+		allow_stretch: True
+		size_hint_y: None
+		width: 200
+		height: 270
+
+	MDLabel:
+		pos_hint: {'center_y': 0.75}
+		font_style: 'Proxima Nova'			
+		text: "Сом обыкновенный"
+		font_size: '20sp'
+		bold: True
+
+	MDLabel:
+		pos_hint: {'center_y': 0.70}
+		font_style: 'Proxima Nova'			
+		text: "SILURUS GLANIS"
+		font_size: '18sp'
+		bold: True
+
+	MDLabel:
+		pos_hint: {'center_y': 0.60}
+		font_style: 'Proxima Nova'			
+		text: "Описание"
+		font_size: '18sp'
+		bold: True
+
+	ScrollView:
+		do_scroll_y: True
+		do_scroll_x: False
+		size_hint: (0.93, 0.4)
+		pos_hint: {'center_y': 0.3}
+
+		MDLabel:
+			font_style: 'Proxima Nova'
+			text: '    Образ жизни: оседлый, не совершает больших перемещений по водоёму. Молодь предпочитает прибрежные участки, крупные особи держаться в глубоких закорёженных  местах. В тёплое время обычное место её обитания – ближе к отмели и травянистым местам. С осенним похолоданием уходит на глубину. Быстрого течения не любит, предпочитает затоны, заводи, омуты или прибрежные мелководья. Одиночная рыба. Хищник, поедающий преимущественно карповых рыб (вобла, плотва, краснопёрка, карась и др.). При недостатке пищи распространен каннибализм.\n\n    Отличительные признаки: голова большая, сильно сплющенная, незаметно переходит в короткое туловище. Хвост сильно сужен с боков, значительно длиннее туловища. Рот широкий, с мясистыми губами. Нижняя челюсть несколько выдвинута вперед. Глаза сравнительно небольшие, расположены несколько выше и сзади от углов рта. Тело сома желтовато-зеленого цвета, спина темная, по бокам имеются пятна неправильной формы. Нижняя часть тела белая или серая.'
+			font_size: '16sp'
+			size_hint_y: None
+			text_size: (self.width, None)
+			height: self.texture_size[1]
+
+	MDFlatButton:
+		font_size: '16sp'
+		pos_hint: {'center_y': 0.05}
+		fish_name: 'Сом обыкновенный'
+		text: 'Орудия лова'
+		theme_text_color: 'Custom'
+		text_color: app.theme_cls.primary_color
+		on_release: root.click_weapon(self.fish_name)
+		bold: True
+
+<Cyprinus>:
+	name: 'Cyprinus'
+
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'CatalogFish'
+
+	FitImage:
+		source: 'resources/pictures/cyprinus2.jpg'
+		pos_hint: {'center_y': 0.85}
+		allow_stretch: True
+		size_hint_y: None
+		width: 200
+		height: 270
+
+	MDLabel:
+		pos_hint: {'center_y': 0.75}
+		font_style: 'Proxima Nova'			
+		text: "Сазан"
+		font_size: '20sp'
+		bold: True
+
+	MDLabel:
+		pos_hint: {'center_y': 0.70}
+		font_style: 'Proxima Nova'			
+		text: "CYPRINUS CASPIO"
+		font_size: '18sp'
+		bold: True
+
+	MDLabel:
+		pos_hint: {'center_y': 0.60}
+		font_style: 'Proxima Nova'			
+		text: "Описание"
+		font_size: '18sp'
+		bold: True
+
+	ScrollView:
+		do_scroll_y: True
+		do_scroll_x: False
+		size_hint: (0.93, 0.4)
+		pos_hint: {'center_y': 0.3}
+
+		MDLabel:
+			font_style: 'Proxima Nova'
+			text: '    Образ жизни: в реке – типично жилая рыба, не совершает больших миграций. Летом выбирает ямы с несильным, чаще обратным течением и глинистым коряжным дном, иногда останавливается и на участках с илистым грунтом. Любит места с резкой разницей глубин. В водоёмах предпочитает заросли камыша и кувшинок. Держится небольшими стаями, причём чем мельче сазан, тем больше стая. В летнее время он играет, выбрасываясь из воды с сильным характерным всплеском. Это чаще наблюдается в местах постоянного его обитания.\n\n    Отличительные признаки: тело толстое и широкое, а у крупных экземпляров почти цилиндрической формы. Из-за крупной чешуи  жёлто-золотистого цвета с чёрным окаймлением сазан кажется как бы закованным в золотые латы. Рот у него нижний. На верхней губе две пары усиков, служащих органом осязания. Спинной плавник тёмно-серый и занимает почти всю заднюю часть тела, анальный – красно-бурый. В спинном и анальном плавниках есть по одному костистому лучу с зазубринами, которые часто перерезают леску.'
+			font_size: '16sp'
+			size_hint_y: None
+			text_size: (self.width, None)
+			height: self.texture_size[1]
+
+	MDFlatButton:
+		font_size: '16sp'
+		pos_hint: {'center_y': 0.05}
+		fish_name: 'Сазан'
+		theme_text_color: 'Custom'
+		text_color: app.theme_cls.primary_color
+		text: 'Орудия лова'
+		on_release: root.click_weapon(self.fish_name)
+		bold: True
+		
+<HeFromEsox>:
+	name: 'HeFromEsox'
+	
+	padding: 16
+	
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.985}
+		on_release: app.root.current = 'Recipes'
+
+	FitImage:
+		source: 'resources/pictures/he_from_esox.jpg'
+		pos_hint: {'center_x' : 0.5, 'center_y': 0.9}
+		allow_stretch: True
+		size_hint_y: None
+		height: 220
+		size_hint_x: 0.92
+		radius: [16,]
+		border_radius: 16
+
+	MDLabel:
+		pos_hint: {'x': 0.05, 'center_y': 0.8}
+		font_style: 'Proxima Nova'			
+		text: "Хе из щуки"
+		font_size: '20sp'
+		bold: True
+		
+	MDLabel:
+		pos_hint: {'x': 0.05, 'center_y': 0.76}
+		font_style: 'Proxima Nova'			
+		text: "Ингридиенты"
+		font_size: '18sp'
+		bold: True
+	
+	ScrollView:
+		do_scroll_y: True
+		do_scroll_x: False
+		size_hint: (0.93, 0.1)
+		pos_hint: {'x': 0.05, 'center_y': 0.68}
+
+		MDLabel:
+			font_style: 'Proxima Nova'
+			text: '    Щука – 1 кг,  \n    морковь – 500 г, \n    чеснок – 4 зубчика, \n    лук – 500 г,  \n    укроп – 1 пучок, \n    уксус  – 1 ст. л., \n    соевый соус-– 1 ст. л,  \n    растительное масло  – 1 ст. л.,  \n    соль, \n    специи'
+			font_size: '16sp'
+			size_hint_y: None
+			text_size: (self.width, None)
+			height: self.texture_size[1]
+
+	MDLabel:
+		pos_hint: {'x': 0.05, 'center_y': 0.6}
+		font_style: 'Proxima Nova'			
+		text: "Рецепт"
+		font_size: '18sp'
+		bold: True
+
+	ScrollView:
+		do_scroll_y: True
+		do_scroll_x: False
+		size_hint: (0.93, 0.45)
+		pos_hint: {'x': 0.05, 'center_y': 0.35}
+
+		MDLabel:
+			font_style: 'Proxima Nova'
+			text: '    Рыбу разделать на чистое филе, нарезав его кусочками, шириной в 1 см. \n    Подготовить маринад из смеси уксуса, тертого на мелкой терке чеснока, соли и щепотки черного перца. \n    Залить маринадом рыбу, тщательно перемешать, убрать в холодильник на 2 часа. Хорошо промаринованная рыба приобретает светлый оттенок. \n    Обжарить лук и морковь в большом количестве масла. \n    Смешать рыбу с обжаренными овощами. \n    В посуду налить соевый соус, добавить любимой рыбной приправы, засыпать двумя видами перца и хорошо перемешать.'
+			font_size: '16sp'
+			size_hint_y: None
+			text_size: (self.width, None)
+			height: self.texture_size[1]
+
+<SilurusHotted>:
+	name: 'SilurusHotted'
+	
+	padding: 16
+	
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.985}
+		on_release: app.root.current = 'Recipes'
+
+	FitImage:
+		source: 'resources/pictures/silurus_hotted.jpg'
+		pos_hint: {'center_x' : 0.5, 'center_y': 0.9}
+		allow_stretch: True
+		size_hint_y: None
+		height: 220
+		size_hint_x: 0.92
+		radius: [16,]
+		border_radius: 16
+
+	MDLabel:
+		pos_hint: {'x': 0.05, 'center_y': 0.8}
+		font_style: 'Proxima Nova'			
+		text: "Сом жареный"
+		font_size: '20sp'
+		bold: True
+		
+	MDLabel:
+		pos_hint: {'x': 0.05, 'center_y': 0.76}
+		font_style: 'Proxima Nova'			
+		text: "Ингридиенты"
+		font_size: '18sp'
+		bold: True
+	
+	ScrollView:
+		do_scroll_y: True
+		do_scroll_x: False
+		size_hint: (0.93, 0.1)
+		pos_hint: {'x': 0.05, 'center_y': 0.68}
+
+		MDLabel:
+			font_style: 'Proxima Nova'
+			text: '    Сом – 400 г, \n    лимон – 1/2 штуки, \n    мука для панировки, \n    соль, \n    перец по вкусу, \n    растительное масло'
+			size_hint_y: None
+			text_size: (self.width, None)
+			height: self.texture_size[1]
+
+	MDLabel:
+		pos_hint: {'x': 0.05, 'center_y': 0.6}
+		font_style: 'Proxima Nova'			
+		text: "Рецепт"
+		font_size: '18sp'
+		bold: True
+
+	ScrollView:
+		do_scroll_y: True
+		do_scroll_x: False
+		size_hint: (0.93, 0.45)
+		pos_hint: {'x': 0.05, 'center_y': 0.35}
+
+		MDLabel:
+			font_style: 'Proxima Nova'
+			text: '    Для приготовления необходимо промытую рыбу разделать на стейки, добавить лимонный сок, соль, перец и  оставить мариноваться на 15-20 минут.  \n    Далее куски рыбы обсушить, запанировать в  муке и обжарить на хорошо разогретом масле по 5 минут с каждой стороны.'
+			font_size: '16sp'
+			size_hint_y: None
+			text_size: (self.width, None)
+			height: self.texture_size[1]
+	
+<DumplingFromCyprinus>:
+	name: 'DumplingFromCyprinus'
+	
+	padding: 16
+	
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.985}
+		on_release: app.root.current = 'Recipes'
+
+	FitImage:
+		source: 'resources/pictures/dumpling_from_cyprinus.jpg'
+		pos_hint: {'center_x' : 0.5, 'center_y': 0.9}
+		allow_stretch: True
+		size_hint_y: None
+		height: 220
+		size_hint_x: 0.92
+		radius: [16,]
+		border_radius: 16
+
+	MDLabel:
+		pos_hint: {'x': 0.05, 'center_y': 0.8}
+		font_style: 'Proxima Nova'			
+		text: "Пельмени из Сазана"
+		font_size: '20sp'
+		bold: True
+		
+	MDLabel:
+		pos_hint: {'x': 0.05, 'center_y': 0.76}
+		font_style: 'Proxima Nova'			
+		text: "Ингридиенты"
+		font_size: '18sp'
+		bold: True
+	
+	ScrollView:
+		do_scroll_y: True
+		do_scroll_x: False
+		size_hint: (0.93, 0.1)
+		pos_hint: {'x': 0.05, 'center_y': 0.68}
+
+		MDLabel:
+			font_style: 'Proxima Nova'
+			text: '\n    Сазан – 500 г, \n    лук – 1 шт, \n    молоко - 250 мл, \n    яйцо – 1шт , \n    растительное  масло -1 ст. л., \n    соль -1 ч. л. \n    мука – 500г.'
+			font_size: '16sp'
+			size_hint_y: None
+			text_size: (self.width, None)
+			height: self.texture_size[1]
+
+	MDLabel:
+		pos_hint: {'x': 0.05, 'center_y': 0.6}
+		font_style: 'Proxima Nova'			
+		text: "Рецепт"
+		font_size: '18sp'
+		bold: True
+
+	ScrollView:
+		do_scroll_y: True
+		do_scroll_x: False
+		size_hint: (0.93, 0.45)
+		pos_hint: {'x': 0.05, 'center_y': 0.35}
+
+		MDLabel:
+			font_style: 'Proxima Nova'
+			text: '    Для приготовления пельменей необходимо подготовить тесто: муку высыпать в миску, добавить яйцо, масло, соль, холодное молоко. \n    Замесить в тесто  отправить его в холодильник на 20-30 мин.  \n    Для приготовления  начинки  из филе сазана сделать фарш, добавив  в него лук и специи. \n    Сформировать пельмени. '
+			font_size: '16sp'
+			size_hint_y: None
+			text_size: (self.width, None)
+			height: self.texture_size[1]
+
+<Recipes>:
+	name: 'Recipes'
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
+	
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.97}
+		on_release: app.root.current = 'GPSHelper'
+
+	MDTextField:
+		pos_hint: {'center_x' : 0.5, 'center_y' : 0.9}
+		size_hint_x: 0.93
+		hint_text: "Поиск по рецептам"
+		multiline: False
+		font_size: '18sp'
+		icon_left: 'magnify'
+		icon: 'microphone'
+
+	MDGridLayout:
+		cols: 1
+		rows: 3
+		spacing: 20
+		size_hint_x: 0.93
+		pos_hint: {'center_x' : 0.5, 'center_y' : 0.35}
+		height: self.minimum_height
+
+		MDCard:
+			radius: [16,]
+			border_radius: 16
+			pos_hint: {'center_x' : 0.5}
+			size_hint_x: 0.8
+			size_hint_y: None
+			text_color: 1,0,0,1
+			padding: '16dp'
+			spacing: '16dp'
+			height: 170
+			on_release: app.root.current = 'HeFromEsox'
+		
+			MDGridLayout:
+				cols: 2
+				rows: 1
+				
+				MDLabel:
+					font_size: '12sp'
+					text: 'Хе из щуки'
+				
+				FitImage:
+					source: 'resources/pictures/he_from_esox.jpg'
+					pos: self.parent.pos
+					pos_hint: {'center_x': 0.5, 'center_y': 1}
+					size_hint_y: None
+					width: 200
+					allow_stretch: True
+					radius: [16,]
+					border_radius: 16
+				
+		MDCard:
+			radius: [16,]
+			border_radius: 16
+			pos_hint: {'center_x' : 0.5}
+			size_hint_x: 0.93
+			size_hint_y: None
+			text_color: 1,0,0,1
+			padding: '16dp'
+			spacing: '16dp'
+			height: 170
+			on_release: app.root.current = 'SilurusHotted'
+		
+			MDGridLayout:
+				cols: 2
+				rows: 1
+				
+				MDLabel:
+					font_size: '12sp'
+					text: 'Сом жареный'
+				
+				FitImage:
+					source: 'resources/pictures/silurus_hotted.jpg'
+					pos: self.parent.pos
+					pos_hint: {'center_x': 0.5, 'center_y': 1}
+					size_hint_y: None
+					width: 200
+					allow_stretch: True
+					radius: [16,]
+					border_radius: 16
+				
+		MDCard:
+			radius: [16,]
+			border_radius: 16
+			pos_hint: {'center_x' : 0.5}
+			size_hint_x: 0.93
+			size_hint_y: None
+			text_color: 1,0,0,1
+			padding: '16dp'
+			spacing: '16dp'
+			height: 170
+			on_release: app.root.current = 'DumplingFromCyprinus'
+		
+			MDGridLayout:
+				cols: 2
+				rows: 1
+				
+				MDLabel:
+					font_size: '12sp'
+					text: 'Пельмени из Сазана'
+				
+				FitImage:
+					source: 'resources/pictures/dumpling_from_cyprinus.jpg'
+					pos: self.parent.pos
+					pos_hint: {'center_x': 0.5, 'center_y': 1}
+					size_hint_y: None
+					width: 200
+					allow_stretch: True
+					radius: [16,]
+					border_radius: 16
+
+<Onboard>:
+	name: 'Onboard'
+
+	MDRelativeLayout:
+		FitImage:
+			source: "resources/pictures/fish.png"
+			allow_stretch: True
+
+		MDLabel:
+			text: 'Ваш гид по лучшим местам для рыбалки'
+			color: (1, 1, 1, 1)
+			pos_hint: {'center_x' : 0.5 , 'center_y' : 0.30}
+			font_style: 'Proxima Nova'
+			font_size: '40sp'
+
+		MDLabel:
+			text: 'Ваш помощник и гид по лучшим местам для рыбалки'
+			font_style: 'Proxima Nova'
+			pos_hint: {'center_x' : 0.5 , 'center_y' : 0.17}
+			color: (170, 176, 190, 1)
+			font_size: '16sp'
+				
+		MDFillRoundFlatButton:
+			size_hint_x: 0.93
+			pos_hint: {'center_x' : 0.5, 'y' : 0.025}
+			text: "Начать"
+			font_size: '20sp'
+			on_release:
+				app.root.current = 'Enter'
+
+<RegistrationMain>:
+	name: 'RegistrationMain'
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
+
+	button_enter: button_enter	
+	input_surname: input_surname
+	input_name: input_name
+	input_lastname: input_lastname
+	input_mail: input_mail
+	input_phone: input_phone
+	
+	MDLabel:
+		text: "Регистрация"
+		font_style: 'Proxima Nova'
+		font_size: '32sp'
+		pos_hint: {'x' : 0.05, 'center_y' : 0.93}
+		bold: True
+
+	MDTextField:
+		font_style: 'Proxima Nova'
+		size_hint_x: 0.93
+		id: input_surname
+		hint_text: "Фамилия"
+		multiline: False
+		font_size: '18sp'
+		pos_hint: {'center_x' : 0.5, 'center_y' : 0.85}
+		icon_left: 'account-outline'
+
+	MDTextField:
+		font_style: 'Proxima Nova'
+		size_hint_x: 0.93
+		id: input_name
+		hint_text: "Имя"
+		multiline: False
+		font_size: '18sp'
+		pos_hint: {'center_x' : 0.5, 'center_y' : 0.78}
+		icon_left: 'account-outline'
+
+	MDTextField:
+		font_style: 'Proxima Nova'
+		size_hint_x: 0.93
+		id: input_lastname
+		hint_text: "Отчество"
+		multiline: False
+		font_size: '18sp'
+		pos_hint: {'center_x' : 0.5, 'center_y' : 0.71}
+		icon_left: 'account-outline'
+				
+	MDTextField:
+		font_style: 'Proxima Nova'
+		size_hint_x: 0.93
+		id: input_mail
+		hint_text: "Адрес эл.почты"
+		multiline: False
+		font_size: '18sp'
+		pos_hint: {'center_x' : 0.5, 'center_y' : 0.64}
+		icon_left: 'email'
+
+	MDTextField:
+		font_style: 'Proxima Nova'
+		size_hint_x: 0.93
+		id: input_phone
+		hint_text: "+7 (___)___-__-__"
+		multiline: False
+		font_size: '18sp'
+		input_type: 'number'
+		input_filter: 'int'
+		pos_hint: {'center_x' : 0.5, 'center_y' : 0.57}
+		icon_left: 'cellphone'
+
+	MDLabel:
+		font_size: '14sp'
+		text: 'Продолжая Вы соглашаетесь с нашими:'
+		pos_hint: {'x' : 0.05, 'center_y' : 0.50}
+		font_style: 'Proxima Nova'			
+
+	MDFlatButton:
+		font_size: '14sp'
+		text: 'Условиями и Положениями'
+		pos_hint: {'x' : 0.05, 'center_y' : 0.46}
+		on_release: root.click_on_button_terms_and_agreements()
+		theme_text_color: 'Custom'
+		text_color: app.theme_cls.primary_color
+
+	MDFlatButton:
+		font_size: '14sp'
+		text: 'Политикой конфидициальности'			
+		pos_hint: {'x' : 0.05, 'center_y' : 0.42}
+		on_release: root.click_on_button_privacy_policy()
+		theme_text_color: 'Custom'
+		text_color: app.theme_cls.primary_color
+
+	MDGridLayout:
+		cols: 1
+		rows: 1
+		size_hint_x: 0.93
+		pos_hint: {'center_x' : 0.5, 'y' : -0.88}
+
+		MDFillRoundFlatButton:
+			text: "Регистрация"
+			width: self.parent.width
+			font_size: '18sp'
+			on_release: root.click_on_button_register()
+
+	MDLabel:
+		font_size: '14sp'
+		text: 'Уже есть аккаунт?'
+		font_style: 'Proxima Nova'			
+		pos_hint: {'x' : 0.3, 'center_y' : 0.025}
+
+	MDFlatButton:
+		id: button_enter
+		font_size: '14sp'
+		text: 'Войти'
+		theme_text_color: 'Custom'
+		text_color: app.theme_cls.primary_color
+		on_release: root.click_on_button_enter()
+		pos_hint: {'x' : 0.7, 'center_y' : 0.025}
+
+<RegistrationDop>:
+	name: 'RegistrationDop'
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
+
+	button_continue: button_continue
+	
+	MDBoxLayout:
+		orientation: "vertical"
+
+		MDFillRoundFlatIconButton:
+			icon: 'arrow-left-bold-circle-outline'
+			on_release:
+				app.root.current = 'RegistrationMain'
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			text: "Условия и положения"
+			font_size: '21sp'
+			bold: True
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			text: '1.1. Пользуясь Мобильным приложением, Вы соглашаетесь с тем, что:'
+			font_size: '16sp'
+			bold: True
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			text: '1.1.1. Вы ознакомились с условиями настоящего Пользовательского соглашения в полном объёме до начала использования Мобильного приложения.'
+			font_size: '13sp'
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			font_size: '13sp'
+			text: '1.1.2. Начало использования Вами Мобильного приложения в любой форме означает, что Вы принимаете все условия настоящего Пользовательского соглашения в полном объёме без каких-либо изъятий и ограничений с Вашей стороны. Использование Мобильного приложения на иных условиях не допускается.'
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			font_size: '13sp'
+			text: '1.1.3. Если Вы не согласны с условиями настоящего Пользовательского соглашения или не имеете права на его заключение, Вам следует незамедлительно прекратить любое использование Мобильного приложения.'
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			font_size: '13sp'
+			text: '1.1.4. Пользовательское соглашение в любой форме означает, что Вы принимаете все условия настоящего Пользовательского соглашения.'
+
+		MDGridLayout:
+			cols: 2
+
+			CheckBox:
+				id: checkbox_agree
+				on_active: root.click_on_checkbox_agree(self, self.active)
+
+			MDLabel:
+				font_style: 'Proxima Nova'
+				font_size: '13sp'
+				text: 'Я согласен с условиями'
+
+		MDFillRoundFlatButton:
+			id: button_continue
+			size_hint: 0.93, 0.4
+			pos_hint: {'center_x' : 0.5, 'y' : 0.1}
+			text: "Продолжить"
+			disabled: False
+
+			on_release: root.click_on_button_continue()
+
+<Enter>:
+	name: 'Enter'
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
+
+	input_phone: input_phone
+
+	MDLabel:
+		font_style: 'Proxima Nova'
+		pos_hint: {'x' : 0.05, 'center_y' : 0.92}			
+		text: "Войти"
+		font_size: '32sp'
+		bold: True
+
+	MDLabel:
+		font_style: 'Proxima Nova'			
+		text: "Для авторизации введите Ваш номер телефона"
+		pos_hint: {'x' : 0.05, 'center_y' : 0.86}
+		size_hint_x: 0.93			
+		font_size: '16sp'
+
+	MDTextField:
+		radius: [16,]
+		border_radius: 16
+		id: input_phone
+		font_style: 'Proxima Nova'
+		hint_text: "+7 (___)___-__-__"
+		multiline: False
+		font_size: '18sp'
+		input_type: 'number'
+		input_filter: 'int'
+		icon_left: 'cellphone'
+		
+		size_hint_x: 0.93
+		pos_hint: {'x' : 0.05, 'center_y' : 0.75}
+
+	MDGridLayout:
+		rows: 1
+		cols: 1
+		size_hint_x: 0.93
+		pos_hint: {'center_x' : 0.5, 'y' : -0.88}
+
+		MDFillRoundFlatButton:
+			width: self.parent.width
+			text: "Вход"
+			font_size: '18sp'
+			on_release: root.click_on_button_enter()
+
+	MDLabel:
+		pos_hint: {'center_x' : 0.6, 'center_y' : 0.05}
+		font_style: 'Proxima Nova'			
+		text: "Нет аккаунта?"
+		font_size: '14sp'
+
+	MDFlatButton:
+		font_size: '14sp'
+		pos_hint: {'center_x' : 0.82, 'center_y' : 0.05}
+		text: 'Регистрация'
+		theme_text_color: 'Custom'
+		text_color: app.theme_cls.primary_color
+		on_release: root.click_on_button_register()
+		
+	MDFlatButton:
+		font_size: '8sp'
+		text: 'Резерв'
+		theme_text_color: 'Custom'
+		text_color: app.theme_cls.primary_color
+		on_release: root.click_on_button_res()
+	
+
+<EnterCheckPhone>:
+	name: 'EnterCheckPhone'
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
+
+	label_phone: label_phone
+	input_code: input_code
+
+	MDBoxLayout:
+		orientation: "vertical"
+		padding: 15
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			text: "Проверка номера"
+			font_size: '40sp'
+			bold: True
+
+		MDLabel:
+			font_size: '14sp'
+			font_style: 'Proxima Nova'			
+			text: 'Мы отправили код подтверждения на номер: '
+
+		MDLabel:
+			id: label_phone
+			font_style: 'Proxima Nova'			
+			font_size: '14sp'
+			text: ''
+			theme_text_color: 'Custom'
+			text_color: app.theme_cls.primary_color
+			markup: True
+
+		MDLabel:
+			font_style: 'Proxima Nova'			
+			font_size: '14sp'
+			text: 'Введите полученный код'
+			
+		MDTextField:
+			font_style: 'Proxima Nova'			
+			id: input_code
+			multiline: False
+			font_size: '30sp'
+			input_type: 'number'
+			input_filter: 'int'
+
+
+		MDFillRoundFlatButton:
+			size_hint_x: 0.93
+			pos_hint: {'center_x' : 0.5, 'y' : 0.025}
+			text: "Подтвердить"
+			font_size: '30sp'
+
+			on_release: root.click_on_button_confirm()
+
+<CustomMenuBlock>:
+	radius_from: 'top'
+	radius: [16,]
+	size_hint_y: None
+	height: 1000
+
+	MDLabel:
+		font_size: '18sp'
+		text: 'Еще'
+		bold: True
+		pos_hint: {'x': 0.05, 'center_y': 0.9}
+	
+	ScrollView:
+		do_scroll_y: True
+		do_scroll_x: False
+		pos_hint: {'center_y': 0.46}
+		size_hint_x: 1
+		size_hint_y: 0.8
+
+		MDGridLayout:
+			cols: 1
+			rows: 8
+			spacing: 5
+			size_hint_y: None
+			height: self.minimum_height
+			width: self.minimum_width
+
+			OneLineAvatarListItem:
+				#font_style: 'Proxima Nova'
+				font_size: '18sp'
+				text: 'Каталог рыб'
+				height: 100
+				on_press:
+					app.root.current = 'CatalogFish'
+					app.root.get_screen('GPSHelper').close_menu()
+			
+				ImageLeftWidget:
+					source: 'resources/pictures/catalog_fish_menu.jpg'
+					allow_stretch: True
+					keep_ratio: True
+					height: 100
+					pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+			OneLineAvatarListItem:
+				#font_style: 'Proxima Nova'
+				font_size: '18sp'
+				text: 'Рецепты приготовления'
+				height: 100
+				on_press: 
+					app.root.current = 'Recipes'
+					app.root.get_screen('GPSHelper').close_menu()
+			
+				ImageLeftWidget:
+					source: 'resources/pictures/recipes_menu.png'
+					allow_stretch: True
+					keep_ratio: True
+					height: 100
+					pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+			OneLineAvatarListItem:
+				#font_style: 'Proxima Nova'
+				font_size: '18sp'
+				text: 'Правила рыбалки'
+				height: 100
+				on_press: 
+					app.root.current = 'Rules'
+					app.root.get_screen('GPSHelper').close_menu()
+			
+				ImageLeftWidget:
+					source: 'resources/pictures/rules_menu.png'
+					allow_stretch: True
+					keep_ratio: True
+					height: 100
+					pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+			OneLineAvatarListItem:
+				#font_style: 'Proxima Nova'
+				font_size: '18sp'
+				text: 'Штрафы'
+				height: 100
+				on_press: 
+					app.root.current = 'Penalties'
+					app.root.get_screen('GPSHelper').close_menu()
+			
+				ImageLeftWidget:
+					source: 'resources/pictures/penalties_menu.png'
+					allow_stretch: True
+					keep_ratio: True
+					height: 100
+					pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+			OneLineAvatarListItem:
+				#font_style: 'Proxima Nova'
+				font_size: '18sp'
+				text: 'Места отдыха'
+				height: 100
+				on_press:
+					app.root.current = 'PlaceChill'
+					app.root.get_screen('GPSHelper').close_menu()
+
+				ImageLeftWidget:
+					source: 'resources/pictures/place_chill_menu.png'
+					allow_stretch: True
+					keep_ratio: True
+					height: 100
+					pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+				
+			OneLineAvatarListItem:
+				#font_style: 'Proxima Nova'
+				font_size: '18sp'
+				text: 'Снаряжение'
+				height: 100
+				on_press:
+					app.root.current = 'Equipment'
+					app.root.get_screen('GPSHelper').close_menu()
+
+				ImageLeftWidget:
+					source: 'resources/pictures/equipment_menu.png'
+					allow_stretch: True
+					keep_ratio: True
+					height: 100
+					pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+				
+			OneLineAvatarListItem:
+				#font_style: 'Proxima Nova'
+				font_size: '18sp'
+				text: 'Наживка'
+				height: 100
+				on_press:
+					app.root.current = 'Bait'
+					app.root.get_screen('GPSHelper').close_menu()
+
+				ImageLeftWidget:
+					source: 'resources/pictures/bait_menu.png'
+					allow_stretch: True
+					keep_ratio: True
+					height: 100
+					pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+				
+			OneLineAvatarListItem:
+				#font_style: 'Proxima Nova'
+				font_size: '18sp'
+				text: 'Купить рыбу'
+				height: 100
+				on_press:
+					app.root.current = 'BuyFish'
+					app.root.get_screen('GPSHelper').close_menu()
+
+				ImageLeftWidget:
+					source: 'resources/pictures/buy_fish_menu.png'
+					allow_stretch: True
+					keep_ratio: True
+					height: 100
+					pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+<ContentMarkerAllowed>:
+	name: 'ContentMarkerAllowed'
+
+	size_hint_y: None
+	height: '150dp'
+
+	MDLabel:
+		font_size: '20sp'
+		text: 'Рыбалка разрешена'
+		pos_hint: {'x': 0.05, 'center_y': 0.93}
+		size_hint_x: 0.93
+
+	MDLabel:
+		font_size: '14sp'
+		text: 'Водоём общего пользования'
+		pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+		size_hint_x: 0.93
+
+<ContentMarkerDisAllowed>:
+	name: 'ContentMarkerDisAllowed'
+	
+	subInfo: 'Предприятие по разведению рыб'
+	
+	size_hint_y: None
+	height: '150dp'
+
+	MDLabel:
+		font_size: '20sp'
+		text: 'Рыбалка запрещена'
+		pos_hint: {'x': 0.05, 'center_y': 0.93}
+		size_hint_x: 0.93
+
+	MDLabel:
+		font_size: '14sp'
+		text: root.subInfo
+		pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+		size_hint_x: 0.93
+		
+	MDFlatButton:
+		font_size: '12sp'
+		text: 'Перейти к закону'
+		theme_text_color: 'Custom'
+		text_color: app.theme_cls.primary_color
+		pos_hint: {'x': 0.05, 'center_y': 0.3}
+		on_release: 
+			app.root.get_screen('GPSHelper').click_on_button_go_to_penalti()
+
+<ContentMarkerShops>:
+	name: 'ContentMarkerShops'
+	
+	size_hint_y: None
+	height: '150dp'
+
+	MDLabel:
+		font_size: '20sp'
+		text: 'Магазин'
+		pos_hint: {'x': 0.05, 'center_y': 0.9}
+		size_hint_x: 0.93
+
+	MDLabel:
+		font_size: '14sp'
+		text: 'В магазине можно приобрести:\n  Рыболовные снасти\n  Прикорм\n  Снаряжение'
+		pos_hint: {'center_x': 0.5, 'center_y': 0.55}
+		size_hint_x: 0.93
+		
+	MDLabel:
+		font_size: '14sp'
+		text: 'Телефон: +7(495)121-12-12'
+		pos_hint: {'center_x': 0.5, 'center_y': 0.25}
+		size_hint_x: 0.93
+		
+<ContentMarkerSilurus>:
+	name: 'ContentMarkerSilurus'
+	
+	size_hint_y: None
+	height: '150dp'
+	
+	MDLabel:
+		#font_style: 'Proxima Nova'
+		font_size: '30sp'
+		bold: True
+		text: 'Рыбалка рекомендована'
+		pos_hint: {'x': 0.05, 'center_y': 0.88}
+	
+	MDLabel:
+		font_size: '14sp'
+		text: 'Высокая вероятность вылова Сома'
+		pos_hint: {'center_x': 0.5, 'center_y': 0.55}
+		size_hint_x: 0.93
+	
+<ContentMarkerCyprinus>:
+	name: 'ContentMarkerCyprinus'
+	
+	size_hint_y: None
+	height: '150dp'
+	
+	MDLabel:
+		#font_style: 'Proxima Nova'
+		font_size: '30sp'
+		bold: True
+		text: 'Рыбалка рекомендована'
+		pos_hint: {'x': 0.05, 'center_y': 0.88}
+	
+	MDLabel:
+		font_size: '14sp'
+		text: 'Высокая вероятность вылова Сазана'
+		pos_hint: {'center_x': 0.5, 'center_y': 0.55}
+		size_hint_x: 0.93
+		
+<CustomFishLayers>:
+	name: 'CustomFishLayers'
+	size_hint_y: None
+	height: '200dp'
+	
+	but_silurus: but_silurus
+	but_cyprinus: but_cyprinus
+	
+	MDLabel:
+		#font_style: 'Proxima Nova'
+		font_size: '30sp'
+		bold: True
+		text: 'Каталог рыб'
+		pos_hint: {'x': 0.05, 'center_y': 0.88}
+
+	MDGridLayout:
+		rows: 2
+		padding: 16
+		spacing: 30
+		adaptive_height: True
+		pos_hint: {'center_x': 0.5, 'center_y': 0.45}
+
+		MDFillRoundFlatButton:
+			id: but_silurus
+			text: 'Сом'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
+			md_bg_color: (241/255, 244/255, 250/255, 1.0)
+			on_release:
+				app.root.get_screen('GPSHelper').click_silurus(self)
+
+		MDFillRoundFlatButton:
+			id: but_cyprinus
+			text: 'Сазан'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
+			md_bg_color: (241/255, 244/255, 250/255, 1.0)
+			on_release:
+				app.root.get_screen('GPSHelper').click_cyprinus(self)
+
+<CustomBottomSheet>:
+	name: 'CustomBottomSheet'
+
+	orientation: 'vertical'
+	size_hint_y: None
+	height: '600dp'
+	
+	but_map: but_map
+	but_satellite: but_satellite
+	but_hybrid: but_hybrid
+
+	MDLabel:
+		#font_style: 'Proxima Nova'
+		font_size: '30sp'
+		bold: True
+		text: 'Показать на карте'
+		pos_hint: {'x': 0.05, 'center_y': 0.95}
+
+	MDGridLayout:
+		cols: 3
+		adaptive_height: True
+		pos_hint: {'center_x': 0.5, 'center_y': 0.75}
+
+		MDFillRoundFlatButton:
+			id: but_map
+			text: 'Карта'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
+			md_bg_color: app.theme_cls.primary_color
+			on_release:
+				self.md_bg_color = app.theme_cls.primary_color
+				self.parent.parent.ids.but_satellite.md_bg_color = (241/255, 244/255, 250/255, 1.0)
+				self.parent.parent.ids.but_hybrid.md_bg_color = (241/255, 244/255, 250/255, 1.0) 
+				app.get_running_app().root.get_screen('GPSHelper').main_map.map_source = app.get_running_app().root.get_screen('GPSHelper').source_street
+
+		MDFillRoundFlatButton:
+			id: but_satellite
+			text: 'Спутник'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
+			md_bg_color: (241/255, 244/255, 250/255, 1.0)
+			on_release:
+				self.md_bg_color = app.theme_cls.primary_color
+				self.parent.parent.ids.but_map.md_bg_color = (241/255, 244/255, 250/255, 1.0)
+				self.parent.parent.ids.but_hybrid.md_bg_color = (241/255, 244/255, 250/255, 1.0) 
+				app.get_running_app().root.get_screen('GPSHelper').main_map.map_source = app.get_running_app().root.get_screen('GPSHelper').source_satellite
+
+		MDFillRoundFlatButton:
+			id: but_hybrid
+			text: 'Гибрид'
+			font_size: '20sp'
+			theme_text_color: 'Custom'
+			text_color: 0.0, 0.0, 0.0, 1.0
+			md_bg_color: (241/255, 244/255, 250/255, 1.0)
+			on_release:
+				self.md_bg_color = app.theme_cls.primary_color
+				self.parent.parent.ids.but_satellite.md_bg_color = (241/255, 244/255, 250/255, 1.0)
+				self.parent.parent.ids.but_map.md_bg_color = (241/255, 244/255, 250/255, 1.0) 
+				app.get_running_app().root.get_screen('GPSHelper').main_map.map_source = app.get_running_app().root.get_screen('GPSHelper').source_hybrid
+
+	MDGridLayout:
+		size_hint_y: 0.5
+		pos_hint: {'center_y': 0.3}
+		adaptive_height: True
+		cols: 1
+		rows: 3
+		image_allowed: image_allowed
+		image_disallowed: image_disallowed
+		image_shops: image_shops
+
+		OneLineAvatarListItem:
+			#font_style: 'Proxima Nova'
+			font_size: '20sp'
+			text: 'Зона "Рекомендованной рыбалки"'
+			on_release: app.root.get_screen('GPSHelper').click_fishing_allowed(self)
+
+			ImageLeftWidget:
+				id: image_allowed
+				source: 'resources/map_sign/fishing_allowed_off.png'
+
+		OneLineAvatarListItem:
+			#font_style: 'Proxima Nova'
+			font_size: '20sp'
+			text: 'Зона "Рыбалка запрещена"'
+			on_release: app.root.get_screen('GPSHelper').click_fishing_disallowed(self)
+
+			ImageLeftWidget:
+				id: image_disallowed
+				source: 'resources/map_sign/fishing_disallowed_off.png'
+
+		OneLineAvatarListItem:
+			#font_style: 'Proxima Nova'
+			font_size: '20sp'
+			text: 'Рыболовные магазины'
+			on_release: app.root.get_screen('GPSHelper').click_fishing_shops(self)
+
+			ImageLeftWidget:
+				id: image_shops
+				source: 'resources/map_sign/fishing_shop_off.png'
+
+<GPSHelper>:
+	name: 'GPSHelper'
+
+	input_search: input_search
+	main_map: main_map
+
+	MapView:
+	    id: main_map
+	    map_source: MapSource(url='https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}')
+	    lat: 46.5124
+	    lon: 47.9812
+	    zoom: 12
+
+	    GpsBlinker:
+	    	id: blinker
+
+	MDBottomAppBar:
+
+		MDTopAppBar:
+			left_action_items: [['map-marker-outline', lambda x: root.click_on_button_gps()], ['note-text-outline', lambda x: root.click_on_button_note()]]
+			right_action_items: [['calendar-month', lambda x: root.click_on_button_calendar()], ['account', lambda x: root.click_on_button_user()]]
+			icon: 'plus-circle'
+			on_action_button: root.click_on_button_plus()
+			type: 'bottom'
+			mode: 'center'
+
+	MDFloatLayout:
+
+		MDIconButton:
+			icon: 'fish'
+			pos_hint: {'right' : 1, 'center_y' : 0.45}
+			on_release: root.click_on_button_fish()
+
+		MDIconButton:
+			icon: 'crosshairs-gps'
+			pos_hint: {'right' : 1, 'center_y' : 0.5}
+			on_release: root.click_on_button_userGps()
+
+		MDIconButton:
+			icon: 'layers-triple-outline'
+			pos_hint: {'right' : 1, 'center_y' : 0.92}
+			on_release: root.click_on_button_layers()
+
+		# Image:
+		# 	source: 'resources/pictures/search/png'
+		# 	size_hint: {.1, .1}
+		# 	allow_stretch: True
+
+		MDTextField:
+			hint_text: 'Найти место или адрес'
+			font_style: 'Proxima Nova'
+			size_hint_x: .7
+			pos_hint: {'right': 0.8, 'center_y' : 0.96}			
+			id: input_search
+			multiline: False
+			font_size: '30sp'
+			icon_right: 'magnify'

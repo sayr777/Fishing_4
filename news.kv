@@ -1,0 +1,75 @@
+<News>:
+	name: 'News'
+	canvas:
+		Color:
+			rgba: (241/255, 244/255, 250/255, 1.0)
+		Rectangle:
+			size: self.size
+			pos: self.pos
+
+	MDIconButton:
+		icon: 'close'
+		pos_hint: {'right': 1, 'center_y': 0.92}
+		on_release: app.root.current = 'GPSHelper'
+
+	MDLabel:
+		font_style: 'Proxima Nova'
+		pos_hint: {'x': 0.05, 'center_y': 0.92}			
+		text: "Лента новостей"
+		font_size: '30sp'
+		bold: True
+		
+	MDGridLayout:
+		cols: 3
+		size_hint_x: 0.93
+		size_hint_y: 0.77
+		pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+		spacing: 10
+		
+		MDCard:
+			radius: [16, ]
+			border_radius: 16
+			
+		MDCard:
+			radius: [16, ]
+			border_radius: 16
+			
+		MDCard:
+			radius: [16, ]
+			border_radius: 16
+			
+		MDCard:
+			radius: [16, ]
+			border_radius: 16
+			
+		MDCard:
+			radius: [16, ]
+			border_radius: 16
+			
+		MDCard:
+			radius: [16, ]
+			border_radius: 16
+			
+		MDCard:
+			radius: [16, ]
+			border_radius: 16
+			
+		MDCard:
+			radius: [16, ]
+			border_radius: 16
+			
+		MDCard:
+			radius: [16, ]
+			border_radius: 16
+		
+	OneLineAvatarListItem:
+		pos_hint: {'center_x': 0.5, 'center_y': 0.05}
+		font_size: '14sp'
+		text: 'К чату рыбаков'
+		theme_text_color: 'Custom'
+		text_color: app.theme_cls.primary_color
+		on_press: root.click_on_button_go_chat()
+			
+		ImageLeftWidget:
+			source: 'resources/pictures/telegram_logo.png'
+			
