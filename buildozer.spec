@@ -13,7 +13,7 @@ package.domain = org.Fishing
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas, geojson, ico, env, ttf, db, jpeg, json
+source.include_exts = py,png,jpg,kv,atlas, geojson, ico, env, ttf, db, jpeg, json, so, 1
 
 # (list) List of inclusions using pattern matching
 #source.include_patterns = assets/*,images/*.png
@@ -29,7 +29,7 @@ source.include_exts = py,png,jpg,kv,atlas, geojson, ico, env, ttf, db, jpeg, jso
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 0.2.68
+version = 0.3
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
@@ -37,7 +37,7 @@ version = 0.2.68
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3, kivy, kivy_garden.mapview, https://github.com/kivymd/KivyMD/archive/master.zip, requests, urllib3, charset-normalizer, chardet, idna, Pillow, pyotp, python-dotenv, shapely, pyjnius
+requirements = python3,kivy, kivy_garden.mapview, https://github.com/kivymd/KivyMD/archive/master.zip, requests, urllib3, charset-normalizer, chardet, idna, Pillow, pyotp, python-dotenv, pyjnius, shapely
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -93,13 +93,13 @@ fullscreen = 0
 #icon.adaptive_background.filename = %(source.dir)s/data/icon_bg.png
 
 # (list) Permissions
-android.permissions = INTERNET
+#android.permissions = INTERNET
 
 # (list) features (adds uses-feature -tags to manifest)
 #android.features = android.hardware.usb.host
 
 # (int) Target Android API, should be as high as possible.
-#android.api = 28
+#android.api = 27
 
 # (int) Minimum API your APK / AAB will support.
 #android.minapi = 21
@@ -224,12 +224,15 @@ android.accept_sdk_license = True
 # (str) XML file to include as an intent filters in <activity> tag
 #android.manifest.intent_filters =
 
+# (list) Copy these files to src/main/res/xml/ (used for example with intent-filters)
+#android.res_xml = PATH_TO_FILE,
+
 # (str) launchMode to set for the main activity
 #android.manifest.launch_mode = standard
 
 # (list) Android additional libraries to copy into libs/armeabi
 #android.add_libs_armeabi = libs/android/*.so
-#android.add_libs_armeabi_v7a = libs/android-v7/*.so
+android.add_libs_armeabi_v7a = libs/android-v7/*.so, libs/android-v7/*.1
 #android.add_libs_arm64_v8a = libs/android-v8/*.so
 #android.add_libs_x86 = libs/android-x86/*.so
 #android.add_libs_mips = libs/android-mips/*.so
@@ -283,8 +286,11 @@ android.allow_backup = True
 # (bool) disables the compilation of py to pyc/pyo files when packaging
 # android.no-compile-pyo = True
 
-# (str) The format used to package the app for release mode (aab or apk).
+# (str) The format used to package the app for release mode (aab or apk or aar).
 # android.release_artifact = aab
+
+# (str) The format used to package the app for debug mode (apk or aar).
+# android.debug_artifact = apk
 
 #
 # Python for android (p4a) specific
@@ -326,6 +332,7 @@ android.allow_backup = True
 
 # (str) extra command line arguments to pass when invoking pythonforandroid.toolchain
 #p4a.extra_args =
+
 
 
 #
@@ -380,7 +387,7 @@ ios.codesign.allowed = false
 log_level = 2
 
 # (int) Display warning if buildozer is run as root (0 = False, 1 = True)
-warn_on_root = 0
+warn_on_root = 1
 
 # (str) Path to build artifact storage, absolute or relative to spec file
 # build_dir = ./.buildozer

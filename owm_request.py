@@ -1,4 +1,4 @@
-appid = "Ваш APP key"# полученный при регистрации на OpenWeatherMap.org. Что-то вроде такого набора букв и цифр: "6d8e495ca73d5bbc1d6bf8ebd52c4123"
+appid = '7f13700bf40afc4cad42d3f35bcf37fa' 
 
 import requests
 
@@ -17,6 +17,7 @@ def get_wind_direction(deg):
 
 # Проверка наличия в базе информации о нужном населенном пункте
 def get_city_id(s_city_name):
+    city_id = None
     try:
         res = requests.get("http://api.openweathermap.org/data/2.5/find",
                      params={'q': s_city_name, 'type': 'like', 'units': 'metric', 'lang': 'ru', 'APPID': appid})
@@ -29,7 +30,6 @@ def get_city_id(s_city_name):
     except Exception as e:
         print("Exception (find):", e)
         pass
-    assert isinstance(city_id, int)
     return city_id
 
 # Запрос текущей погоды
@@ -63,9 +63,6 @@ def request_forecast(city_id):
         print("Exception (forecast):", e)
         pass
 
-#city_id for SPb
-city_id = 519690
-
 import sys
 if len(sys.argv) == 2:
     s_city_name = sys.argv[1]
@@ -74,5 +71,3 @@ if len(sys.argv) == 2:
 elif len(sys.argv) > 2:
     print('Enter name of city as one argument. For example: Petersburg,RU')
     sys.exit()
-
-request_forecast(city_id)

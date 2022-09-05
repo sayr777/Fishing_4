@@ -590,6 +590,8 @@ WindowManager:
 
 <Calendar>:
 	name: 'Calendar'
+	
+	on_enter: root.entering()
 
 	one_label: one_label
 	two_label: two_label
@@ -629,20 +631,19 @@ WindowManager:
 		on_release: app.root.current = 'GPSHelper'
 
 	MDLabel:
-		pos_hint: {'x': 0.1, 'center_y': 0.97}
-		font_style: 'Proxima Nova'			
+		pos_hint: {'x': 0.1, 'center_y': 0.97}			
 		text: "Календарь"
-		font_size: '30sp'
+		font_size: '28sp'
 		bold: True
 
 	MDGridLayout:
-		pos_hint: {'center_x': 0.5, 'center_y': 0.8}
+		pos_hint: {'center_x': 0.5, 'center_y': 0.9}
 		padding: 16
 		cols: 2
 
 		MDLabel:
 			font_style: 'Proxima Nova'			
-			text: "Июль"
+			text: '     ' + root.curMonth
 			font_size: '24sp'
 			bold: True
 
@@ -654,8 +655,8 @@ WindowManager:
 
 	MDGridLayout:
 		pos_hint: {'center_x': 0.5, 'center_y': 0.4}
-		padding: 16
 		cols: 7
+		size_hint_x: 1
 
 		MDFlatButton:
 			text: 'Пн'
@@ -932,6 +933,42 @@ WindowManager:
 			font_size: '20sp'
 			theme_text_color: 'Custom'
 			text_color: 0.0, 0.0, 0.0, 1.0
+		
+	MDLabel:
+		text: root.cityTemp
+		font_size: '20sp'
+		pos_hint: {'x': 0.05, 'center_y': 0.3}
+			
+	MDLabel:
+		text: root.temperature
+		font_size: '20sp'
+		pos_hint: {'x': 0.05, 'center_y': 0.2}
+			
+	MDLabel:
+		text: root.tempState
+		font_size: '20sp'
+		pos_hint: {'x': 0.05, 'center_y': 0.1}
+			
+	MDLabel:
+		text: "Ветер: " + root.wind
+		font_size: '20sp'
+		pos_hint: {'x': 0.5, 'center_y': 0.3}
+			
+	MDLabel:
+		text: "Влажность: " + root.humidity
+		font_size: '20sp'
+		pos_hint: {'x': 0.5, 'center_y': 0.2}
+			
+	MDLabel:
+		text: "Давление: " + root.pressure
+		font_size: '20sp'
+		pos_hint: {'x': 0.5, 'center_y': 0.1}
+			
+	MDLabel:
+		pos_hint: {'x': 0.1, 'center_y': 0.4}			
+		text: "Погода"
+		font_size: '28sp'
+		bold: True
 
 <RuleFishing>:
 	name: 'RuleFishing'

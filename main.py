@@ -21,6 +21,7 @@ import re
 import random
 import io
 import datetime
+import requests
 from kivy.core.text import LabelBase
 from kivymd.font_definitions import theme_font_styles
 from kivy.uix.image import Image
@@ -32,8 +33,8 @@ import sqlite3 as SQLCommander
 from sms_base import rec_otp
 from kivy.uix.popup import Popup
 import json
-from shapely.geometry import Point
-from shapely.geometry import Polygon
+from geometry import Point
+from geometry import Polygon
 
 #for debug... REMOVE THIS, IF THIS IS PRODUCTION
 from kivy.core.window import Window
@@ -162,14 +163,29 @@ class Calendar(Screen):
     twenty_nine_label = ObjectProperty()
     thirty_label = ObjectProperty()
     thirty_one_label = ObjectProperty()
+    curMonth = StringProperty()
+    cityTemp = StringProperty()
+    temperature = StringProperty()
+    tempState = StringProperty()
+    wind = StringProperty()
+    humidity = StringProperty()
+    pressure = StringProperty()
 
     def entering(self):
-        city_id = owm.get_city_id('Astrakhan, RU')
+        self.curMonth = MONTH_LIST[str(datetime.datetime.now().month)]
+        city_id_from_service = 580497
+        #city_id_from_service = owm.get_city_id('Astrakhan, RU')
+        #print(city_id_from_service)
         appid = '7f13700bf40afc4cad42d3f35bcf37fa'
         res = requests.get("http://api.openweathermap.org/data/2.5/weather",
-                     params={'id': city_id, 'units': 'metric', 'lang': 'ru', 'APPID': appid})
+                     params={'id': city_id_from_service, 'units': 'metric', 'lang': 'ru', 'APPID': appid})
         data = res.json()
-        print(data)
+        self.cityTemp = data['name']
+        self.temperature = str(data['main']['temp'])
+        self.tempState = data['weather'][0]['description']
+        self.wind = str(data['wind']['speed'])
+        self.humidity = str(data['main']['humidity'])
+        self.pressure = str(data['main']['pressure'])
 
     def costFish(self, index):
         if index == 0:
